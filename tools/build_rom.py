@@ -45,6 +45,16 @@ def remaining_kanji():
     return order + [c for c, _ in menu.most_common() if c not in talk]
 
 
+def small_chars():
+    """8×16 경로용 작은 한글 폰트에 넣을 글자: 한글 스크립트와 PC판 한글(나중에 넣을 이름 목록 포함)에 쓰인 새 글자."""
+    texts = [p.read_text(encoding='utf-8') for p in KO_SCRIPT.glob('*.tpl')]
+    pc = ROOT / 'ref' / 'pc_ko' / 'rr1.json'
+    if pc.exists():
+        texts.append(pc.read_text(encoding='utf-8'))
+    new = set(kotable.NEW_CHARS)
+    return {c for t in texts for c in t if c in new} | {kotable.THIN_SPACE}
+
+
 def main():
     out = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / 'build' / 'rnr1_leo_ko.nds'
     if not ORIGINAL.exists():
@@ -61,7 +71,7 @@ def main():
     if main_section.ramAddress != engine.ARM9_BASE:
         sys.exit('ARM9 첫 구역이 0x02000000 이 아닙니다.')
     data = bytearray(main_section.data)
-    info = engine.build(data, remaining_kanji())
+    info = engine.build(data, remaining_kanji(), small_chars())
     main_section.data = bytes(data)
     rom.arm9 = code.save(compress=False)
 

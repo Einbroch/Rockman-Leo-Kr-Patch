@@ -1,6 +1,10 @@
 @archive 0011
 @size 256
 
+script 0 mmsf1 {
+	"이름      얼굴 사진   메시지     비밀      즐겨찾기    브라더 콤보  나가기     "
+	end
+}
 script 2 mmsf1 {
 	msgOpen
 	textSpeed

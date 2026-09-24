@@ -176,6 +176,10 @@ script 7 mmsf1 {
 		jumpIfSuccessful = 6
 	end
 }
+script 8 mmsf1 {
+	"시간      라이브러리   배틀 카드   크레딧     "
+	end
+}
 script 9 mmsf1 {
 	"      "
 	printBuffer

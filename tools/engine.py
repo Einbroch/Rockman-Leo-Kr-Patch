@@ -54,12 +54,18 @@ ROW_BUFFER = 0x02112B98
 ROW_STRIDE = 100
 ROW_PIXELS = 200
 BOLD_FONT = 0x020E0F9C      # 굵은 8×16 폰트 글자 0번 (0x02009A68 의 2번)
-GLYPH_TOP = 4               # 8×16 칸에서 한글 윗줄 (일본판 가나도 4번째 줄부터)
+GLYPH_TOP = 4               # 8×16 칸에서 큰 한글(11×11) 윗줄 (일본판 가나도 4번째 줄부터)
+# 8×16 경로의 한글은 되도록 작은 한글(갈무리7, 7×7)을 8픽셀 칸 하나에 그린다. 일본판 메뉴가 글자마다 8픽셀
+# 칸 하나를 쓰도록 짜여 있어서(카드 설명 12칸×3줄 등) 칸 수가 일본판과 같아진다.
+GALMURI7_BDF = GALMURI_DIR / 'dist' / 'Galmuri7.bdf'
+SMALL_CELL = 7
+SMALL_Y0 = 4                # 갈무리7 글자의 윗줄 (glyph_bits 좌표)
+SMALL_TOP = 6               # 8×16 칸에서 작은 한글 윗줄 (가나 4–14줄의 가운데에 맞춤)
 # 글자를 칸 단위로 타일에 복사하는 경로(0x0201E7BC): "ldr r0,[r6,#0x1c]; ldr r2,[r4]" 를 가로채서
 # 16×16 칸의 한글이면 글자 그림 버퍼 주소를 쓰게 한다.
 TILE_SITE = 0x0201E7DC
 GLYPH_SITE = 0x0201E5A2
-CODE_RESERVE = 0x700        # 가장 긴 빈 구간 앞부분: 코드, 작업 공간, 글자 그림 버퍼 (구간 표는 그 뒤)
+CODE_RESERVE = 0x780        # 가장 긴 빈 구간 앞부분: 코드, 작업 공간, 글자 그림 버퍼 (구간 표는 그 뒤)
 
 
 # ---------------------------------------------------------------- 폰트
@@ -132,9 +138,11 @@ def build_font():
 
 
 # ---------------------------------------------------------------- 빈 칸
-# 글자 번호가 같은 세 폰트(대사 16×16, 메뉴 8×16 둘). 한자 칸만 한글 폰트 자리로 쓰고 가나는 남겨서,
+# 글자 번호가 같은 네 폰트(대사 16×16, 메뉴 8×16 둘, 작은 8×8). 한자 칸만 한글 폰트 자리로 쓰고 가나는 남겨서,
 # 아직 번역하지 않은 일본어(이름, 메뉴 등)의 가나는 그대로 읽히게 한다.
-FONTS = [(FONT0, GLYPH), (0x020D879C, 64), (0x020E0F9C, 64)]
+# (글자 0번 주소, 글자당 바이트, 글자 수). 8×8 폰트는 0x1E0자뿐이라 바로 뒤가 메뉴 8×16 폰트다.
+FONTS = [(FONT0, GLYPH, FONT0_COUNT), (0x020D879C, 64, FONT0_COUNT), (0x020E0F9C, 64, FONT0_COUNT),
+         (0x020D4B9C, 32, 0x1E0)]
 
 
 def free_glyphs(keep=()):
@@ -157,9 +165,9 @@ def free_runs(keep=()):
     """빈 칸의 연속 구간 [(주소, 바이트 수)]. 가장 긴 구간이 맨 앞(코드를 넣는다)."""
     free = free_glyphs(keep)
     runs = []
-    for base, size in FONTS:
+    for base, size, count in FONTS:
         cur = []
-        for i in free:
+        for i in (i for i in free if i < count):
             if cur and cur[-1][1] == i:
                 cur[-1][1] = i + 1
             else:
@@ -292,8 +300,8 @@ extra_widths:
     .word 0x4C4F4F51        @ 리터럴 구역 끝
 
 @ 8×16 폰트 모양 한글 그리기(ko_draw8)의 매개변수 (lit2_params):
-@ [0] 폭 [4] X [8] 기준 주소 [12] 굵은 글씨 [16] 한 줄 바이트 수 [20] 배치(0 줄 버퍼, 1 칸 띠) [24] 오른쪽 끝(px)
-@ [28] 칸 띠 시작 주소 [32] 칸 띠의 다음 x
+@ [0] 폭 [4] X [8] 기준 주소 [12] 굵은 글씨 [16] 한 줄 바이트 수 [20] (쓰지 않음) [24] 오른쪽 끝(px)
+@ [36] 작은 한글(갈무리7)이면 1 [40] 글자 윗줄(y)
 
 ko_mode1:                   @ r0 = 글자 상자. 8×16 폰트로 한 줄에 이어 그리는 경로(원래 0x0201E724)
     ldrh r1, [r0, #0x28]
@@ -313,15 +321,19 @@ ko_mode1_hangul:
     push {{r4-r7, lr}}
     mov r7, r0
     ldrh r0, [r7, #0x28]
-    bl ko_glyph             @ r1 = 16×16 글자 그림 버퍼
-    mov r6, r1
-    ldrh r1, [r7, #0x28]
-    bl ko_width             @ r0 = 폭(픽셀)
+    bl ko_pick8             @ r6 = 글자 그림, r0 = 폭
     ldr r3, lit2_params
     str r0, [r3, #0]
     mov r2, r7
     adds r2, #0x44
     ldrh r1, [r2]           @ x (1/4 픽셀)
+    ldr r4, [r3, #36]
+    cmp r4, #0
+    beq ko_mode1_place
+    adds r1, #0x1f          @ 작은 한글은 8픽셀 칸에 맞춘다
+    lsrs r1, r1, #5
+    lsls r1, r1, #5
+ko_mode1_place:
     lsls r4, r0, #2
     adds r4, r1, r4
     strh r4, [r2]           @ 다음 글자 자리
@@ -344,6 +356,77 @@ ko_mode1_hangul:
     bl ko_draw8
     pop {{r4-r7, pc}}
 
+ko_pick8:                   @ r0 = 한글 글자 번호 → r6 = 글자 그림, r0 = 폭, 매개변수 [36], [40]. r1–r3 사용
+    push {{r4, lr}}
+    mov r4, r0
+    ldr r1, lit2_hangul_base
+    subs r0, r0, r1
+    bl ko_small
+    ldr r3, lit2_params
+    cmp r0, #0
+    beq ko_pick8_big
+    mov r6, r0
+    movs r0, #1
+    str r0, [r3, #36]
+    movs r0, #{small_top}
+    str r0, [r3, #40]
+    movs r0, #8
+    pop {{r4, pc}}
+ko_pick8_big:
+    str r0, [r3, #36]
+    movs r0, #{glyph_top}
+    str r0, [r3, #40]
+    mov r0, r4
+    bl ko_glyph             @ r1 = 16×16 글자 그림 버퍼 (r2–r7 보존)
+    mov r6, r1
+    mov r1, r4
+    bl ko_width
+    pop {{r4, pc}}
+
+ko_small:                   @ r0 = k → r0 = 작은 한글 그림 주소, 없으면 0. r1–r3 사용
+    push {{r4, lr}}
+    lsrs r1, r0, #5         @ 비트맵 낱말 번호
+    lsls r3, r1, #2
+    ldr r2, lit2_small_bits
+    ldr r2, [r2, r3]
+    movs r3, #31
+    ands r3, r0
+    movs r4, #1
+    lsls r4, r3             @ 이 글자의 비트
+    tst r2, r4
+    beq ko_small_none
+    subs r4, #1
+    ands r2, r4             @ 같은 낱말에서 앞선 글자들
+    movs r3, #0
+ko_small_count:
+    cmp r2, #0
+    beq ko_small_rank
+    subs r4, r2, #1
+    ands r2, r4
+    adds r3, #1
+    b ko_small_count
+ko_small_rank:
+    ldr r2, lit2_small_prefix
+    lsls r1, r1, #1
+    ldrh r1, [r2, r1]
+    adds r0, r1, r3         @ 작은 폰트 안의 순번
+    ldr r2, lit2_small_chunks
+ko_small_find:
+    ldr r3, [r2, #4]
+    cmp r0, r3
+    blo ko_small_found
+    subs r0, r0, r3
+    adds r2, #8
+    b ko_small_find
+ko_small_found:
+    ldr r3, [r2]
+    lsls r0, r0, #3
+    adds r0, r3, r0
+    pop {{r4, pc}}
+ko_small_none:
+    movs r0, #0
+    pop {{r4, pc}}
+
 ko_bold:                    @ r7 = 글자 상자, r3 = 매개변수 → [r3+12] = 굵은 8×16 폰트면 1. r1, r2 사용
     ldr r2, [r7, #0x1c]
     ldr r1, lit2_bold_font
@@ -363,8 +446,8 @@ ko_draw8:                   @ 8×16 폰트 모양으로 한글 그리기. r6 = 1
 ko_draw8_y:
     movs r5, #0             @ x
 ko_draw8_x:
-    mov r0, r5              @ 글자: (x, y-{glyph_top}), 굵은 글씨는 (x-1, ...)도
-    subs r1, r4, #{glyph_top}
+    mov r0, r5              @ 글자: (x, y-윗줄), 굵은 글씨는 (x-1, ...)도
+    bl ko_gy
     bl ko_src
     cmp r0, #0
     bne ko_draw8_one
@@ -373,13 +456,14 @@ ko_draw8_x:
     cmp r0, #0
     beq ko_draw8_shadow
     subs r0, r5, #1
-    subs r1, r4, #{glyph_top}
+    bl ko_gy
     bl ko_src
     cmp r0, #0
     bne ko_draw8_one
 ko_draw8_shadow:            @ 그림자: 오른쪽 아래 한 칸
     subs r0, r5, #1
-    subs r1, r4, #{glyph_top1}
+    bl ko_gy
+    subs r1, #1
     bl ko_src
     cmp r0, #0
     bne ko_draw8_two
@@ -388,7 +472,8 @@ ko_draw8_shadow:            @ 그림자: 오른쪽 아래 한 칸
     cmp r0, #0
     beq ko_draw8_zero
     subs r0, r5, #2
-    subs r1, r4, #{glyph_top1}
+    bl ko_gy
+    subs r1, #1
     bl ko_src
     cmp r0, #0
     bne ko_draw8_two
@@ -407,27 +492,8 @@ ko_draw8_put:               @ (X + x, y) 점 = r2
     ldr r1, [r3, #24]
     cmp r0, r1
     bhs ko_draw8_next       @ 오른쪽 끝을 넘는 점은 쓰지 않는다
-    ldr r1, [r3, #20]
-    cmp r1, #0
-    bne ko_draw8_cells
-    ldr r1, [r3, #16]       @ 줄 버퍼: 기준 + y×한 줄 + px/2
+    ldr r1, [r3, #16]       @ 기준 + y×한 줄 + px/2
     muls r1, r4
-    b ko_draw8_addr
-ko_draw8_cells:             @ 칸 띠: 기준 + (px/8)×64 + (y/8)×32 + (y%8)×4 + (px%8)/2
-    lsrs r1, r0, #3
-    lsls r1, r1, #6
-    push {{r2}}
-    lsrs r2, r4, #3
-    lsls r2, r2, #5
-    adds r1, r1, r2
-    movs r2, #7
-    ands r2, r4
-    lsls r2, r2, #2
-    adds r1, r1, r2
-    movs r2, #7
-    ands r2, r0
-    lsls r0, r2, #0         @ px%8 (홀짝은 아래에서 본다)
-    pop {{r2}}
 ko_draw8_addr:
     ldr r3, [r3, #8]
     adds r1, r1, r3
@@ -458,7 +524,27 @@ ko_draw8_next:
     blo ko_draw8_y
     pop {{r4, r5, pc}}
 
-ko_src:                     @ r0 = x, r1 = y → r0 = 글자 그림 버퍼(r6)의 점이 있으면 1. r2, r3 사용
+ko_gy:                      @ r1 = y(r4) - 글자 윗줄. r3 사용
+    ldr r3, lit2_params
+    ldr r3, [r3, #40]
+    subs r1, r4, r3
+    bx lr
+
+ko_src:                     @ r0 = x, r1 = y → r0 = 글자 그림(r6)의 점이 있으면 1. r2, r3 사용
+    ldr r3, lit2_params
+    ldr r3, [r3, #36]
+    cmp r3, #0
+    beq ko_src_big
+    cmp r0, #{small_cell}   @ 작은 한글: 한 줄에 한 바이트, 비트 x
+    bhs ko_src_zero
+    cmp r1, #{small_cell}
+    bhs ko_src_zero
+    ldrb r2, [r6, r1]
+    lsrs r2, r0
+    movs r0, #1
+    ands r0, r2
+    bx lr
+ko_src_big:
     cmp r0, #{cell}
     bhs ko_src_zero         @ 음수도 부호 없이 비교하면 크다
     cmp r1, #{cell}
@@ -549,6 +635,10 @@ ko_tile_draw16:             @ r2 = 글자 번호, r7 = 글자 상자 → r6 = 8�
     str r0, [r3, #16]       @ 한 줄 8바이트
     ldr r0, lit2_tile_rows
     str r0, [r3, #8]
+    movs r0, #0
+    str r0, [r3, #36]       @ 큰 한글
+    movs r0, #{glyph_top}
+    str r0, [r3, #40]
     bl ko_bold
     bl ko_draw8
     ldr r0, lit2_tile_rows  @ 줄 순서(16줄×8바이트) → 16×16 타일 순서(왼위, 오른위, 왼아래, 오른아래)
@@ -571,76 +661,47 @@ ko_tile_d16_row:
     blo ko_tile_d16_row
     pop {{pc}}
 
-ko_tile_strip:              @ 8×16 글자를 8픽셀 칸에 이어서: 문자열을 한 줄의 픽셀 띠로 보고 한글은 폭 12로 그린다
-    push {{r1, r4-r7, lr}}  @ 원래 [sp] → [sp+24]
-    mov r7, r6
-    ldr r3, lit2_params
-    mov r0, r7
-    adds r0, #0xe8
-    ldr r0, [r0]            @ 이번 글자까지 센 값
-    mov r1, r7
-    adds r1, #0xe4
-    ldr r1, [r1]            @ 글자마다 늘어나는 값
-    cmp r0, r1
-    bne ko_strip_cont
-    ldr r0, [r4]            @ 문자열 첫 글자: 띠 시작과 x 를 새로
-    str r0, [r3, #28]
-    movs r0, #0
-    str r0, [r3, #32]
-ko_strip_cont:
-    ldr r0, lit2_hangul_base
+ko_tile_strip:              @ 8×16 글자를 8픽셀 칸에: 작은 한글을 8×16 폰트 글자 모양(16줄×4바이트)으로 그려
+    ldr r0, lit2_hangul_base @ 원래 함수가 일본판 글자처럼 한 칸을 복사하게 한다
     cmp r2, r0
-    bhs ko_strip_hangul
-    ldr r0, [r3, #32]       @ 한바이트 글자: x 를 8의 배수로 올린 칸에 원래대로 쓴다
-    adds r0, #7
-    lsrs r0, r0, #3
-    lsls r1, r0, #6
-    ldr r5, [r3, #28]
-    adds r1, r1, r5
-    str r1, [r4]
-    lsls r0, r0, #3
-    adds r0, #8
-    str r0, [r3, #32]
-    pop {{r1, r4-r7}}
-    ldr r0, [r6, #0x1c]
-    ldr r2, [r4]
-    pop {{r3}}
-    bx r3
-ko_strip_hangul:
+    blo ko_tile_normal
+    push {{r4-r7, lr}}
+    mov r7, r6              @ 글자 상자
     mov r0, r2
-    bl ko_glyph
-    mov r6, r1
-    ldrh r1, [r7, #0x28]
-    bl ko_width
+    bl ko_pick8             @ r6 = 글자 그림, [36] = 작은 한글
     ldr r3, lit2_params
-    str r0, [r3, #0]        @ 폭
-    ldr r1, [r3, #32]
-    str r1, [r3, #4]        @ X
-    adds r0, r0, r1
-    str r0, [r3, #32]       @ 다음 x
-    ldr r0, [r3, #28]
-    str r0, [r3, #8]        @ 기준 = 띠 시작
-    movs r0, #1
-    str r0, [r3, #20]       @ 칸 띠 모양
-    mov r0, r7
-    adds r0, #0xe0
-    ldr r0, [r0]            @ 문자열 칸 전체 바이트 수 → 오른쪽 끝 = 바이트/8 픽셀
-    lsrs r0, r0, #3
-    str r0, [r3, #24]
+    ldr r0, [r3, #36]
+    ldr r1, lit2_tile_rows
+    cmp r0, #0
+    beq ko_strip_blank      @ 작은 한글이 없는 글자는 빈 칸 (8픽셀에 큰 한글은 못 그린다)
+    movs r0, #8
+    str r0, [r3, #0]        @ 폭 8
+    str r0, [r3, #24]       @ 오른쪽 끝 8
+    movs r0, #0
+    str r0, [r3, #4]        @ X = 0
+    str r0, [r3, #20]       @ 줄 버퍼 모양
+    movs r0, #4
+    str r0, [r3, #16]       @ 한 줄 4바이트
+    str r1, [r3, #8]
     bl ko_bold
     bl ko_draw8
-    ldr r3, lit2_params     @ 원래 함수의 복사는 X 가 든 칸을 제자리에 복사하게 한다(바뀌는 것 없음)
-    ldr r0, [r3, #4]
-    lsrs r0, r0, #3
-    lsls r0, r0, #6
-    ldr r1, [r3, #28]
-    adds r0, r0, r1
-    str r0, [r4]
-    mov r12, r0
-    add sp, #4              @ 저장한 r1 은 버린다
+    ldr r1, lit2_tile_rows
+    b ko_strip_done
+ko_strip_blank:
+    movs r0, #0
+    movs r2, #16
+ko_strip_clear:
+    str r0, [r1]
+    str r0, [r1, #4]
+    str r0, [r1, #8]
+    str r0, [r1, #12]
+    adds r1, #16
+    subs r2, #4
+    bne ko_strip_clear
+    ldr r1, lit2_tile_rows
+ko_strip_done:
+    movs r0, #0
     pop {{r4-r7}}
-    mov r0, r12
-    movs r1, #0
     ldr r2, [r4]
     pop {{r3}}
     bx r3
@@ -653,6 +714,9 @@ lit2_row_buffer: .word {row_buffer}
 lit2_bold_font: .word {bold_font}
 lit2_params: .word {params}
 lit2_tile_rows: .word {tile_rows}
+lit2_small_bits: .word {small_bits}
+lit2_small_prefix: .word {small_prefix}
+lit2_small_chunks: .word {small_chunks}
     .word 0x4C4F4F51
 {site_helpers}
 {flag_helpers}
@@ -671,6 +735,12 @@ ko_flag{i}:                  @ r0 = 글자 바이트. 끝나면 Z=1(E4·한글) 
     cmp r0, #{lead_last}
     bhi ko_flag{i}_single
     push {{r2}}
+    ldr r2, [r5, #0x10]     @ 둘째 바이트가 한글 범위가 아니면(끝 표시 E6 등) 한바이트 글자
+    ldrb r2, [r2, #1]
+    cmp r2, #{trail_first}
+    blo ko_flag{i}_notko
+    cmp r2, #{trail_last}
+    bhi ko_flag{i}_notko
     subs r0, #{lead_first}
     movs r2, #{trail_count}
     muls r0, r2
@@ -682,6 +752,8 @@ ko_flag{i}:                  @ r0 = 글자 바이트. 끝나면 Z=1(E4·한글) 
     cmp r0, r0              @ Z=1
 ko_flag{i}_ret:
     bx lr
+ko_flag{i}_notko:
+    pop {{r2}}
 ko_flag{i}_single:
     cmp r0, #0xE4           @ Z=0
     bx lr
@@ -696,6 +768,12 @@ ko_site{i}:                  @ r0 = 글자 바이트, lr = 호출 위치 + 4 (E4
     cmp r0, #{lead_last}
     bhi ko_site{i}_single
     push {{r2}}
+    ldr r2, [r5, #0x10]     @ 둘째 바이트가 한글 범위가 아니면(끝 표시 E6 등) 한바이트 글자:
+    ldrb r2, [r2, #1]       @ mess.bin 밖의 일본어(가타카나 ウアイオエケコカクキセ)가 끝을 먹지 않게
+    cmp r2, #{trail_first}
+    blo ko_site{i}_notko
+    cmp r2, #{trail_last}
+    bhi ko_site{i}_notko
     subs r0, #{lead_first}
     movs r2, #{trail_count}
     muls r0, r2
@@ -706,6 +784,8 @@ ko_site{i}:                  @ r0 = 글자 바이트, lr = 호출 위치 + 4 (E4
     pop {{r2}}
 ko_site{i}_ret:
     bx lr
+ko_site{i}_notko:
+    pop {{r2}}
 ko_site{i}_single:
     mov r0, lr
     adds r0, #{single}      @ 원래 bne 가 가던 곳
@@ -748,59 +828,93 @@ def table_size(runs):
     return 8 * (len(runs) + 1)
 
 
-def layout(runs):
-    """(구간 표 주소, 폰트를 넣을 구간들). 가장 긴 구간 앞부분은 코드 예약 공간이다.
-    구간 표는 코드 예약 공간 바로 뒤에 들어가면 거기에, 아니면 표가 들어가는 가장 짧은 다른 구간 앞에 둔다."""
+def build_small(chars):
+    """8×16 폰트 경로용 작은 한글(갈무리7, 7×7 점, 글자당 8바이트: 한 줄에 한 바이트, 비트 x).
+    chars 에 든 새 글자만 넣는다. (글자 그림 목록, 있는 글자 비트맵 낱말, 낱말마다 앞의 글자 수)"""
+    g7 = load_bdf(GALMURI7_BDF)
+    blank = {kotable.THIN_SPACE}
+    glyphs, words = [], [0] * ((len(kotable.NEW_CHARS) + 31) // 32)
+    for k, c in enumerate(kotable.NEW_CHARS):
+        if c not in chars or (c not in blank and ord(c) not in g7):
+            continue
+        rows = [0] * 8
+        for x, y in ([] if c in blank else glyph_bits(g7[ord(c)])):
+            if 0 <= x < SMALL_CELL and SMALL_Y0 <= y < SMALL_Y0 + SMALL_CELL:
+                rows[y - SMALL_Y0] |= 1 << x
+        glyphs.append(bytes(rows))
+        words[k >> 5] |= 1 << (k & 31)
+    prefix, total = [], 0
+    for w in words:
+        prefix.append(total)
+        total += bin(w).count('1')
+    return glyphs, words, prefix
+
+
+def plan(runs, font, small):
+    """빈 구간 배치. 가장 긴 구간 앞부분은 코드 예약 공간이고, 표들을 들어가는 곳에 먼저 놓은 뒤
+    큰 폰트(16바이트), 작은 폰트(8바이트)를 채운다. 안 들어가면 None."""
+    glyphs, words, prefix = small
     code_addr, code_room = runs[0]
-    size = table_size(runs)
-    rest = [(code_addr + CODE_RESERVE, code_room - CODE_RESERVE)] + runs[1:]
-    fits = [k for k, (_, room) in enumerate(rest) if room >= size]
-    if not fits:
-        sys.exit('구간 표를 넣을 빈 구간이 없습니다.')
-    k = 0 if 0 in fits else min(fits, key=lambda k: rest[k][1])
-    table = rest[k][0]
-    rest[k] = (table + size, rest[k][1] - size)
-    return table, rest
+    if code_room < CODE_RESERVE:
+        return None
+    rest = [[code_addr + CODE_RESERVE, code_room - CODE_RESERVE]] + [list(r) for r in runs[1:]]
+    tables = {'big': table_size(runs), 'small': table_size(runs), 'bits': 4 * len(words),
+              'prefix': (2 * len(prefix) + 3) // 4 * 4}
+    where = {}
+    for name, size in sorted(tables.items(), key=lambda t: -t[1]):
+        fits = [r for r in rest if r[1] >= size]
+        if not fits:
+            return None
+        r = min(fits, key=lambda r: r[1])
+        where[name] = r[0]
+        r[0] += size
+        r[1] -= size
+    chunks = {'big': [], 'small': []}
+    for name, items, unit in (('big', font, PACKED), ('small', glyphs, 8)):
+        placed = 0
+        for r in rest:
+            cap = min(r[1] // unit, len(items) - placed)
+            if cap <= 0:
+                continue
+            chunks[name].append((r[0], cap, items[placed:placed + cap]))
+            r[0] += cap * unit
+            r[1] -= cap * unit
+            placed += cap
+        if placed < len(items):
+            return None
+    return where, chunks
 
 
-def data_runs(runs):
-    return layout(runs)[1]
-
-
-def font_room(runs):
-    """코드 예약 공간과 구간 표를 뺀 구간들에 들어가는 한글 글자 수."""
-    return sum(max(size, 0) // PACKED for _, size in data_runs(runs))
-
-
-def build(arm9, keep=()):
+def build(arm9, keep=(), small_chars=()):
     """arm9(0x02000000부터의 bytearray)에 한글 출력 코드와 폰트를 넣는다. 사용량 정보를 돌려준다.
-    keep: 번역하지 않고 남는 일본어에 쓰이는 한자(자주 쓰이는 순). 한글 폰트가 들어가는 한도 안에서
-    앞에서부터 그 한자 칸을 남긴다."""
+    keep: 번역하지 않고 남는 일본어에 쓰이는 한자(자주 쓰이는 순). 폰트가 들어가는 한도 안에서
+    앞에서부터 그 한자 칸을 남긴다. small_chars: 8×16 경로용 작은 한글 폰트에 넣을 글자."""
     font = build_font()
+    small = build_small(set(small_chars))
     keep = list(keep)
-    while font_room(free_runs(keep)) < len(font):
+    while plan(free_runs(keep), font, small) is None:
+        if not keep:
+            sys.exit('한글 폰트를 다 넣지 못했습니다.')
         keep.pop()
     runs = free_runs(keep)
-    code_addr, code_room = runs[0]
+    where, chunks = plan(runs, font, small)
+    code_addr = runs[0][0]
     buffer = code_addr + CODE_RESERVE - GLYPH          # 16×16 글자 그림
     tile_rows = buffer - GLYPH                         # 8×16 두 칸 그림을 줄 순서로 그리는 곳
     params = tile_rows - 48                            # ko_draw8 매개변수
-    table, fill = layout(runs)
 
-    placed, chunks = 0, []
-    for addr, size in fill:
-        cap = min(size // PACKED, len(font) - placed)
-        if cap <= 0:
-            continue
-        blob = b''.join(font[placed:placed + cap])
+    def put_data(addr, blob):
         arm9[addr - ARM9_BASE:addr - ARM9_BASE + len(blob)] = blob
-        chunks.append((addr, cap))
-        placed += cap
-    if placed < len(font):
-        sys.exit(f'한글 폰트를 다 넣지 못했습니다 ({placed}/{len(font)}).')
-    blob = b''.join(struct.pack('<II', a, c) for a, c in chunks) + struct.pack('<II', 0, 0xFFFFFFFF)
-    assert len(blob) <= table_size(runs)
-    arm9[table - ARM9_BASE:table - ARM9_BASE + len(blob)] = blob
+
+    for name in ('big', 'small'):
+        for addr, count, items in chunks[name]:
+            put_data(addr, b''.join(items))
+        put_data(where[name], b''.join(struct.pack('<II', a, c) for a, c, _ in chunks[name]) +
+                 struct.pack('<II', 0, 0xFFFFFFFF))
+    put_data(where['bits'], b''.join(struct.pack('<I', w) for w in small[1]))
+    put_data(where['prefix'], b''.join(struct.pack('<H', v) for v in small[2]))
+    placed = sum(c for _, c, _ in chunks['big'])
+    table = where['big']
 
     sites = []
     for site, slot in DECODE_SITES:
@@ -810,7 +924,8 @@ def build(arm9, keep=()):
         target = site + 2 + 4 + 2 * (before[2] - 256 if before[2] > 127 else before[2])
         sites.append((site, slot, target - (site + 4)))
     common = dict(lead_first=kotable.LEAD_FIRST, lead_last=kotable.LEAD_FIRST + kotable.LEAD_COUNT - 1,
-                  trail_count=kotable.TRAIL_COUNT)
+                  trail_count=kotable.TRAIL_COUNT, trail_first=kotable.TRAIL_FIRST,
+                  trail_last=kotable.TRAIL_FIRST + kotable.TRAIL_COUNT - 1)
     if bytes(arm9[MODE1_CALL - ARM9_BASE:MODE1_CALL - ARM9_BASE + 4]) != assemble(f'bl {MODE1_FUNC:#x}', MODE1_CALL):
         sys.exit(f'{MODE1_CALL:#x} 가 예상한 코드(bl {MODE1_FUNC:#x})가 아닙니다.')
     if bytes(arm9[TILE_SITE - ARM9_BASE:TILE_SITE - ARM9_BASE + 6]) != \
@@ -832,7 +947,8 @@ def build(arm9, keep=()):
         extra_first=len(kotable.HANGUL),
         extra_widths=', '.join(str(kotable.EXTRA_WIDTH.get(c, 12)) for c in kotable.EXTRA),
         buffer=buffer, cell=CELL, chunks=table, mode1_func=MODE1_FUNC | 1, row_buffer=ROW_BUFFER,
-        params=params, tile_rows=tile_rows,
+        params=params, tile_rows=tile_rows, small_bits=where['bits'], small_prefix=where['prefix'],
+        small_chunks=where['small'], small_top=SMALL_TOP, small_cell=SMALL_CELL,
         row_stride=ROW_STRIDE, row_pixels=ROW_PIXELS, bold_font=BOLD_FONT, glyph_top=GLYPH_TOP,
         glyph_top1=GLYPH_TOP + 1)
     code = assemble(src, code_addr)
@@ -857,5 +973,6 @@ def build(arm9, keep=()):
         put(MODE1_CALL, f'bl {extra_entry:#x}')
     if 'tile' not in skip:
         put(TILE_SITE, f'bl {extra_entry + 2:#x}')
-    return {'코드': len(code), '한글 글자': placed, '구간': len(chunks), '코드 주소': hex(code_addr),
+    return {'코드': len(code), '한글 글자': placed, '작은 한글': len(small[0]),
+            '구간': len(chunks['big']) + len(chunks['small']), '코드 주소': hex(code_addr),
             '버퍼': hex(buffer), '남긴 한자': ''.join(keep)}

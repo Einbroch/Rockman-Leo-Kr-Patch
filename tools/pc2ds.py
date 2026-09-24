@@ -38,9 +38,12 @@ KO_DIR = ROOT / 'script' / 'ko'
 JA_DIR = script.JA_DIR
 JA_BLOCKS = 1247  # 일본판 mess.bin 블록 수. 그 뒤는 영어판에만 있다.
 # 목록 화면(카드·아이템 설명 등)에서 쓰는 블록. 대사 상자와 다른 출력 코드를 거치므로 그쪽을 고친 뒤에 넣는다.
-LIST_FILES = {'CHIPINFO', 'CHIPINFO2', 'POWERUP', 'CARDFORCE', 'WARROCK_WEAPON', 'ITEMINF', 'TITLE', 'COCKPIT',
-              'DECKSELECT', 'EDITDECKSCREEN'}
-
+# 넣지 않는 PC판 파일: 전투 화면 문구(DOUBLE DELETE! 등)는 일본판도 영어이고 전투 화면 글자 경로를 아직 고치지 않았다
+SKIP_FILES = {'COCKPIT'}
+# 8×16 폰트 경로(메뉴·목록 화면)로 찍는 블록. 한글도 일본판 글자처럼 8픽셀 칸 하나(작은 한글)를 쓰므로
+# 일본판 스크립트의 모양(줄마다 칸 수, 줄 수, 공백으로 채웠는지, 가운데 맞춤)에 맞춰 한글을 채운다.
+# 13·14 카드 설명, 8 폴더 메뉴, 12 워록 강화, 102 워록 무기, 1214 카드 포스
+MENU_BLOCKS = {13, 14, 8, 12, 102, 1214}
 INLINE = {'wait', 'waitHold', 'waitSkip'}
 MAX_WIDTH = 192             # 대사 한 줄 최대 폭(픽셀). 일본판 대사의 99%가 이 안이다.
 MAX_LINES = 3
@@ -431,21 +434,96 @@ def ja_sizes():
 
 def center_width(items):
     """positionOptionFromCenter 의 폭(글자 수)을 새 글에 맞춘다. optionText 선택지면 선택지 글자 수의 합,
-    선택지가 없으면(엔딩 크레딧 등) 가장 긴 줄의 글자 수. 고정 폭 선택지 버튼(optionButton*)은 그대로 둔다."""
+    선택지가 없으면(엔딩 크레딧, 타이틀 화면 문구 등) 명령마다 바로 뒤 글자의 첫 줄 글자 수.
+    고정 폭 선택지 버튼(optionButton*)은 그대로 둔다."""
     names = [it[1] for it in items if it[0] == 'cmd']
     if 'positionOptionFromCenter' not in names or any(n.startswith('optionButton') for n in names):
         return items
     opts = [items[k + 1][1] for k, it in enumerate(items[:-1])
             if it[0] == 'cmd' and it[1] == 'optionText' and items[k + 1][0] == 'text']
-    if opts:
-        width = sum(len(t) for t in opts)
-    else:
-        text = ''.join(it[1] for it in items if it[0] == 'text')
-        width = max((len(line) for line in text.split('\n')), default=0)
-    for it in items:
-        if it[0] == 'cmd' and it[1] == 'positionOptionFromCenter' and width:
+    for k, it in enumerate(items):
+        if it[0] != 'cmd' or it[1] != 'positionOptionFromCenter':
+            continue
+        if opts:
+            width = sum(len(t) for t in opts)
+        else:
+            text = ''
+            for nxt in items[k + 1:]:
+                if nxt[0] == 'cmd' and nxt[1] == 'positionOptionFromCenter':
+                    break
+                if nxt[0] == 'text':
+                    text += nxt[1]
+            width = len(text.lstrip('\n').split('\n')[0])
+        if width:
             it[2]['width'] = str(width)
     return items
+
+
+def cell_width(item):
+    """8×16 경로에서 항목이 차지하는 칸 수 (글자 하나 = 칸 하나)."""
+    if item[0] == 'text':
+        return len(item[1])
+    if 'minLength' in item[2]:
+        return int(item[2]['minLength'])
+    return 0 if item[1] in INLINE else 4
+
+
+def menu_shape(ja_items):
+    """일본판 글자 덩어리의 모양: (칸 수, 줄 수, 줄마다 공백으로 채웠는지, 가운데 맞춤인지)."""
+    text = ''.join(it[1] if it[0] == 'text' else ' ' * cell_width(it) for it in ja_items)
+    lines = text.split('\n')
+    cols = max(len(l) for l in lines)
+    padded = len(lines) > 1 and all(len(l) == cols for l in lines)
+    center = len(lines) == 1 and text.startswith(' ') and text.endswith(' ')
+    return cols, len(lines), padded, center
+
+
+def menu_fit(items, shape, stats, report, where):
+    """8×16 경로용 글: 일본판 모양(menu_shape)에 맞춰 줄을 나누고 공백으로 채운다."""
+    cols, nlines, padded, center = shape
+    words, cur = [], []
+    for it in items:
+        if it[0] != 'text':
+            cur.append(it)
+            continue
+        for k, piece in enumerate(re.split(r'([ \n' + kotable.THIN_SPACE + '])', it[1])):
+            if piece in (' ', '\n', kotable.THIN_SPACE):
+                if cur:
+                    words.append(cur)
+                cur = []
+            elif piece:
+                cur.append(['text', piece])
+    if cur:
+        words.append(cur)
+    lines = [[]]
+    for word in words:
+        wlen = sum(cell_width(x) for x in word)
+        used = sum(cell_width(x) for x in lines[-1])
+        if lines[-1] and used + 1 + wlen > cols and len(lines) < nlines:
+            lines.append([])
+        elif lines[-1]:
+            lines[-1].append(['text', ' '])
+        lines[-1] += word
+    for k, line in enumerate(lines):         # 넘치면 공백부터 뺀다
+        if sum(cell_width(x) for x in line) > cols:
+            lines[k] = line = [x for x in line if x != ['text', ' ']]
+        if sum(cell_width(x) for x in line) > cols:
+            stats['8×16 칸을 넘는 글'] += 1
+            report.append(f'{where}\t8×16 칸({cols}칸×{nlines}줄)을 넘음: {"".join(x[1] if x[0] == "text" else "#" for x in line)!r}')
+    if padded:
+        lines += [[] for _ in range(nlines - len(lines))]
+    out = []
+    for k, line in enumerate(lines):
+        width = sum(cell_width(x) for x in line)
+        if k:
+            out.append(['text', '\n'])
+        if center and width < cols:
+            out.append(['text', ' ' * ((cols - width) // 2)])
+            width += (cols - width) // 2
+        out += line
+        if (padded or center) and width < cols:
+            out.append(['text', ' ' * (cols - width)])
+    return join_lines([out], 0)
 
 
 def merge_tag_only(texts):
@@ -631,9 +709,9 @@ def main():
         if block >= JA_BLOCKS:
             report.append(f'{block}\t{name}\t영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)')
             continue
-        if name[4:-4] in LIST_FILES:
-            report.append(f'{block}\t{name}\t목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음')
-            stats['목록 화면용이라 뺀 블록'] += 1
+        if name[4:-4] in SKIP_FILES:
+            report.append(f'{block}\t{name}\t전투 화면 문구(일본판도 영어)라 그대로 둠')
+            stats['그대로 둔 블록'] += 1
             continue
         if fixes.get(str(block), {}).get('skip'):
             report.append(f'{block}\t{name}\t일본판 그대로 둠: {fixes[str(block)].get("note", "")}')
@@ -656,6 +734,7 @@ def main():
                     assign[u] = [part]
         for k, text in fixes.get(str(block), {}).get('texts', {}).items():
             assign[int(k)] = [text]            # PC판에 없거나 순서가 달라 직접 쓴 글
+        ja_menu = parse_tpl((JA_DIR / f'{block:04d}.tpl').read_text(encoding='utf-8-sig')) if block in MENU_BLOCKS else {}
         scripts = {}
         for num in sorted(usa[block]):
             items = [[it[0], it[1], dict(it[2])] if it[0] == 'cmd' else list(it) for it in usa[block][num]]
@@ -687,6 +766,17 @@ def main():
                     continue
                 splittable = e < len(items) and items[e][0] == 'cmd' and items[e][1] == 'keyWait'
                 parts = build_parts(items[s:e], texts, tag2key, stats)
+                if block in MENU_BLOCKS:
+                    ja_units = [u for u in block_units({num: ja_menu[num]}) if u[1] == 'run'] if num in ja_menu else []
+                    idx = [kk for kk, _ in mine if units[block][kk][1] == 'run'].index(k)
+                    ref = unit_items({num: ja_menu[num]}, ja_units[idx]) if idx < len(ja_units) else items[s:e]
+                    joined = []
+                    for p, part in enumerate(parts):
+                        if p:
+                            joined.append(['text', '\n'])
+                        joined += part
+                    new += menu_fit(joined, menu_shape(ref), stats, report, f'{block}\t{name}\t단위 {k}')
+                    continue
                 if len(parts) == 1:
                     new += fit_run(parts[0], splittable, stats)
                 elif splittable:
@@ -714,7 +804,7 @@ def main():
         stats['넣은 한글 항목'] += sum(len(b) for a, b in groups[block] if a) + \
             len(fixes.get(str(block), {}).get('texts', {}))
 
-    skip = {b for b, name in block_map.items() if name[4:-4] in LIST_FILES} | \
+    skip = {b for b, name in block_map.items() if name[4:-4] in SKIP_FILES} | \
         {int(b) for b, fix in fixes.items() if fix.get('skip')}
     add_ja_only(outputs, skip, stats, report)
     for block, scripts in sorted(outputs.items()):

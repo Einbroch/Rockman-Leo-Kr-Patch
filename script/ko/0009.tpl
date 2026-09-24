@@ -277,6 +277,18 @@ script 21 mmsf1 {
 		flag = 3346
 	end
 }
+script 22 mmsf1 {
+	"온 에어 호스트           온 에어 클라이언트         번호 입력              닌텐도 WFC            Wi-Fi 설정           "
+	end
+}
+script 23 mmsf1 {
+	"  온 에어   접속 종료  "
+	end
+}
+script 24 mmsf1 {
+	"   연결      해제   "
+	end
+}
 script 25 mmsf1 {
 	msgOpenQuick
 	textSpeed

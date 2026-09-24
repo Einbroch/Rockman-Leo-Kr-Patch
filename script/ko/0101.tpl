@@ -538,6 +538,44 @@ script 19 mmsf1 {
 		jump8 = 0
 	end
 }
+script 20 mmsf1 {
+	"공격력    "
+	printBuffer
+		buffer = 0
+		minLength = 2
+		padMode = leftPadSpaces
+	"      연사력    "
+	printBuffer
+		buffer = 1
+		minLength = 2
+		padMode = leftPadSpaces
+	"      차지     "
+	printBuffer
+		buffer = 2
+		minLength = 2
+		padMode = leftPadSpaces
+	"      "
+	end
+}
+script 21 mmsf1 {
+	"게이지       "
+	printBuffer
+		buffer = 1
+		minLength = 2
+		padMode = leftPadSpaces
+	"       메가 카드     "
+	printBuffer
+		buffer = 2
+		minLength = 2
+		padMode = leftPadSpaces
+	"       기가 카드     "
+	printBuffer
+		buffer = 3
+		minLength = 2
+		padMode = leftPadSpaces
+	"       "
+	end
+}
 script 22 mmsf1 {
 	"레벨    "
 	printBuffer

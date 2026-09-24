@@ -36,18 +36,20 @@
 `patch/rnr1_leo_ko.xdelta`를 원본 롬 `Ryuusei no Rockman - Leo (Japan).nds`(CRC32 `EA4F4898`)에 적용한다.
 윈도우에서는 Delta Patcher나 xdelta UI 같은 xdelta 패치 도구를 쓰면 된다.
 
-지금 들어간 것: PC판 한글패치의 대사(스토리, 맵 대사, NPC, 튜토리얼, 상점, 저장·통신 화면, 엔딩 크레딧 등)
-822개 블록, 한글 항목 23,317개. 선택지 버튼과 이름 입력 확인 창도 한글이다.
+지금 들어간 것: PC판 한글패치의 대사(스토리, 맵 대사, NPC, 튜토리얼, 상점, 저장·통신 화면, 엔딩 크레딧 등)와
+카드 설명·폴더 메뉴·워록 화면·메뉴 라벨 등 목록 화면, 831개 블록. 선택지 버튼과 이름 입력 확인 창도 한글이다.
 영어판에서 지워져 PC판에 없는 일본판 전용 대사 137개 스크립트(워록·스바루의 힌트, 내비 잡담, 반 친구 이벤트 등)는
-일본어에서 직접 번역해 `ref/ja_only_ko.json`에 두었다.
+일본어에서 직접 번역해 `ref/ja_only_ko.json`에 두었다. 메뉴·목록 화면(8×16 폰트)의 한글은 일본판처럼 글자당
+8픽셀 칸 하나에 작은 한글(갈무리7)로 그린다.
 
 아직 일본어로 남는 것:
-- 목록 화면(카드·아이템 설명 등 10개 블록)과 메뉴 폰트로 찍는 여러 칸짜리 라벨(저장 화면의 "タイム ライブラリ…" 등)
+- 카드·아이템·적·장소 이름처럼 mess.bin 밖에 있는 글자, 그림으로 된 글자
 - 암호 메일(NUMBERTRADER): 답을 일본판 가나 입력 화면으로 넣어야 하므로 일부러 일본어로 둔다
-- 이름 입력 자판, 메뉴와 카드·인물·장소 이름처럼 mess.bin 밖에 있는 글자, 그림으로 된 글자
+- 이름 입력 자판, 전투 화면 문구(DOUBLE DELETE! 등, 일본판도 영어)
 
-한글 폰트를 한자 칸에 넣었기 때문에 남은 일본어의 한자는 대부분 깨진다. 다만 기본 이름(星河)과 목록 화면에
-자주 나오는 한자 등 35자는 칸을 비워 두어 그대로 보인다.
+알려진 문제: 한글 첫 바이트로 가타카나 ウアイオエケコカクキセ 자리를 쓰기 때문에, mess.bin 밖의 일본어 이름에 이
+글자가 있으면 옆 글자와 묶여 깨져 보인다(예: キャノン, コダマタウン). 이름을 번역하면 없어진다(다음 작업).
+이름이 이 글자로 끝나 화면이 멈추던 문제(아이템 화면)는 고쳤다.
 
 ## 진행 상황
 
@@ -61,7 +63,8 @@
 - [x] **PC판 한글 대사 적용**: `tools/pcpak.py` → `tools/pc2ds.py` (영어판 스크립트 틀 사용)
 - [x] **개수가 맞지 않는 60개 블록** 맞추기: `tools/pc_align.py` 제안 → 검토해서 `ref/pc_ko/align_fix.json`
 - [x] **일본판 전용 대사**(영어판·PC판에 없는 137개 스크립트) 번역: `ref/ja_only_ko.json`
-- [ ] **메뉴·목록 화면 출력 코드 수정**과 카드·아이템·인물·장소 이름 등 mess.bin 밖의 글자
+- [x] **메뉴·목록 화면 출력 코드 수정**: 8×16 폰트 경로(줄 그리기, 칸 단위 타일)에 한글, 작은 한글(갈무리7)
+- [ ] 카드·아이템·인물·장소 이름 등 mess.bin 밖의 글자 (글자 위치 목록 경로 포함)
 - [ ] **그림 속 글자**(타이틀 등)
 - [x] **빌드**: `tools/build_rom.py` → `build/rnr1_leo_ko.nds`, `patch/rnr1_leo_ko.xdelta`
 
@@ -96,6 +99,6 @@ python3 tools/build_rom.py                                    # 한글판 롬과
 - PC판(레거시 컬렉션) 한글패치: 원작자의 사용 허락을 받아 대사를 가져왔다.
 - [TextPet](https://github.com/Prof9/TextPet) (Prof. 9, MIT 라이선스): 스크립트 변환.
   `tools/textpet/`에 .NET 8 빌드용 프로젝트 파일과 수정 사항(`dotnet8.patch`), 게임 정의(`plugins/`)가 있다.
-- [갈무리](https://github.com/quiple/galmuri) (이민서, SIL OFL 1.1): 한글 폰트 (갈무리11). 라이선스는 `licenses/Galmuri-OFL.md`.
+- [갈무리](https://github.com/quiple/galmuri) (이민서, SIL OFL 1.1): 한글 폰트 (대사 갈무리11, 메뉴 갈무리7). 라이선스는 `licenses/Galmuri-OFL.md`.
 - [ndspy](https://github.com/RoadrunnerWMC/ndspy): 롬 파일 시스템과 LZ10 압축.
 - [keystone](https://www.keystone-engine.org/)·[capstone](https://www.capstone-engine.org/): 게임 코드 어셈블·역어셈블.
