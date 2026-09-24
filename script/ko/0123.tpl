@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"이제 어떻게 하지?"
+	"이제 어떻게 하지?"
 	keyWait
 		type = 1
 	clearMsg
@@ -17,15 +17,15 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"트럭 컴프 안으로\n들어가서\n"
+	"트럭 컴프 안으로\n들어가서\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 소동을 일으킨 FM 성인을\n쓰러뜨려야 해.\n"
+	"이 소동을 일으킨 FM 성인을\n쓰러뜨려야 해.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"트럭이 우리 아래를 지나갈 때\n뛰어내려!\n"
+	"트럭이 우리 아래를 지나갈 때\n뛰어내려!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -37,7 +37,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"아, 알겠어…"
+	"아, 알겠어…"
 	keyWait
 		type = 1
 	clearMsg
@@ -49,7 +49,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"겁먹지 마!\n온다!\n"
+	"겁먹지 마!\n온다!\n"
 	keyWait
 		type = 0
 	end
@@ -59,7 +59,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"좋아! 지금이야! 뛰어!!\n"
+	"좋아! 지금이야! 뛰어!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -71,7 +71,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"아, 알겠어!!"
+	"아, 알겠어!!"
 	keyWait
 		type = 0
 	end
@@ -95,7 +95,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"멍하니 있지 마, 꼬맹이!!\n"
+	"멍하니 있지 마, 꼬맹이!!\n"
 	keyWait
 		type = 0
 	end
@@ -105,7 +105,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"저렇게 빠르게\n달리는 데 어떻게\n올라타!"
+	"저렇게 빠르게\n달리는 데 어떻게\n올라타!"
 	keyWait
 		type = 1
 	clearMsg
@@ -117,31 +117,31 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"그럼 힘으로\n멈추는 수밖에\n"
+	"그럼 힘으로\n멈추는 수밖에\n"
 	keyWait
 		type = 1
 	clearMsg
-	"없지! 차지 샷 한\n발이면 될 텐데…\n"
+	"없지! 차지 샷 한\n발이면 될 텐데…\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShowNPC
 		npc = 1
-	"자, 잠깐만!!\n"
+	"자, 잠깐만!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그러면 다른\n사람들도 다칠 거야!\n"
+	"그러면 다른\n사람들도 다칠 거야!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = OmegaXis
-	"그럼 어떻게 하자는 거야?\n그냥 내버려 뒀다가\n"
+	"그럼 어떻게 하자는 거야?\n그냥 내버려 뒀다가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"사고를 내서\n다치게 할래?\n"
+	"사고를 내서\n다치게 할래?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -153,15 +153,15 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"사고라고? 알겠어!\n"
+	"사고라고? 알겠어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어떻게든 길을 막을\n수 있다면…\n"
+	"어떻게든 길을 막을\n수 있다면…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"트럭을 멈출 수 있을 텐데.\n하지만 어떻게…?\n"
+	"트럭을 멈출 수 있을 텐데.\n하지만 어떻게…?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -173,15 +173,15 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"나한테 묻지 마!\n네가 생각해 내!\n"
+	"나한테 묻지 마!\n네가 생각해 내!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"주변에 트럭을 막을\n만한 건 아무것도 없어.\n"
+	"주변에 트럭을 막을\n만한 건 아무것도 없어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내 말이 맞지, 안 그래?\n\n"
+	"내 말이 맞지, 안 그래?\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -193,11 +193,11 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"맞아… 하지만 포기하지\n않을 거야.\n"
+	"맞아… 하지만 포기하지\n않을 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"분명 이 근처에\n쓸 만한 게\n있을 거야!"
+	"분명 이 근처에\n쓸 만한 게\n있을 거야!"
 	keyWait
 		type = 0
 	end

@@ -3,7 +3,7 @@
 
 script 0 mmsf1 {
 	msgOpen
-	"스탠드에 세워 둔 마이크야.\n"
+	"스탠드에 세워 둔 마이크야.\n"
 	keyWait
 		type = 0
 	end
@@ -11,11 +11,11 @@ script 0 mmsf1 {
 }
 script 1 mmsf1 {
 	msgOpen
-	"테이프가 정말\n많네.\n"
+	"테이프가 정말\n많네.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"안에 뭐가 녹음돼 있을까...\n"
+	"안에 뭐가 녹음돼 있을까...\n"
 	keyWait
 		type = 0
 	end
@@ -23,7 +23,7 @@ script 1 mmsf1 {
 }
 script 2 mmsf1 {
 	msgOpen
-	"여기 테이프가\n잔뜩 꽂혀 있어.\n"
+	"여기 테이프가\n잔뜩 꽂혀 있어.\n"
 	keyWait
 		type = 0
 	end
@@ -35,7 +35,7 @@ script 3 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"아주 효율적이라고\n들었어."
+	"아주 효율적이라고\n들었어."
 	keyWait
 		type = 0
 	end
@@ -43,11 +43,11 @@ script 3 mmsf1 {
 }
 script 4 mmsf1 {
 	msgOpen
-	"여기서 영상을\n편집할 수 있어.\n"
+	"여기서 영상을\n편집할 수 있어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"실수한 부분은 잘라 내면\n아무도 못 보겠지.\n"
+	"실수한 부분은 잘라 내면\n아무도 못 보겠지.\n"
 	keyWait
 		type = 0
 	end
@@ -55,7 +55,7 @@ script 4 mmsf1 {
 }
 script 5 mmsf1 {
 	msgOpen
-	"스튜디오 조명\n스위치야.\n"
+	"스튜디오 조명\n스위치야.\n"
 	keyWait
 		type = 0
 	end
@@ -67,11 +67,11 @@ script 6 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"들어가서 구경하고\n싶지만,\n"
+	"들어가서 구경하고\n싶지만,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"들어가면 선생님한테\n혼날 것 같아.\n"
+	"들어가면 선생님한테\n혼날 것 같아.\n"
 	keyWait
 		type = 0
 	end
@@ -79,11 +79,11 @@ script 6 mmsf1 {
 }
 script 7 mmsf1 {
 	msgOpen
-	"스튜디오 밖에 있는 사람도\n이 마이크를 이용하면\n"
+	"스튜디오 밖에 있는 사람도\n이 마이크를 이용하면\n"
 	keyWait
 		type = 1
 	clearMsg
-	"안에 있는 사람과\n대화할 수 있어.\n"
+	"안에 있는 사람과\n대화할 수 있어.\n"
 	keyWait
 		type = 0
 	end
@@ -91,7 +91,7 @@ script 7 mmsf1 {
 }
 script 8 mmsf1 {
 	msgOpen
-	"방송실 규칙이\n여기에 적혀\n있어."
+	"방송실 규칙이\n여기에 적혀\n있어."
 	keyWait
 		type = 0
 	end
@@ -99,7 +99,7 @@ script 8 mmsf1 {
 }
 script 9 mmsf1 {
 	msgOpen
-	"스터디 웨이브가\n방송되는 곳이야.\n"
+	"스터디 웨이브가\n방송되는 곳이야.\n"
 	keyWait
 		type = 0
 	end
@@ -107,11 +107,11 @@ script 9 mmsf1 {
 }
 script 10 mmsf1 {
 	msgOpen
-	"이 홀로그램이\n스터디 웨이브일까?\n"
+	"이 홀로그램이\n스터디 웨이브일까?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그런데 정말 엄청나게\n크네.\n"
+	"그런데 정말 엄청나게\n크네.\n"
 	keyWait
 		type = 0
 	end
@@ -119,11 +119,11 @@ script 10 mmsf1 {
 }
 script 11 mmsf1 {
 	msgOpen
-	"이 상자 안에는 뭐가\n들어 있을까...?\n"
+	"이 상자 안에는 뭐가\n들어 있을까...?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"궁금한 게 있으면\n잠이 안 와.\n"
+	"궁금한 게 있으면\n잠이 안 와.\n"
 	keyWait
 		type = 0
 	end
@@ -131,7 +131,7 @@ script 11 mmsf1 {
 }
 script 13 mmsf1 {
 	msgOpen
-	"작고 초슬림한\n컴퓨터들이야.\n"
+	"작고 초슬림한\n컴퓨터들이야.\n"
 	keyWait
 		type = 0
 	end
@@ -139,7 +139,7 @@ script 13 mmsf1 {
 }
 script 15 mmsf1 {
 	msgOpen
-	"카메라는 가끔 우리가\n못 보는 것도 볼 수 있어.\n"
+	"카메라는 가끔 우리가\n못 보는 것도 볼 수 있어.\n"
 	keyWait
 		type = 0
 	end
@@ -147,11 +147,11 @@ script 15 mmsf1 {
 }
 script 16 mmsf1 {
 	msgOpen
-	"카메라는 가끔 우리가\n못 보는 것도 볼 수 있어.\n"
+	"카메라는 가끔 우리가\n못 보는 것도 볼 수 있어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"흠? 여기 뭔가\n있어.\n"
+	"흠? 여기 뭔가\n있어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -175,7 +175,7 @@ script 16 mmsf1 {
 }
 script 20 mmsf1 {
 	msgOpen
-	"여기 비디오 레코더가\n많이 있네.\n"
+	"여기 비디오 레코더가\n많이 있네.\n"
 	keyWait
 		type = 0
 	end
@@ -183,7 +183,7 @@ script 20 mmsf1 {
 }
 script 21 mmsf1 {
 	msgOpen
-	"여기 비디오 레코더가\n많이 있네.\n"
+	"여기 비디오 레코더가\n많이 있네.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -191,7 +191,7 @@ script 21 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"비디오 레코더가\n켜져 있지 않은 것 같아.\n"
+	"비디오 레코더가\n켜져 있지 않은 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -235,7 +235,7 @@ script 21 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"비디오 레코더 위에\n웨이브 홀이 나타났어.\n"
+	"비디오 레코더 위에\n웨이브 홀이 나타났어.\n"
 	keyWait
 		type = 2
 	flagSet

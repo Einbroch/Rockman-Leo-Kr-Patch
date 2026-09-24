@@ -10,11 +10,11 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = SpeedNavi
-	"뭐라고 딱 꼬집어 말할 수는 없지만,\n"
+	"뭐라고 딱 꼬집어 말할 수는\n없지만,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"뭔가 이상한 느낌이\n들어…\n"
+	"뭔가 이상한 느낌이\n들어…\n"
 	keyWait
 		type = 0
 	end
@@ -29,11 +29,11 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = InfoNavi
-	"상태는 정상이지만,\n"
+	"상태는 정상이지만,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"왠지 불길한\n예감이 들어…\n"
+	"왠지 불길한\n예감이 들어…\n"
 	keyWait
 		type = 0
 	end
@@ -43,11 +43,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = SpeedNavi
-	"아아… 어지러워.\n"
+	"아아… 어지러워.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리에게 대체\n무슨 일이 일어나는 거야…?"
+	"우리에게 대체\n무슨 일이 일어나는 거야…?"
 	keyWait
 		type = 0
 	end
@@ -57,11 +57,11 @@ script 21 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = InfoNavi
-	"*부들부들*… *부들부들*…\n"
+	"*부들부들*… *부들부들*…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"위험한 일이\n다가오고 있어…\n"
+	"위험한 일이\n다가오고 있어…\n"
 	keyWait
 		type = 1
 	clearMsg

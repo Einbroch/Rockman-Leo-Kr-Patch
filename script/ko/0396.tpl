@@ -37,7 +37,7 @@ script 0 mmsf1 {
 		upper = 80
 		jumpIfInRange = 50
 		jumpIfOutOfRange = continue
-	"임시 메시지"
+	"임시 메시지"
 	keyWait
 		type = 0
 	end
@@ -59,7 +59,7 @@ script 50 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"자, 오늘은 이만하자.\n"
+	"자, 오늘은 이만하자.\n"
 	keyWait
 		type = 0
 	end
@@ -69,7 +69,7 @@ script 51 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"타임 스퀘어로 가자.\n"
+	"타임 스퀘어로 가자.\n"
 	keyWait
 		type = 0
 	end
@@ -79,12 +79,12 @@ script 52 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"저 전파의 정체를\n알아내자!\n"
+	"저 전파의 정체를\n알아내자!\n"
 	keyWait
 		type = 1
 	clearMsg
 	printPlayerName1
-	", 웨이브 인!"
+	", 웨이브 인!"
 	keyWait
 		type = 0
 	end
@@ -94,7 +94,7 @@ script 53 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"저 전파의 근원지를\n찾아보자!\n"
+	"저 전파의 근원지를\n찾아보자!\n"
 	keyWait
 		type = 0
 	end
@@ -148,7 +148,7 @@ script 60 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"웨이브 아웃!"
+	"웨이브 아웃!"
 	keyWait
 		type = 0
 	end
@@ -158,7 +158,7 @@ script 61 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"자, 집에 가자.\n"
+	"자, 집에 가자.\n"
 	keyWait
 		type = 0
 	end
@@ -168,7 +168,7 @@ script 62 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"그 드림 아일랜드라는 곳에는\n안 가?\n"
+	"그 드림 아일랜드라는 곳에는\n안 가?\n"
 	keyWait
 		type = 0
 	end
@@ -178,7 +178,7 @@ script 63 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"공원이 있네. 자,\n가 보자!"
+	"공원이 있네. 자,\n가 보자!"
 	keyWait
 		type = 0
 	end
@@ -188,7 +188,7 @@ script 64 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"공원에서 나갈\n거지?\n"
+	"공원에서 나갈\n거지?\n"
 	keyWait
 		type = 0
 	end
@@ -198,7 +198,7 @@ script 65 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"시키는 대로 계속\n가.\n"
+	"시키는 대로 계속\n가.\n"
 	keyWait
 		type = 0
 	end
@@ -208,11 +208,11 @@ script 66 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"시티 덤프에 뭔가 있다고\n하지 않았어?\n"
+	"시티 덤프에 뭔가 있다고\n하지 않았어?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"시티 덤프에?"
+	"시티 덤프에?"
 	keyWait
 		type = 0
 	end
@@ -222,7 +222,7 @@ script 67 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이제 집에 가야지.\n"
+	"이제 집에 가야지.\n"
 	keyWait
 		type = 0
 	end
@@ -232,7 +232,7 @@ script 68 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"소터 봇을 조종하는 녀석을\n찾아!\n"
+	"소터 봇을 조종하는 녀석을\n찾아!\n"
 	keyWait
 		type = 0
 	end
@@ -242,7 +242,7 @@ script 70 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"우리 집에 안 갈 거야?\n"
+	"우리 집에 안 갈 거야?\n"
 	keyWait
 		type = 0
 	end
@@ -252,7 +252,7 @@ script 71 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"집에 가서 좀\n자자.\n"
+	"집에 가서 좀\n자자.\n"
 	keyWait
 		type = 0
 	end
@@ -322,7 +322,7 @@ script 75 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"타임 스퀘어에는 안\n가?\n"
+	"타임 스퀘어에는 안\n가?\n"
 	keyWait
 		type = 0
 	end
@@ -332,11 +332,11 @@ script 76 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"저 제미니 녀석을 따라가!\n"
+	"저 제미니 녀석을 따라가!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"시티 덤프 안으로 들어가!\n"
+	"시티 덤프 안으로 들어가!\n"
 	keyWait
 		type = 0
 	end
@@ -346,7 +346,7 @@ script 77 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"저 굴착기를 움직일 방법을\n생각해!\n"
+	"저 굴착기를 움직일 방법을\n생각해!\n"
 	keyWait
 		type = 0
 	end
@@ -356,7 +356,7 @@ script 78 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"셔블맨 카드를 찾아!\n"
+	"셔블맨 카드를 찾아!\n"
 	keyWait
 		type = 0
 	end
@@ -366,7 +366,7 @@ script 79 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"셔블맨 카드를 저\n녀석에게 줘!\n"
+	"셔블맨 카드를 저\n녀석에게 줘!\n"
 	keyWait
 		type = 0
 	end
@@ -376,7 +376,7 @@ script 80 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"저 굴착기를\n치워!\n"
+	"저 굴착기를\n치워!\n"
 	keyWait
 		type = 0
 	end
@@ -386,11 +386,11 @@ script 81 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"저 제미니 녀석을 따라가!\n"
+	"저 제미니 녀석을 따라가!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"시티 덤프 안으로 들어가!\n"
+	"시티 덤프 안으로 들어가!\n"
 	keyWait
 		type = 0
 	end
@@ -405,12 +405,12 @@ script 88 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"웨이브 로드를 타고 계속\n가!\n"
+	"웨이브 로드를 타고 계속\n가!\n"
 	keyWait
 		type = 1
 	clearMsg
 	printPlayerName1
-	", 웨이브 인!"
+	", 웨이브 인!"
 	keyWait
 		type = 0
 	end
@@ -420,11 +420,11 @@ script 89 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"저 제미니 녀석을 따라가!\n"
+	"저 제미니 녀석을 따라가!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"제미니가 있는 스크랩\n컴프로 가!\n"
+	"제미니가 있는 스크랩\n컴프로 가!\n"
 	keyWait
 		type = 0
 	end
@@ -434,11 +434,11 @@ script 90 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"저 제미니 녀석을 따라가!\n"
+	"저 제미니 녀석을 따라가!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"제미니가 있는 스크랩\n컴프로 가!\n"
+	"제미니가 있는 스크랩\n컴프로 가!\n"
 	keyWait
 		type = 0
 	end
@@ -448,7 +448,7 @@ script 91 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"제미니가 분명 가까이에 있어!\n"
+	"제미니가 분명 가까이에 있어!\n"
 	keyWait
 		type = 1
 	clearMsg

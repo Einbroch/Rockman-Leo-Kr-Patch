@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"그래서 뭘 하고 있는 거야?\n"
+	"그래서 뭘 하고 있는 거야?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -27,11 +27,11 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Jammer
-	"메, 록맨!!"
+	"메, 록맨!!"
 	keyWait
 		type = 1
 	clearMsg
-	"제미니 님의 적이다!\n"
+	"제미니 님의 적이다!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -43,7 +43,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"역시 제미니\n님의 부하였군.\n"
+	"역시 제미니\n님의 부하였군.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -55,7 +55,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Jammer
-	"미안하지만 네 여정은\n여기서 끝이다!!\n"
+	"미안하지만 네 여정은\n여기서 끝이다!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -67,7 +67,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"여기 온다, "
+	"여기 온다, "
 	printPlayerName1
 	"!"
 	keyWait

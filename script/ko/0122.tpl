@@ -18,7 +18,7 @@ script 0 mmsf1 {
 script 1 mmsf1 {
 	mugshotHide
 	msgOpen
-	"어머, 어머.\n또 만났네…\n"
+	"어머, 어머.\n또 만났네…\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -30,7 +30,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"저 목소리는…"
+	"저 목소리는…"
 	keyWait
 		type = 0
 	end
@@ -40,11 +40,11 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Luna
-	"어때? 멋진\n트럭이지?\n"
+	"어때? 멋진\n트럭이지?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"원한다면 이걸 타고\n데려다줄 수도 있어!\n"
+	"원한다면 이걸 타고\n데려다줄 수도 있어!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -56,7 +56,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"난 정말 괜찮아…"
+	"난 정말 괜찮아…"
 	keyWait
 		type = 1
 	clearMsg
@@ -72,11 +72,11 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"아까는 정말\n미안했어!!\n"
+	"아까는 정말\n미안했어!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그럼 잘 가!"
+	"그럼 잘 가!"
 	keyWait
 		type = 0
 	end
@@ -100,23 +100,23 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Luna
-	"감히 또 내\n초대를\n"
+	"감히 또 내\n초대를\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그렇게\n거절하다니, 정말 간도 크군.\n"
+	"그렇게\n거절하다니, 정말 간도 크군.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"저 녀석, 아주 큰일을\n벌일 것 같아.\n"
+	"저 녀석, 아주 큰일을\n벌일 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"두고 봐! 어떻게\n해서든\n"
+	"두고 봐! 어떻게\n해서든\n"
 	keyWait
 		type = 1
 	clearMsg
-	"저 애를 학교에\n보내고 말겠어!\n"
+	"저 애를 학교에\n보내고 말겠어!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -128,7 +128,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Zack
-	"회장님, 이제 가야 해요.\n"
+	"회장님, 이제 가야 해요.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -150,7 +150,7 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Taurus
-	"왜 그래, 곤타?\n지금이야말로 완벽한\n"
+	"왜 그래, 곤타?\n지금이야말로 완벽한\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -158,23 +158,23 @@ script 10 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"널 곤란하게 만든\n그 녀석에게 복수하고\n"
+	"널 곤란하게 만든\n그 녀석에게 복수하고\n"
 	keyWait
 		type = 1
 	clearMsg
-	"새로운 힘을 회장님께\n보여 주는 거야.\n"
+	"새로운 힘을 회장님께\n보여 주는 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = Bud
-	"회장님께…\n내 힘을…\n"
+	"회장님께…\n내 힘을…\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = Taurus
-	"그래… 바로 그거야…\n"
+	"그래… 바로 그거야…\n"
 	keyWait
 		type = 0
 	end
@@ -196,7 +196,7 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Luna
-	"어서, 곤타! 여기 와서\n운전해!\n"
+	"어서, 곤타! 여기 와서\n운전해!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -220,23 +220,23 @@ script 14 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Taurus
-	"그래, 네 감정에\n몸을 맡겨!!\n"
+	"그래, 네 감정에\n몸을 맡겨!!\n"
 	keyWait
 		type = 0
 	end
-	"전처럼 나에게 모든\n걸 맡겨!\n"
+	"전처럼 나에게 모든\n걸 맡겨!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"저 빨간 셔츠 녀석에게\n제대로 한 방 먹여\n주자!!"
+	"저 빨간 셔츠 녀석에게\n제대로 한 방 먹여\n주자!!"
 	keyWait
 		type = 1
 	clearMsg
-	"그러면 회장님도\n분명\n"
+	"그러면 회장님도\n분명\n"
 	keyWait
 		type = 1
 	clearMsg
-	"널 인정해 주실 거야!"
+	"널 인정해 주실 거야!"
 	jump
 		target = 15
 	end
@@ -245,7 +245,7 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Luna
-	"곤타! 뭐 하는 거야!?\n\n"
+	"곤타! 뭐 하는 거야!?\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -261,7 +261,7 @@ script 16 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Bud
-	"으르… 으르르르!!\n"
+	"으르… 으르르르!!\n"
 	mugshotAnimation
 		animation = 1
 	"......"
@@ -301,7 +301,7 @@ script 19 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Luna
-	"괴, 괴물이다!!"
+	"괴, 괴물이다!!"
 	keyWait
 		type = 0
 	end
@@ -325,7 +325,7 @@ script 21 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"키, 키자마로… 네가 운전 카드를\n쓰고 있는 거야…?\n"
+	"키, 키자마로… 네가 운전 카드를\n쓰고 있는 거야…?\n"
 	keyWait
 		type = 0
 	end
@@ -336,7 +336,7 @@ script 22 mmsf1 {
 	mugshotShow
 		mugshot = Zack
 	controlLock
-	"나한테는 없어. 곤타가 갖고 있어!"
+	"나한테는 없어. 곤타가 갖고 있어!"
 	wait
 		frames = 40
 	end
@@ -359,13 +359,13 @@ script 24 mmsf1 {
 	controlLock
 	textSpeed
 		delay = 0
-	"뭐, 뭐야!?"
+	"뭐, 뭐야!?"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"이건 너무 심하잖아!\n내가 네 초대를 몇 번 거절했다고"
+	"이건 너무 심하잖아!\n내가 네 초대를 몇 번 거절했다고"
 	wait
 		frames = 90
 	clearMsg
@@ -385,31 +385,31 @@ script 25 mmsf1 {
 		mugshot = Luna
 	textSpeed
 		delay = 0
-	"키, 키자마로! 내 말 들려!?"
+	"키, 키자마로! 내 말 들려!?"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"이봐, 이건 내 초대를 거절한\n문제가 아니야!!"
+	"이봐, 이건 내 초대를 거절한\n문제가 아니야!!"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"곤타가 괴물로 변했고,\n"
+	"곤타가 괴물로 변했고,\n"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"사라진 줄\n알았더니,"
+	"사라진 줄\n알았더니,"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"트럭이 멋대로 움직이기\n시작했어!"
+	"트럭이 멋대로 움직이기\n시작했어!"
 	wait
 		frames = 90
 	clearMsg
@@ -423,7 +423,7 @@ script 26 mmsf1 {
 		mugshot = Zack
 	textSpeed
 		delay = 0
-	"안 돼! 전혀 말을 듣지\n않아!"
+	"안 돼! 전혀 말을 듣지\n않아!"
 	wait
 		frames = 90
 	clearMsg
@@ -437,13 +437,13 @@ script 27 mmsf1 {
 		npc = 0
 	textSpeed
 		delay = 0
-	"*헉, 헉*"
+	"*헉, 헉*"
 	wait
 		frames = 60
 	clearMsg
 	textSpeed
 		delay = 0
-	"괴물로 변했다고!?\n말도 안 돼… 워록!?"
+	"괴물로 변했다고!?\n말도 안 돼… 워록!?"
 	wait
 		frames = 90
 	clearMsg
@@ -457,31 +457,31 @@ script 28 mmsf1 {
 		mugshot = OmegaXis
 	textSpeed
 		delay = 0
-	"그래, 달리 설명할 방법이\n없어."
+	"그래, 달리 설명할 방법이\n없어."
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"그 애, 곤타가\nFM 성인과 융합해서"
+	"그 애, 곤타가\nFM 성인과 융합해서"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"저 트럭 컴프 안으로 들어갔어!\n"
+	"저 트럭 컴프 안으로 들어갔어!\n"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"하지만 아직 날 눈치채진 못한 것\n같아."
+	"하지만 아직 날 눈치채진 못한 것\n같아."
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"야, 꼬맹이!\n더 빨리 뛰어!"
+	"야, 꼬맹이!\n더 빨리 뛰어!"
 	wait
 		frames = 90
 	clearMsg
@@ -495,13 +495,13 @@ script 29 mmsf1 {
 		npc = 0
 	textSpeed
 		delay = 0
-	"더는 빨리 못 뛰겠어!\n*헉, 헉*"
+	"더는 빨리 못 뛰겠어!\n*헉, 헉*"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"그런데 왜 날 쫓아오는 거야!?"
+	"그런데 왜 날 쫓아오는 거야!?"
 	wait
 		frames = 90
 	clearMsg
@@ -515,13 +515,13 @@ script 30 mmsf1 {
 		mugshot = OmegaXis
 	textSpeed
 		delay = 0
-	"글쎄, 왜겠냐! 지난번에 네가\n그 녀석을 쓰러뜨려서"
+	"글쎄, 왜겠냐! 지난번에 네가\n그 녀석을 쓰러뜨려서"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"화난 거\n아니겠어?"
+	"화난 거\n아니겠어?"
 	wait
 		frames = 90
 	clearMsg
@@ -535,7 +535,7 @@ script 31 mmsf1 {
 		npc = 0
 	textSpeed
 		delay = 0
-	"*헉, 헉*\n하지만 그건 네가 한 일이잖아!!"
+	"*헉, 헉*\n하지만 그건 네가 한 일이잖아!!"
 	wait
 		frames = 90
 	clearMsg
@@ -549,19 +549,19 @@ script 32 mmsf1 {
 		mugshot = OmegaXis
 	textSpeed
 		delay = 0
-	"잔말 말고 더 빨리 뛰어, 꼬맹이!"
+	"잔말 말고 더 빨리 뛰어, 꼬맹이!"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"아무튼 FM 성인이 나타났으니,\n우린 여기서"
+	"아무튼 FM 성인이 나타났으니,\n우린 여기서"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"맞서 싸워야\n해!!"
+	"맞서 싸워야\n해!!"
 	wait
 		frames = 90
 	clearMsg
@@ -575,13 +575,13 @@ script 33 mmsf1 {
 		npc = 0
 	textSpeed
 		delay = 0
-	"*헉, 헉* 나, 난\n그럴 수 없어!"
+	"*헉, 헉* 나, 난\n그럴 수 없어!"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"저 FM 성인에게 깔려 버릴\n거야!"
+	"저 FM 성인에게 깔려 버릴\n거야!"
 	wait
 		frames = 90
 	clearMsg
@@ -595,19 +595,19 @@ script 34 mmsf1 {
 		mugshot = OmegaXis
 	textSpeed
 		delay = 0
-	"그럼 트럭이 멈출 때까지\n어딘가에 숨어 있어!"
+	"그럼 트럭이 멈출 때까지\n어딘가에 숨어 있어!"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"하지만 트럭 안에 있는 녀석들이\n어떻게 되든"
+	"하지만 트럭 안에 있는 녀석들이\n어떻게 되든"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"난 책임 못 져!!"
+	"난 책임 못 져!!"
 	wait
 		frames = 90
 	clearMsg
@@ -621,7 +621,7 @@ script 35 mmsf1 {
 		npc = 0
 	textSpeed
 		delay = 0
-	"*헉* 하지만!"
+	"*헉* 하지만!"
 	wait
 		frames = 90
 	clearMsg
@@ -635,7 +635,7 @@ script 36 mmsf1 {
 		mugshot = OmegaXis
 	textSpeed
 		delay = 0
-	"저 둘을 구하고 싶다면\n내가 시키는 대로 해!!"
+	"저 둘을 구하고 싶다면\n내가 시키는 대로 해!!"
 	wait
 		frames = 90
 	clearMsg
@@ -649,13 +649,13 @@ script 37 mmsf1 {
 		npc = 0
 	textSpeed
 		delay = 0
-	"아야야야!!\n알겠어, 알겠다고!"
+	"아야야야!!\n알겠어, 알겠다고!"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"내가 뭘 하면 돼!?"
+	"내가 뭘 하면 돼!?"
 	wait
 		frames = 90
 	clearMsg
@@ -669,26 +669,26 @@ script 38 mmsf1 {
 		mugshot = OmegaXis
 	textSpeed
 		delay = 0
-	"어이, 속도가 조금\n느려지고 있어!"
+	"어이, 속도가 조금\n느려지고 있어!"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"지금이 기회야!!"
+	"지금이 기회야!!"
 	wait
 		frames = 90
 	clearMsg
 	textSpeed
 		delay = 0
-	"어서 비주얼라이저를 써!"
+	"어서 비주얼라이저를 써!"
 	wait
 		frames = 90
 	"\n"
 	clearMsg
 	textSpeed
 		delay = 0
-	"웨이브 홀을 찾아서 전파 세계로\n들어가, 꼬맹이!"
+	"웨이브 홀을 찾아서 전파 세계로\n들어가, 꼬맹이!"
 	wait
 		frames = 90
 	clearMsg
@@ -729,7 +729,7 @@ script 41 mmsf1 {
 	mugshotShow
 		mugshot = OmegaXis
 	controlUnlock
-	"서둘러! 웨이브 인!"
+	"서둘러! 웨이브 인!"
 	keyWait
 		type = 1
 	clearMsg
@@ -741,13 +741,13 @@ script 42 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"맡겨 줘!"
+	"맡겨 줘!"
 	keyWait
 		type = 1
 	clearMsg
 	textSpeed
 		delay = 1
-	"전파 변환!"
+	"전파 변환!"
 	wait
 		frames = 20
 	"\n"

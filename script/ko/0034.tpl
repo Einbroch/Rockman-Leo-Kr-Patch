@@ -7,7 +7,7 @@ script 0 mmsf1 {
 	flagSet
 		flag = 601
 	printBrotherBuffer1
-	" "
+	"\n"
 	printBrotherBuffer2
 	end
 }
@@ -15,11 +15,11 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ChrysGolds
-	"어서 오세요오오!!\n당신은 크리스 골즈의\n"
+	"어서 오세요오오!!\n당신은 크리스 골즈의\n"
 	keyWait
 		type = 1
 	clearMsg
-	"트랜서에 오신 걸 환영해요. 좀 머물다 가세요.\n"
+	"트랜서에 오신 걸 환영해요. 좀\n머물다 가세요.\n"
 	keyWait
 		type = 0
 	end
@@ -42,11 +42,11 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ChrysGolds
-	"돈, 돈!! 돈이 있어야\n세상이 돌아가죠!\n"
+	"돈, 돈!! 돈이 있어야\n세상이 돌아가죠!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"돈으로 못 살 건\n없답니다!"
+	"돈으로 못 살 건\n없답니다!"
 	keyWait
 		type = 0
 	end
@@ -56,11 +56,11 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ChrysGolds
-	"돈, 돈!! 돈이 있어야\n세상이 돌아가죠!\n"
+	"돈, 돈!! 돈이 있어야\n세상이 돌아가죠!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"돈으로 못 살 건\n없답니다!"
+	"돈으로 못 살 건\n없답니다!"
 	keyWait
 		type = 0
 	end
@@ -74,25 +74,25 @@ script 10 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"돈이 있어야 세상이\n돌아가지!"
+	"돈이 있어야 세상이\n돌아가지!"
 	keyWait
 		type = 1
 	clearMsg
-	"미소라가 떠난 뒤로\n일도 뜸하고\n"
+	"미소라가 떠난 뒤로\n일도 뜸하고\n"
 	keyWait
 		type = 1
 	clearMsg
-	"돈도 궁하단 말이야!"
+	"돈도 궁하단 말이야!"
 	keyWait
 		type = 1
 	clearMsg
-	"누가 새 스타를 찾는 걸 좀\n도와주지 않겠어!?\n"
+	"누가 새 스타를 찾는 걸 좀\n도와주지 않겠어!?\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"...흠, 저 사람한테 말을 걸어 볼까?\n\n"
+	"...흠, 저 사람한테 말을 걸어\n볼까?\n\n"
 	positionOptionFromCenter
 		width = 14
 	textSpeed
@@ -129,17 +129,17 @@ script 10 mmsf1 {
 		jumpIfFalse = continue
 	mugshotShow
 		mugshot = OmegaXis
-	"알겠어... 하지만 저 사람은 마음에 안\n들어.\n"
+	"알겠어... 하지만 저 사람은\n마음에 안 들어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"문제를 일으킬 것 같아."
+	"문제를 일으킬 것 같아."
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"메모 메일을 써 두는\n게 좋겠어...\n"
+	"메모 메일을 써 두는\n게 좋겠어...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -159,19 +159,19 @@ script 11 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"돈이 있어야 세상이\n돌아가지!"
+	"돈이 있어야 세상이\n돌아가지!"
 	keyWait
 		type = 1
 	clearMsg
-	"미소라가 떠난 뒤로\n일도 뜸하고\n"
+	"미소라가 떠난 뒤로\n일도 뜸하고\n"
 	keyWait
 		type = 1
 	clearMsg
-	"돈도 궁하단 말이야!"
+	"돈도 궁하단 말이야!"
 	keyWait
 		type = 1
 	clearMsg
-	"누가 새 스타를 찾는 걸 좀\n도와주지 않겠어!?\n"
+	"누가 새 스타를 찾는 걸 좀\n도와주지 않겠어!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -181,11 +181,11 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"그냥 내버려 두자.\n"
+	"그냥 내버려 두자.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"저 사람은 문제를 일으킬 것 같아.\n"
+	"저 사람은 문제를 일으킬 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -195,11 +195,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이봐, 이봐! 네 미해결\n사건부터\n"
+	"이봐, 이봐! 네 미해결\n사건부터\n"
 	keyWait
 		type = 1
 	clearMsg
-	"먼저 처리하는 게\n어때!?"
+	"먼저 처리하는 게\n어때!?"
 	keyWait
 		type = 1
 	clearMsg

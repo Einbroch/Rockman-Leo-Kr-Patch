@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"정말 큰일 났어!"
+	"정말 큰일 났어!"
 	keyWait
 		type = 1
 	clearMsg
@@ -19,7 +19,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Luna
-	"난 너희들이 싫었어!!\n"
+	"난 너희들이 싫었어!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -31,7 +31,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Bud
-	"나도 싫었어!"
+	"나도 싫었어!"
 	keyWait
 		type = 1
 	clearMsg

@@ -13,17 +13,17 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"흠, 역시 내 생각이 맞았어.\n바이러스가 들어갔어!\n"
+	"흠, 역시 내 생각이 맞았어.\n바이러스가 들어갔어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"해 보자!"
+	"해 보자!"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"으, 응!!"
+	"으, 응!!"
 	keyWait
 		type = 2
 	flagSet
@@ -33,11 +33,11 @@ script 1 mmsf1 {
 }
 script 2 mmsf1 {
 	msgOpen
-	"피처 맨의\n제어 패널이야.\n"
+	"피처 맨의\n제어 패널이야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지금은 명령을\n받아들이지 않아...\n"
+	"지금은 명령을\n받아들이지 않아...\n"
 	keyWait
 		type = 0
 	end

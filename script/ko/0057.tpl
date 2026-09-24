@@ -7,7 +7,7 @@ script 0 mmsf1 {
 	flagSet
 		flag = 601
 	printBrotherBuffer1
-	" "
+	"\n"
 	printBrotherBuffer2
 	end
 }
@@ -15,7 +15,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"수수께끼를 내 볼까?\n어서 와!\n"
+	"수수께끼를 내 볼까?\n어서 와!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -25,7 +25,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"난 퀴즈가 정말 좋아! 지금도\n하나 생각 중이라고!!\n"
+	"난 퀴즈가 정말 좋아! 지금도\n하나 생각 중이라고!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -35,25 +35,25 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"난 퀴즈가 정말 좋아! 내\n최신 퀴즈를\n"
+	"난 퀴즈가 정말 좋아! 내\n최신 퀴즈를\n"
 	keyWait
 		type = 1
 	clearMsg
-	"풀 사람을 찾고 있어!\n"
+	"풀 사람을 찾고 있어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내 질문에 가장 먼저\n전부 대답한 사람에게는\n"
+	"내 질문에 가장 먼저\n전부 대답한 사람에게는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"멋진 상품을 줄 거야!\n"
+	"멋진 상품을 줄 거야!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"퀴즈라고? 한번 해 볼까?\n\n"
+	"퀴즈라고? 한번 해 볼까?\n\n"
 	positionOptionFromCenter
 		width = 16
 	textSpeed
@@ -90,13 +90,13 @@ script 4 mmsf1 {
 		jumpIfFalse = continue
 	mugshotShow
 		mugshot = OmegaXis
-	"좋아! 멋진 상품을\n받으러 가자!\n"
+	"좋아! 멋진 상품을\n받으러 가자!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"나한테 메일을\n써 두는 게 좋겠어…\n"
+	"나한테 메일을\n써 두는 게 좋겠어…\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -112,7 +112,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"상품이 궁금하긴 하지만,\n뭐, 됐어…\n"
+	"상품이 궁금하긴 하지만,\n뭐, 됐어…\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -122,19 +122,19 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"난 퀴즈가 정말 좋아! 내\n최신 퀴즈를\n"
+	"난 퀴즈가 정말 좋아! 내\n최신 퀴즈를\n"
 	keyWait
 		type = 1
 	clearMsg
-	"풀 사람을 찾고 있어!\n"
+	"풀 사람을 찾고 있어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내 질문에 가장 먼저\n전부 대답한 사람에게는\n"
+	"내 질문에 가장 먼저\n전부 대답한 사람에게는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"멋진 상품을 줄 거야!\n"
+	"멋진 상품을 줄 거야!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -144,19 +144,19 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"이런! 초록 안경을 쓴 남자애가\n내 퀴즈를\n"
+	"이런! 초록 안경을 쓴 남자애가\n내 퀴즈를\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이겨 버렸어!! 젠장!"
+	"이겨 버렸어!! 젠장!"
 	keyWait
 		type = 1
 	clearMsg
-	"내 상품까지 가져가 버렸어!\n"
+	"내 상품까지 가져가 버렸어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"퀴즈 킹, 내 원수를 갚아 줘!\n"
+	"퀴즈 킹, 내 원수를 갚아 줘!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -166,11 +166,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이봐, 이봐! 네\n일부터\n"
+	"이봐, 이봐! 네\n일부터\n"
 	keyWait
 		type = 1
 	clearMsg
-	"마무리하는 게\n어때!?"
+	"마무리하는 게\n어때!?"
 	keyWait
 		type = 1
 	clearMsg

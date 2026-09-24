@@ -15,7 +15,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"또\n제미니의 부하야.\n"
+	"또\n제미니의 부하야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -27,7 +27,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"해치우고 웨이브 로드를\n복구하자!\n"
+	"해치우고 웨이브 로드를\n복구하자!\n"
 	keyWait
 		type = 1
 	clearMsg

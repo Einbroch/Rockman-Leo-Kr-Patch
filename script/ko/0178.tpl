@@ -7,7 +7,7 @@ script 0 mmsf1 {
 		mugshot = OmegaXis
 	"저기, "
 	printPlayerName1
-	"! 위를 봐!"
+	"! 위를 봐!"
 	keyWait
 		type = 1
 	clearMsg
@@ -71,11 +71,11 @@ script 5 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"우리는 꽥꽥\n부대!\n"
+	"우리는 꽥꽥\n부대!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"키그너스 님의\n충실한 하인이다!\n"
+	"키그너스 님의\n충실한 하인이다!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -87,11 +87,11 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"너희 얘기는 들어 봤어.\n"
+	"너희 얘기는 들어 봤어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"시끄러운 오리 떼라는\n얘기였는데...\n"
+	"시끄러운 오리 떼라는\n얘기였는데...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -106,15 +106,15 @@ script 7 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"방금 오리라고 했겠다!?\n"
+	"방금 오리라고 했겠다!?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"*꽥꽥꽥꽥꽥꽥꽥!!* 건방진\n놈!!"
+	"*꽥꽥꽥꽥꽥꽥꽥!!* 건방진\n놈!!"
 	keyWait
 		type = 1
 	clearMsg
-	"우리는 아름다운 순혈\n백조다!!"
+	"우리는 아름다운 순혈\n백조다!!"
 	keyWait
 		type = 1
 	clearMsg
@@ -126,7 +126,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"하지만 전혀\n하얗지 않은데!\n"
+	"하지만 전혀\n하얗지 않은데!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -137,11 +137,11 @@ script 8 mmsf1 {
 script 9 mmsf1 {
 	msgOpen
 	mugshotHide
-	"네가 뭘 알아!?\n상관하지 마!!\n"
+	"네가 뭘 알아!?\n상관하지 마!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"받아라! 별의\n춤이다!!\n"
+	"받아라! 별의\n춤이다!!\n"
 	keyWait
 		type = 0
 	end
@@ -163,7 +163,7 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"큰일 날 뻔했네."
+	"큰일 날 뻔했네."
 	keyWait
 		type = 1
 	clearMsg
@@ -190,7 +190,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"제법인데, 오리 자식들."
+	"제법인데, 오리 자식들."
 	keyWait
 		type = 2
 	jump
@@ -200,15 +200,15 @@ script 13 mmsf1 {
 script 14 mmsf1 {
 	msgOpen
 	mugshotHide
-	"다, 다시 오리라고 했어!!\n"
+	"다, 다시 오리라고 했어!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"*꽥꽥꽥꽥꽥꽥꽥!!*\n용서 못 해!!"
+	"*꽥꽥꽥꽥꽥꽥꽥!!*\n용서 못 해!!"
 	keyWait
 		type = 1
 	clearMsg
-	"오리의 분노가 얼마나 무서운지\n똑똑히 보여 주마!!\n"
+	"오리의 분노가 얼마나 무서운지\n똑똑히 보여 주마!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -224,7 +224,7 @@ script 15 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"방금 스스로\n오리라고 했잖아...\n"
+	"방금 스스로\n오리라고 했잖아...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -236,7 +236,7 @@ script 16 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"오리라는 현실을\n부정하는 꽥꽥이들이네.\n"
+	"오리라는 현실을\n부정하는 꽥꽥이들이네.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -278,11 +278,11 @@ script 19 mmsf1 {
 script 20 mmsf1 {
 	msgOpen
 	mugshotHide
-	"*꽥꽥!* 별의\n파편을 비처럼\n쏟아 주마!!"
+	"*꽥꽥!* 별의\n파편을 비처럼\n쏟아 주마!!"
 	keyWait
 		type = 1
 	clearMsg
-	"전원, 위치를\n잡아라!!\n"
+	"전원, 위치를\n잡아라!!\n"
 	keyWait
 		type = 0
 	end
@@ -294,7 +294,7 @@ script 21 mmsf1 {
 		mugshot = OmegaXis
 	"이봐, "
 	printPlayerName1
-	". 저걸 봐."
+	". 저걸 봐."
 	keyWait
 		type = 0
 	end
@@ -304,15 +304,15 @@ script 22 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"저 로켓으로 저\n새대가리들을 하늘에서\n"
+	"저 로켓으로 저\n새대가리들을 하늘에서\n"
 	keyWait
 		type = 1
 	clearMsg
-	"떨어뜨릴 수 있겠어.\n전부 떨어뜨리면\n"
+	"떨어뜨릴 수 있겠어.\n전부 떨어뜨리면\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 지역도 원래대로\n돌아올 거야.\n"
+	"이 지역도 원래대로\n돌아올 거야.\n"
 	keyWait
 		type = 0
 	end

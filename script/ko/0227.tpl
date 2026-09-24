@@ -9,7 +9,7 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"이 원한은 꼭 갚아 주마!!\n"
+	"이 원한은 꼭 갚아 주마!!\n"
 	keyWait
 		type = 0
 	end
@@ -53,11 +53,11 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"스타 포스라..."
+	"스타 포스라..."
 	keyWait
 		type = 1
 	clearMsg
-	"정말 대단한 힘이군. 이 힘이라면\n우리라면 누구든 쓰러뜨릴 수 있어!\n"
+	"정말 대단한 힘이군. 이 힘이라면\n우리라면 누구든 쓰러뜨릴 수\n있어!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -73,7 +73,7 @@ script 5 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"이것도 전부\n그 아이 덕분이야."
+	"이것도 전부\n그 아이 덕분이야."
 	keyWait
 		type = 0
 	end
@@ -83,23 +83,23 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"고마워, 루나."
+	"고마워, 루나."
 	keyWait
 		type = 1
 	clearMsg
-	"네 덕분에\n강해졌어.\n"
+	"네 덕분에\n강해졌어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이제는 내 차례야.\n"
+	"이제는 내 차례야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"널 지켜 줄게...\n"
+	"널 지켜 줄게...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"맡겨 둬!!"
+	"맡겨 둬!!"
 	keyWait
 		type = 0
 	end
@@ -109,7 +109,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"자, 이제 스튜디오로 가자!!\n"
+	"자, 이제 스튜디오로 가자!!\n"
 	keyWait
 		type = 0
 	end
@@ -119,7 +119,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 4
-	"저... 목소리는..."
+	"저... 목소리는..."
 	keyWait
 		type = 1
 	clearMsg

@@ -9,11 +9,11 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"나는 별의 수호자다.\n"
+	"나는 별의 수호자다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나의 별의 시련에\n도전하겠느냐?\n"
+	"나의 별의 시련에\n도전하겠느냐?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -59,19 +59,19 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"나는 별의 수호자다.\n"
+	"나는 별의 수호자다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"별의 시련은\n스타 포스를 얻고자 하는\n"
+	"별의 시련은\n스타 포스를 얻고자 하는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"자를 시험하는 것이다.\n별의 힘을 얻기 위해.\n"
+	"자를 시험하는 것이다.\n별의 힘을 얻기 위해.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나의 별의 시련에\n도전하겠느냐?\n"
+	"나의 별의 시련에\n도전하겠느냐?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -117,19 +117,19 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"나는 별의 수호자다.\n"
+	"나는 별의 수호자다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"스타 포스를 얻고\n싶다면\n"
+	"스타 포스를 얻고\n싶다면\n"
 	keyWait
 		type = 1
 	clearMsg
-	"먼저 별의 시련을\n통과해야 한다.\n"
+	"먼저 별의 시련을\n통과해야 한다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나의 별의 시련에\n도전하겠느냐?\n"
+	"나의 별의 시련에\n도전하겠느냐?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -175,15 +175,15 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"나는 별의 수호자다.\n"
+	"나는 별의 수호자다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"별의 시련은\n영혼을 단련하는 시험이다.\n"
+	"별의 시련은\n영혼을 단련하는 시험이다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나의 별의 시련에\n도전하겠느냐?\n"
+	"나의 별의 시련에\n도전하겠느냐?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -229,15 +229,15 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"나는 별의 수호자다.\n"
+	"나는 별의 수호자다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"별의 시련은 스타 포스를 위한\n것이다…\n"
+	"별의 시련은 스타 포스를 위한\n것이다…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나의 별의 시련에\n도전하겠느냐?\n"
+	"나의 별의 시련에\n도전하겠느냐?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -279,7 +279,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"훌륭하게 해냈다.\n"
+	"훌륭하게 해냈다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -289,7 +289,7 @@ script 5 mmsf1 {
 	mugshotHide
 	playerAnimate0
 		animation = 24
-	"록맨은 다음을 얻었다:\n\""
+	"록맨은 다음을 얻었다:\n\""
 	printItem
 		item = 36
 	"\"!!\n"
@@ -306,7 +306,7 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"훌륭하게 해냈다.\n"
+	"훌륭하게 해냈다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -316,7 +316,7 @@ script 6 mmsf1 {
 		amount = 1
 	playerAnimate0
 		animation = 24
-	"록맨은 다음을 얻었다:\n\""
+	"록맨은 다음을 얻었다:\n\""
 	printItem
 		item = 37
 	"\"!!\n"
@@ -333,7 +333,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"훌륭하게 해냈다.\n"
+	"훌륭하게 해냈다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -343,7 +343,7 @@ script 7 mmsf1 {
 		amount = 1
 	playerAnimate0
 		animation = 24
-	"록맨은 다음을 얻었다:\n\""
+	"록맨은 다음을 얻었다:\n\""
 	printItem
 		item = 38
 	"\"!!\n"
@@ -360,7 +360,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"훌륭하게 해냈다.\n"
+	"훌륭하게 해냈다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -370,7 +370,7 @@ script 8 mmsf1 {
 		amount = 1
 	playerAnimate0
 		animation = 24
-	"록맨은 다음을 얻었다:\n\""
+	"록맨은 다음을 얻었다:\n\""
 	printItem
 		item = 39
 	"\"!!\n"
@@ -387,7 +387,7 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"훌륭하게 해냈다.\n"
+	"훌륭하게 해냈다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -397,7 +397,7 @@ script 9 mmsf1 {
 		amount = 1
 	playerAnimate0
 		animation = 24
-	"록맨은 다음을 얻었다:\n\""
+	"록맨은 다음을 얻었다:\n\""
 	printItem
 		item = 40
 	"\"!!\n"
@@ -414,7 +414,7 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"다음 시련으로\n나아가거라.\n"
+	"다음 시련으로\n나아가거라.\n"
 	keyWait
 		type = 0
 	end
@@ -424,11 +424,11 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"아직 시련이 더 남아\n있다.\n"
+	"아직 시련이 더 남아\n있다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"있는 힘껏 도전하거라!\n"
+	"있는 힘껏 도전하거라!\n"
 	keyWait
 		type = 0
 	end
@@ -448,7 +448,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"훌륭했다. 더는\n할 말이 없구나.\n"
+	"훌륭했다. 더는\n할 말이 없구나.\n"
 	keyWait
 		type = 0
 	end
@@ -458,7 +458,7 @@ script 14 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"별빛이 너를\n지켜 주기를.\n"
+	"별빛이 너를\n지켜 주기를.\n"
 	keyWait
 		type = 0
 	end
@@ -468,7 +468,7 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"그렇군. 공포가 너를\n붙잡고 있구나.\n"
+	"그렇군. 공포가 너를\n붙잡고 있구나.\n"
 	keyWait
 		type = 0
 	end
@@ -478,7 +478,7 @@ script 16 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"그렇군. 공포가 너를\n붙잡고 있구나.\n"
+	"그렇군. 공포가 너를\n붙잡고 있구나.\n"
 	keyWait
 		type = 0
 	end
@@ -488,7 +488,7 @@ script 17 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"그렇군. 공포가 너를\n붙잡고 있구나.\n"
+	"그렇군. 공포가 너를\n붙잡고 있구나.\n"
 	keyWait
 		type = 0
 	end
@@ -498,7 +498,7 @@ script 18 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"그렇군. 공포가 너를\n붙잡고 있구나.\n"
+	"그렇군. 공포가 너를\n붙잡고 있구나.\n"
 	keyWait
 		type = 0
 	end
@@ -508,7 +508,7 @@ script 19 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertzGold
-	"그렇군. 공포가 너를\n붙잡고 있구나.\n"
+	"그렇군. 공포가 너를\n붙잡고 있구나.\n"
 	keyWait
 		type = 0
 	end
@@ -518,15 +518,15 @@ script 40 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DeliveryNavi
-	"*부우우우웅*\n우편 전파는\n"
+	"*부우우우웅*\n우편 전파는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"목적지까지 신속하게\n배달하는 게 제일이라고 늘 말하지!\n"
+	"목적지까지 신속하게 배달하는 게\n제일이라고 늘 말하지!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"오늘은 내 기록을\n깨 보겠어! *부웅*\n"
+	"오늘은 내 기록을\n깨 보겠어! *부웅*\n"
 	keyWait
 		type = 0
 	end
@@ -540,19 +540,19 @@ script 41 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"아, 정말 우주에\n가 보고 싶다…\n"
+	"아, 정말 우주에\n가 보고 싶다…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"끝없이 펼쳐진 우주,\n별의 바다…\n"
+	"끝없이 펼쳐진 우주,\n별의 바다…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"여행하면서 전부\n직접 보고 싶어.\n"
+	"여행하면서 전부\n직접 보고 싶어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 작은 전파의\n꿈이야.\n"
+	"이 작은 전파의\n꿈이야.\n"
 	keyWait
 		type = 0
 	end
@@ -566,15 +566,15 @@ script 61 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"어떻게 하면 우주에\n갈 수 있을까…?\n"
+	"어떻게 하면 우주에\n갈 수 있을까…?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이렇게 바쁜데도\n머릿속에는\n"
+	"이렇게 바쁜데도\n머릿속에는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우주 생각밖에\n없어… *한숨*\n"
+	"우주 생각밖에\n없어… *한숨*\n"
 	keyWait
 		type = 0
 	end
@@ -588,19 +588,19 @@ script 80 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"아, 저 성가신\n녀석!\n"
+	"아, 저 성가신\n녀석!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"날아다니는 게 위험하다는 걸\n모르는 건가!?\n"
+	"날아다니는 게 위험하다는 걸\n모르는 건가!?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"정말 잠깐이었지만,\n\n"
+	"정말 잠깐이었지만,\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"무서워서 팔이\n저릴 정도였어.\n"
+	"무서워서 팔이\n저릴 정도였어.\n"
 	keyWait
 		type = 0
 	end
@@ -610,23 +610,23 @@ script 81 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = InfoNavi
-	"윽… 그 이상한 전파는\n뭐였지?\n"
+	"윽… 그 이상한 전파는\n뭐였지?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어쨌든 아마켄으로\n향하고 있어…\n"
+	"어쨌든 아마켄으로\n향하고 있어…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아마켄을 점령할\n생각인가?\n"
+	"아마켄을 점령할\n생각인가?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"난 여기서 꼼짝도 안 할 거야.\n\n"
+	"난 여기서 꼼짝도 안 할 거야.\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 일에 휘말릴 생각은\n조금도 없어.\n"
+	"이 일에 휘말릴 생각은\n조금도 없어.\n"
 	keyWait
 		type = 0
 	end
@@ -636,19 +636,19 @@ script 150 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"오늘도 물건을 배달하러\n갈 거야!\n"
+	"오늘도 물건을 배달하러\n갈 거야!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이런 물건 말이야!"
+	"이런 물건 말이야!"
 	keyWait
 		type = 1
 	clearMsg
-	"오늘도 비밀스러운 물건을\n배달하고 있어!\n"
+	"오늘도 비밀스러운 물건을\n배달하고 있어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"안에 뭐가 들었는지\n볼 수 있으면 좋을 텐데!"
+	"안에 뭐가 들었는지\n볼 수 있으면 좋을 텐데!"
 	keyWait
 		type = 1
 	clearMsg
@@ -661,13 +661,13 @@ script 150 mmsf1 {
 	"면N"
 	wait
 		frames = 5
-	" ’ "
+	" ’ "
 	wait
 		frames = 5
 	"안T"
 	wait
 		frames = 5
-	" 돼L"
+	"\n돼L"
 	wait
 		frames = 5
 	".O"
@@ -688,7 +688,7 @@ script 150 mmsf1 {
 	"."
 	wait
 		frames = 5
-	"\nM"
+	" M"
 	wait
 		frames = 5
 	"절U"
@@ -697,19 +697,23 @@ script 150 mmsf1 {
 	"대S"
 	wait
 		frames = 5
-	" T"
+	"\nT"
 	wait
 		frames = 5
 	"보면N"
 	wait
 		frames = 5
-	" 안O"
+	" 안O"
 	wait
 		frames = 5
 	"T"
 	wait
 		frames = 5
-	"돼 L"
+	"돼"
+	keyWait
+		type = 1
+	clearMsg
+	"L"
 	wait
 		frames = 5
 	".O"
@@ -739,19 +743,19 @@ script 151 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"여기가 연구소구나!\n"
+	"여기가 연구소구나!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"정말 넓다! 엄청나게 커!\n"
+	"정말 넓다! 엄청나게 커!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나는 공간이 넓은\n시골에서 왔는데도\n"
+	"나는 공간이 넓은\n시골에서 왔는데도\n"
 	keyWait
 		type = 1
 	clearMsg
-	"여기는 정말 비교도\n안 되네!\n"
+	"여기는 정말 비교도\n안 되네!\n"
 	keyWait
 		type = 0
 	end
@@ -765,15 +769,15 @@ script 152 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"전파 세계를\n청소하고 있습니다!\n"
+	"전파 세계를\n청소하고 있습니다!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"방해해서 미안하지만,\n비켜 주십시오!\n"
+	"방해해서 미안하지만,\n비켜 주십시오!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"쓸려 나가고 싶지 않다면\n어서 이동하십시오!\n"
+	"쓸려 나가고 싶지 않다면\n어서 이동하십시오!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -787,23 +791,23 @@ script 153 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = InfoNavi
-	"저쪽, 길 건너편을\n살펴보고 있어.\n"
+	"저쪽, 길 건너편을\n살펴보고 있어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"가끔 보면 그곳에\n뭔가\n"
+	"가끔 보면 그곳에\n뭔가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"초록색 전파 잔여물이\n남아 있거든.\n"
+	"초록색 전파 잔여물이\n남아 있거든.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"왜 남아 있는지,\n무엇 때문에 생기는지 궁금해.\n"
+	"왜 남아 있는지,\n무엇 때문에 생기는지 궁금해.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"흠, 좀 더\n조사해 봐야겠어…\n"
+	"흠, 좀 더\n조사해 봐야겠어…\n"
 	keyWait
 		type = 0
 	end

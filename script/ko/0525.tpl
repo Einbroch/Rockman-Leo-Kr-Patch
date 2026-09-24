@@ -3,7 +3,7 @@
 
 script 0 mmsf1 {
 	msgOpen
-	"스페이스 시뮬레이터\n프로젝터입니다.\n"
+	"스페이스 시뮬레이터\n프로젝터입니다.\n"
 	keyWait
 		type = 0
 	end
@@ -97,11 +97,11 @@ script 11 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"분명 이쪽으로\n들어왔는데…\n"
+	"분명 이쪽으로\n들어왔는데…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 문을 여는 방법을\n알고 있던 사람이 누구였더라?\n"
+	"이 문을 여는 방법을\n알고 있던 사람이 누구였더라?\n"
 	keyWait
 		type = 2
 	flagSet
@@ -116,11 +116,11 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"분명 이쪽으로\n들어왔는데…\n"
+	"분명 이쪽으로\n들어왔는데…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 문을 여는 방법을\n알고 있던 사람이 누구였더라?\n"
+	"이 문을 여는 방법을\n알고 있던 사람이 누구였더라?\n"
 	keyWait
 		type = 0
 	end
@@ -148,7 +148,7 @@ script 16 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"응? 여기 뭔가\n있는데.\n"
+	"응? 여기 뭔가\n있는데.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -163,7 +163,7 @@ script 16 mmsf1 {
 	"가\n\""
 	printItem
 		item = 112
-	"\" 받았다!!\n"
+	"\" 받았다!!\n"
 	keyWait
 		type = 2
 	playerFinish

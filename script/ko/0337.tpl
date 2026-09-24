@@ -9,15 +9,15 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"...너희에게 남은 미래는\n단 하나뿐이야...\n"
+	"...너희에게 남은 미래는\n단 하나뿐이야...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"완전 소멸이다!!\n"
+	"완전 소멸이다!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"영원하라...\nFM 행성이여...!!\n"
+	"영원하라...\nFM 행성이여...!!\n"
 	keyWait
 		type = 0
 	end
@@ -27,7 +27,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"원래대로 돌아왔어."
+	"원래대로 돌아왔어."
 	keyWait
 		type = 1
 	clearMsg
@@ -39,15 +39,15 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"전파 세계를 보이게 한\n웨이브 볼이\n"
+	"전파 세계를 보이게 한\n웨이브 볼이\n"
 	keyWait
 		type = 1
 	clearMsg
-	"파괴됐기\n때문인 것 같아.\n"
+	"파괴됐기\n때문인 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그 얼간이는 상대가\n안 됐군...\n"
+	"그 얼간이는 상대가\n안 됐군...\n"
 	keyWait
 		type = 0
 	end
@@ -57,7 +57,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"워록, 걱정하게 해서\n미안해...\n"
+	"워록, 걱정하게 해서\n미안해...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -69,7 +69,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"흥, 네 걱정 따윈\n전혀 안 했어!\n"
+	"흥, 네 걱정 따윈\n전혀 안 했어!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -109,7 +109,7 @@ script 7 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"네가... 와 줄 줄 알았어...\n"
+	"네가... 와 줄 줄 알았어...\n"
 	keyWait
 		type = 0
 	end
@@ -119,7 +119,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"마, 많이 다친 거야?\n"
+	"마, 많이 다친 거야?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -131,7 +131,7 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"심하진 않아. 워록이\n날 지키려고 애썼거든...\n"
+	"심하진 않아. 워록이\n날 지키려고 애썼거든...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -155,15 +155,15 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"난 혼자서도\n잘하고 있었어."
+	"난 혼자서도\n잘하고 있었어."
 	keyWait
 		type = 1
 	clearMsg
-	"그런데 이 둘이 끼어들어서\n내 속을\n"
+	"그런데 이 둘이 끼어들어서\n내 속을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"잔뜩 뒤집어 놓았지.\n흥.\n"
+	"잔뜩 뒤집어 놓았지.\n흥.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -175,15 +175,15 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Lyra
-	"어머, 놀랍네!\n분명\n"
+	"어머, 놀랍네!\n분명\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리 둘이 아니었으면\n"
+	"우리 둘이 아니었으면\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그렇게 오래\n버티지도 못했을 텐데.\n"
+	"그렇게 오래\n버티지도 못했을 텐데.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -207,7 +207,7 @@ script 14 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Lyra
-	"뭐긴 뭐야!"
+	"뭐긴 뭐야!"
 	keyWait
 		type = 0
 	end
@@ -217,7 +217,7 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"자자, 워록.\n진정해...\n"
+	"자자, 워록.\n진정해...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -229,7 +229,7 @@ script 16 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"너도, 하프..."
+	"너도, 하프..."
 	keyWait
 		type = 1
 	clearMsg
@@ -255,15 +255,15 @@ script 18 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"나... 그게... 내가 잘못했어.\n"
+	"나... 그게... 내가 잘못했어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내가 얼마나 약하고,\n얼마나 겁쟁이였는지\n"
+	"내가 얼마나 약하고,\n얼마나 겁쟁이였는지\n"
 	keyWait
 		type = 1
 	clearMsg
-	"브라더 밴드를 끊고\n록맨을 놓아버리고 나서야\n"
+	"브라더 밴드를 끊고\n록맨을 놓아버리고 나서야\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -271,15 +271,15 @@ script 18 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"우리 브라더 밴드를 끊어서\n미안해.\n"
+	"우리 브라더 밴드를 끊어서\n미안해.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이렇게 사과해도\n네가 날 용서하지 않을 거란 건\n"
+	"이렇게 사과해도\n네가 날 용서하지 않을 거란 건\n"
 	keyWait
 		type = 1
 	clearMsg
-	"알지만, 다시\n브라더가 되어 줄래?\n"
+	"알지만, 다시\n브라더가 되어 줄래?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -291,11 +291,11 @@ script 19 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"흠...... 어디 보자...\n"
+	"흠...... 어디 보자...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네가 우리 브라더 밴드를 끊었을 때\n정말 마음이 아팠어.\n"
+	"네가 우리 브라더 밴드를 끊었을\n때 정말 마음이 아팠어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -307,7 +307,7 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"나... 미안해."
+	"나... 미안해."
 	keyWait
 		type = 1
 	clearMsg
@@ -343,27 +343,27 @@ script 23 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"그래, 다시 브라더가\n되어 줄게."
+	"그래, 다시 브라더가\n되어 줄게."
 	keyWait
 		type = 1
 	clearMsg
-	"하지만 기억해 둬."
+	"하지만 기억해 둬."
 	keyWait
 		type = 1
 	clearMsg
-	"브라더가 된다는 건\n마음이 이어진다는 뜻이야.\n"
+	"브라더가 된다는 건\n마음이 이어진다는 뜻이야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"트랜서로 브라더 밴드를\n끊을 수는 있어도,\n"
+	"트랜서로 브라더 밴드를\n끊을 수는 있어도,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"사람들의 마음을 잇는\n진짜 유대까지\n"
+	"사람들의 마음을 잇는\n진짜 유대까지\n"
 	keyWait
 		type = 1
 	clearMsg
-	"끊을 수는\n없어.\n"
+	"끊을 수는\n없어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -386,7 +386,7 @@ script 25 mmsf1 {
 	soundPlay
 		sound = 579
 	printPlayerName1
-	"가 미소라와 브라더가\n되었습니다!!"
+	"가 미소라와 브라더가\n되었습니다!!"
 	keyWait
 		type = 1
 	clearMsg
@@ -398,15 +398,15 @@ script 26 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"다음엔 루나와도\n화해해야 해!\n"
+	"다음엔 루나와도\n화해해야 해!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"진심으로 사과하고\n\n"
+	"진심으로 사과하고\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"다시 그녀와 브라더가\n되어야 해!\n"
+	"다시 그녀와 브라더가\n되어야 해!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -430,15 +430,15 @@ script 28 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"괜찮을 거야. 분명\n루나도 이해해 줄 거야.\n"
+	"괜찮을 거야. 분명\n루나도 이해해 줄 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"난 여기서 좀\n쉬고 있을게.\n"
+	"난 여기서 좀\n쉬고 있을게.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"루나에게 내 안부 전해 줘!\n"
+	"루나에게 내 안부 전해 줘!\n"
 	keyWait
 		type = 1
 	clearMsg

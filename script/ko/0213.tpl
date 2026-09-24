@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"좋아, 전부\n해치웠어!\n"
+	"좋아, 전부\n해치웠어!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -59,7 +59,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"첫 번째 시련을\n통과했다."
+	"첫 번째 시련을\n통과했다."
 	keyWait
 		type = 1
 	clearMsg
@@ -71,7 +71,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"하지만 진짜 시련은\n지금부터 시작이다.\n"
+	"하지만 진짜 시련은\n지금부터 시작이다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -83,15 +83,15 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"이제 두 번째 시련을\n시작하겠다.\n"
+	"이제 두 번째 시련을\n시작하겠다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"모은 스타 라이트를\n가져와서\n"
+	"모은 스타 라이트를\n가져와서\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리 앞에 와라.\n\n"
+	"우리 앞에 와라.\n\n"
 	keyWait
 		type = 0
 	end
@@ -101,9 +101,9 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"바로 이거야, "
+	"바로 이거야, "
 	printPlayerName1
-	". 가자."
+	". 가자."
 	keyWait
 		type = 1
 	clearMsg

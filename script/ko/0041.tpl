@@ -7,7 +7,7 @@ script 0 mmsf1 {
 	flagSet
 		flag = 601
 	printBrotherBuffer1
-	" "
+	"\n"
 	printBrotherBuffer2
 	end
 }
@@ -15,7 +15,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Girl
-	"난 완전 이메일 같은 거에\n빠져 있어. 너도 그래?\n"
+	"난 완전 이메일 같은 거에\n빠져 있어. 너도 그래?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -25,11 +25,11 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Girl
-	"당연하지! 이메일이\n최고가\n"
+	"당연하지! 이메일이\n최고가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아니라면 대체 뭐가 최고겠어!"
+	"아니라면 대체 뭐가 최고겠어!"
 	keyWait
 		type = 1
 	clearMsg
@@ -39,11 +39,11 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Girl
-	"내 이메일이 전혀\n전송되지 않아! 이건\n"
+	"내 이메일이 전혀\n전송되지 않아! 이건\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내가 겪은 일 중 최악의\n상황이야.\n"
+	"내가 겪은 일 중 최악의\n상황이야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -61,13 +61,13 @@ script 4 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = OmegaXis
-	"왜 저렇게 말하는 거야?\n"
+	"왜 저렇게 말하는 거야?\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"약 200년 전에\n유행했던 일종의\n"
+	"약 200년 전에\n유행했던 일종의\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -77,29 +77,29 @@ script 4 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = OmegaXis
-	"그게 인류의 언어 능력이\n높다는 뜻인지 낮다는 뜻인지는 모르겠지만\n"
+	"그게 인류의 언어 능력이 높다는\n뜻인지 낮다는 뜻인지는\n모르겠지만\n"
 	keyWait
 		type = 1
 	clearMsg
-	"뜻인지 낮다는 뜻인지 모르겠어.\n\n"
+	"뜻인지 낮다는 뜻인지 모르겠어.\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아무튼 메일에\n뭔가 문제가 생겼다는\n"
+	"아무튼 메일에\n뭔가 문제가 생겼다는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"말인 것 같아..."
+	"말인 것 같아..."
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"그건 나도 모르겠네...\n어쨌든\n"
+	"그건 나도 모르겠네...\n어쨌든\n"
 	keyWait
 		type = 1
 	clearMsg
-	"저 사람의 문제를\n도와줄까?\n"
+	"저 사람의 문제를\n도와줄까?\n"
 	positionOptionFromCenter
 		width = 15
 	textSpeed
@@ -136,19 +136,19 @@ script 4 mmsf1 {
 		jumpIfFalse = continue
 	mugshotShow
 		mugshot = OmegaXis
-	"좋아, 내려가서 말을\n걸어 보자.\n"
+	"좋아, 내려가서 말을\n걸어 보자.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"...그래, 알겠어."
+	"...그래, 알겠어."
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"메모 메일을 써 두는\n게 좋겠어...\n"
+	"메모 메일을 써 두는\n게 좋겠어...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -164,7 +164,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"자기 문제는 자기가 해결하게\n두자."
+	"자기 문제는 자기가 해결하게\n두자."
 	keyWait
 		type = 1
 	clearMsg
@@ -174,11 +174,11 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Girl
-	"내 이메일이 전혀\n전송되지 않아! 이건\n"
+	"내 이메일이 전혀\n전송되지 않아! 이건\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내가 겪은 일 중 최악의\n상황이야.\n"
+	"내가 겪은 일 중 최악의\n상황이야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -188,21 +188,21 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Girl
-	"정말 잘됐어! 내 메일이\n다시\n"
+	"정말 잘됐어! 내 메일이\n다시\n"
 	keyWait
 		type = 1
 	clearMsg
-	"작동하다니? 완전\n끝내주잖아!\n"
+	"작동하다니? 완전\n끝내주잖아!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = OmegaXis
-	"그걸 보면 인류의 언어 능력이\n어떤지\n"
+	"그걸 보면 인류의 언어 능력이\n어떤지\n"
 	keyWait
 		type = 1
 	clearMsg
-	"높은 건지 낮은 건지\n모르겠어.\n"
+	"높은 건지 낮은 건지\n모르겠어.\n"
 	keyWait
 		type = 0
 	end
@@ -211,11 +211,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이봐, 이봐! 네 미해결\n사건부터\n"
+	"이봐, 이봐! 네 미해결\n사건부터\n"
 	keyWait
 		type = 1
 	clearMsg
-	"먼저 처리하는 게\n어때!?"
+	"먼저 처리하는 게\n어때!?"
 	keyWait
 		type = 1
 	clearMsg

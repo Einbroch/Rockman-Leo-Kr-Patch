@@ -3,7 +3,7 @@
 
 script 0 mmsf1 {
 	msgOpen
-	"누군가 열심히 일하는 곳인가 보다.\n책상이 엉망진창이다.\n"
+	"누군가 열심히 일하는 곳인가\n보다. 책상이 엉망진창이다.\n"
 	keyWait
 		type = 0
 	end
@@ -11,11 +11,11 @@ script 0 mmsf1 {
 }
 script 1 mmsf1 {
 	msgOpen
-	"교직원의 책상이다.\n중요한 정보가 많이\n"
+	"교직원의 책상이다.\n중요한 정보가 많이\n"
 	keyWait
 		type = 1
 	clearMsg
-	"적혀 있는 것 같으니\n만지면 안 되겠다!\n"
+	"적혀 있는 것 같으니\n만지면 안 되겠다!\n"
 	keyWait
 		type = 0
 	end
@@ -23,11 +23,11 @@ script 1 mmsf1 {
 }
 script 2 mmsf1 {
 	msgOpen
-	"로켓 설계도다.\n여기에 \"브라더 밴드\"라고\n"
+	"로켓 설계도다.\n여기에 \"브라더 밴드\"라고\n"
 	keyWait
 		type = 1
 	clearMsg
-	"적혀 있는데, 무슨\n뜻일까…?\n"
+	"적혀 있는데, 무슨\n뜻일까…?\n"
 	keyWait
 		type = 0
 	end
@@ -35,7 +35,7 @@ script 2 mmsf1 {
 }
 script 3 mmsf1 {
 	msgOpen
-	"아마치 씨의 책상이다.\n정말 깔끔하다.\n"
+	"아마치 씨의 책상이다.\n정말 깔끔하다.\n"
 	keyWait
 		type = 0
 	end
@@ -43,15 +43,15 @@ script 3 mmsf1 {
 }
 script 4 mmsf1 {
 	msgOpen
-	"아마치 씨가 사흘 동안\n잠을 안 자고 있다가\n"
+	"아마치 씨가 사흘 동안\n잠을 안 자고 있다가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"봤다는 무언가를\n그린 그림이다.\n"
+	"봤다는 무언가를\n그린 그림이다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이걸 전에 어디서\n본 것 같은데…?\n"
+	"이걸 전에 어디서\n본 것 같은데…?\n"
 	keyWait
 		type = 0
 	end
@@ -59,11 +59,11 @@ script 4 mmsf1 {
 }
 script 5 mmsf1 {
 	msgOpen
-	"아직 개발 중인\n로켓이다.\n"
+	"아직 개발 중인\n로켓이다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"언젠가 발사되는 모습을\n보고 싶다!\n"
+	"언젠가 발사되는 모습을\n보고 싶다!\n"
 	keyWait
 		type = 0
 	end
@@ -71,15 +71,15 @@ script 5 mmsf1 {
 }
 script 6 mmsf1 {
 	msgOpen
-	"엔진 같은데…\n"
+	"엔진 같은데…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"옆에 있는 로켓에는\n너무 큰데.\n"
+	"옆에 있는 로켓에는\n너무 큰데.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"다른 용도인가\n보다.\n"
+	"다른 용도인가\n보다.\n"
 	keyWait
 		type = 0
 	end
@@ -87,7 +87,7 @@ script 6 mmsf1 {
 }
 script 9 mmsf1 {
 	msgOpen
-	"「주의: 로켓 공사 중!」이라고\n적혀 있다.\n"
+	"「주의: 로켓 공사 중!」이라고\n적혀 있다.\n"
 	keyWait
 		type = 0
 	end
@@ -95,7 +95,7 @@ script 9 mmsf1 {
 }
 script 15 mmsf1 {
 	msgOpen
-	"교직원들이 사용하는\n사물함이다.\n"
+	"교직원들이 사용하는\n사물함이다.\n"
 	keyWait
 		type = 0
 	end
@@ -103,7 +103,7 @@ script 15 mmsf1 {
 }
 script 16 mmsf1 {
 	msgOpen
-	"사물함에서 뭔가\n떨어졌다!\n"
+	"사물함에서 뭔가\n떨어졌다!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -116,7 +116,7 @@ script 16 mmsf1 {
 	"가\n\""
 	printItem
 		item = 56
-	"\" 받았다!!\n"
+	"\" 받았다!!\n"
 	keyWait
 		type = 2
 	playerFinish
@@ -127,7 +127,7 @@ script 16 mmsf1 {
 }
 script 20 mmsf1 {
 	msgOpen
-	"아주 중요한 정보를 보여 주는\n대형 모니터다.\n"
+	"아주 중요한 정보를 보여 주는\n대형 모니터다.\n"
 	keyWait
 		type = 0
 	end
@@ -135,15 +135,15 @@ script 20 mmsf1 {
 }
 script 21 mmsf1 {
 	msgOpen
-	"아주 중요한 정보를 보여 주는\n대형 모니터다.\n"
+	"아주 중요한 정보를 보여 주는\n대형 모니터다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하지만 지금은 전원이\n꺼져 있어 아무것도 보이지 않는다.\n"
+	"하지만 지금은 전원이 꺼져 있어\n아무것도 보이지 않는다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"전원을 켤까?\n"
+	"전원을 켤까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -183,7 +183,7 @@ script 21 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"모니터 근처에\n웨이브 홀이 나타났다!\n"
+	"모니터 근처에\n웨이브 홀이 나타났다!\n"
 	keyWait
 		type = 2
 	flagSet

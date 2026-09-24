@@ -10,15 +10,15 @@ script 50 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 4
-	"왼쪽 확인, 오른쪽 확인…\n"
+	"왼쪽 확인, 오른쪽 확인…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"왼쪽 확인, 오른쪽 확인…\n"
+	"왼쪽 확인, 오른쪽 확인…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"완전 안전합니다!"
+	"완전 안전합니다!"
 	keyWait
 		type = 0
 	end
@@ -30,11 +30,11 @@ script 55 mmsf1 {
 		npc = 4
 	"사모님"
 	printPlayerName1
-	"의 안전…\n아니, …안전"
+	"의 안전…\n아니, …안전"
 	keyWait
 		type = 1
 	clearMsg
-	"이 집의 안전을 지키는 것이 나의\n최우선 임무다!\n"
+	"이 집의 안전을 지키는 것이 나의\n최우선 임무다!\n"
 	keyWait
 		type = 0
 	end

@@ -9,11 +9,11 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"난 너무 외로워..."
+	"난 너무 외로워..."
 	keyWait
 		type = 1
 	clearMsg
-	"우주에 홀로 남겨졌어...\n너도 외롭니?\n"
+	"우주에 홀로 남겨졌어...\n너도 외롭니?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -52,11 +52,11 @@ script 0 mmsf1 {
 		delay = 8
 	mugshotShow
 		mugshot = MrHertz
-	"아, 그 말을 들으니\n안됐구나."
+	"아, 그 말을 들으니\n안됐구나."
 	keyWait
 		type = 1
 	clearMsg
-	"너무 외로워하지\n마."
+	"너무 외로워하지\n마."
 	keyWait
 		type = 0
 	end
@@ -66,7 +66,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"내가 여기 있잖아..."
+	"내가 여기 있잖아..."
 	keyWait
 		type = 0
 	end
@@ -80,11 +80,11 @@ script 2 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"괜찮다면,\n이걸 받아 줘...\n"
+	"괜찮다면,\n이걸 받아 줘...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내가 여기 있다는\n증거야..."
+	"내가 여기 있다는\n증거야..."
 	keyWait
 		type = 1
 	clearMsg
@@ -99,7 +99,7 @@ script 2 mmsf1 {
 	"록맨은\n\""
 	printItem
 		item = 79
-	"\"을 받았다!!\n"
+	"\"을 받았다!!\n"
 	playerFinish
 	playerResetScene2
 	keyWait
@@ -107,7 +107,7 @@ script 2 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = MrHertz
-	"내가 여기 있어..."
+	"내가 여기 있어..."
 	keyWait
 		type = 0
 	end

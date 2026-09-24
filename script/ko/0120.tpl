@@ -18,7 +18,7 @@ script 1 mmsf1 {
 	mugshotShow
 		mugshot = OmegaXis
 	printPlayerName1
-	", 무슨 일이야?"
+	", 무슨 일이야?"
 	keyWait
 		type = 1
 	clearMsg
@@ -30,7 +30,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"뭔가 아주 안 좋은 일이\n일어날 것 같아.\n"
+	"뭔가 아주 안 좋은 일이\n일어날 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -43,7 +43,7 @@ script 2 mmsf1 {
 	"."
 	waitSkip
 		frames = 30
-	"그냥 내\n착각이겠지?"
+	"그냥 내\n착각이겠지?"
 	keyWait
 		type = 1
 	clearMsg

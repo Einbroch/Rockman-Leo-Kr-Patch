@@ -22,7 +22,7 @@ script 1 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"뭔가 들리지 않았어?\n"
+	"뭔가 들리지 않았어?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -60,7 +60,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"큰일 날 뻔했네!"
+	"큰일 날 뻔했네!"
 	keyWait
 		type = 0
 	end
@@ -70,7 +70,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"정말 아슬아슬했어.\n"
+	"정말 아슬아슬했어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -82,11 +82,11 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"하지만 이제\n길이 막혀 버렸네.\n"
+	"하지만 이제\n길이 막혀 버렸네.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그리고 츠카사가 바로 앞에\n있는 것 같아.\n"
+	"그리고 츠카사가 바로 앞에\n있는 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -98,9 +98,9 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"자, "
+	"자, "
 	printPlayerName1
-	", 이제 비주얼라이저를\n써."
+	", 이제\n비주얼라이저를 써."
 	keyWait
 		type = 1
 	clearMsg
@@ -132,7 +132,7 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이 구역들이\n연결된 것 같아!\n"
+	"이 구역들이\n연결된 것 같아!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -144,7 +144,7 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"좋아. 그럼 전파 세계를\n지나가자.\n"
+	"좋아. 그럼 전파 세계를\n지나가자.\n"
 	keyWait
 		type = 0
 	end

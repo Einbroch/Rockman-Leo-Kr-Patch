@@ -7,7 +7,7 @@ script 0 mmsf1 {
 		jumpIfTrue = 5
 		jumpIfFalse = continue
 	msgOpen
-	"거대한 천칭을\n쓰러뜨려야 이 문이\n열린다."
+	"거대한 천칭을\n쓰러뜨려야 이 문이\n열린다."
 	keyWait
 		type = 0
 	end
@@ -19,7 +19,7 @@ script 1 mmsf1 {
 		jumpIfTrue = 6
 		jumpIfFalse = continue
 	msgOpen
-	"뱀 조련사를\n쓰러뜨려야 이 문이\n열린다."
+	"뱀 조련사를\n쓰러뜨려야 이 문이\n열린다."
 	keyWait
 		type = 0
 	end
@@ -31,7 +31,7 @@ script 2 mmsf1 {
 		jumpIfTrue = 7
 		jumpIfFalse = continue
 	msgOpen
-	"전격의 쌍둥이를\n쓰러뜨려야 이 문이\n열린다."
+	"전격의 쌍둥이를\n쓰러뜨려야 이 문이\n열린다."
 	keyWait
 		type = 0
 	end
@@ -48,7 +48,7 @@ script 3 mmsf1 {
 		jumpIfNone = 8
 		jumpIfAny = continue
 	msgOpen
-	"외로운 마음을 가진 자만\n이 문을 열 수 있다.\n"
+	"외로운 마음을 가진 자만\n이 문을 열 수 있다.\n"
 	keyWait
 		type = 0
 	end
@@ -60,7 +60,7 @@ script 4 mmsf1 {
 		jumpIfTrue = 9
 		jumpIfFalse = continue
 	msgOpen
-	"S 마크를 가진 자만\n이 문을 열 수 있다.\n"
+	"S 마크를 가진 자만\n이 문을 열 수 있다.\n"
 	keyWait
 		type = 0
 	end
@@ -68,11 +68,11 @@ script 4 mmsf1 {
 }
 script 5 mmsf1 {
 	msgOpen
-	"거대한 천칭을\n쓰러뜨린 자는\n"
+	"거대한 천칭을\n쓰러뜨린 자는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나아가도 좋다..."
+	"나아가도 좋다..."
 	keyWait
 		type = 2
 	flagClear
@@ -81,11 +81,11 @@ script 5 mmsf1 {
 }
 script 6 mmsf1 {
 	msgOpen
-	"뱀 조련사를\n쓰러뜨린 자는\n"
+	"뱀 조련사를\n쓰러뜨린 자는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나아가도 좋다..."
+	"나아가도 좋다..."
 	keyWait
 		type = 2
 	flagClear
@@ -94,11 +94,11 @@ script 6 mmsf1 {
 }
 script 7 mmsf1 {
 	msgOpen
-	"전격의 쌍둥이를\n쓰러뜨린 자는\n"
+	"전격의 쌍둥이를\n쓰러뜨린 자는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나아가도 좋다..."
+	"나아가도 좋다..."
 	keyWait
 		type = 2
 	flagClear
@@ -107,7 +107,7 @@ script 7 mmsf1 {
 }
 script 8 mmsf1 {
 	msgOpen
-	"외로운 마음을 가진 자는\n나아가도 좋다...\n"
+	"외로운 마음을 가진 자는\n나아가도 좋다...\n"
 	keyWait
 		type = 2
 	flagClear
@@ -116,7 +116,7 @@ script 8 mmsf1 {
 }
 script 9 mmsf1 {
 	msgOpen
-	"S 마크를 가진 자는\n나아가도 좋다...\n"
+	"S 마크를 가진 자는\n나아가도 좋다...\n"
 	keyWait
 		type = 2
 	flagClear

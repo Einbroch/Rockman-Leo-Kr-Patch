@@ -23,7 +23,7 @@ script 1 mmsf1 {
 }
 script 2 mmsf1 {
 	msgOpen
-	"계속 해 봐!!"
+	"계속 해 봐!!"
 	keyWait
 		type = 0
 	end
@@ -41,7 +41,7 @@ script 3 mmsf1 {
 }
 script 4 mmsf1 {
 	msgOpen
-	"아무것도 없는 것\n같아."
+	"아무것도 없는 것\n같아."
 	wait
 		frames = 60
 	end

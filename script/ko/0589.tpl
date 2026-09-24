@@ -10,7 +10,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 17
-	"이 지점 너머는\n관계자 외 출입 금지.\n"
+	"이 지점 너머는\n관계자 외 출입 금지.\n"
 	keyWait
 		type = 0
 	end
@@ -22,7 +22,7 @@ script 1 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"저 뱀들은\n맹독을 지니고 있어!\n"
+	"저 뱀들은\n맹독을 지니고 있어!\n"
 	keyWait
 		type = 0
 	end
@@ -34,7 +34,7 @@ script 2 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"저 뱀들은\n맹독을 지니고 있어!\n"
+	"저 뱀들은\n맹독을 지니고 있어!\n"
 	keyWait
 		type = 0
 	end
@@ -46,7 +46,7 @@ script 5 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"저 뱀들은\n맹독을 지니고 있어!\n"
+	"저 뱀들은\n맹독을 지니고 있어!\n"
 	keyWait
 		type = 0
 	end
@@ -64,23 +64,23 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ProfSnake
-	"아, 이런... 이건\n"
+	"아, 이런... 이건\n"
 	keyWait
 		type = 1
 	clearMsg
-	"정말 큰일입니다아아..."
+	"정말 큰일입니다아아..."
 	keyWait
 		type = 1
 	clearMsg
-	"아주 희귀하고\n값비싼\n"
+	"아주 희귀하고\n값비싼\n"
 	keyWait
 		type = 1
 	clearMsg
-	"뱀 세 마리가\n사라졌어요!\n"
+	"뱀 세 마리가\n사라졌어요!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"정말 난감하군요!\n"
+	"정말 난감하군요!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -91,15 +91,15 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ProfSnake
-	"아주 희귀하고\n값비싼\n"
+	"아주 희귀하고\n값비싼\n"
 	keyWait
 		type = 1
 	clearMsg
-	"뱀 세 마리가\n사라졌어요!\n"
+	"뱀 세 마리가\n사라졌어요!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"정말 난감하군요!\n"
+	"정말 난감하군요!\n"
 	keyWait
 		type = 0
 	end
@@ -121,7 +121,7 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ProfSnake
-	"아아! 저건"
+	"아아! 저건"
 	keyWait
 		type = 1
 	clearMsg
@@ -146,28 +146,28 @@ script 12 mmsf1 {
 	"\"\n\""
 	printItem
 		item = 54
-	"\"를 드렸고"
+	"\"를 드렸고"
 	keyWait
 		type = 1
 	clearMsg
-	"그리고 \""
+	"그리고 \""
 	printItem
 		item = 55
-	"\"도\n교수님께 드렸습니다!"
+	"\"도\n교수님께 드렸습니다!"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = ProfSnake
-	"정말정말 고마워요!!\n"
+	"정말정말 고마워요!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"덕분에 큰일을\n해결했어요.\n"
+	"덕분에 큰일을\n해결했어요.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이걸 드릴게요.\n"
+	"이걸 드릴게요.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -181,7 +181,7 @@ script 12 mmsf1 {
 	"가\n\""
 	printItem
 		item = 76
-	"\"을 얻었다!!\n"
+	"\"을 얻었다!!\n"
 	keyWait
 		type = 2
 	playerFinish
@@ -189,7 +189,7 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = ProfSnake
-	"정말 안심했어요.\n"
+	"정말 안심했어요.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -204,7 +204,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ProfSnake
-	"정말 안심했어요.\n"
+	"정말 안심했어요.\n"
 	keyWait
 		type = 0
 	end
@@ -214,7 +214,7 @@ script 40 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ProfSnake
-	"물론이죠, 여기서\n뱀들을 마음껏 구경하세요!\n"
+	"물론이죠, 여기서\n뱀들을 마음껏 구경하세요!\n"
 	keyWait
 		type = 0
 	end
@@ -230,13 +230,13 @@ script 50 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"이 뱀들은\n맹독을 지니고 있어!\n"
+	"이 뱀들은\n맹독을 지니고 있어!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShowNPC
 		npc = 0
-	"이 뱀들을 어떻게든\n처리할 수 없을까...?\n"
+	"이 뱀들을 어떻게든\n처리할 수 없을까...?\n"
 	keyWait
 		type = 0
 	end
@@ -246,7 +246,7 @@ script 51 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"너무 가까이 가지 않는 게 좋겠어.\n깨우고 싶진 않으니까.\n"
+	"너무 가까이 가지 않는 게 좋겠어.\n깨우고 싶진 않으니까.\n"
 	keyWait
 		type = 0
 	end
@@ -261,11 +261,11 @@ script 100 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"내가 갑자기 사라지면\n미소라가 당황할지도 몰라.\n"
+	"내가 갑자기 사라지면\n미소라가 당황할지도 몰라.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"...전파 변환은\n잠시 미뤄 두자.\n"
+	"...전파 변환은\n잠시 미뤄 두자.\n"
 	keyWait
 		type = 0
 	end
@@ -275,11 +275,11 @@ script 101 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"아무 데나 마구\n돌아다닐 수는 없으니까...\n"
+	"아무 데나 마구\n돌아다닐 수는 없으니까...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"먼저 저 뱀들을\n처리해야겠어.\n"
+	"먼저 저 뱀들을\n처리해야겠어.\n"
 	keyWait
 		type = 0
 	end

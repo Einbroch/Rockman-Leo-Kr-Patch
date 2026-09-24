@@ -7,7 +7,7 @@ script 0 mmsf1 {
 	flagSet
 		flag = 601
 	printBrotherBuffer1
-	" "
+	"\n"
 	printBrotherBuffer2
 	end
 }
@@ -15,11 +15,11 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Principal
-	"흠흠! 제 트랜서에 오신 것을 환영합니다!\n부디\n"
+	"흠흠! 제 트랜서에 오신 것을\n환영합니다! 부디\n"
 	keyWait
 		type = 1
 	clearMsg
-	"편히 머물다 가십시오.\n"
+	"편히 머물다 가십시오.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -29,15 +29,15 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Principal
-	"저는 코다마 타운\n초등학교\n"
+	"저는 코다마 타운\n초등학교\n"
 	keyWait
 		type = 1
 	clearMsg
-	"교장입니다. 무슨 일이든\n편하게 제게\n"
+	"교장입니다. 무슨 일이든\n편하게 제게\n"
 	keyWait
 		type = 1
 	clearMsg
-	"말씀해 주십시오.\n"
+	"말씀해 주십시오.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -47,7 +47,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Principal
-	"흠흠! 저는 코다마 초등학교의\n\n"
+	"흠흠! 저는 코다마 초등학교의\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -55,33 +55,33 @@ script 4 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"새 교가를 마무리하고\n있습니다.\n"
+	"새 교가를 마무리하고\n있습니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그런데 가사 몇 군데가\n조금\n"
+	"그런데 가사 몇 군데가\n조금\n"
 	keyWait
 		type = 1
 	clearMsg
-	"마음에 들지 않아 고민입니다.\n"
+	"마음에 들지 않아 고민입니다.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = OmegaXis
-	"…저 사람 정말 신경 쓰여.\n"
+	"…저 사람 정말 신경 쓰여.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"처음에는 저런 사람인 줄\n몰랐는데.\n"
+	"처음에는 저런 사람인 줄\n몰랐는데.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = OmegaXis
-	"그럼, 저 사람을 도와줄까?\n\n"
+	"그럼, 저 사람을 도와줄까?\n\n"
 	positionOptionFromCenter
 		width = 15
 	textSpeed
@@ -118,25 +118,25 @@ script 4 mmsf1 {
 		jumpIfFalse = continue
 	mugshotShow
 		mugshot = OmegaXis
-	"궁금하지? 안\n그래?\n"
+	"궁금하지? 안\n그래?\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"노래를 만드는 것도 꽤\n재미있을 것 같아.\n"
+	"노래를 만드는 것도 꽤\n재미있을 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = OmegaXis
-	"좋아, 가서 저 사람과\n이야기해 보자.\n"
+	"좋아, 가서 저 사람과\n이야기해 보자.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"나한테 메일을\n써 두는 게 좋겠어…\n"
+	"나한테 메일을\n써 두는 게 좋겠어…\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -152,7 +152,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"그냥 여기서 나가자!\n"
+	"그냥 여기서 나가자!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -162,23 +162,23 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Principal
-	"흠흠! 저는 코다마 타운\n\n"
+	"흠흠! 저는 코다마 타운\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"코다마 타운 초등학교 교장입니다.\n\n"
+	"코다마 타운 초등학교 교장입니다.\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"새 교가를 마무리하고\n있습니다.\n"
+	"새 교가를 마무리하고\n있습니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그런데 가사 몇 군데가\n조금\n"
+	"그런데 가사 몇 군데가\n조금\n"
 	keyWait
 		type = 1
 	clearMsg
-	"마음에 들지 않아 고민입니다.\n"
+	"마음에 들지 않아 고민입니다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -188,15 +188,15 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Principal
-	"흠흠! 저는 코다마 타운\n\n"
+	"흠흠! 저는 코다마 타운\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"코다마 타운 초등학교 교장입니다.\n\n"
+	"코다마 타운 초등학교 교장입니다.\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리 학교의 교가는\n우수한 학생 한 명의 도움으로\n"
+	"우리 학교의 교가는\n우수한 학생 한 명의 도움으로\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -204,11 +204,11 @@ script 7 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"이름이 뭐였더라?\n"
+	"이름이 뭐였더라?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아무튼 학생들이\n정말 좋아한답니다.\n"
+	"아무튼 학생들이\n정말 좋아한답니다.\n"
 	keyWait
 		type = 0
 	end
@@ -217,11 +217,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이봐, 이봐! 네\n일부터\n"
+	"이봐, 이봐! 네\n일부터\n"
 	keyWait
 		type = 1
 	clearMsg
-	"마무리하는 게\n어때!?"
+	"마무리하는 게\n어때!?"
 	keyWait
 		type = 1
 	clearMsg

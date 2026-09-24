@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"자, 여기가 연구실\n정문 로비야.\n"
+	"자, 여기가 연구실\n정문 로비야.\n"
 	keyWait
 		type = 0
 	end
@@ -15,11 +15,11 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"저쪽은 과학\n박물관이고.\n"
+	"저쪽은 과학\n박물관이고.\n"
 	keyWait
 		type = 0
 	end
-	"여러 가지\n전시물이 전시되어 있지.\n"
+	"여러 가지\n전시물이 전시되어 있지.\n"
 	keyWait
 		type = 0
 	end
@@ -29,7 +29,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"그리고 이쪽은 직원\n구역으로 이어져.\n"
+	"그리고 이쪽은 직원\n구역으로 이어져.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -43,11 +43,11 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"내 조수란다.\n"
+	"내 조수란다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어제 만났었지,\n"
+	"어제 만났었지,\n"
 	printPlayerName1
 	"?"
 	keyWait
@@ -73,19 +73,19 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"모두에게 소개해 줄게.\n"
+	"모두에게 소개해 줄게.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내 조수인 우타가이 신스케\n군이야.\n"
+	"내 조수인 우타가이 신스케\n군이야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"안녕, 신스케."
+	"안녕, 신스케."
 	keyWait
 		type = 1
 	clearMsg
-	"괜찮나? 안색이\n좀 창백한데.\n"
+	"괜찮나? 안색이\n좀 창백한데.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -97,7 +97,7 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"아, 네…"
+	"아, 네…"
 	keyWait
 		type = 1
 	clearMsg
@@ -109,7 +109,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"어젯밤 늦게까지\n일한 것 같구나.\n"
+	"어젯밤 늦게까지\n일한 것 같구나.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -119,17 +119,17 @@ script 7 mmsf1 {
 	clearMsg
 	mugshotShowNPC
 		npc = 3
-	"저, 저는 걱정하지 않으셔도\n됩니다.\n"
+	"저, 저는 걱정하지 않으셔도\n됩니다.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShowNPC
 		npc = 2
-	"그래? 알았다."
+	"그래? 알았다."
 	keyWait
 		type = 1
 	clearMsg
-	"그럼 계속 안내하마.\n"
+	"그럼 계속 안내하마.\n"
 	keyWait
 		type = 0
 	end
@@ -139,7 +139,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"오늘은 아주 특별한\n날이야.\n"
+	"오늘은 아주 특별한\n날이야.\n"
 	keyWait
 		type = 0
 	end
@@ -149,11 +149,11 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"너희에게 무료로\n구경할 기회를 주마!\n"
+	"너희에게 무료로\n구경할 기회를 주마!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"자, 박물관에서 마음껏\n즐기렴!\n"
+	"자, 박물관에서 마음껏\n즐기렴!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -177,7 +177,7 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 6
-	"운이 좋네!"
+	"운이 좋네!"
 	keyWait
 		type = 1
 	clearMsg
@@ -189,7 +189,7 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 4
-	"정말 감사합니다!\n"
+	"정말 감사합니다!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -201,23 +201,23 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"분명 마음에 드는\n전시물이 많을\n거야."
+	"분명 마음에 드는\n전시물이 많을\n거야."
 	keyWait
 		type = 1
 	clearMsg
-	"아, 그리고 한 가지 더.\n"
+	"아, 그리고 한 가지 더.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나중에 내 개인\n연구실도 보여 주마.\n"
+	"나중에 내 개인\n연구실도 보여 주마.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아무도 본 적 없는 걸\n보게 될 거야!\n"
+	"아무도 본 적 없는 걸\n보게 될 거야!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내 최신\n프로젝트란다!\n"
+	"내 최신\n프로젝트란다!\n"
 	keyWait
 		type = 2
 	soundFadeOutBGM
@@ -240,13 +240,13 @@ script 15 mmsf1 {
 		npc = 3
 	mugshotAnimation
 		animation = 1
-	"(최신 프로젝트를\n보여 준다고?)\n"
+	"(최신 프로젝트를\n보여 준다고?)\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotAnimation
 		animation = 1
-	"(내 플랩 팩도 저 방에\n있는데…)\n"
+	"(내 플랩 팩도 저 방에\n있는데…)\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -262,7 +262,7 @@ script 16 mmsf1 {
 	msgOpen
 	mugshotHide
 	printPlayerName1
-	"가 얻었다:\n\""
+	"가 얻었다:\n\""
 	printItem
 		item = 11
 	"\"!!\n"

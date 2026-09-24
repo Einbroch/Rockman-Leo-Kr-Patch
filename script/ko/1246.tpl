@@ -11,7 +11,7 @@ script 0 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"클리어 데이터를 저장할까요?\n"
+	"클리어 데이터를 저장할까요?\n"
 	positionOptionFromCenter
 		width = 9
 	optionText
@@ -51,7 +51,7 @@ script 2 mmsf1 {
 		animation = 0
 	textSpeed
 		delay = 0
-	"저장 중...\n전원을 끄지 마세요!\n"
+	"저장 중...\n전원을 끄지 마세요!\n"
 	checkSaveFinished
 		jumpIfSuccessful = 3
 		jumpIfFailed = 5
@@ -67,7 +67,7 @@ script 3 mmsf1 {
 		mugshot = Geo
 	soundPlay
 		sound = 138
-	"저장 완료."
+	"저장 완료."
 	keyWait
 		type = 2
 	end
@@ -77,7 +77,7 @@ script 4 mmsf1 {
 		flag = 3370
 	textSpeed
 		delay = 0
-	"저장 실패..."
+	"저장 실패..."
 	keyWait
 		type = 2
 	end
@@ -90,7 +90,7 @@ script 5 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"저장에 실패했습니다. 다시 시도할까요?\n\n"
+	"저장에 실패했습니다. 다시\n시도할까요?\n\n"
 	positionOptionFromCenter
 		width = 13
 	optionText
@@ -131,7 +131,7 @@ script 7 mmsf1 {
 		mugshot = Geo
 	mugshotAnimation
 		animation = 0
-	"백업 데이터 초기화 중...\n\n"
+	"백업 데이터 초기화 중...\n\n"
 	checkSaveInit
 		jumpIfFailed = 5
 	checkSaveInitFinished
@@ -144,11 +144,11 @@ script 8 mmsf1 {
 	textSpeed
 		delay = 0
 	mugshotHide
-	"데이터에 접근할 수 없습니다.\n전원을 끄고 "
+	"데이터에 접근할 수 없습니다.\n전원을 끄고 "
 	keyWait
 		type = 1
 	clearMsg
-	"게임 카드를 다시 삽입하세요."
+	"게임 카드를 다시 삽입하세요."
 	end
 }
 script 9 mmsf1 {
@@ -156,10 +156,10 @@ script 9 mmsf1 {
 	textSpeed
 		delay = 0
 	mugshotHide
-	"데이터에 접근할 수 없습니다.\n전원을 끄고 "
+	"데이터에 접근할 수 없습니다.\n전원을 끄고 "
 	keyWait
 		type = 1
 	clearMsg
-	"게임 카드를 다시 삽입하세요."
+	"게임 카드를 다시 삽입하세요."
 	end
 }

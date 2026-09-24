@@ -10,11 +10,11 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Principal
-	"방과 후에 학교를\n"
+	"방과 후에 학교를\n"
 	keyWait
 		type = 1
 	clearMsg
-	"순찰하는\n건 내 책임이야.\n"
+	"순찰하는\n건 내 책임이야.\n"
 	keyWait
 		type = 0
 	end
@@ -29,11 +29,11 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 6
-	"오늘은 내가 복도를 청소할 차례야…\n나는\n"
+	"오늘은 내가 복도를 청소할\n차례야… 나는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"예전 학교에서는 이런 일까지\n하지 않았는데…\n"
+	"예전 학교에서는 이런 일까지\n하지 않았는데…\n"
 	keyWait
 		type = 0
 	end
@@ -43,7 +43,7 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Principal
-	"학생들이 걱정돼…\n모두\n"
+	"학생들이 걱정돼…\n모두\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -57,7 +57,7 @@ script 21 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 6
-	"무, 무서워…"
+	"무, 무서워…"
 	keyWait
 		type = 0
 	end

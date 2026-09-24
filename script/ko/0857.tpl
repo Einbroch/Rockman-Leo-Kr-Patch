@@ -5,27 +5,27 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"마이크 테스트, 마이크 테스트.\n하나, 둘, 셋. *삐 삐*...\n"
+	"마이크 테스트, 마이크 테스트.\n하나, 둘, 셋. *삐 삐*...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"자, 이제 노래를...\n"
+	"자, 이제 노래를...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"스키도 밥 밥 스키 바\n밥 바 도프 밥\n"
+	"스키도 밥 밥 스키 바\n밥 바 도프 밥\n"
 	keyWait
 		type = 1
 	clearMsg
-	"마을 동북쪽 모퉁이에\n있는"
+	"마을 동북쪽 모퉁이에\n있는"
 	keyWait
 		type = 1
 	clearMsg
-	"코다마 타운...\n"
+	"코다마 타운...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"희망과 꿈이 가득한 학교가...\n"
+	"희망과 꿈이 가득한 학교가...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -33,11 +33,11 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"코다마 타아운, 코다마\n타아운, 초오오등\n"
+	"코다마 타아운, 코다마\n타아운, 초오오등\n"
 	keyWait
 		type = 1
 	clearMsg
-	"학↗교오오오! 고마워!\n*삐 삐*\n"
+	"학↗교오오오! 고마워!\n*삐 삐*\n"
 	keyWait
 		type = 0
 	end

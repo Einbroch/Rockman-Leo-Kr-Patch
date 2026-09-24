@@ -9,15 +9,15 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"옛날에는\n내가\n공기 순환"
+	"옛날에는\n내가\n공기 순환"
 	keyWait
 		type = 1
 	clearMsg
-	"시스템을 관리했지...\n하지만 사고 이후,\n"
+	"시스템을 관리했지...\n하지만 사고 이후,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"사람도, 대부분의 파도도\n사라졌어.\n"
+	"사람도, 대부분의 파도도\n사라졌어.\n"
 	keyWait
 		type = 0
 	end

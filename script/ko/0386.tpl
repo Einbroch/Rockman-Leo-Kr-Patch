@@ -38,7 +38,7 @@ script 0 mmsf1 {
 		jumpIfInRange = 5
 		jumpIfOutOfRange = continue
 	msgOpen
-	"임시 메시지"
+	"임시 메시지"
 	keyWait
 		type = 0
 	end
@@ -71,11 +71,11 @@ script 5 mmsf1 {
 		jumpIfFalse = continue
 	msgOpen
 	mugshotShowGeo
-	"친구 따위 필요 없어!\n"
+	"친구 따위 필요 없어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"비스타 포인트에 가 볼까.\n"
+	"비스타 포인트에 가 볼까.\n"
 	keyWait
 		type = 0
 	end
@@ -88,7 +88,7 @@ script 6 mmsf1 {
 		jumpIfFalse = 7
 	msgOpen
 	mugshotShowGeo
-	"메일? 누구한테서?"
+	"메일? 누구한테서?"
 	keyWait
 		type = 0
 	end
@@ -97,7 +97,7 @@ script 6 mmsf1 {
 script 7 mmsf1 {
 	msgOpen
 	mugshotShowGeo
-	"아마치 씨라니... 대체\n뭘 원하시는 걸까?\n"
+	"아마치 씨라니... 대체\n뭘 원하시는 걸까?\n"
 	keyWait
 		type = 0
 	end
@@ -106,7 +106,7 @@ script 7 mmsf1 {
 script 8 mmsf1 {
 	msgOpen
 	mugshotShowGeo
-	"엄마가 타임 스퀘어에!?\n서둘러야 해!!\n"
+	"엄마가 타임 스퀘어에!?\n서둘러야 해!!\n"
 	keyWait
 		type = 0
 	end
@@ -115,11 +115,11 @@ script 8 mmsf1 {
 script 9 mmsf1 {
 	msgOpen
 	mugshotShowGeo
-	"워록은 어디에 있을까? 이제\n내게 남은 건\n"
+	"워록은 어디에 있을까? 이제\n내게 남은 건\n"
 	keyWait
 		type = 1
 	clearMsg
-	"도움 신호뿐이야...\n"
+	"도움 신호뿐이야...\n"
 	keyWait
 		type = 0
 	end
@@ -128,7 +128,7 @@ script 9 mmsf1 {
 script 10 mmsf1 {
 	msgOpen
 	mugshotShowGeo
-	"드림 아일랜드로\n돌아가야 해!!\n"
+	"드림 아일랜드로\n돌아가야 해!!\n"
 	keyWait
 		type = 0
 	end
@@ -138,15 +138,15 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"루나에게\n사과하러 가는 거지?\n"
+	"루나에게\n사과하러 가는 거지?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이번에는 아무래도\n"
+	"이번에는 아무래도\n"
 	keyWait
 		type = 1
 	clearMsg
-	"각오를 해야 할 것\n같아!\n"
+	"각오를 해야 할 것\n같아!\n"
 	keyWait
 		type = 0
 	end
@@ -156,7 +156,7 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"아마치가 뭔가\n알고 있을 거야."
+	"아마치가 뭔가\n알고 있을 거야."
 	keyWait
 		type = 0
 	end
@@ -194,11 +194,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"아마치의 옛 상사를\n찾으러 가는 거지?\n"
+	"아마치의 옛 상사를\n찾으러 가는 거지?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"대체 어디에 있는 거야?\n"
+	"대체 어디에 있는 거야?\n"
 	keyWait
 		type = 0
 	end
@@ -208,7 +208,7 @@ script 21 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"트랜서를 보니\n저 사람이 맞아.\n"
+	"트랜서를 보니\n저 사람이 맞아.\n"
 	keyWait
 		type = 0
 	end
@@ -218,11 +218,11 @@ script 22 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"저 노인에게\n얘기하러 가자..."
+	"저 노인에게\n얘기하러 가자..."
 	keyWait
 		type = 1
 	clearMsg
-	"그거 있잖아, 그걸 보여 주면\n말할 거야!\n"
+	"그거 있잖아, 그걸 보여 주면\n말할 거야!\n"
 	keyWait
 		type = 0
 	end
@@ -232,15 +232,15 @@ script 23 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"데이터는 우주 정거장과 관련된\n"
+	"데이터는 우주 정거장과 관련된\n"
 	keyWait
 		type = 1
 	clearMsg
-	"무언가에 숨겨져\n있어...\n"
+	"무언가에 숨겨져\n있어...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그게 무슨 뜻이야?\n\n"
+	"그게 무슨 뜻이야?\n\n"
 	keyWait
 		type = 0
 	end
@@ -250,11 +250,11 @@ script 24 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"네가 얻은 데이터를\n확인해 보자. 어쩌면\n"
+	"네가 얻은 데이터를\n확인해 보자. 어쩌면\n"
 	keyWait
 		type = 1
 	clearMsg
-	"뭔가 알아낼 수 있을 거야.\n"
+	"뭔가 알아낼 수 있을 거야.\n"
 	keyWait
 		type = 0
 	end
@@ -264,7 +264,7 @@ script 25 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"드림 아일랜드에 숨겨져\n있다고? 그럼 가자.\n"
+	"드림 아일랜드에 숨겨져\n있다고? 그럼 가자.\n"
 	keyWait
 		type = 0
 	end
@@ -274,11 +274,11 @@ script 26 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"드림 아일랜드로\n돌아가자!"
+	"드림 아일랜드로\n돌아가자!"
 	keyWait
 		type = 1
 	clearMsg
-	"뭐야? 겁먹은 거야?\n"
+	"뭐야? 겁먹은 거야?\n"
 	keyWait
 		type = 0
 	end
@@ -293,7 +293,7 @@ script 27 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"집에 가자! 내일이\n최종 결전이야!\n"
+	"집에 가자! 내일이\n최종 결전이야!\n"
 	keyWait
 		type = 0
 	end
@@ -306,7 +306,7 @@ script 28 mmsf1 {
 		jumpIfFalse = continue
 	msgOpen
 	mugshotShowGeo
-	"아... 엄마는\n괜찮을까..."
+	"아... 엄마는\n괜찮을까..."
 	keyWait
 		type = 0
 	end
@@ -316,7 +316,7 @@ script 29 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"내일을 위해\n좀 쉬자!\n"
+	"내일을 위해\n좀 쉬자!\n"
 	keyWait
 		type = 0
 	end
@@ -337,7 +337,7 @@ script 30 mmsf1 {
 		jumpIfFalse = continue
 	msgOpen
 	mugshotShowGeo
-	"가기 전에\n엄마에게 작별 인사를 해야 해...\n"
+	"가기 전에\n엄마에게 작별 인사를 해야 해...\n"
 	keyWait
 		type = 0
 	end
@@ -347,7 +347,7 @@ script 31 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"늘 가던 곳에\n가려는 거야?\n"
+	"늘 가던 곳에\n가려는 거야?\n"
 	keyWait
 		type = 0
 	end
@@ -357,7 +357,7 @@ script 32 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"드림 아일랜드로 가자!\n"
+	"드림 아일랜드로 가자!\n"
 	keyWait
 		type = 0
 	end
@@ -367,11 +367,11 @@ script 33 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"모든 준비가\n끝났다면,"
+	"모든 준비가\n끝났다면,"
 	keyWait
 		type = 1
 	clearMsg
-	"우주 정거장으로\n돌아가는 게 좋겠어!\n"
+	"우주 정거장으로\n돌아가는 게 좋겠어!\n"
 	keyWait
 		type = 0
 	end

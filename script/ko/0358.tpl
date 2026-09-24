@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"이건 외부 수리\n로봇의\n"
+	"이건 외부 수리\n로봇의\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -13,7 +13,7 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"전원 스위치...\n이건가...?\n"
+	"전원 스위치...\n이건가...?\n"
 	keyWait
 		type = 0
 	end
@@ -23,7 +23,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"좋아, 이제 프로펠러맨\n차례야!\n"
+	"좋아, 이제 프로펠러맨\n차례야!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -45,11 +45,11 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"목표 지점에 도착했습니다.\n"
+	"목표 지점에 도착했습니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"좋아, 수리를 시작하자!\n\n"
+	"좋아, 수리를 시작하자!\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -65,11 +65,11 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"목표 지점에 도착했습니다.\n"
+	"목표 지점에 도착했습니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"좋아, 수리를 시작하자!\n\n"
+	"좋아, 수리를 시작하자!\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -85,11 +85,11 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"목표 지점에 도착했습니다.\n"
+	"목표 지점에 도착했습니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"좋아, 수리를 시작하자!\n\n"
+	"좋아, 수리를 시작하자!\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -105,7 +105,7 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"좋아, 마지막 한 곳이야!\n가자!\n"
+	"좋아, 마지막 한 곳이야!\n가자!\n"
 	keyWait
 		type = 0
 	end
@@ -115,11 +115,11 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"전부 끝났어!\n"
+	"전부 끝났어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이제 전기가\n들어올 거야...\n"
+	"이제 전기가\n들어올 거야...\n"
 	keyWait
 		type = 0
 	end
@@ -129,7 +129,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"좋아! 고마워,\n프로펠러맨!\n"
+	"좋아! 고마워,\n프로펠러맨!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -141,7 +141,7 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PropellerMan
-	"별거 아니야!"
+	"별거 아니야!"
 	keyWait
 		type = 1
 	clearMsg

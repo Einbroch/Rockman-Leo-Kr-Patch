@@ -7,7 +7,7 @@ script 0 mmsf1 {
 	flagSet
 		flag = 601
 	printBrotherBuffer1
-	" "
+	"\n"
 	printBrotherBuffer2
 	end
 }

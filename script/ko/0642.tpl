@@ -9,7 +9,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"흠, 이 제어 패널을\n사용해 볼까.\n"
+	"흠, 이 제어 패널을\n사용해 볼까.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -17,7 +17,7 @@ script 0 mmsf1 {
 	soundPlay
 		sound = 437
 	printPlayerName1
-	"가 제어\n패널을 복구했다!!"
+	"가 제어\n패널을 복구했다!!"
 	keyWait
 		type = 1
 	clearMsg
@@ -29,7 +29,7 @@ script 0 mmsf1 {
 		flag = 10
 	flagClear
 		flag = 3
-	"제어 패널의 해치에서\n무언가가\n"
+	"제어 패널의 해치에서\n무언가가\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -63,7 +63,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"제어 패널을\n복구해 볼게..."
+	"제어 패널을\n복구해 볼게..."
 	keyWait
 		type = 1
 	clearMsg
@@ -71,7 +71,7 @@ script 1 mmsf1 {
 	soundPlay
 		sound = 437
 	printPlayerName1
-	"가 제어\n패널을 복구했다!!"
+	"가 제어\n패널을 복구했다!!"
 	keyWait
 		type = 1
 	clearMsg
@@ -83,7 +83,7 @@ script 1 mmsf1 {
 		flag = 11
 	flagClear
 		flag = 4
-	"제어 패널의 해치에서\n무언가가\n"
+	"제어 패널의 해치에서\n무언가가\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -117,7 +117,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"제어 패널을\n복구해 볼게..."
+	"제어 패널을\n복구해 볼게..."
 	keyWait
 		type = 1
 	clearMsg
@@ -125,7 +125,7 @@ script 2 mmsf1 {
 	soundPlay
 		sound = 437
 	printPlayerName1
-	"가 제어\n패널을 복구했다!!"
+	"가 제어\n패널을 복구했다!!"
 	keyWait
 		type = 1
 	clearMsg
@@ -137,7 +137,7 @@ script 2 mmsf1 {
 		flag = 12
 	flagClear
 		flag = 5
-	"제어 패널의 해치에서\n무언가가\n"
+	"제어 패널의 해치에서\n무언가가\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -169,14 +169,14 @@ script 3 mmsf1 {
 		jumpIfTrue = 13
 		jumpIfFalse = continue
 	msgOpen
-	"보안 시스템 작동 중...\n"
+	"보안 시스템 작동 중...\n"
 	keyWait
 		type = 1
 	clearMsg
 	"\""
 	printItem
 		item = 2
-	"\"을\n제시해 주십시오."
+	"\"을\n제시해 주십시오."
 	keyWait
 		type = 0
 	end
@@ -188,14 +188,14 @@ script 4 mmsf1 {
 		jumpIfTrue = 14
 		jumpIfFalse = continue
 	msgOpen
-	"보안 시스템 작동 중...\n"
+	"보안 시스템 작동 중...\n"
 	keyWait
 		type = 1
 	clearMsg
 	"\""
 	printItem
 		item = 3
-	"\"을\n제시해 주십시오."
+	"\"을\n제시해 주십시오."
 	keyWait
 		type = 0
 	end
@@ -207,14 +207,14 @@ script 5 mmsf1 {
 		jumpIfTrue = 15
 		jumpIfFalse = continue
 	msgOpen
-	"보안 시스템 작동 중...\n"
+	"보안 시스템 작동 중...\n"
 	keyWait
 		type = 1
 	clearMsg
 	"\""
 	printItem
 		item = 4
-	"\"을\n제시해 주십시오."
+	"\"을\n제시해 주십시오."
 	keyWait
 		type = 0
 	end
@@ -222,7 +222,7 @@ script 5 mmsf1 {
 }
 script 10 mmsf1 {
 	msgOpen
-	"이 제어 패널은\n정상적으로 작동하고 있다.\n"
+	"이 제어 패널은\n정상적으로 작동하고 있다.\n"
 	keyWait
 		type = 0
 	end
@@ -230,14 +230,14 @@ script 10 mmsf1 {
 }
 script 13 mmsf1 {
 	msgOpen
-	"보안 시스템 작동 중...\n"
+	"보안 시스템 작동 중...\n"
 	keyWait
 		type = 1
 	clearMsg
 	"\""
 	printItem
 		item = 2
-	"\"을\n제시해 주십시오."
+	"\"을\n제시해 주십시오."
 	keyWait
 		type = 1
 	clearMsg
@@ -252,11 +252,11 @@ script 13 mmsf1 {
 	"\""
 	printItem
 		item = 2
-	"\"의\n확인이 완료되었습니다..."
+	"\"의\n확인이 완료되었습니다..."
 	keyWait
 		type = 1
 	clearMsg
-	"보안 시스템이\n해제되었습니다.\n"
+	"보안 시스템이\n해제되었습니다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -266,14 +266,14 @@ script 13 mmsf1 {
 }
 script 14 mmsf1 {
 	msgOpen
-	"보안 시스템 작동 중...\n"
+	"보안 시스템 작동 중...\n"
 	keyWait
 		type = 1
 	clearMsg
 	"\""
 	printItem
 		item = 3
-	"\"을\n제시해 주십시오."
+	"\"을\n제시해 주십시오."
 	keyWait
 		type = 1
 	clearMsg
@@ -288,11 +288,11 @@ script 14 mmsf1 {
 	"\""
 	printItem
 		item = 3
-	"\"의\n확인이 완료되었습니다..."
+	"\"의\n확인이 완료되었습니다..."
 	keyWait
 		type = 1
 	clearMsg
-	"보안 시스템이\n해제되었습니다.\n"
+	"보안 시스템이\n해제되었습니다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -302,14 +302,14 @@ script 14 mmsf1 {
 }
 script 15 mmsf1 {
 	msgOpen
-	"보안 시스템 작동 중...\n"
+	"보안 시스템 작동 중...\n"
 	keyWait
 		type = 1
 	clearMsg
 	"\""
 	printItem
 		item = 4
-	"\"을\n제시해 주십시오."
+	"\"을\n제시해 주십시오."
 	keyWait
 		type = 1
 	clearMsg
@@ -324,11 +324,11 @@ script 15 mmsf1 {
 	"\""
 	printItem
 		item = 4
-	"\"의\n확인이 완료되었습니다..."
+	"\"의\n확인이 완료되었습니다..."
 	keyWait
 		type = 1
 	clearMsg
-	"보안 시스템이\n해제되었습니다.\n"
+	"보안 시스템이\n해제되었습니다.\n"
 	keyWait
 		type = 1
 	clearMsg

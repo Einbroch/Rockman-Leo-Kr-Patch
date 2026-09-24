@@ -25,15 +25,15 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"저 자식, 시비를\n걸자는 건가?\n"
+	"저 자식, 시비를\n걸자는 건가?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"좋아, 그렇다면 상대해 주지!\n"
+	"좋아, 그렇다면 상대해 주지!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아마 로비 EM-로드로\n향했을 거야.\n"
+	"아마 로비 EM-로드로\n향했을 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -49,7 +49,7 @@ script 3 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"하지만 대체 무슨 사연이\n있는 걸까...?\n"
+	"하지만 대체 무슨 사연이\n있는 걸까...?\n"
 	keyWait
 		type = 0
 	end

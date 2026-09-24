@@ -28,7 +28,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"제발, 이제 그만해!!\n"
+	"제발, 이제 그만해!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -40,11 +40,11 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"미안하지만 그럴 수는\n없어.\n"
+	"미안하지만 그럴 수는\n없어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그렇지, 츠카사?"
+	"그렇지, 츠카사?"
 	keyWait
 		type = 1
 	clearMsg
@@ -60,15 +60,15 @@ script 4 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"부모님이 날 버렸어…\n부모님이 미워…\n"
+	"부모님이 날 버렸어…\n부모님이 미워…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 증오를 가라앉힐 유일한\n방법은\n"
+	"이 증오를 가라앉힐 유일한\n방법은\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그들에게 복수하는\n것뿐이야.\n"
+	"그들에게 복수하는\n것뿐이야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -92,11 +92,11 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"하하하. 그래서 우리가\n너희 둘이 가진\n"
+	"하하하. 그래서 우리가\n너희 둘이 가진\n"
 	keyWait
 		type = 1
 	clearMsg
-	"안드로메다 키를\n원하는 거야.\n"
+	"안드로메다 키를\n원하는 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -108,7 +108,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"나는 결심했어…"
+	"나는 결심했어…"
 	keyWait
 		type = 1
 	clearMsg
@@ -116,7 +116,7 @@ script 7 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"너와 네 약점을\n이용하겠다고!\n"
+	"너와 네 약점을\n이용하겠다고!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -128,7 +128,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"너… 그런 말 진심은 아니지.\n"
+	"너… 그런 말 진심은 아니지.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -140,11 +140,11 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"더는 할 말 없어.\n"
+	"더는 할 말 없어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이제 끝장을 내자!\n"
+	"이제 끝장을 내자!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -158,7 +158,7 @@ script 10 mmsf1 {
 		mugshot = OmegaXis
 	"각오해, "
 	printPlayerName1
-	"! 놈들이\n온다!"
+	"! 놈들이\n온다!"
 	keyWait
 		type = 1
 	clearMsg
@@ -170,7 +170,7 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"우리가 이제 막\n친구가 됐는데도!!\n"
+	"우리가 이제 막\n친구가 됐는데도!!\n"
 	keyWait
 		type = 1
 	clearMsg

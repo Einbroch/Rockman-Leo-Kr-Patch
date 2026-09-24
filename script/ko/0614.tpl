@@ -21,11 +21,11 @@ script 10 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"응? 내가 왜 풀이 죽어\n있냐고?\n"
+	"응? 내가 왜 풀이 죽어\n있냐고?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"사실 새 노래 가사를\n쓰려고 하는데,\n"
+	"사실 새 노래 가사를\n쓰려고 하는데,\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -33,7 +33,7 @@ script 10 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"도무지 진전이\n없어.\n"
+	"도무지 진전이\n없어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -41,11 +41,11 @@ script 10 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"나랑 같이 써 주면\n안 될까? 네가 조금\n"
+	"나랑 같이 써 주면\n안 될까? 네가 조금\n"
 	keyWait
 		type = 1
 	clearMsg
-	"영감을 줄 수 있을\n것 같아...\n"
+	"영감을 줄 수 있을\n것 같아...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -90,7 +90,7 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"새 노래 가사를\n쓰려고 하는데,\n"
+	"새 노래 가사를\n쓰려고 하는데,\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -98,13 +98,13 @@ script 11 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"도무지 진전이 없어."
+	"도무지 진전이 없어."
 	keyWait
 		type = 1
 	clearMsg
 	"야, "
 	printPlayerName1
-	", 나랑\n같이 써 주면 안 될까?"
+	", 나랑\n같이 써 주면 안 될까?"
 	keyWait
 		type = 1
 	clearMsg
@@ -112,7 +112,7 @@ script 11 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"영감을 줄 수 있을 것 같아!\n\n"
+	"영감을 줄 수 있을 것 같아!\n\n"
 	mugshotHide
 	"제발!!"
 	keyWait
@@ -158,29 +158,29 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아! 그럼 시작하자.\n"
+	"좋아! 그럼 시작하자.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"제목은 「유대」야.\n"
+	"제목은 「유대」야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"...하나, 둘, 하나 둘 셋 넷!\n"
+	"...하나, 둘, 하나 둘 셋 넷!\n"
 	keyWait
 		type = 1
 	clearMsg
 	textSpeed
 		delay = 2
-	"「고요한 밤, 나는\n홀로 남아...\n"
+	"「고요한 밤, 나는\n홀로 남아...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"창문을 열고\n밖을 바라보네...\n"
+	"창문을 열고\n밖을 바라보네...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그러자 그곳에\n부드러운...\n"
+	"그러자 그곳에\n부드러운...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -202,7 +202,7 @@ script 12 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"푸른 하늘이!\n"
+	"푸른 하늘이!\n"
 	positionOptionFromCenter
 		width = 5
 	optionText
@@ -257,7 +257,7 @@ script 12 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"별들이 보여"
+	"별들이 보여"
 	selectText
 		default = 0
 		BContinue = false
@@ -274,7 +274,7 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Sonia
-	"그리고 나는 그들에게\n물어보네...\n"
+	"그리고 나는 그들에게\n물어보네...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -321,7 +321,7 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Sonia
-	"그들이 내게 대답하네...\n그들은\n"
+	"그들이 내게 대답하네...\n그들은\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -335,7 +335,7 @@ script 12 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"이어져 있다고.\n"
+	"이어져 있다고.\n"
 	positionOptionFromCenter
 		width = 13
 	optionText
@@ -343,7 +343,7 @@ script 12 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"따로 떨어져 있다고.\n"
+	"따로 떨어져 있다고.\n"
 	positionOptionFromCenter
 		width = 13
 	optionText
@@ -351,7 +351,7 @@ script 12 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"나란히 있다고."
+	"나란히 있다고."
 	selectText
 		default = 0
 		BContinue = false
@@ -368,11 +368,11 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Sonia
-	"수많은 별들이 강하게 빛나는 건\n\n"
+	"수많은 별들이 강하게 빛나는 건\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"모두 그들의...\n\n"
+	"모두 그들의...\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -386,7 +386,7 @@ script 12 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"밤하늘 덕분인지\n"
+	"밤하늘 덕분인지\n"
 	positionOptionFromCenter
 		width = 5
 	optionText
@@ -394,7 +394,7 @@ script 12 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"그림자 덕분인지\n"
+	"그림자 덕분인지\n"
 	positionOptionFromCenter
 		width = 5
 	optionText
@@ -402,7 +402,7 @@ script 12 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"유대 덕분인지"
+	"유대 덕분인지"
 	selectText
 		default = 0
 		BContinue = false
@@ -419,7 +419,7 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Sonia
-	"함께라면 그들은\n절대...\n"
+	"함께라면 그들은\n절대...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -449,7 +449,7 @@ script 12 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"외롭지도 않아"
+	"외롭지도 않아"
 	selectText
 		default = 0
 		BContinue = false
@@ -466,11 +466,11 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Sonia
-	"작은 별빛 조각들도\n함께 빛나면...\n"
+	"작은 별빛 조각들도\n함께 빛나면...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그렇게 너희도\n더욱...\n"
+	"그렇게 너희도\n더욱...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -484,7 +484,7 @@ script 12 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"밝아질 거야\n"
+	"밝아질 거야\n"
 	positionOptionFromCenter
 		width = 8
 	optionText
@@ -492,7 +492,7 @@ script 12 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"작아질 거야\n"
+	"작아질 거야\n"
 	positionOptionFromCenter
 		width = 8
 	optionText
@@ -500,7 +500,7 @@ script 12 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"슬퍼질 거야"
+	"슬퍼질 거야"
 	selectText
 		default = 0
 		BContinue = false
@@ -517,7 +517,7 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Sonia
-	"나와 너 같은\n인간도\n"
+	"나와 너 같은\n인간도\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -525,7 +525,7 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"힘을 합치면"
+	"힘을 합치면"
 	mugshotHide
 	"더..."
 	textSpeed
@@ -537,7 +537,7 @@ script 12 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"졸릴 수 있어\n"
+	"졸릴 수 있어\n"
 	positionOptionFromCenter
 		width = 10
 	optionText
@@ -545,7 +545,7 @@ script 12 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"강해질 수 있어\n"
+	"강해질 수 있어\n"
 	positionOptionFromCenter
 		width = 10
 	optionText
@@ -553,7 +553,7 @@ script 12 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"물결칠 수 있어"
+	"물결칠 수 있어"
 	selectText
 		default = 0
 		BContinue = false
@@ -570,11 +570,11 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Sonia
-	"완벽을 향해 나아가는\n가장 좋은 방법은\n"
+	"완벽을 향해 나아가는\n가장 좋은 방법은\n"
 	keyWait
 		type = 1
 	clearMsg
-	"주변을 둘러보고\n너의...\n"
+	"주변을 둘러보고\n너의...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -588,7 +588,7 @@ script 12 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"유대를 찾는 거야\n"
+	"유대를 찾는 거야\n"
 	positionOptionFromCenter
 		width = 8
 	optionText
@@ -596,7 +596,7 @@ script 12 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"노래를 찾는 거야\n"
+	"노래를 찾는 거야\n"
 	positionOptionFromCenter
 		width = 8
 	optionText
@@ -604,7 +604,7 @@ script 12 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"태양을 찾는 거야"
+	"태양을 찾는 거야"
 	selectText
 		default = 0
 		BContinue = false
@@ -625,7 +625,7 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"난 혼자가 아니야!"
+	"난 혼자가 아니야!"
 	keyWait
 		type = 1
 	clearMsg
@@ -635,21 +635,21 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"그래! 해냈어!"
+	"그래! 해냈어!"
 	keyWait
 		type = 1
 	clearMsg
-	"우리 함께 노래를\n완성했어!\n"
+	"우리 함께 노래를\n완성했어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"고마워! 다 네 덕분이야,\n"
+	"고마워! 다 네 덕분이야,\n"
 	printPlayerName1
 	"!"
 	keyWait
 		type = 1
 	clearMsg
-	"고맙다는 뜻으로\n이걸 줄게.\n"
+	"고맙다는 뜻으로\n이걸 줄게.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -671,13 +671,13 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Sonia
-	"너와 함께 쓴 노래,\n"
+	"너와 함께 쓴 노래,\n"
 	printPlayerName1
 	"..."
 	keyWait
 		type = 1
 	clearMsg
-	"정말 잊지 못할\n노래가 될 거야!\n"
+	"정말 잊지 못할\n노래가 될 거야!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -696,7 +696,7 @@ script 13 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"마음이 바뀌면\n알려 줘!\n"
+	"마음이 바뀌면\n알려 줘!\n"
 	keyWait
 		type = 0
 	end
@@ -706,7 +706,7 @@ script 14 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"음... 그건\n좀 아닌 것 같은데...\n"
+	"음... 그건\n좀 아닌 것 같은데...\n"
 	keyWait
 		type = 0
 	end
@@ -716,13 +716,13 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"너와 함께 쓴 노래,\n"
+	"너와 함께 쓴 노래,\n"
 	printPlayerName1
 	"..."
 	keyWait
 		type = 1
 	clearMsg
-	"정말 잊지 못할\n노래가 될 거야!\n"
+	"정말 잊지 못할\n노래가 될 거야!\n"
 	keyWait
 		type = 0
 	end
@@ -732,7 +732,7 @@ script 51 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"기다리고 있을 테니까,\n꼭 돌아와야 해.\n"
+	"기다리고 있을 테니까,\n꼭 돌아와야 해.\n"
 	keyWait
 		type = 0
 	end
@@ -742,7 +742,7 @@ script 52 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"다시 브라더가\n되고 싶어?\n"
+	"다시 브라더가\n되고 싶어?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -783,7 +783,7 @@ script 54 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"뭐!? 어떻게 내 마음을\n가지고 놀 수가 있어!?\n"
+	"뭐!? 어떻게 내 마음을\n가지고 놀 수가 있어!?\n"
 	keyWait
 		type = 0
 	end
@@ -793,7 +793,7 @@ script 55 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Luna
-	"이미 브라더가\n6명이나 있구나...\n"
+	"이미 브라더가\n6명이나 있구나...\n"
 	keyWait
 		type = 0
 	end
@@ -803,7 +803,7 @@ script 100 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"츠카사을 찾아야 해!!\n"
+	"츠카사을 찾아야 해!!\n"
 	keyWait
 		type = 0
 	end

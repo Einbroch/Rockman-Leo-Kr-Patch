@@ -3,7 +3,7 @@
 
 script 2 mmsf1 {
 	msgOpen
-	"타이어 더미가\n길을 막고 있어.\n"
+	"타이어 더미가\n길을 막고 있어.\n"
 	keyWait
 		type = 0
 	end
@@ -11,15 +11,15 @@ script 2 mmsf1 {
 }
 script 3 mmsf1 {
 	msgOpen
-	"낡은 타이어 더미네...\n"
+	"낡은 타이어 더미네...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"요즘 차는 공중에 떠서 다니니까\n타이어가 달린\n"
+	"요즘 차는 공중에 떠서 다니니까\n타이어가 달린\n"
 	keyWait
 		type = 1
 	clearMsg
-	"차는 이제 거의 볼 수\n없어.\n"
+	"차는 이제 거의 볼 수\n없어.\n"
 	keyWait
 		type = 0
 	end
@@ -27,11 +27,11 @@ script 3 mmsf1 {
 }
 script 4 mmsf1 {
 	msgOpen
-	"차 문짝들이 아무렇게나\n널브러져 있어.\n"
+	"차 문짝들이 아무렇게나\n널브러져 있어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"창문은\n깨져 있네.\n"
+	"창문은\n깨져 있네.\n"
 	keyWait
 		type = 0
 	end
@@ -39,11 +39,11 @@ script 4 mmsf1 {
 }
 script 5 mmsf1 {
 	msgOpen
-	"아주 오래된 차가 언젠가\n폐차될 날을\n"
+	"아주 오래된 차가 언젠가\n폐차될 날을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"기다리고 있어.\n"
+	"기다리고 있어.\n"
 	keyWait
 		type = 0
 	end
@@ -51,11 +51,11 @@ script 5 mmsf1 {
 }
 script 6 mmsf1 {
 	msgOpen
-	"구식 통신\n단말기야.\n"
+	"구식 통신\n단말기야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"트랜서가 나오기 전에는\n거의 모든 사람이 하나씩 가지고 있었지.\n"
+	"트랜서가 나오기 전에는 거의 모든\n사람이 하나씩 가지고 있었지.\n"
 	keyWait
 		type = 0
 	end
@@ -63,11 +63,11 @@ script 6 mmsf1 {
 }
 script 7 mmsf1 {
 	msgOpen
-	"낡은 드럼통이네."
+	"낡은 드럼통이네."
 	keyWait
 		type = 1
 	clearMsg
-	"거의 다 비어 있는\n것 같아.\n"
+	"거의 다 비어 있는\n것 같아.\n"
 	keyWait
 		type = 0
 	end
@@ -83,7 +83,7 @@ script 9 mmsf1 {
 		npc = 0
 	textSpeed
 		delay = 0
-	"카드 트레이더 SP야. 카드\n10장을 넣을까?\n"
+	"카드 트레이더 SP야. 카드\n10장을 넣을까?\n"
 	positionOptionFromCenter
 		width = 13
 	textSpeed
@@ -130,7 +130,7 @@ script 11 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"아직도 꽤\n잘 작동하네.\n"
+	"아직도 꽤\n잘 작동하네.\n"
 	keyWait
 		type = 0
 	end
@@ -138,11 +138,11 @@ script 11 mmsf1 {
 }
 script 15 mmsf1 {
 	msgOpen
-	"드럼통도 많고, 타이어\n더미도\n"
+	"드럼통도 많고, 타이어\n더미도\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하나 있네... 뭐지?\n"
+	"하나 있네... 뭐지?\n"
 	keyWait
 		type = 0
 	end
@@ -150,15 +150,15 @@ script 15 mmsf1 {
 }
 script 16 mmsf1 {
 	msgOpen
-	"드럼통도 많고, 타이어\n더미도\n"
+	"드럼통도 많고, 타이어\n더미도\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하나 있네... 뭐지?\n"
+	"하나 있네... 뭐지?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어...? 이건 뭐지?\n"
+	"어...? 이건 뭐지?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -184,11 +184,11 @@ script 29 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 11
-	"거기 너!\n나는 트레이더맨 SP다!\n"
+	"거기 너!\n나는 트레이더맨 SP다!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"카드 10장을 내놔!\n그러면 내 카드 10장을\n"
+	"카드 10장을 내놔!\n그러면 내 카드 10장을\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -237,7 +237,7 @@ script 31 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"내 상자에 배틀 카드가\n충분하지 않아.\n"
+	"내 상자에 배틀 카드가\n충분하지 않아.\n"
 	keyWait
 		type = 0
 	end
@@ -247,11 +247,11 @@ script 32 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 11
-	"뭐야...!? 약속을\n깨겠다는 거냐! 당장 나가\n"
+	"뭐야...!? 약속을\n깨겠다는 거냐! 당장 나가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"다시는 여기 얼씬도\n하지 마!\n"
+	"다시는 여기 얼씬도\n하지 마!\n"
 	keyWait
 		type = 0
 	end
@@ -261,11 +261,11 @@ script 33 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 11
-	"아! 아! 아!\n상자에 배틀 카드가\n"
+	"아! 아! 아!\n상자에 배틀 카드가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"충분하지 않잖아! 썩\n나가!\n"
+	"충분하지 않잖아! 썩\n나가!\n"
 	keyWait
 		type = 0
 	end

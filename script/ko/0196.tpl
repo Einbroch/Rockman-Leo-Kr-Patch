@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"미소라... 제발 그만해!\n"
+	"미소라... 제발 그만해!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -31,15 +31,15 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"응, 나야."
+	"응, 나야."
 	keyWait
 		type = 1
 	clearMsg
-	"사람을 다치게 하면 안 돼.\n"
+	"사람을 다치게 하면 안 돼.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"자, 집에 가자,\n미소라.\n"
+	"자, 집에 가자,\n미소라.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -51,11 +51,11 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = HarpNote
-	"...나는 하프 노트다.\n"
+	"...나는 하프 노트다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내 앞을 가로막지 마...\n"
+	"내 앞을 가로막지 마...\n"
 	keyWait
 		type = 2
 	jump
@@ -76,11 +76,11 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = HarpNote
-	"계속 내 앞을\n막겠다면...\n"
+	"계속 내 앞을\n막겠다면...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"너에게도 자비는\n베풀지 않을 거야!\n"
+	"너에게도 자비는\n베풀지 않을 거야!\n"
 	keyWait
 		type = 0
 	end
@@ -106,11 +106,11 @@ script 7 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"정말 싸우게 된다면,\n절대 봐주면 안 돼.\n"
+	"정말 싸우게 된다면,\n절대 봐주면 안 돼.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그러면 우린 끝장이야.\n"
+	"그러면 우린 끝장이야.\n"
 	keyWait
 		type = 1
 	clearMsg

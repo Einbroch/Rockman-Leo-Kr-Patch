@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"좋아, 키맨. 네 실력을\n보여 줘!\n"
+	"좋아, 키맨. 네 실력을\n보여 줘!\n"
 	keyWait
 		type = 0
 	end
@@ -15,7 +15,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = KeyMan
-	"열려라 참깨!"
+	"열려라 참깨!"
 	keyWait
 		type = 0
 	end
@@ -25,7 +25,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = KeyMan
-	"열려라 참깨!"
+	"열려라 참깨!"
 	keyWait
 		type = 0
 	end
@@ -39,7 +39,7 @@ script 3 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"고마워, 키맨!"
+	"고마워, 키맨!"
 	keyWait
 		type = 1
 	clearMsg
@@ -51,7 +51,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = KeyMan
-	"열려라 참깨!"
+	"열려라 참깨!"
 	keyWait
 		type = 0
 	end
@@ -61,11 +61,11 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"안 돼. 열리지\n않아.\n"
+	"안 돼. 열리지\n않아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"한 번 더 해\n볼까?\n"
+	"한 번 더 해\n볼까?\n"
 	keyWait
 		type = 1
 	clearMsg

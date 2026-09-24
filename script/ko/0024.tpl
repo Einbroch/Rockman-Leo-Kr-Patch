@@ -7,7 +7,7 @@ script 0 mmsf1 {
 	flagSet
 		flag = 601
 	printBrotherBuffer1
-	" "
+	"\n"
 	printBrotherBuffer2
 	end
 }
@@ -15,7 +15,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"미소라의 트랜서야!\n"
+	"미소라의 트랜서야!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -40,11 +40,11 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"이제는 더 이상 노래하고\n싶지 않아...\n"
+	"이제는 더 이상 노래하고\n싶지 않아...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"...엄마, 도와줘.\n"
+	"...엄마, 도와줘.\n"
 	keyWait
 		type = 0
 	end
@@ -54,7 +54,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"노래를 만들고 있어! 사람들이\n좋아해 줬으면 좋겠다.\n"
+	"노래를 만들고 있어! 사람들이\n좋아해 줬으면 좋겠다.\n"
 	keyWait
 		type = 0
 	end
@@ -64,11 +64,11 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"그날 이후로... 뱀에 대한\n악몽을\n"
+	"그날 이후로... 뱀에 대한\n악몽을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"꾸고 있어. 생각만 해도\n등골이\n"
+	"꾸고 있어. 생각만 해도\n등골이\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -86,15 +86,15 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"인생이란 무거운 짐을\n계속 짊어지고 가는 것 같아.\n"
+	"인생이란 무거운 짐을\n계속 짊어지고 가는 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"브라더는 그 짐을 함께 들어 주지.\n그 짐을\n"
+	"브라더는 그 짐을 함께 들어 주지.\n그 짐을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나눠 들 브라더에게 의지하는 것도\n좋은 일이야.\n"
+	"나눠 들 브라더에게 의지하는 것도\n좋은 일이야.\n"
 	keyWait
 		type = 0
 	end
@@ -104,11 +104,11 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"무슨 일이 있어도 널\n믿어!"
+	"무슨 일이 있어도 널\n믿어!"
 	keyWait
 		type = 1
 	clearMsg
-	"그러니 무사히 돌아와...\n"
+	"그러니 무사히 돌아와...\n"
 	keyWait
 		type = 0
 	end
@@ -118,7 +118,7 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"하프와 합체해서\n하프 노트가 될 수 있어!\n"
+	"하프와 합체해서\n하프 노트가 될 수 있어!\n"
 	keyWait
 		type = 2
 	end
@@ -142,11 +142,11 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"이제는 더 이상 노래하고\n싶지 않아...\n"
+	"이제는 더 이상 노래하고\n싶지 않아...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"...엄마, 도와줘.\n"
+	"...엄마, 도와줘.\n"
 	keyWait
 		type = 0
 	end
@@ -156,7 +156,7 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"노래를 만들고 있어! 사람들이\n좋아해 줬으면 좋겠다.\n"
+	"노래를 만들고 있어! 사람들이\n좋아해 줬으면 좋겠다.\n"
 	keyWait
 		type = 0
 	end
@@ -166,11 +166,11 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"그날 이후로... 뱀에 대한\n악몽을\n"
+	"그날 이후로... 뱀에 대한\n악몽을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"꾸고 있어. 생각만 해도\n등골이\n"
+	"꾸고 있어. 생각만 해도\n등골이\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -188,15 +188,15 @@ script 14 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"인생이란 무거운 짐을\n계속 짊어지고 가는 것 같아.\n"
+	"인생이란 무거운 짐을\n계속 짊어지고 가는 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"브라더는 그 짐을 함께 들어 주지.\n그 짐을\n"
+	"브라더는 그 짐을 함께 들어 주지.\n그 짐을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나눠 들 브라더에게 의지하는 것도\n좋은 일이야.\n"
+	"나눠 들 브라더에게 의지하는 것도\n좋은 일이야.\n"
 	keyWait
 		type = 0
 	end
@@ -206,11 +206,11 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"무슨 일이 있어도 널\n믿어!\n"
+	"무슨 일이 있어도 널\n믿어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그러니 무사히 돌아와...\n"
+	"그러니 무사히 돌아와...\n"
 	keyWait
 		type = 0
 	end

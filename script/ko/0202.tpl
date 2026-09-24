@@ -3,7 +3,7 @@
 
 script 0 mmsf1 {
 	msgOpen
-	"며칠 후...\n"
+	"며칠 후...\n"
 	keyWait
 		type = 0
 	end
@@ -39,7 +39,7 @@ script 3 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"여기가 어디지...?"
+	"여기가 어디지...?"
 	keyWait
 		type = 1
 	clearMsg
@@ -71,15 +71,15 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"여기가 어디야?"
+	"여기가 어디야?"
 	keyWait
 		type = 1
 	clearMsg
-	"주변에 아무것도\n없어.\n"
+	"주변에 아무것도\n없어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"언제, 어떻게 여기까지\n온 거지?"
+	"언제, 어떻게 여기까지\n온 거지?"
 	keyWait
 		type = 1
 	clearMsg
@@ -105,7 +105,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"너는 지금\n잠재의식 속에 있다.\n"
+	"너는 지금\n잠재의식 속에 있다.\n"
 	keyWait
 		type = 0
 	end
@@ -115,7 +115,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"너는 지금\n잠재의식 속에 있다.\n"
+	"너는 지금\n잠재의식 속에 있다.\n"
 	keyWait
 		type = 0
 	end
@@ -125,7 +125,7 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"너는 지금\n잠재의식 속에 있다.\n"
+	"너는 지금\n잠재의식 속에 있다.\n"
 	keyWait
 		type = 0
 	end
@@ -205,7 +205,7 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Geo
-	"내 이름을 어떻게\n아는 거야...?\n"
+	"내 이름을 어떻게\n아는 거야...?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -219,11 +219,11 @@ script 16 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"네 팔에 있는\n것은...\n"
+	"네 팔에 있는\n것은...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"FM 성인 워록,\n맞지?\n"
+	"FM 성인 워록,\n맞지?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -235,11 +235,11 @@ script 17 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"네 팔에 있는\n것은...\n"
+	"네 팔에 있는\n것은...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"FM 성인 워록,\n맞지?\n"
+	"FM 성인 워록,\n맞지?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -251,11 +251,11 @@ script 18 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"네 팔에 있는\n것은...\n"
+	"네 팔에 있는\n것은...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"FM 성인 워록,\n맞지?\n"
+	"FM 성인 워록,\n맞지?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -267,7 +267,7 @@ script 19 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"내 이름까지 알고 있어... 이\n녀석들은 대체 누구야!?\n"
+	"내 이름까지 알고 있어... 이\n녀석들은 대체 누구야!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -281,11 +281,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"우리는 너를 지켜보는\n자들이다.\n"
+	"우리는 너를 지켜보는\n자들이다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"앞으로도 계속\n지켜볼 자들이다.\n"
+	"앞으로도 계속\n지켜볼 자들이다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -297,11 +297,11 @@ script 21 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"우리는 너를 지켜보는\n자들이다.\n"
+	"우리는 너를 지켜보는\n자들이다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"앞으로도 계속\n지켜볼 자들이다.\n"
+	"앞으로도 계속\n지켜볼 자들이다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -313,11 +313,11 @@ script 22 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"우리는 너를 지켜보는\n자들이다.\n"
+	"우리는 너를 지켜보는\n자들이다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"앞으로도 계속\n지켜볼 자들이다.\n"
+	"앞으로도 계속\n지켜볼 자들이다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -346,11 +346,11 @@ script 24 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"저 녀석들 주변에서\n이상한 기운이 느껴져.\n"
+	"저 녀석들 주변에서\n이상한 기운이 느껴져.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리한테 좋은 소식은\n아닌 것 같군...\n"
+	"우리한테 좋은 소식은\n아닌 것 같군...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -362,7 +362,7 @@ script 25 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Geo
-	"그럼 적이야!? FM\n성인인가!?\n"
+	"그럼 적이야!? FM\n성인인가!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -376,11 +376,11 @@ script 26 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"우리는 경고하기 위해\n왔다.\n"
+	"우리는 경고하기 위해\n왔다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지금 너의 존재는\n아주 미약하지만...\n"
+	"지금 너의 존재는\n아주 미약하지만...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -388,7 +388,7 @@ script 26 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"궁극적인 운명을 결정하게 될 것이다.\n\n"
+	"궁극적인 운명을 결정하게 될\n것이다.\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -400,11 +400,11 @@ script 27 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"우리는 경고하기 위해\n왔다.\n"
+	"우리는 경고하기 위해\n왔다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지금 너의 존재는\n아주 미약하지만...\n"
+	"지금 너의 존재는\n아주 미약하지만...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -412,7 +412,7 @@ script 27 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"궁극적인 운명을 결정하게 될 것이다.\n\n"
+	"궁극적인 운명을 결정하게 될\n것이다.\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -424,11 +424,11 @@ script 28 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"우리는 경고하기 위해\n왔다.\n"
+	"우리는 경고하기 위해\n왔다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지금 너의 존재는\n아주 미약하지만...\n"
+	"지금 너의 존재는\n아주 미약하지만...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -436,7 +436,7 @@ script 28 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"궁극적인 운명을 결정하게 될 것이다.\n\n"
+	"궁극적인 운명을 결정하게 될\n것이다.\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -448,7 +448,7 @@ script 29 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Geo
-	"그게 무슨 뜻이야?\n"
+	"그게 무슨 뜻이야?\n"
 	keyWait
 		type = 0
 	end
@@ -472,11 +472,11 @@ script 31 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"정말 이상한 꿈이네...\n"
+	"정말 이상한 꿈이네...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"전에 이런 꿈을\n꾼 적이 있지 않았나?\n"
+	"전에 이런 꿈을\n꾼 적이 있지 않았나?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -490,11 +490,11 @@ script 32 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = GeoNoVisualizer
-	"펜던트가 빛나고 있어...\n"
+	"펜던트가 빛나고 있어...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이게 무슨 뜻이지?\n"
+	"이게 무슨 뜻이지?\n"
 	keyWait
 		type = 0
 	end
@@ -514,7 +514,7 @@ script 34 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Geo
-	"이봐, 워록. 너도\n같은 꿈을 꿨어?\n"
+	"이봐, 워록. 너도\n같은 꿈을 꿨어?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -526,15 +526,15 @@ script 35 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"응, 이상한 그림자가\n세 개 있었어...\n"
+	"응, 이상한 그림자가\n세 개 있었어...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"뭔가 계속\n중얼거리고 있었고.\n"
+	"뭔가 계속\n중얼거리고 있었고.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"무슨 말인지 하나도\n이해하지 못했어.\n"
+	"무슨 말인지 하나도\n이해하지 못했어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -546,11 +546,11 @@ script 36 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Geo
-	"뭐, 너만 그런 건\n아니야.\n"
+	"뭐, 너만 그런 건\n아니야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이해 안 되는 얘기가 나와서\n말인데...\n"
+	"이해 안 되는 얘기가 나와서\n말인데...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -562,11 +562,11 @@ script 37 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Geo
-	"잠에서 깨 보니\n내 펜던트가 빛나고 있었어...\n"
+	"잠에서 깨 보니\n내 펜던트가 빛나고 있었어...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"꿈이랑 뭔가 관련이\n있는 걸까?\n"
+	"꿈이랑 뭔가 관련이\n있는 걸까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -578,11 +578,11 @@ script 38 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"네가 그 브라더\n밴드를\n"
+	"네가 그 브라더\n밴드를\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그 브라더 밴드를 맺었을 때도 빛났잖아.\n\n"
+	"그 브라더 밴드를 맺었을 때도\n빛났잖아.\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -594,15 +594,15 @@ script 39 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Geo
-	"이게 대체\n뭘까.\n"
+	"이게 대체\n뭘까.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이제 평범한\n펜던트는 아닌 것\n같아."
+	"이제 평범한\n펜던트는 아닌 것\n같아."
 	keyWait
 		type = 1
 	clearMsg
-	"특별한 기능이라도\n있는 걸까?\n"
+	"특별한 기능이라도\n있는 걸까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -622,7 +622,7 @@ script 40 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"그거, 정말 소중히\n여기는구나.\n"
+	"그거, 정말 소중히\n여기는구나.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -646,7 +646,7 @@ script 42 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"그럼 네 엄마한테\n물어보러 가자.\n"
+	"그럼 네 엄마한테\n물어보러 가자.\n"
 	keyWait
 		type = 1
 	clearMsg

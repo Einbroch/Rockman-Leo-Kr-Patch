@@ -17,7 +17,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"다음 웨이브가 마지막이야, 꼬맹아.\n여기서 긴장 풀지 마!\n"
+	"다음 웨이브가 마지막이야,\n꼬맹아. 여기서 긴장 풀지 마!\n"
 	keyWait
 		type = 0
 	end

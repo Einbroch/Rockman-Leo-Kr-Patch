@@ -10,7 +10,7 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"방과 후에는 이 교실이\n조금\n"
+	"방과 후에는 이 교실이\n조금\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -24,7 +24,7 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"지구는 어떻게 되는\n거야!?\n"
+	"지구는 어떻게 되는\n거야!?\n"
 	keyWait
 		type = 0
 	end

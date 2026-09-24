@@ -15,7 +15,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"학교라... 흠..."
+	"학교라... 흠..."
 	keyWait
 		type = 2
 	end
@@ -29,7 +29,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"내가 이런 고급 콘도 단지에는\n대체 왜 온 거지?\n"
+	"내가 이런 고급 콘도 단지에는\n대체 왜 온 거지?\n"
 	keyWait
 		type = 0
 	end
@@ -44,7 +44,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"곤타네 집... 여기 올\n이유가 없는데...\n"
+	"곤타네 집... 여기 올\n이유가 없는데...\n"
 	keyWait
 		type = 0
 	end
@@ -59,7 +59,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"키자마로네 집... 여기 올\n이유가 없는데...\n"
+	"키자마로네 집... 여기 올\n이유가 없는데...\n"
 	keyWait
 		type = 0
 	end
@@ -74,7 +74,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"가게처럼 보이는데,\n문을 닫았네.\n"
+	"가게처럼 보이는데,\n문을 닫았네.\n"
 	keyWait
 		type = 0
 	end
@@ -84,7 +84,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"집에 가기엔\n조금 이르지 않아?\n"
+	"집에 가기엔\n조금 이르지 않아?\n"
 	keyWait
 		type = 0
 	end
@@ -92,17 +92,17 @@ script 5 mmsf1 {
 }
 script 6 mmsf1 {
 	msgOpen
-	"흠, 흠..."
+	"흠, 흠..."
 	keyWait
 		type = 1
 	clearMsg
-	"그렇구나, 그렇구나."
+	"그렇구나, 그렇구나."
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShowNPC
 		npc = 0
-	"응? 저 목소리는...\n"
+	"응? 저 목소리는...\n"
 	keyWait
 		type = 0
 	end
@@ -112,11 +112,11 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"반장인 루나의\n목소리야...\n"
+	"반장인 루나의\n목소리야...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"가서 인사해야겠다.\n"
+	"가서 인사해야겠다.\n"
 	keyWait
 		type = 0
 	end
@@ -131,7 +131,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"어라, 저쪽엔 아무도\n없는데.\n"
+	"어라, 저쪽엔 아무도\n없는데.\n"
 	keyWait
 		type = 0
 	end
@@ -141,7 +141,7 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"어디 가는 거야!? 거긴\n우리가 갈 일이 없잖아!\n"
+	"어디 가는 거야!? 거긴\n우리가 갈 일이 없잖아!\n"
 	keyWait
 		type = 0
 	end
@@ -151,7 +151,7 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"먼저 미소라와\n얘기해 봐야겠어.\n"
+	"먼저 미소라와\n얘기해 봐야겠어.\n"
 	keyWait
 		type = 0
 	end
@@ -161,7 +161,7 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"지금은 학교에\n가고 싶지 않아...\n"
+	"지금은 학교에\n가고 싶지 않아...\n"
 	keyWait
 		type = 0
 	end
@@ -187,19 +187,19 @@ script 20 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"...어? 내 생각을\n알고 있다고?\n"
+	"...어? 내 생각을\n알고 있다고?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"맞아! 이 마을에\n체이스 윈드라는 사람이\n"
+	"맞아! 이 마을에\n체이스 윈드라는 사람이\n"
 	keyWait
 		type = 1
 	clearMsg
-	"있는데... 그 사람 나이가\n몇 살인지 알고 싶어.\n"
+	"있는데... 그 사람 나이가\n몇 살인지 알고 싶어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"알게 되면 나한테\n알려 줄래?\n"
+	"알게 되면 나한테\n알려 줄래?\n"
 	keyWait
 		type = 2
 	flagSet
@@ -210,15 +210,15 @@ script 21 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Woman
-	"맞아! 이 마을에\n체이스 윈드라는 사람이\n"
+	"맞아! 이 마을에\n체이스 윈드라는 사람이\n"
 	keyWait
 		type = 1
 	clearMsg
-	"있는데... 그 사람 나이가\n몇 살인지 알고 싶어.\n"
+	"있는데... 그 사람 나이가\n몇 살인지 알고 싶어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"알게 되면,\n나한테 알려 줄래?\n"
+	"알게 되면,\n나한테 알려 줄래?\n"
 	keyWait
 		type = 0
 	end
@@ -228,7 +228,7 @@ script 22 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Woman
-	"어? 그 체이스라는 사람의\n나이를 알아냈어?\n"
+	"어? 그 체이스라는 사람의\n나이를 알아냈어?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -236,15 +236,15 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"와, 정말 나이가 많네...\n"
+	"와, 정말 나이가 많네...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"알아봐 줘서\n고마워!\n"
+	"알아봐 줘서\n고마워!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이건 너한테 줄게!"
+	"이건 너한테 줄게!"
 	keyWait
 		type = 1
 	clearMsg
@@ -266,7 +266,7 @@ script 22 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Woman
-	"내가 너무 어리다고\n생각하면 어떡하지.\n"
+	"내가 너무 어리다고\n생각하면 어떡하지.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -283,7 +283,7 @@ script 23 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Woman
-	"내가 너무 어리다고\n생각하면 어떡하지.\n"
+	"내가 너무 어리다고\n생각하면 어떡하지.\n"
 	keyWait
 		type = 0
 	end
@@ -301,22 +301,22 @@ script 25 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"어? 내가 꼭 가져야 할\n카드가 있다고?\n"
+	"어? 내가 꼭 가져야 할\n카드가 있다고?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"응, 어떻게 알았어?\n"
+	"응, 어떻게 알았어?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나 정말\n\""
+	"나 정말\n\""
 	printCard
 		card = 37
-	"\"\n카드를 갖고 싶어!"
+	"\"\n카드를 갖고 싶어!"
 	keyWait
 		type = 1
 	clearMsg
-	"그런데 구하기가 어렵더라.\n"
+	"그런데 구하기가 어렵더라.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -334,14 +334,14 @@ script 26 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"나 정말\n\""
+	"나 정말\n\""
 	printCard
 		card = 37
-	"\"\n카드를 갖고 싶어!"
+	"\"\n카드를 갖고 싶어!"
 	keyWait
 		type = 1
 	clearMsg
-	"그런데 구하기가 어렵더라.\n"
+	"그런데 구하기가 어렵더라.\n"
 	keyWait
 		type = 0
 	end
@@ -351,11 +351,11 @@ script 27 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"맞아! 바로 그 카드야\n내가 갖고 싶은 거!!\n"
+	"맞아! 바로 그 카드야\n내가 갖고 싶은 거!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나한테 줄래?"
+	"나한테 줄래?"
 	keyWait
 		type = 1
 	clearMsg
@@ -400,7 +400,7 @@ script 27 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"그럼 답례로 이걸\n줄게!\n"
+	"그럼 답례로 이걸\n줄게!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -423,7 +423,7 @@ script 27 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Boy
-	"좋았어! 어서 가서\n자랑해야지.\n"
+	"좋았어! 어서 가서\n자랑해야지.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -438,7 +438,7 @@ script 28 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"아, 정말..."
+	"아, 정말..."
 	keyWait
 		type = 0
 	end
@@ -448,7 +448,7 @@ script 29 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"좋았어! 어서 가서\n자랑해야지.\n"
+	"좋았어! 어서 가서\n자랑해야지.\n"
 	keyWait
 		type = 0
 	end
@@ -470,27 +470,27 @@ script 30 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"네? 무슨\n용건이세요?\n"
+	"네? 무슨\n용건이세요?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"...맞아! 어떻게\n알았어?"
+	"...맞아! 어떻게\n알았어?"
 	keyWait
 		type = 1
 	clearMsg
-	"요즘 들어 이상한 게\n자꾸 보여!!\n"
+	"요즘 들어 이상한 게\n자꾸 보여!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"자판기 뒤에서 이상한 게\n계속 나를 빤히 쳐다봐.\n"
+	"자판기 뒤에서 이상한 게\n계속 나를 빤히 쳐다봐.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"자판기 말이야. 정말\n소름 끼쳐.\n"
+	"자판기 말이야. 정말\n소름 끼쳐.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어떻게 해야 하지?\n"
+	"어떻게 해야 하지?\n"
 	keyWait
 		type = 2
 	flagSet
@@ -501,15 +501,15 @@ script 31 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"요즘 들어 이상한 게\n자꾸 보여!!\n"
+	"요즘 들어 이상한 게\n자꾸 보여!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"자판기 뒤에서 이상한 게\n계속 나를 빤히 쳐다봐.\n"
+	"자판기 뒤에서 이상한 게\n계속 나를 빤히 쳐다봐.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"정말 소름\n끼쳐.\n"
+	"정말 소름\n끼쳐.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -519,19 +519,19 @@ script 32 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"어? 그런데 뭐였어?\n귀신이었어?"
+	"어? 그런데 뭐였어?\n귀신이었어?"
 	keyWait
 		type = 1
 	clearMsg
-	"아니라고? 그래도 이제\n완전히 사라진 거지?\n"
+	"아니라고? 그래도 이제\n완전히 사라진 거지?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"다행이다. 네 말 믿을게.\n고마워!\n"
+	"다행이다. 네 말 믿을게.\n고마워!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"여기, 네 시간 때울 만한\n거야."
+	"여기, 네 시간 때울 만한\n거야."
 	keyWait
 		type = 1
 	clearMsg
@@ -553,11 +553,11 @@ script 32 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = LittleBoy
-	"대체 그 으스스한 게\n뭐였을까\n"
+	"대체 그 으스스한 게\n뭐였을까\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어쨌든 말이야…"
+	"어쨌든 말이야…"
 	keyWait
 		type = 2
 	flagSet
@@ -572,11 +572,11 @@ script 35 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"대체 그 으스스한 게\n뭐였을까\n"
+	"대체 그 으스스한 게\n뭐였을까\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어쨌든 말이야…"
+	"어쨌든 말이야…"
 	keyWait
 		type = 0
 	end
@@ -598,19 +598,19 @@ script 40 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OldMan
-	"무슨 일이니,\n꼬마야?\n"
+	"무슨 일이니,\n꼬마야?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아, 맞다!\n얼마 전에 돈을 잃어버렸지\n"
+	"아, 맞다!\n얼마 전에 돈을 잃어버렸지\n"
 	keyWait
 		type = 1
 	clearMsg
-	"손자에게 주려고\n했던 돈이야…\n"
+	"손자에게 주려고\n했던 돈이야…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"잃어버린 곳은 아마 비스타\n포인트였던 것 같구나.\n"
+	"잃어버린 곳은 아마 비스타\n포인트였던 것 같구나.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -621,15 +621,15 @@ script 41 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OldMan
-	"얼마 전에 돈을 좀 잃어버렸단다\n"
+	"얼마 전에 돈을 좀 잃어버렸단다\n"
 	keyWait
 		type = 1
 	clearMsg
-	"손자에게 주려고 했던\n돈인데…\n"
+	"손자에게 주려고 했던\n돈인데…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"잃어버린 곳은 아마 비스타\n포인트였던 것 같구나.\n"
+	"잃어버린 곳은 아마 비스타\n포인트였던 것 같구나.\n"
 	keyWait
 		type = 0
 	end
@@ -639,11 +639,11 @@ script 42 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OldMan
-	"오오! 내 돈을 찾았다고?\n"
+	"오오! 내 돈을 찾았다고?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그럼 어디 한번 보자꾸나!\n어디 있니?\n"
+	"그럼 어디 한번 보자꾸나!\n어디 있니?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -655,13 +655,13 @@ script 42 mmsf1 {
 		amount = 500
 	mugshotHide
 	printPlayerName1
-	"가\n\"500 제니\"를 노인에게 건넸다!!"
+	"가 \"500 제니\"를\n노인에게 건넸다!!"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = OldMan
-	"고맙다, 꼬마야. 수고비로\n이걸 주마!\n"
+	"고맙다, 꼬마야. 수고비로\n이걸 주마!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -684,7 +684,7 @@ script 42 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = OldMan
-	"손자가 정말\n기뻐하겠구나.\n"
+	"손자가 정말\n기뻐하겠구나.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -699,11 +699,11 @@ script 43 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OldMan
-	"잠깐, 그건 충분하지 않단다.\n"
+	"잠깐, 그건 충분하지 않단다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내가 잃어버린 건\n\"500 제니\"였다고…\n"
+	"내가 잃어버린 건\n\"500 제니\"였다고…\n"
 	keyWait
 		type = 0
 	end
@@ -713,7 +713,7 @@ script 46 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OldMan
-	"손자가 정말\n기뻐하겠구나.\n"
+	"손자가 정말\n기뻐하겠구나.\n"
 	keyWait
 		type = 0
 	end
@@ -733,23 +733,23 @@ script 50 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"오, 너구나. 내가 RC 헬기를\n줬던 아이 말이야.\n"
+	"오, 너구나. 내가 RC 헬기를\n줬던 아이 말이야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"잘 작동하니?\n"
+	"잘 작동하니?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이제 조종도 꽤\n능숙해졌니?\n"
+	"이제 조종도 꽤\n능숙해졌니?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"알고 있어!"
+	"알고 있어!"
 	keyWait
 		type = 1
 	clearMsg
-	"네 실력이 얼마나 늘었는지\n내게 보여 주지 않으련?\n"
+	"네 실력이 얼마나 늘었는지\n내게 보여 주지 않으련?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -790,11 +790,11 @@ script 50 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Man
-	"이야, 꽤나 자신만만해\n보이는구나!\n"
+	"이야, 꽤나 자신만만해\n보이는구나!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그럼 실력을 한번 볼까!\n"
+	"그럼 실력을 한번 볼까!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -805,11 +805,11 @@ script 51 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Man
-	"RC 헬기를 얼마나\n잘 조종하게 됐는지\n"
+	"RC 헬기를 얼마나\n잘 조종하게 됐는지\n"
 	keyWait
 		type = 1
 	clearMsg
-	"한번 보여 주지\n않겠니?\n"
+	"한번 보여 주지\n않겠니?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -846,11 +846,11 @@ script 51 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Man
-	"이야, 꽤나 자신만만해\n보이는구나!\n"
+	"이야, 꽤나 자신만만해\n보이는구나!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그럼 실력을 한번 볼까!\n"
+	"그럼 실력을 한번 볼까!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -861,7 +861,7 @@ script 52 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Man
-	"아, 그렇구나. 아쉽게 됐네.\n"
+	"아, 그렇구나. 아쉽게 됐네.\n"
 	keyWait
 		type = 0
 	end
@@ -877,19 +877,19 @@ script 55 mmsf1 {
 		jumpIfFalse = continue
 	flagSet
 		flag = 6687
-	"내가 제일 좋아하는 샌드위치 냄새는\n단번에 알아보지! 햄 샌드위치야!\n"
+	"내가 제일 좋아하는 샌드위치\n냄새는 단번에 알아보지! 햄\n샌드위치야!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그거 나한테 가져온\n거니?\n"
+	"그거 나한테 가져온\n거니?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"뭐, 그 아주머니가 꽤\n나이가 많긴 하지…"
+	"뭐, 그 아주머니가 꽤\n나이가 많긴 하지…"
 	keyWait
 		type = 1
 	clearMsg
-	"고맙다, 꼬마야."
+	"고맙다, 꼬마야."
 	keyWait
 		type = 1
 	clearMsg
@@ -898,36 +898,36 @@ script 55 mmsf1 {
 		amount = 1
 	mugshotHide
 	printPlayerName1
-	"가\n\""
+	"가 \""
 	printItem
 		item = 45
-	"\"를 노인에게 건넸다!!"
+	"\"를\n노인에게 건넸다!!"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = OldMan
-	"음, 음."
+	"음, 음."
 	keyWait
 		type = 1
 	clearMsg
-	"교육감님께 내 안부를\n전해 주렴.\n"
+	"교육감님께 내 안부를\n전해 주렴.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"…오, 몰랐니?\n그 할머니는\n"
+	"…오, 몰랐니?\n그 할머니는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"예전에 교육감님이셨어.\n그런데 은퇴하신 뒤에\n"
+	"예전에 교육감님이셨어.\n그런데 은퇴하신 뒤에\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 조그마한 간식\n가게를 시작하셨지.\n"
+	"이 조그마한 간식\n가게를 시작하셨지.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"학교를 정말\n사랑하시나 봐.\n"
+	"학교를 정말\n사랑하시나 봐.\n"
 	keyWait
 		type = 0
 	end
@@ -937,15 +937,15 @@ script 56 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OldMan
-	"그 할머니는 예전에\n교육감님이셨어.\n"
+	"그 할머니는 예전에\n교육감님이셨어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"은퇴하신\n뒤에 그 작은\n"
+	"은퇴하신\n뒤에 그 작은\n"
 	keyWait
 		type = 1
 	clearMsg
-	"간식 가게를 시작하셨지.\n학교를 정말 사랑하셔.\n"
+	"간식 가게를 시작하셨지.\n학교를 정말 사랑하셔.\n"
 	keyWait
 		type = 0
 	end
@@ -959,23 +959,23 @@ script 60 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"…어? 내가 여기서\n뭘 하고 있는 거지?"
+	"…어? 내가 여기서\n뭘 하고 있는 거지?"
 	keyWait
 		type = 1
 	clearMsg
-	"아, 그냥 잠깐\n쉬고 있는 거야.\n"
+	"아, 그냥 잠깐\n쉬고 있는 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"인간도 쉬는 시간은\n갖잖아, 그렇지?"
+	"인간도 쉬는 시간은\n갖잖아, 그렇지?"
 	keyWait
 		type = 1
 	clearMsg
-	"자판기에 가서 음료를\n사 마시기도 하고.\n"
+	"자판기에 가서 음료를\n사 마시기도 하고.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나도 한 번 해 봤는데…\n"
+	"나도 한 번 해 봤는데…\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -983,19 +983,19 @@ script 60 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"누군가 날 유령으로\n착각했나?\n"
+	"누군가 날 유령으로\n착각했나?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아, 그건 내 실수였어.\n"
+	"아, 그건 내 실수였어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"누구를 놀라게 하려던 건\n아니었는데.\n"
+	"누구를 놀라게 하려던 건\n아니었는데.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"앞으로는 사람들이\n날 볼 수 없는 곳에서\n"
+	"앞으로는 사람들이\n날 볼 수 없는 곳에서\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -1010,7 +1010,7 @@ script 61 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"앞으로는 사람들이\n날 볼 수 없는 곳에서\n"
+	"앞으로는 사람들이\n날 볼 수 없는 곳에서\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -1024,7 +1024,7 @@ script 70 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"저 트럭을 어떻게든\n빨리 처리해야 해!\n"
+	"저 트럭을 어떻게든\n빨리 처리해야 해!\n"
 	keyWait
 		type = 0
 	end

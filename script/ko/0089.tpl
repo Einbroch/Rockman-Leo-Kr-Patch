@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	textSpeed
 		delay = 0
 	printBrotherBuffer1
-	" "
+	"\n"
 	printBrotherBuffer2
 	end
 }
@@ -13,7 +13,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ProfSnake
-	"내 트랜서에 오신 걸 환영하쉐에!\n"
+	"내 트랜서에 오신 걸 환영하쉐에!\n"
 	keyWait
 		type = 0
 	end
@@ -36,15 +36,15 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ProfSnake
-	"난 언제나 새롭고 희귀한\n품종의 뱀을\n"
+	"난 언제나 새롭고 희귀한\n품종의 뱀을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"찾고 있쉐에! 정말\n만족스럽쉐에!\n"
+	"찾고 있쉐에! 정말\n만족스럽쉐에!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내 주위를 뱀으로\n가득 채우고 싶쉐에!\n"
+	"내 주위를 뱀으로\n가득 채우고 싶쉐에!\n"
 	keyWait
 		type = 0
 	end
@@ -54,15 +54,15 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ProfSnake
-	"난 언제나 새롭고 희귀한\n품종의 뱀을\n"
+	"난 언제나 새롭고 희귀한\n품종의 뱀을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"찾고 있쉐에! 정말\n만족스럽쉐에!\n"
+	"찾고 있쉐에! 정말\n만족스럽쉐에!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내 주위를 뱀으로\n가득 채우고 싶쉐에!\n"
+	"내 주위를 뱀으로\n가득 채우고 싶쉐에!\n"
 	keyWait
 		type = 0
 	end
@@ -72,25 +72,25 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ProfSnake
-	"이건 정말 끔찍하쉐에!\n"
+	"이건 정말 끔찍하쉐에!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"소중한 뱀 몇 마리가\n\n"
+	"소중한 뱀 몇 마리가\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"도망쳐 버렸쉐에!"
+	"도망쳐 버렸쉐에!"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"어머, 저 사람 뱀들이\n도망쳤잖아!\n"
+	"어머, 저 사람 뱀들이\n도망쳤잖아!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내가 뭔가 해야 할까?\n\n"
+	"내가 뭔가 해야 할까?\n\n"
 	positionOptionFromCenter
 		width = 13
 	textSpeed
@@ -127,13 +127,13 @@ script 10 mmsf1 {
 		jumpIfFalse = continue
 	mugshotShow
 		mugshot = OmegaXis
-	"뱀은 별로 취향이 아닌데...\n뭐, 됐어.\n"
+	"뱀은 별로 취향이 아닌데...\n뭐, 됐어.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"나한테 메모 메일을\n써 둬야겠어...\n"
+	"나한테 메모 메일을\n써 둬야겠어...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -149,15 +149,15 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = ProfSnake
-	"이건 정말 끔찍하쉐에!\n"
+	"이건 정말 끔찍하쉐에!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"소중한 뱀 몇 마리가\n\n"
+	"소중한 뱀 몇 마리가\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"도망쳐 버렸쉐에!"
+	"도망쳐 버렸쉐에!"
 	keyWait
 		type = 1
 	clearMsg
@@ -171,7 +171,7 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"아, 됐어..."
+	"아, 됐어..."
 	keyWait
 		type = 1
 	clearMsg
@@ -181,11 +181,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이봐, 이봐! 네가\n미처 끝내지 못한 일부터\n"
+	"이봐, 이봐! 네가\n미처 끝내지 못한 일부터\n"
 	keyWait
 		type = 1
 	clearMsg
-	"처리하는 게\n어때!?"
+	"처리하는 게\n어때!?"
 	keyWait
 		type = 1
 	clearMsg

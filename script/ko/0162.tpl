@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Cygnus
-	"잘했어, 워록."
+	"잘했어, 워록."
 	keyWait
 		type = 1
 	clearMsg
@@ -29,15 +29,15 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = AaronBoreal
-	"들리니? 신스케…\n"
+	"들리니? 신스케…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그만해 주세요!"
+	"그만해 주세요!"
 	keyWait
 		type = 1
 	clearMsg
-	"제발 제 말 좀 들어 주세요!\n"
+	"제발 제 말 좀 들어 주세요!\n"
 	keyWait
 		type = 0
 	end

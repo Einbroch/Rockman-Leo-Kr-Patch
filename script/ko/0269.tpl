@@ -6,7 +6,7 @@ script 0 mmsf1 {
 	itemTake
 		item = 41
 		amount = 1
-	"록맨이 미스터\n해르츠에게 해독제를 건넸습니다!\n"
+	"록맨이 미스터\n해르츠에게 해독제를 건넸습니다!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -28,11 +28,11 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"오! 치료됐어!\n"
+	"오! 치료됐어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"정말 정말 고마워!\n"
+	"정말 정말 고마워!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -42,11 +42,11 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"보아하니 독에\n중독됐군.\n"
+	"보아하니 독에\n중독됐군.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"해독제가 아직\n남아 있어. 마셔!\n"
+	"해독제가 아직\n남아 있어. 마셔!\n"
 	keyWait
 		type = 0
 	end
@@ -55,7 +55,7 @@ script 3 mmsf1 {
 script 4 mmsf1 {
 	msgOpen
 	mugshotHide
-	"록맨이 치료됐습니다!\n"
+	"록맨이 치료됐습니다!\n"
 	keyWait
 		type = 0
 	end
@@ -65,7 +65,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"아, 맞다. 문!\n"
+	"아, 맞다. 문!\n"
 	keyWait
 		type = 0
 	end
@@ -94,7 +94,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"자, 됐어!"
+	"자, 됐어!"
 	keyWait
 		type = 0
 	end
@@ -102,7 +102,7 @@ script 8 mmsf1 {
 }
 script 9 mmsf1 {
 	msgOpen
-	"록맨이 미스터\n해르츠에게 해독제를 건넸습니다!\n"
+	"록맨이 미스터\n해르츠에게 해독제를 건넸습니다!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -124,11 +124,11 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"오! 치료됐어!\n"
+	"오! 치료됐어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"정말 정말 고마워!\n"
+	"정말 정말 고마워!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -140,11 +140,11 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"보아하니 독에\n중독됐군.\n"
+	"보아하니 독에\n중독됐군.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"해독제가 아직\n남아 있어. 마셔!\n"
+	"해독제가 아직\n남아 있어. 마셔!\n"
 	keyWait
 		type = 0
 	end
@@ -154,7 +154,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"록맨이 치료됐습니다!\n"
+	"록맨이 치료됐습니다!\n"
 	keyWait
 		type = 0
 	end
@@ -164,11 +164,11 @@ script 14 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"나 혼자서는 이 문을 열\n수 없어...\n"
+	"나 혼자서는 이 문을 열\n수 없어...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네가 내 친구를\n구해 주면, 문을 열 수\n있어."
+	"네가 내 친구를\n구해 주면, 문을 열 수\n있어."
 	keyWait
 		type = 0
 	end

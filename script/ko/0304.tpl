@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"미안하지만 네\n잔치는 여기까지다!\n"
+	"미안하지만 네\n잔치는 여기까지다!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -27,7 +27,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Jammer
-	"메, 록맨!!"
+	"메, 록맨!!"
 	keyWait
 		type = 1
 	clearMsg
@@ -39,7 +39,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"당장 웨이브 로드를 복구해!\n"
+	"당장 웨이브 로드를 복구해!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -51,11 +51,11 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Jammer
-	"한 발짝만 더 다가오면,\n"
+	"한 발짝만 더 다가오면,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"후회하게 될 거야!!\n"
+	"후회하게 될 거야!!\n"
 	keyWait
 		type = 1
 	clearMsg

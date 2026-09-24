@@ -14,15 +14,15 @@ script 1 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"너, 보기보다 꽤 대단한\n데가 있구나! 보니까\n"
+	"너, 보기보다 꽤 대단한\n데가 있구나! 보니까\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네 아빠처럼 사람을\n휘어잡는 재주도 있고.\n"
+	"네 아빠처럼 사람을\n휘어잡는 재주도 있고.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그런데… 그 아이,\n어디선가 본 것 같은데……\n"
+	"그런데… 그 아이,\n어디선가 본 것 같은데……\n"
 	keyWait
 		type = 0
 	end
@@ -32,11 +32,11 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"뭔가 잊은 거 없니?\n"
+	"뭔가 잊은 거 없니?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그 아이를 너무 오래 기다리게 하지는 마!\n"
+	"그 아이를 너무 오래 기다리게\n하지는 마!\n"
 	keyWait
 		type = 0
 	end

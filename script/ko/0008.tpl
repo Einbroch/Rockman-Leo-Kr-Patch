@@ -10,14 +10,14 @@ script 1 mmsf1 {
 	end
 }
 script 2 mmsf1 {
-	"이름 변경"
+	"이름 변경"
 	end
 }
 script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Geo
-	"장비할 수 없어. 다시 편집한 다음\n시도해 줘. \n"
+	"장비할 수 없어. 다시 편집한 다음\n시도해 줘. \n"
 	keyWait
 		type = 2
 	end

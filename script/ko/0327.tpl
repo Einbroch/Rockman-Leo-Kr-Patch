@@ -3,7 +3,7 @@
 
 script 0 mmsf1 {
 	msgOpen
-	"쓰레기 속에서 수수께끼의 전파를\n찾아냈다!\n"
+	"쓰레기 속에서 수수께끼의 전파를\n찾아냈다!\n"
 	keyWait
 		type = 2
 	jump
@@ -12,7 +12,7 @@ script 0 mmsf1 {
 }
 script 1 mmsf1 {
 	msgOpen
-	"록맨은 다음을 입수했다:\n"
+	"록맨은 다음을 입수했다:\n"
 	playerAnimate0
 		animation = 24
 	itemGiveCardBuffered
@@ -29,7 +29,7 @@ script 1 mmsf1 {
 }
 script 2 mmsf1 {
 	msgOpen
-	"쓰레기 속에서 수수께끼의 전파를\n찾아냈다!\n"
+	"쓰레기 속에서 수수께끼의 전파를\n찾아냈다!\n"
 	keyWait
 		type = 2
 	jump
@@ -38,12 +38,12 @@ script 2 mmsf1 {
 }
 script 3 mmsf1 {
 	msgOpen
-	"록맨은 다음\n"
+	"록맨은 다음\n"
 	playerAnimate0
 		animation = 24
 	itemGiveBuffered
 		buffer = 1
-	"서브 카드: \""
+	"서브 카드:\n\""
 	printItemBuffered
 		buffer = 2
 	"\"!!"
@@ -55,7 +55,7 @@ script 3 mmsf1 {
 }
 script 4 mmsf1 {
 	msgOpen
-	"쓰레기 속에서 수수께끼의 전파를\n찾아냈다!\n"
+	"쓰레기 속에서 수수께끼의 전파를\n찾아냈다!\n"
 	keyWait
 		type = 2
 	jump
@@ -64,7 +64,7 @@ script 4 mmsf1 {
 }
 script 5 mmsf1 {
 	msgOpen
-	"록맨은 다음을 입수했다:\n"
+	"록맨은 다음을 입수했다:\n"
 	playerAnimate0
 		animation = 24
 	itemGiveZennyBuffered

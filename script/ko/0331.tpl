@@ -3,7 +3,7 @@
 
 script 0 mmsf1 {
 	msgOpen
-	"한편, 아마켄에서는...\n"
+	"한편, 아마켄에서는...\n"
 	keyWait
 		type = 0
 	end
@@ -13,7 +13,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"자, 대략 이 정도로\n마무리하겠습니다.\n"
+	"자, 대략 이 정도로\n마무리하겠습니다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -38,7 +38,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"마모루!!\n큰일 났어요!!\n"
+	"마모루!!\n큰일 났어요!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -50,7 +50,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"무슨 일이야, 신스케?\n"
+	"무슨 일이야, 신스케?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -72,7 +72,7 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"우주에서 이 신호를\n포착했어요!\n"
+	"우주에서 이 신호를\n포착했어요!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -84,7 +84,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"이, 이 신호는! 설마...!!\n"
+	"이, 이 신호는! 설마...!!\n"
 	keyWait
 		type = 0
 	end

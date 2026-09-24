@@ -23,7 +23,7 @@ script 1 mmsf1 {
 }
 script 2 mmsf1 {
 	msgOpen
-	"\"다시 학교에 다녀\n보는 건 어때?\"\n"
+	"\"다시 학교에 다녀\n보는 건 어때?\"\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -43,11 +43,11 @@ script 3 mmsf1 {
 }
 script 4 mmsf1 {
 	msgOpen
-	"\"그리고 네가 우리\n반 연극에\n"
+	"\"그리고 네가 우리\n반 연극에\n"
 	keyWait
 		type = 1
 	clearMsg
-	"출연해 줬으면 해.\n물론 우리 반 연극에 말이야.\""
+	"출연해 줬으면 해.\n물론 우리 반 연극에 말이야.\""
 	keyWait
 		type = 1
 	clearMsg
@@ -70,13 +70,13 @@ script 5 mmsf1 {
 script 6 mmsf1 {
 	msgOpen
 	mugshotHide
-	"*부스럭 부스럭*"
+	"*부스럭 부스럭*"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = GeoNoVisualizer
-	"(잠이 안 와.)"
+	"(잠이 안 와.)"
 	keyWait
 		type = 0
 	end
@@ -84,7 +84,7 @@ script 6 mmsf1 {
 }
 script 7 mmsf1 {
 	msgOpen
-	"\"얘기하고 싶을 때는\n언제든 나한테 와.\"\n"
+	"\"얘기하고 싶을 때는\n언제든 나한테 와.\"\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -104,7 +104,7 @@ script 8 mmsf1 {
 }
 script 9 mmsf1 {
 	msgOpen
-	"\"다시 만날 수 있으면\n좋겠다.\"\n"
+	"\"다시 만날 수 있으면\n좋겠다.\"\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -146,7 +146,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Geo
-	"잠이 안 와... 계속\n학교 생각만 나.\n"
+	"잠이 안 와... 계속\n학교 생각만 나.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -158,13 +158,13 @@ script 13 mmsf1 {
 }
 script 14 mmsf1 {
 	msgOpen
-	"\"너도 새로운 자신을 찾을 수 있어,\n"
+	"\"너도 새로운 자신을 찾을 수\n있어, "
 	printPlayerName1
 	"!!\""
 	keyWait
 		type = 1
 	clearMsg
-	"\"우리 함께 열심히 해\n보자!\"\n"
+	"\"우리 함께 열심히 해\n보자!\"\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -176,7 +176,7 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"새로운 나..."
+	"새로운 나..."
 	keyWait
 		type = 0
 	end
@@ -190,15 +190,15 @@ script 16 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"이제야 알 것 같아,\n미소라...\n"
+	"이제야 알 것 같아,\n미소라...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이대로는 안 돼.\n"
+	"이대로는 안 돼.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나는 변해야 해.\n"
+	"나는 변해야 해.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -215,19 +215,19 @@ script 16 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"나, 결심했어...\n"
+	"나, 결심했어...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"앞으로 나아가고\n싶어.\n"
+	"앞으로 나아가고\n싶어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나, 갈 거야..."
+	"나, 갈 거야..."
 	keyWait
 		type = 1
 	clearMsg
-	"학교에 다시 다녀\n보려고."
+	"학교에 다시 다녀\n보려고."
 	keyWait
 		type = 0
 	end
@@ -236,7 +236,7 @@ script 16 mmsf1 {
 script 17 mmsf1 {
 	msgOpen
 	mugshotHide
-	"며칠 후...\n"
+	"며칠 후...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -246,12 +246,12 @@ script 18 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"학교에는 다시\n다닌다고 말해 뒀는데,\n"
+	"학교에는 다시\n다닌다고 말해 뒀는데,\n"
 	keyWait
 		type = 1
 	clearMsg
 	printPlayerName1
-	", 정말 괜찮겠니?"
+	", 정말 괜찮겠니?"
 	keyWait
 		type = 1
 	clearMsg
@@ -263,7 +263,7 @@ script 19 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Geo
-	"괜찮아, 엄마.\n걱정하지 마.\n"
+	"괜찮아, 엄마.\n걱정하지 마.\n"
 	keyWait
 		type = 1
 	clearMsg

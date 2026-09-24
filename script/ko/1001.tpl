@@ -5,35 +5,35 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"재활용, 재활용!\n*삐삐*"
+	"재활용, 재활용!\n*삐삐*"
 	keyWait
 		type = 1
 	clearMsg
-	"난 언제나 재활용해!\n*삐삐*\n"
+	"난 언제나 재활용해!\n*삐삐*\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이봐! 물건을 소중히\n사용하고 있나?\n"
+	"이봐! 물건을 소중히\n사용하고 있나?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"한 번 쓰고 버리는\n시대는\n"
+	"한 번 쓰고 버리는\n시대는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"수백 년 전에\n끝났다고!\n"
+	"수백 년 전에\n끝났다고!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"재활용, 재활용!\n*삐삐*"
+	"재활용, 재활용!\n*삐삐*"
 	keyWait
 		type = 1
 	clearMsg
-	"너도 재활용! 나도 재활용!\n우리 모두 재활용!\n"
+	"너도 재활용! 나도 재활용!\n우리 모두 재활용!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"자, 어서!"
+	"자, 어서!"
 	keyWait
 		type = 0
 	end
@@ -57,14 +57,14 @@ script 10 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"요즘 기운이\n통 나질 않아.\n"
+	"요즘 기운이\n통 나질 않아.\n"
 	keyWait
 		type = 1
 	clearMsg
 	"미안하지만,\n\""
 	printCard
 		card = 130
-	"\" 하나만\n나눠 줄 수 있을까?"
+	"\" 하나만\n나눠 줄 수 있을까?"
 	keyWait
 		type = 1
 	clearMsg
@@ -105,14 +105,14 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"요즘 기운이\n통 나질 않아.\n"
+	"요즘 기운이\n통 나질 않아.\n"
 	keyWait
 		type = 1
 	clearMsg
 	"미안하지만,\n\""
 	printCard
 		card = 130
-	"\" 하나만\n나눠 줄 수 있을까?"
+	"\" 하나만\n나눠 줄 수 있을까?"
 	keyWait
 		type = 1
 	clearMsg
@@ -163,16 +163,16 @@ script 12 mmsf1 {
 		amount = 1
 	msgOpen
 	printPlayerName1
-	"가 미스터 허츠에게\n\""
+	"가 미스터 허츠에게\n\""
 	printCard
 		card = 130
-	"\" 건넸다!!"
+	"\" 건넸다!!"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MrHertz
-	"좋아, 밑져야 본전이야.\n꿀꺽...\n"
+	"좋아, 밑져야 본전이야.\n꿀꺽...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -180,15 +180,15 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"오, 그래!!"
+	"오, 그래!!"
 	keyWait
 		type = 1
 	clearMsg
-	"와, 등에 날개가\n돋은 기분이야!!"
+	"와, 등에 날개가\n돋은 기분이야!!"
 	keyWait
 		type = 1
 	clearMsg
-	"정말 고마워! 이제\n에너지가 넘쳐흘러!\n"
+	"정말 고마워! 이제\n에너지가 넘쳐흘러!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -199,7 +199,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"아... 그래..."
+	"아... 그래..."
 	keyWait
 		type = 0
 	end
@@ -209,7 +209,7 @@ script 14 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"음, 상자 안에\n하나도 없는 것\n같네."
+	"음, 상자 안에\n하나도 없는 것\n같네."
 	keyWait
 		type = 0
 	end
@@ -219,7 +219,7 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"정말 고마워! 이제\n에너지가 넘쳐흘러!\n"
+	"정말 고마워! 이제\n에너지가 넘쳐흘러!\n"
 	keyWait
 		type = 0
 	end

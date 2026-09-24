@@ -17,7 +17,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"지금이 스터디 웨이브를\n끌 기회야!!\n"
+	"지금이 스터디 웨이브를\n끌 기회야!!\n"
 	keyWait
 		type = 0
 	end
@@ -50,11 +50,11 @@ script 3 mmsf1 {
 		type = 1
 	clearMsg
 	soundEnableTextSFX
-	"스터디 웨이브 비상 사태.\n시스템을 종료합니다.\n"
+	"스터디 웨이브 비상 사태.\n시스템을 종료합니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"스터디 웨이브 비상 사태.\n시스템을 종료합니다.\n"
+	"스터디 웨이브 비상 사태.\n시스템을 종료합니다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -70,7 +70,7 @@ script 4 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"이제 스터디 웨이브가\n꺼졌을 거야.\n"
+	"이제 스터디 웨이브가\n꺼졌을 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -82,7 +82,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"...아, 안 돼!"
+	"...아, 안 돼!"
 	keyWait
 		type = 0
 	end
@@ -92,7 +92,7 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"네, 네가 날 막을 수\n있다고 생각해?\n"
+	"네, 네가 날 막을 수\n있다고 생각해?\n"
 	keyWait
 		type = 0
 	end
@@ -102,7 +102,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"아직도 싸우겠다는 거야!?\n"
+	"아직도 싸우겠다는 거야!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -124,7 +124,7 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"제발, 그만둬..."
+	"제발, 그만둬..."
 	keyWait
 		type = 1
 	clearMsg
@@ -136,11 +136,11 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"질 수 없어..."
+	"질 수 없어..."
 	keyWait
 		type = 1
 	clearMsg
-	"해고당할 수 없어...\n지금은 안 돼...\n"
+	"해고당할 수 없어...\n지금은 안 돼...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -151,7 +151,7 @@ script 10 mmsf1 {
 script 11 mmsf1 {
 	msgOpen
 	mugshotHide
-	"이쿠타 미치모리 선생님!!"
+	"이쿠타 미치모리 선생님!!"
 	keyWait
 		type = 0
 	end
@@ -161,7 +161,7 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"저 목소리는..."
+	"저 목소리는..."
 	keyWait
 		type = 0
 	end

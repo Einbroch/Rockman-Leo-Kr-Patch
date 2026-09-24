@@ -3,11 +3,11 @@
 
 script 0 mmsf1 {
 	msgOpen
-	"모니터에 파란 글씨로\n메시지가 표시되어 있다:\n"
+	"모니터에 파란 글씨로\n메시지가 표시되어 있다:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"「주파수 8413kHz」\n"
+	"「주파수 8413kHz」\n"
 	keyWait
 		type = 0
 	end
@@ -15,11 +15,11 @@ script 0 mmsf1 {
 }
 script 1 mmsf1 {
 	msgOpen
-	"모니터에 노란\n글씨로\n"
+	"모니터에 노란\n글씨로\n"
 	keyWait
 		type = 1
 	clearMsg
-	"메시지가 표시되어 있다: 「주파수 9861\nkHz」\n"
+	"메시지가 표시되어 있다: 「주파수\n9861 kHz」\n"
 	keyWait
 		type = 0
 	end
@@ -27,7 +27,7 @@ script 1 mmsf1 {
 }
 script 2 mmsf1 {
 	msgOpen
-	"보관함 안에 외부 작업에\n사용하는 도구가 있다.\n"
+	"보관함 안에 외부 작업에\n사용하는 도구가 있다.\n"
 	keyWait
 		type = 0
 	end
@@ -35,7 +35,7 @@ script 2 mmsf1 {
 }
 script 3 mmsf1 {
 	msgOpen
-	"우주복이다...\n혼자 입기는 힘들 것 같다.\n"
+	"우주복이다...\n혼자 입기는 힘들 것 같다.\n"
 	keyWait
 		type = 0
 	end
@@ -43,15 +43,15 @@ script 3 mmsf1 {
 }
 script 5 mmsf1 {
 	msgOpen
-	"선반에 우주 식량이\n놓여 있다...\n"
+	"선반에 우주 식량이\n놓여 있다...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"잘 보존되어 있는 것 같지만,\n아마\n"
+	"잘 보존되어 있는 것 같지만,\n아마\n"
 	keyWait
 		type = 1
 	clearMsg
-	"먹지 않는 게 좋겠어.\n"
+	"먹지 않는 게 좋겠어.\n"
 	keyWait
 		type = 0
 	end
@@ -59,11 +59,11 @@ script 5 mmsf1 {
 }
 script 6 mmsf1 {
 	msgOpen
-	"모니터에 빨간 글씨로\n메시지가 표시되어 있다:\n"
+	"모니터에 빨간 글씨로\n메시지가 표시되어 있다:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"「주파수 2183kHz」\n"
+	"「주파수 2183kHz」\n"
 	keyWait
 		type = 0
 	end
@@ -71,7 +71,7 @@ script 6 mmsf1 {
 }
 script 7 mmsf1 {
 	msgOpen
-	"이 모듈의\n에너지를 감시하는 제어\n패널이다."
+	"이 모듈의\n에너지를 감시하는 제어\n패널이다."
 	keyWait
 		type = 0
 	end
@@ -79,7 +79,7 @@ script 7 mmsf1 {
 }
 script 8 mmsf1 {
 	msgOpen
-	"특수 천으로 감싼\n케이블과 강철이다.\n"
+	"특수 천으로 감싼\n케이블과 강철이다.\n"
 	keyWait
 		type = 0
 	end
@@ -95,15 +95,15 @@ script 13 mmsf1 {
 		jumpIfTrue = 17
 		jumpIfFalse = continue
 	msgOpen
-	"문에 전자식 잠금 장치가\n설치되어 있다...\n"
+	"문에 전자식 잠금 장치가\n설치되어 있다...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"자세히 보니\n작은 모니터에\n"
+	"자세히 보니\n작은 모니터에\n"
 	keyWait
 		type = 1
 	clearMsg
-	"「레드 프리퀀시」라고\n표시되어 있다.\n"
+	"「레드 프리퀀시」라고\n표시되어 있다.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -114,13 +114,13 @@ script 13 mmsf1 {
 }
 script 14 mmsf1 {
 	msgOpen
-	"문에\n전자식 잠금 장치가 있다...\n"
+	"문에\n전자식 잠금 장치가 있다...\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShowNPC
 		npc = 0
-	"흠... 저 카드를\n사용하면 될지도...\n"
+	"흠... 저 카드를\n사용하면 될지도...\n"
 	keyWait
 		type = 0
 	end
@@ -128,11 +128,11 @@ script 14 mmsf1 {
 }
 script 15 mmsf1 {
 	msgOpen
-	"비상용 산소 탱크다...\n"
+	"비상용 산소 탱크다...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하지만 비어 있는\n것 같다.\n"
+	"하지만 비어 있는\n것 같다.\n"
 	keyWait
 		type = 0
 	end
@@ -140,15 +140,15 @@ script 15 mmsf1 {
 }
 script 16 mmsf1 {
 	msgOpen
-	"비상용 산소 탱크다...\n"
+	"비상용 산소 탱크다...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하지만 비어 있는\n것 같다.\n"
+	"하지만 비어 있는\n것 같다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어...? 이게 뭐지?\n"
+	"어...? 이게 뭐지?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -172,15 +172,15 @@ script 16 mmsf1 {
 }
 script 17 mmsf1 {
 	msgOpen
-	"문에\n전자식 잠금 장치가 있다...\n"
+	"문에\n전자식 잠금 장치가 있다...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"자세히 보니\n작은 모니터에\n"
+	"자세히 보니\n작은 모니터에\n"
 	keyWait
 		type = 1
 	clearMsg
-	"「레드 프리퀀시」라고\n표시되어 있다.\n"
+	"「레드 프리퀀시」라고\n표시되어 있다.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -189,7 +189,7 @@ script 17 mmsf1 {
 }
 script 18 mmsf1 {
 	msgOpen
-	"문에\n전자식 잠금 장치가 있다...\n"
+	"문에\n전자식 잠금 장치가 있다...\n"
 	keyWait
 		type = 0
 	end

@@ -34,6 +34,11 @@ KO_DIR = ROOT / 'script' / 'ko'
 JA_BLOCKS = 1247  # 일본판 mess.bin 블록 수. 그 뒤는 영어판에만 있다.
 
 INLINE = {'wait', 'waitHold', 'waitSkip'}
+MAX_WIDTH = 192             # 대사 한 줄 최대 폭(픽셀). 일본판 대사의 99%가 이 안이다.
+MAX_LINES = 3
+# 글자 안에서 출력하는 명령의 어림 폭(픽셀)
+INLINE_WIDTH = {'printPlayerName1': 48, 'printPlayerName2': 48, 'wait': 0, 'waitHold': 0, 'waitSkip': 0}
+PRINT_WIDTH = 96
 TAG_RE = re.compile(r'_CMD_\w+\([^)]*\)')
 # PC판 전용 꼬리표 → DS 글자
 PC_MARKUP = {
@@ -175,6 +180,162 @@ def build_run(run, entry, tag2key, stats):
     return out
 
 
+# ---------------------------------------------------------------- 줄바꿈
+def char_widths():
+    """글자 → 폭(픽셀). 일본판에서 가져온 글자는 게임의 폭 표를 쓴다."""
+    arm9 = (ROOT / 'work' / 'arm9.bin').read_bytes()
+    table = arm9[0xD09F0:0xD09F0 + 0x1E3]
+    widths = {}
+    for key, value in kotable.base_entries():
+        code = int(key, 16)
+        idx = code if len(key) == 2 else 0xE4 + (code & 0xFF)
+        if value and value != '\\n' and idx < len(table):
+            widths[value] = table[idx]
+    widths.update({c: 12 for c in kotable.HANGUL})
+    widths.update({c: kotable.EXTRA_WIDTH.get(c, 12) for c in kotable.EXTRA})
+    return widths
+
+
+WIDTHS = None
+MULTI = []
+
+
+def text_width(s):
+    global WIDTHS, MULTI
+    if WIDTHS is None:
+        WIDTHS = char_widths()
+        MULTI = sorted((v for v in WIDTHS if len(v) > 1), key=len, reverse=True)
+    w, i = 0, 0
+    while i < len(s):
+        for v in MULTI:
+            if s.startswith(v, i):
+                w += WIDTHS[v]
+                i += len(v)
+                break
+        else:
+            w += WIDTHS.get(s[i], 12)
+            i += 1
+    return w
+
+
+def item_width(item):
+    if item[0] == 'text':
+        return text_width(item[1])
+    return INLINE_WIDTH.get(item[1], PRINT_WIDTH if item[1].startswith('print') else 0)
+
+
+def thin_spaces(s):
+    """단어 사이 공백 한 칸은 좁은 빈칸으로. 연속 공백(정렬용)과 앞뒤 공백은 그대로 둔다."""
+    return re.sub(r'(?<=[^ \n]) (?=[^ \n])', kotable.THIN_SPACE, s)
+
+
+def split_lines(items):
+    """항목 목록을 줄 목록으로: 각 줄은 [(항목, 폭)]."""
+    lines = [[]]
+    for item in items:
+        if item[0] != 'text':
+            lines[-1].append(item)
+            continue
+        parts = item[1].split('\n')
+        for k, part in enumerate(parts):
+            if k:
+                lines.append([])
+            if part:
+                lines[-1].append(['text', part])
+    return lines
+
+
+def line_width(line):
+    return sum(item_width(it) for it in line)
+
+
+def wrap(items):
+    """너무 긴 줄이 있으면 띄어쓰기 기준으로 다시 나눈 줄 목록을 돌려준다. 필요 없으면 None."""
+    lines = split_lines(items)
+    trailing = 0
+    while len(lines) > 1 and not lines[-1]:
+        lines.pop()
+        trailing += 1
+    if all(line_width(l) <= MAX_WIDTH for l in lines) and len(lines) <= MAX_LINES:
+        return None
+    first = items[0][1] if items and items[0][0] == 'text' else ''
+    if first.startswith(' ') or any(it[0] == 'text' and '  ' in it[1] for it in items):
+        return 'skip'                      # 선택지·표처럼 공백으로 모양을 맞춘 글자는 건드리지 않는다
+    words, cur = [], []                    # 단어 = 띄어쓰기 없이 붙은 항목들
+    for line in lines:
+        for it in line:
+            if it[0] != 'text':
+                cur.append(it)
+                continue
+            pieces = re.split('([ ' + kotable.THIN_SPACE + '])', it[1])
+            for piece in pieces:
+                if piece in (' ', kotable.THIN_SPACE):
+                    if cur:
+                        words.append(cur)
+                    cur = []
+                elif piece:
+                    cur.append(['text', piece])
+        if cur:
+            words.append(cur)
+        cur = []
+    space = text_width(kotable.THIN_SPACE)
+    out, width = [[]], 0
+    for word in words:
+        ww = line_width(word)
+        if out[-1] and width + space + ww > MAX_WIDTH:
+            out.append([])
+            width = 0
+        if out[-1]:
+            out[-1].append(['text', kotable.THIN_SPACE])
+            width += space
+        out[-1] += word
+        width += ww
+    return out, trailing
+
+
+def join_lines(lines, trailing):
+    items = []
+    for k, line in enumerate(lines):
+        if k:
+            items.append(['text', '\n'])
+        items += line
+    if trailing:
+        items.append(['text', '\n' * trailing])
+    merged = []
+    for it in items:                       # 붙어 있는 글자 항목은 하나로
+        if it[0] == 'text' and merged and merged[-1][0] == 'text':
+            merged[-1] = ['text', merged[-1][1] + it[1]]
+        else:
+            merged.append(list(it))
+    return merged
+
+
+def fit_run(items, splittable, stats):
+    """한 덩어리를 상자 폭에 맞춘다. 상자를 나눠야 하면 keyWait/clearMsg 를 끼운 목록을 돌려준다."""
+    items = [['text', thin_spaces(it[1])] if it[0] == 'text' else it for it in items]
+    result = wrap(items)
+    if result is None:
+        return items
+    if result == 'skip':
+        stats['폭을 넘지만 모양 때문에 그대로 둔 덩어리'] += 1
+        return items
+    lines, trailing = result
+    stats['줄을 다시 나눈 덩어리'] += 1
+    if len(lines) <= MAX_LINES:
+        return join_lines(lines, trailing)
+    if not splittable:
+        stats['3줄을 넘지만 상자를 나눌 수 없는 덩어리'] += 1
+        return join_lines(lines, trailing)
+    stats['상자를 나눈 덩어리'] += 1
+    out = []
+    for k in range(0, len(lines), MAX_LINES):
+        if k:
+            out += [['cmd', 'keyWait', {'type': '1'}], ['cmd', 'clearMsg', {}]]
+        last = k + MAX_LINES >= len(lines)
+        out += join_lines(lines[k:k + MAX_LINES], trailing if last else 0)
+    return out
+
+
 # ---------------------------------------------------------------- 준비
 def load_usa_tpl():
     if not USA_TPL.exists():
@@ -240,7 +401,9 @@ def main():
             new = []
             last = 0
             for s, e in spans:
-                new += items[last:s] + build_run(items[s:e], entries[k], tag2key, stats)
+                splittable = e < len(items) and items[e][0] == 'cmd' and items[e][1] == 'keyWait'
+                run = build_run(items[s:e], entries[k], tag2key, stats)
+                new += items[last:s] + fit_run(run, splittable, stats)
                 k += 1
                 last = e
             scripts[num] = new + items[last:]

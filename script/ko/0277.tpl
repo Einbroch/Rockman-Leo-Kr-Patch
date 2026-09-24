@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"좋아, 저 이상한 전파를\n없애 버리자.\n"
+	"좋아, 저 이상한 전파를\n없애 버리자.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -21,7 +21,7 @@ script 1 mmsf1 {
 	soundDisableTextSFX
 	soundPlay
 		sound = 325
-	"*쾅 쾅 쾅*"
+	"*쾅 쾅 쾅*"
 	keyWait
 		type = 0
 	end
@@ -32,7 +32,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"이제 해결됐어!\n......\n"
+	"이제 해결됐어!\n......\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -43,7 +43,7 @@ script 2 mmsf1 {
 script 3 mmsf1 {
 	msgOpen
 	mugshotHide
-	"어이, 너!"
+	"어이, 너!"
 	keyWait
 		type = 0
 	end
@@ -53,7 +53,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleGirl
-	"대체 무슨\n짓이야!?\n"
+	"대체 무슨\n짓이야!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -65,7 +65,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Girl
-	"그건 내가 할\n말이야!\n"
+	"그건 내가 할\n말이야!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -81,11 +81,11 @@ script 6 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"이번에는 \"-\"야...\n그러니까...\n"
+	"이번에는 \"-\"야...\n그러니까...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"\"+\" 전파 두 개나 \"-\" 전파 두 개는\n서로 밀어내는 건가?\n"
+	"\"+\" 전파 두 개나 \"-\" 전파 두\n개는 서로 밀어내는 건가?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -97,11 +97,11 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"그런 것 같아.\n"
+	"그런 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 전파가 사람들을\n서로 싫어하게 만들고 있어.\n"
+	"이 전파가 사람들을\n서로 싫어하게 만들고 있어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -111,7 +111,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OldMan
-	"감히 네가!"
+	"감히 네가!"
 	keyWait
 		type = 0
 	end
@@ -121,7 +121,7 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OldWoman
-	"아아! 이 미친 늙은이!\n"
+	"아아! 이 미친 늙은이!\n"
 	keyWait
 		type = 0
 	end
@@ -131,7 +131,7 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"끝이 없잖아...\n"
+	"끝이 없잖아...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -143,7 +143,7 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"그럼 어떻게 해야 해?\n"
+	"그럼 어떻게 해야 해?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -155,11 +155,11 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"글쎄, 이 전파의\n발신지를 찾아보자.\n"
+	"글쎄, 이 전파의\n발신지를 찾아보자.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아마 이 근처 어딘가에\n있을 거야.\n"
+	"아마 이 근처 어딘가에\n있을 거야.\n"
 	keyWait
 		type = 0
 	end

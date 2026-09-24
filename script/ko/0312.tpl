@@ -3,7 +3,7 @@
 
 script 0 mmsf1 {
 	msgOpen
-	"몇 분 후…\n"
+	"몇 분 후…\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -51,11 +51,11 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"여… 여긴…?"
+	"여… 여긴…?"
 	keyWait
 		type = 1
 	clearMsg
-	"아, 맞다… 내가 졌지.\n"
+	"아, 맞다… 내가 졌지.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -71,7 +71,7 @@ script 5 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"아니면 히카루야?\n"
+	"아니면 히카루야?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -87,11 +87,11 @@ script 6 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"히카루는 아마 쉬고 있을 거야.\n"
+	"히카루는 아마 쉬고 있을 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"힘을 너무 많이 쓴\n것 같아.\n"
+	"힘을 너무 많이 쓴\n것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -123,11 +123,11 @@ script 8 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"다시는 널\n볼 수 없을 것 같아.\n"
+	"다시는 널\n볼 수 없을 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네 곁에 있으면\n너무 괴로울 거야…\n"
+	"네 곁에 있으면\n너무 괴로울 거야…\n"
 	keyWait
 		type = 0
 	end
@@ -149,7 +149,7 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"으, 응?"
+	"으, 응?"
 	keyWait
 		type = 1
 	clearMsg
@@ -161,7 +161,7 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"한 가지\n물어보고 싶어.\n"
+	"한 가지\n물어보고 싶어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -169,11 +169,11 @@ script 11 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"내가 널 믿는다고\n말했을 때, 진심이었어.\n"
+	"내가 널 믿는다고\n말했을 때, 진심이었어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"너도 그랬어?"
+	"너도 그랬어?"
 	keyWait
 		type = 1
 	clearMsg
@@ -185,7 +185,7 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"나… 네가 날\n이해해 줄 거라고 생각했어.\n"
+	"나… 네가 날\n이해해 줄 거라고 생각했어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -193,7 +193,7 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"결국에는 어차피\n이렇게 됐을\n"
+	"결국에는 어차피\n이렇게 됐을\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -201,23 +201,23 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"사람과 사람 사이의\n관계라니…\n"
+	"사람과 사람 사이의\n관계라니…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"난 다른 사람과\n가까워지는 법을 몰라.\n"
+	"난 다른 사람과\n가까워지는 법을 몰라.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그래서 가장 소중한\n사람조차 쉽게\n"
+	"그래서 가장 소중한\n사람조차 쉽게\n"
 	keyWait
 		type = 1
 	clearMsg
-	"배신해 버리는 거야…\n\n"
+	"배신해 버리는 거야…\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나 자신조차…"
+	"나 자신조차…"
 	keyWait
 		type = 0
 	end

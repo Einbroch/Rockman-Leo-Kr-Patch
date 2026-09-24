@@ -9,7 +9,7 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"우-우리가 해냈어..."
+	"우-우리가 해냈어..."
 	keyWait
 		type = 1
 	clearMsg
@@ -83,11 +83,11 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이봐, 애 취급하지\n마!\n"
+	"이봐, 애 취급하지\n마!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"왜 우리를 봐준\n거야!?\n"
+	"왜 우리를 봐준\n거야!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -99,7 +99,7 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"우리한테 일부러\n져줬다고??\n"
+	"우리한테 일부러\n져줬다고??\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -111,11 +111,11 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"응, 나도 알겠어."
+	"응, 나도 알겠어."
 	keyWait
 		type = 1
 	clearMsg
-	"전력을 다한 게\n아니었어.\n"
+	"전력을 다한 게\n아니었어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -129,29 +129,29 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"우리가 너와 싸우려는\n건 아니다.\n"
+	"우리가 너와 싸우려는\n건 아니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이번 싸움은 그저 네\n가능성을 확인하기 위한 것이었다.\n"
+	"이번 싸움은 그저 네\n가능성을 확인하기 위한 것이었다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"역시 우리의 생각이\n맞았군. 너에게는 충분한 의지가\n"
+	"역시 우리의 생각이\n맞았군. 너에게는 충분한 의지가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"깃들어 있어,\n이 행성의 사람들을 지킬 수 있지.\n"
+	"깃들어 있어,\n이 행성의 사람들을 지킬 수 있지.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이것을 받아라, "
+	"이것을 받아라, "
 	printPlayerName1
 	"!"
 	keyWait
 		type = 1
 	clearMsg
-	"나의 스타 포스!!"
+	"나의 스타 포스!!"
 	keyWait
 		type = 0
 	end
@@ -161,29 +161,29 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"우리가 너와 싸우려는\n건 아니다.\n"
+	"우리가 너와 싸우려는\n건 아니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이번 싸움은 그저 네\n가능성을 확인하기 위한 것이었다.\n"
+	"이번 싸움은 그저 네\n가능성을 확인하기 위한 것이었다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"역시 우리의 생각이\n맞았군. 너에게는 충분한 의지가\n"
+	"역시 우리의 생각이\n맞았군. 너에게는 충분한 의지가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"깃들어 있어,\n이 행성의 사람들을 지킬 수 있지.\n"
+	"깃들어 있어,\n이 행성의 사람들을 지킬 수 있지.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이것을 받아라, "
+	"이것을 받아라, "
 	printPlayerName1
 	"!"
 	keyWait
 		type = 1
 	clearMsg
-	"나의 스타 포스!!"
+	"나의 스타 포스!!"
 	keyWait
 		type = 0
 	end
@@ -193,29 +193,29 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"우리가 너와 싸우려는\n건 아니다.\n"
+	"우리가 너와 싸우려는\n건 아니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이번 싸움은 그저 네\n가능성을 확인하기 위한 것이었다.\n"
+	"이번 싸움은 그저 네\n가능성을 확인하기 위한 것이었다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"역시 우리의 생각이\n맞았군. 너에게는 충분한 의지가\n"
+	"역시 우리의 생각이\n맞았군. 너에게는 충분한 의지가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"깃들어 있어,\n이 행성의 사람들을 지킬 수 있지.\n"
+	"깃들어 있어,\n이 행성의 사람들을 지킬 수 있지.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이것을 받아라, "
+	"이것을 받아라, "
 	printPlayerName1
 	"!"
 	keyWait
 		type = 1
 	clearMsg
-	"나의 스타 포스!!"
+	"나의 스타 포스!!"
 	keyWait
 		type = 0
 	end
@@ -229,7 +229,7 @@ script 11 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"내 몸이 빛나고 있어!!\n"
+	"내 몸이 빛나고 있어!!\n"
 	keyWait
 		type = 0
 	end
@@ -249,11 +249,11 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"뭐야? 이게 끝이야?\n"
+	"뭐야? 이게 끝이야?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아무것도 달라진 게 없는데...\n"
+	"아무것도 달라진 게 없는데...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -265,11 +265,11 @@ script 14 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"그 빌어먹을\n\"스타 포스\"는 대체 어디 있는 거야!?\n"
+	"그 빌어먹을 \"스타 포스\"는 대체\n어디 있는 거야!?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리랑 장난친\n거야!?\n"
+	"우리랑 장난친\n거야!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -283,15 +283,15 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"스타 포스는 네 안에\n있다.\n"
+	"스타 포스는 네 안에\n있다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하지만 그 힘을\n불러낼 수 있을지는\n"
+	"하지만 그 힘을\n불러낼 수 있을지는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"너에게 달려 있다.\n"
+	"너에게 달려 있다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -303,15 +303,15 @@ script 16 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"스타 포스는 네 안에\n있다.\n"
+	"스타 포스는 네 안에\n있다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하지만 그 힘을\n불러낼 수 있을지는\n"
+	"하지만 그 힘을\n불러낼 수 있을지는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"너에게 달려 있다.\n"
+	"너에게 달려 있다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -323,15 +323,15 @@ script 17 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"스타 포스는 네 안에\n있다.\n"
+	"스타 포스는 네 안에\n있다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하지만 그 힘을\n불러낼 수 있을지는\n"
+	"하지만 그 힘을\n불러낼 수 있을지는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"너에게 달려 있다.\n"
+	"너에게 달려 있다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -343,7 +343,7 @@ script 18 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"그게 무슨 뜻이야?\n"
+	"그게 무슨 뜻이야?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -357,23 +357,23 @@ script 19 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"나는 시련이 끝났다고\n한 적 없다.\n"
+	"나는 시련이 끝났다고\n한 적 없다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"스타 포스는 수호의\n힘이다.\n"
+	"스타 포스는 수호의\n힘이다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"누군가를 지키겠다는\n의지가\n"
+	"누군가를 지키겠다는\n의지가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"강할 때만 불러낼 수\n있지."
+	"강할 때만 불러낼 수\n있지."
 	keyWait
 		type = 1
 	clearMsg
-	"너는 아직 그 의지를\n찾지 못했다.\n"
+	"너는 아직 그 의지를\n찾지 못했다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -385,23 +385,23 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"나는 시련이 끝났다고\n한 적 없다.\n"
+	"나는 시련이 끝났다고\n한 적 없다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"스타 포스는 수호의\n힘이다.\n"
+	"스타 포스는 수호의\n힘이다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"누군가를 지키겠다는\n의지가\n"
+	"누군가를 지키겠다는\n의지가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"강할 때만 불러낼 수\n있지."
+	"강할 때만 불러낼 수\n있지."
 	keyWait
 		type = 1
 	clearMsg
-	"너는 아직 그 의지를\n찾지 못했다.\n"
+	"너는 아직 그 의지를\n찾지 못했다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -413,23 +413,23 @@ script 21 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"나는 시련이 끝났다고\n한 적 없다.\n"
+	"나는 시련이 끝났다고\n한 적 없다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"스타 포스는 수호의\n힘이다.\n"
+	"스타 포스는 수호의\n힘이다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"누군가를 지키겠다는\n의지가\n"
+	"누군가를 지키겠다는\n의지가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"강할 때만 불러낼 수\n있지."
+	"강할 때만 불러낼 수\n있지."
 	keyWait
 		type = 1
 	clearMsg
-	"너는 아직 그 의지를\n찾지 못했다.\n"
+	"너는 아직 그 의지를\n찾지 못했다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -455,25 +455,25 @@ script 23 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"다음 단계는\n너에게 달려 있다.\n"
+	"다음 단계는\n너에게 달려 있다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리는 계속 너를 지켜보겠다...\n"
+	"우리는 계속 너를 지켜보겠다...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네 성장도 계속 지켜보겠다."
+	"네 성장도 계속 지켜보겠다."
 	keyWait
 		type = 1
 	clearMsg
-	"다이고의 아들 "
+	"다이고의 아들 "
 	printPlayerName2
-	"!\n우리는 너를 믿는다."
+	"!\n우리는 너를 믿는다."
 	keyWait
 		type = 1
 	clearMsg
-	"네가 스타 포스를\n자신의 힘으로 만들게 될 것이다.\n"
+	"네가 스타 포스를\n자신의 힘으로 만들게 될 것이다.\n"
 	keyWait
 		type = 0
 	end
@@ -483,25 +483,25 @@ script 24 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"다음 단계는\n너에게 달려 있다.\n"
+	"다음 단계는\n너에게 달려 있다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리는 계속 너를 지켜보겠다...\n"
+	"우리는 계속 너를 지켜보겠다...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네 성장도 계속 지켜보겠다."
+	"네 성장도 계속 지켜보겠다."
 	keyWait
 		type = 1
 	clearMsg
-	"다이고의 아들 "
+	"다이고의 아들 "
 	printPlayerName2
-	"!\n우리는 너를 믿는다."
+	"!\n우리는 너를 믿는다."
 	keyWait
 		type = 1
 	clearMsg
-	"네가 스타 포스를\n자신의 힘으로 만들게 될 것이다.\n"
+	"네가 스타 포스를\n자신의 힘으로 만들게 될 것이다.\n"
 	keyWait
 		type = 0
 	end
@@ -511,25 +511,25 @@ script 25 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"다음 단계는\n너에게 달려 있다.\n"
+	"다음 단계는\n너에게 달려 있다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리는 계속 너를 지켜보겠다...\n"
+	"우리는 계속 너를 지켜보겠다...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네 성장도 계속 지켜보겠다."
+	"네 성장도 계속 지켜보겠다."
 	keyWait
 		type = 1
 	clearMsg
-	"다이고의 아들 "
+	"다이고의 아들 "
 	printPlayerName2
-	"!\n우리는 너를 믿는다."
+	"!\n우리는 너를 믿는다."
 	keyWait
 		type = 1
 	clearMsg
-	"네가 스타 포스를\n자신의 힘으로 만들게 될 것이다.\n"
+	"네가 스타 포스를\n자신의 힘으로 만들게 될 것이다.\n"
 	keyWait
 		type = 0
 	end
@@ -539,7 +539,7 @@ script 26 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"다들 가버렸네..."
+	"다들 가버렸네..."
 	keyWait
 		type = 1
 	clearMsg
@@ -560,27 +560,27 @@ script 27 mmsf1 {
 	"."
 	waitSkip
 		frames = 30
-	"아, 맞다.\n생각난 게 있어."
+	"아, 맞다.\n생각난 게 있어."
 	keyWait
 		type = 1
 	clearMsg
-	"페가수스 매직,\n레오 킹덤, 드래곤 스카이...\n"
+	"페가수스 매직,\n레오 킹덤, 드래곤 스카이...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그들은 AM의 세 현자로\n알려진 이들이야.\n"
+	"그들은 AM의 세 현자로\n알려진 이들이야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"엄청난 지혜와\n힘을 지녔고,\n"
+	"엄청난 지혜와\n힘을 지녔고,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"AM 행성에서 큰 영향력을 행사하던\nAM 성인들이었지.\n"
+	"AM 행성에서 큰 영향력을\n행사하던 AM 성인들이었지.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"AM 행성이 파괴되기 전에\n그곳을 떠났다고 들었는데,\n"
+	"AM 행성이 파괴되기 전에\n그곳을 떠났다고 들었는데,\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -588,7 +588,7 @@ script 27 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"지구까지 오게 될\n줄이야.\n"
+	"지구까지 오게 될\n줄이야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -600,19 +600,19 @@ script 28 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"이 모든 게 미친\n꿈처럼 느껴져.\n"
+	"이 모든 게 미친\n꿈처럼 느껴져.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"위성 관리자들이\n외계인이고,\n"
+	"위성 관리자들이\n외계인이고,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아빠와 함께\n일했다니...\n"
+	"아빠와 함께\n일했다니...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"게다가 스타\n포스까지...\n"
+	"게다가 스타\n포스까지...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -624,15 +624,15 @@ script 29 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"뭐, 아직 그렇게 단정할 순\n없지!\n"
+	"뭐, 아직 그렇게 단정할 순\n없지!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"직접 힘을 발휘하는 걸 보기 전까진\n믿지 않을 거야!\n"
+	"직접 힘을 발휘하는 걸 보기\n전까진 믿지 않을 거야!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"후우... 정말 피곤하다,\n꼬맹아.\n"
+	"후우... 정말 피곤하다,\n꼬맹아.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -644,11 +644,11 @@ script 30 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"응. 하루 만에\n정말 많은 일이 있었어.\n"
+	"응. 하루 만에\n정말 많은 일이 있었어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"자, 집에 가자.\n"
+	"자, 집에 가자.\n"
 	keyWait
 		type = 0
 	end

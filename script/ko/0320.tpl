@@ -23,11 +23,11 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"저를 구해 주신 분이\n당신인가요?"
+	"저를 구해 주신 분이\n당신인가요?"
 	keyWait
 		type = 1
 	clearMsg
-	"아, 정말 감사해요!\n"
+	"아, 정말 감사해요!\n"
 	keyWait
 		type = 0
 	end

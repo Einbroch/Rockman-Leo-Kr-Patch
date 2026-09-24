@@ -9,7 +9,7 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"저 뒤에 있을\n거야. 틀림없어.\n"
+	"저 뒤에 있을\n거야. 틀림없어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -21,7 +21,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"정신 바짝 차리고\n가자!\n"
+	"정신 바짝 차리고\n가자!\n"
 	keyWait
 		type = 0
 	end

@@ -15,7 +15,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"저건 뭐야?"
+	"저건 뭐야?"
 	keyWait
 		type = 1
 	clearMsg
@@ -27,7 +27,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"분명 저 녀석이\n전파를 교란하고\n있는 거야."
+	"분명 저 녀석이\n전파를 교란하고\n있는 거야."
 	keyWait
 		type = 1
 	clearMsg
@@ -39,7 +39,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"좋아, 그럼 저 녀석의\n방해를 끝내 주자.\n"
+	"좋아, 그럼 저 녀석의\n방해를 끝내 주자.\n"
 	keyWait
 		type = 1
 	clearMsg

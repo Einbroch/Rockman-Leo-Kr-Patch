@@ -2,9 +2,11 @@
 """한글판 문자 코드표를 정의하고 TextPet용 표(tools/textpet/plugins/rnr1ko-utf8.tbl)를 만든다.
 
 - 숫자, 영문, 기호 등 일본판 폰트에 있는 가나·한자 이외의 글자는 원래 코드를 그대로 쓴다.
-- 한글은 2바이트다. 첫 바이트는 일본판의 가타카나 자리 0x0B–0x14(10개), 둘째 바이트는 0x00–0xFF.
+- 한글은 2바이트다. 첫 바이트는 일본판의 가타카나 자리 0x0B–0x15(11개), 둘째 바이트는 0x01–0xE3(227개).
   글자 번호 i(완성형 2,350자를 KS X 1001 순서로 늘어놓은 순번, 그 뒤에 EXTRA)의 코드는
-  (0x0B + i // 256, i % 256)이다. 게임 쪽 출력 코드와 한글 폰트도 이 순서를 따른다.
+  (0x0B + i // 227, 0x01 + i % 227)이다. 게임 쪽 출력 코드와 한글 폰트도 이 순서를 따른다.
+- 둘째 바이트를 0xE4 미만으로 둔 까닭: 고치지 않은 문자열 처리 코드는 0xE5 이상을 명령으로 보고,
+  모르는 명령이면 멈춘다. 이 범위면 한글이 평범한 글자 두 개로 보일 뿐 멈추지는 않는다.
 
 사용법: python3 tools/kotable.py
 """
@@ -14,17 +16,21 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 PLUGINS = ROOT / 'tools' / 'textpet' / 'plugins'
 
 LEAD_FIRST = 0x0B
-LEAD_COUNT = 10
+LEAD_COUNT = 11
+TRAIL_FIRST = 0x01
+TRAIL_COUNT = 0xE4 - TRAIL_FIRST
 HANGUL = [bytes([hi, lo]).decode('euc-kr') for hi in range(0xB0, 0xC9) for lo in range(0xA1, 0xFF)]
 # 일본판 폰트에 없거나 완성형 밖이라 한글 뒤에 새로 그려 넣는 글자
-EXTRA = ['…', 'ㅁ', '#', '↗', '쌰']
+EXTRA = ['…', 'ㅁ', '#', '↗', '쌰', THIN_SPACE := '\u2009']
+# 새 글자의 폭(픽셀). 없으면 12. THIN_SPACE 는 단어 사이 띄어쓰기용 좁은 빈칸이다.
+EXTRA_WIDTH = {THIN_SPACE: 5}
 # 폰트에 없는 글자를 비슷한 기존 글자로 바꾼다
 NORMALIZE = str.maketrans({
     '　': ' ', '“': '"', '”': '"', '‘': '’', "'": '’', '『': '「', '』': '」', '《': '「', '》': '」',
     '－': '-', '‐': '-', '—': '-', '─': 'ー', '：': ':', '（': '(', '）': ')', '！': '!', '？': '?',
 })
 NEW_CHARS = HANGUL + EXTRA
-assert len(NEW_CHARS) <= LEAD_COUNT * 256
+assert len(NEW_CHARS) <= LEAD_COUNT * TRAIL_COUNT
 
 
 def is_japanese(value):
@@ -51,7 +57,7 @@ def base_entries():
 
 
 def new_char_code(index):
-    return bytes([LEAD_FIRST + index // 256, index % 256])
+    return bytes([LEAD_FIRST + index // TRAIL_COUNT, TRAIL_FIRST + index % TRAIL_COUNT])
 
 
 def main():

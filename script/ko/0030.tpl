@@ -7,7 +7,7 @@ script 0 mmsf1 {
 	flagSet
 		flag = 601
 	printBrotherBuffer1
-	" "
+	"\n"
 	printBrotherBuffer2
 	end
 }
@@ -15,7 +15,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MitchShepar
-	"이쿠타 미치모리 선생님의 트랜서야!\n어서 와!\n"
+	"이쿠타 미치모리 선생님의\n트랜서야! 어서 와!\n"
 	keyWait
 		type = 0
 	end
@@ -53,11 +53,11 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MitchShepar
-	"아이들에게 책으로는 배울 수 없는\n것들을\n"
+	"아이들에게 책으로는 배울 수 없는\n것들을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"가르쳐 주고 싶습니다."
+	"가르쳐 주고 싶습니다."
 	keyWait
 		type = 0
 	end
@@ -69,15 +69,15 @@ script 6 mmsf1 {
 		mugshot = MitchShepar
 	flagSet
 		flag = 6698
-	"아이들과 함께 일한 지도\n여러 해가 되었고,\n"
+	"아이들과 함께 일한 지도\n여러 해가 되었고,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아이들의 입장에서 세상을\n바라보는 것이\n"
+	"아이들의 입장에서 세상을\n바라보는 것이\n"
 	keyWait
 		type = 1
 	clearMsg
-	"얼마나 중요한지 잘\n알고 있습니다.\n"
+	"얼마나 중요한지 잘\n알고 있습니다.\n"
 	keyWait
 		type = 0
 	end
@@ -87,29 +87,29 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MitchShepar
-	"사실은... 곤란한 일이 있습니다.\n\n"
+	"사실은... 곤란한 일이 있습니다.\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아이들과 약속을 했는데\n"
+	"아이들과 약속을 했는데\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지킬 수가 없게 됐어요!\n"
+	"지킬 수가 없게 됐어요!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아아, 정말 미안하구나,\n얘들아!\n"
+	"아아, 정말 미안하구나,\n얘들아!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"브라더들, 제발 도와줘!\n"
+	"브라더들, 제발 도와줘!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"미치모리 선생님이 곤경에 처했어!\n"
+	"미치모리 선생님이 곤경에 처했어!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -150,13 +150,13 @@ script 10 mmsf1 {
 		jumpIfFalse = continue
 	mugshotShow
 		mugshot = OmegaXis
-	"그럼 시작해 보자!\n"
+	"그럼 시작해 보자!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"나 자신에게 메일로\n메모를 보내 둬야겠어...\n"
+	"나 자신에게 메일로\n메모를 보내 둬야겠어...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -172,23 +172,23 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MitchShepar
-	"사실은... 곤란한 일이 있습니다.\n\n"
+	"사실은... 곤란한 일이 있습니다.\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아이들과 약속을 했는데\n"
+	"아이들과 약속을 했는데\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지킬 수가 없게 됐어요!\n"
+	"지킬 수가 없게 됐어요!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아아, 정말 미안하구나,\n얘들아!\n"
+	"아아, 정말 미안하구나,\n얘들아!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"브라더들, 제발 도와줘!\n"
+	"브라더들, 제발 도와줘!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -202,7 +202,7 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"뭐, 됐어..."
+	"뭐, 됐어..."
 	keyWait
 		type = 1
 	clearMsg
@@ -212,11 +212,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이봐, 이봐! 네 미해결\n사건부터\n"
+	"이봐, 이봐! 네 미해결\n사건부터\n"
 	keyWait
 		type = 1
 	clearMsg
-	"먼저 처리하는 게\n어때!?"
+	"먼저 처리하는 게\n어때!?"
 	keyWait
 		type = 1
 	clearMsg

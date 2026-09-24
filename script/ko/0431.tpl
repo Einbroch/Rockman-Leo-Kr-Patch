@@ -23,7 +23,7 @@ script 0 mmsf1 {
 		jumpIfInRange = 15
 		jumpIfOutOfRange = continue
 	msgOpen
-	"임시 메시지"
+	"임시 메시지"
 	keyWait
 		type = 0
 	end
@@ -49,7 +49,7 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"오늘은 이만하자...\n"
+	"오늘은 이만하자...\n"
 	keyWait
 		type = 0
 	end
@@ -59,7 +59,7 @@ script 16 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"오늘은 일찍 자자...\n"
+	"오늘은 일찍 자자...\n"
 	keyWait
 		type = 0
 	end
@@ -69,11 +69,11 @@ script 17 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"타임 스퀘어로 돌아가야\n해.\n"
+	"타임 스퀘어로 돌아가야\n해.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"미소라가 거기서 기다리고 있어.\n"
+	"미소라가 거기서 기다리고 있어.\n"
 	keyWait
 		type = 0
 	end
@@ -83,11 +83,11 @@ script 18 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"미소라를 그냥 내버려 둘 순\n없어. 돌아가야 해\n"
+	"미소라를 그냥 내버려 둘 순\n없어. 돌아가야 해\n"
 	keyWait
 		type = 1
 	clearMsg
-	"타임 스퀘어로."
+	"타임 스퀘어로."
 	keyWait
 		type = 0
 	end
@@ -109,7 +109,7 @@ script 50 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"오늘은 이만할까.\n"
+	"오늘은 이만할까.\n"
 	keyWait
 		type = 0
 	end
@@ -119,7 +119,7 @@ script 51 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"타임 스퀘어로 가자.\n"
+	"타임 스퀘어로 가자.\n"
 	keyWait
 		type = 0
 	end
@@ -173,7 +173,7 @@ script 60 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"웨이브 아웃해야겠어.\n"
+	"웨이브 아웃해야겠어.\n"
 	keyWait
 		type = 0
 	end
@@ -183,7 +183,7 @@ script 61 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"집에 가야겠다.\n"
+	"집에 가야겠다.\n"
 	keyWait
 		type = 0
 	end
@@ -193,11 +193,11 @@ script 62 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"드림 아일랜드로 가야\n해."
+	"드림 아일랜드로 가야\n해."
 	keyWait
 		type = 1
 	clearMsg
-	"웨이브 아웃해야겠어.\n"
+	"웨이브 아웃해야겠어.\n"
 	keyWait
 		type = 0
 	end
@@ -207,11 +207,11 @@ script 63 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"공원으로 가자.\n"
+	"공원으로 가자.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"웨이브 아웃해야 해.\n"
+	"웨이브 아웃해야 해.\n"
 	keyWait
 		type = 0
 	end
@@ -221,11 +221,11 @@ script 64 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"츠카사를 따라가자...\n"
+	"츠카사를 따라가자...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"웨이브 아웃해야 해.\n"
+	"웨이브 아웃해야 해.\n"
 	keyWait
 		type = 0
 	end
@@ -235,11 +235,11 @@ script 65 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"들은 대로 계속\n나아가자.\n"
+	"들은 대로 계속\n나아가자.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"웨이브 아웃해야겠어.\n"
+	"웨이브 아웃해야겠어.\n"
 	keyWait
 		type = 0
 	end
@@ -249,11 +249,11 @@ script 66 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"도시 폐기장에 뭔가\n있어...\n"
+	"도시 폐기장에 뭔가\n있어...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"웨이브 아웃해야겠어.\n"
+	"웨이브 아웃해야겠어.\n"
 	keyWait
 		type = 0
 	end
@@ -263,7 +263,7 @@ script 67 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"이제 집에\n가야겠다."
+	"이제 집에\n가야겠다."
 	keyWait
 		type = 0
 	end
@@ -273,11 +273,11 @@ script 68 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"분류 로봇을\n조종하는 녀석을\n"
+	"분류 로봇을\n조종하는 녀석을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"찾아야 해!"
+	"찾아야 해!"
 	keyWait
 		type = 0
 	end
@@ -287,7 +287,7 @@ script 69 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"웨이브 아웃해야겠어.\n"
+	"웨이브 아웃해야겠어.\n"
 	keyWait
 		type = 0
 	end
@@ -297,7 +297,7 @@ script 70 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"집에 가자."
+	"집에 가자."
 	keyWait
 		type = 0
 	end
@@ -307,7 +307,7 @@ script 71 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"집에 가서 좀\n자야겠다.\n"
+	"집에 가서 좀\n자야겠다.\n"
 	keyWait
 		type = 0
 	end
@@ -377,7 +377,7 @@ script 75 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"타임 스퀘어로 가자.\n"
+	"타임 스퀘어로 가자.\n"
 	keyWait
 		type = 0
 	end
@@ -387,11 +387,11 @@ script 76 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"츠카사를 따라가야 해...\n"
+	"츠카사를 따라가야 해...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"도시 폐기장 안으로\n들어가자."
+	"도시 폐기장 안으로\n들어가자."
 	keyWait
 		type = 0
 	end
@@ -401,11 +401,11 @@ script 77 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"이 굴착기를 치울 방법을\n생각해 내야 해.\n"
+	"이 굴착기를 치울 방법을\n생각해 내야 해.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"생각해 내야 해."
+	"생각해 내야 해."
 	keyWait
 		type = 0
 	end
@@ -415,7 +415,7 @@ script 78 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"쇼블맨 카드를\n찾아보자!\n"
+	"쇼블맨 카드를\n찾아보자!\n"
 	keyWait
 		type = 0
 	end
@@ -429,7 +429,7 @@ script 79 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"카드를 그 사람에게 줘야 해.\n"
+	"카드를 그 사람에게 줘야 해.\n"
 	keyWait
 		type = 0
 	end
@@ -449,11 +449,11 @@ script 81 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"츠카사를 따라가야 해...\n"
+	"츠카사를 따라가야 해...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"도시 폐기장 안으로\n들어가자."
+	"도시 폐기장 안으로\n들어가자."
 	keyWait
 		type = 0
 	end
@@ -463,7 +463,7 @@ script 82 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"웨이브 로드를 타고 갈 수 있을\n거야!\n"
+	"웨이브 로드를 타고 갈 수 있을\n거야!\n"
 	keyWait
 		type = 0
 	end
@@ -473,7 +473,7 @@ script 83 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"스크랩 컴프로\n웨이브 인해서 들어가야겠어!\n"
+	"스크랩 컴프로\n웨이브 인해서 들어가야겠어!\n"
 	keyWait
 		type = 0
 	end
@@ -483,7 +483,7 @@ script 84 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"스크랩 컴프를 복구하자!\n"
+	"스크랩 컴프를 복구하자!\n"
 	keyWait
 		type = 0
 	end
@@ -493,11 +493,11 @@ script 85 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"드림 아일랜드의 웨이브 로드를\n"
+	"드림 아일랜드의 웨이브 로드를\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이용하면 계속 갈 수 있을 것 같아!\n"
+	"이용하면 계속 갈 수 있을 것\n같아!\n"
 	keyWait
 		type = 0
 	end
@@ -507,7 +507,7 @@ script 86 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"스크랩 컴프로\n웨이브 인해서 들어가야겠어!\n"
+	"스크랩 컴프로\n웨이브 인해서 들어가야겠어!\n"
 	keyWait
 		type = 0
 	end
@@ -517,7 +517,7 @@ script 87 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"스크랩 컴프를 복구하자!\n"
+	"스크랩 컴프를 복구하자!\n"
 	keyWait
 		type = 0
 	end
@@ -527,11 +527,11 @@ script 88 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"드림 아일랜드의 웨이브 로드를\n"
+	"드림 아일랜드의 웨이브 로드를\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이용하면 계속 갈 수 있을 것 같아!\n"
+	"이용하면 계속 갈 수 있을 것\n같아!\n"
 	keyWait
 		type = 0
 	end
@@ -541,7 +541,7 @@ script 89 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"츠카사가 있는 스크랩 컴프로\n가자.\n"
+	"츠카사가 있는 스크랩 컴프로\n가자.\n"
 	keyWait
 		type = 0
 	end
@@ -551,7 +551,7 @@ script 90 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"츠카사가 있는 스크랩 컴프로\n가자.\n"
+	"츠카사가 있는 스크랩 컴프로\n가자.\n"
 	keyWait
 		type = 0
 	end

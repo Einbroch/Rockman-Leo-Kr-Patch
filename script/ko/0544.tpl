@@ -19,39 +19,39 @@ script 10 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"그걸 알아채다니,\n눈치가 빠르구나!\n"
+	"그걸 알아채다니,\n눈치가 빠르구나!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내가 퀴즈를 좋아한다는 걸\n말이야!\n"
+	"내가 퀴즈를 좋아한다는 걸\n말이야!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"좋아, 그럼 너만을 위한\n특별한 걸 해 줄게!\n"
+	"좋아, 그럼 너만을 위한\n특별한 걸 해 줄게!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지금부터 퀴즈 주제가를\n부르겠다. 이 노래는\n"
+	"지금부터 퀴즈 주제가를\n부르겠다. 이 노래는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"무려 200년 동안 전해 내려온\n노래지! *헛기침*\n"
+	"무려 200년 동안 전해 내려온\n노래지! *헛기침*\n"
 	keyWait
 		type = 1
 	clearMsg
-	"누가 퀴즈 선생님을 불렀나!\n누가 퀴즈 선생님을 불렀나!\n"
+	"누가 퀴즈 선생님을 불렀나!\n누가 퀴즈 선생님을 불렀나!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"말해도 좋아!\n놀아도 좋아!"
+	"말해도 좋아!\n놀아도 좋아!"
 	keyWait
 		type = 1
 	clearMsg
-	"헤이 헤이! 호 호!\n퀴즈 파워!\n출발이다!"
+	"헤이 헤이! 호 호!\n퀴즈 파워!\n출발이다!"
 	keyWait
 		type = 1
 	clearMsg
-	"나와 퀴즈 배틀을\n해 보지 않겠니?\n"
+	"나와 퀴즈 배틀을\n해 보지 않겠니?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -92,7 +92,7 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"나와 퀴즈 배틀을\n해 보지 않겠니?\n"
+	"나와 퀴즈 배틀을\n해 보지 않겠니?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -133,11 +133,11 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"좋아, 그럼\n1번 문제부터 시작하자.\n"
+	"좋아, 그럼\n1번 문제부터 시작하자.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"비가 올 때는 어떤 신발을\n신을까?\n"
+	"비가 올 때는 어떤 신발을\n신을까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -188,11 +188,11 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"자, 이제 2번 문제다.\n"
+	"자, 이제 2번 문제다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"플라즈마 건 1의 공격력은\n얼마일까?\n"
+	"플라즈마 건 1의 공격력은\n얼마일까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -243,11 +243,11 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"그럼 3번 문제다.\n"
+	"그럼 3번 문제다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리는 지금 어디에 있을까?\n"
+	"우리는 지금 어디에 있을까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -298,14 +298,14 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"그럼 4번 문제다.\n"
+	"그럼 4번 문제다.\n"
 	keyWait
 		type = 1
 	clearMsg
 	"\""
 	printItem
 		item = 96
-	"\" 서브 카드는 HP를 얼마나 회복할까?\n"
+	"\" 서브 카드는\nHP를 얼마나 회복할까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -356,11 +356,11 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"자, 마지막 문제야.\n5번 문제.\n"
+	"자, 마지막 문제야.\n5번 문제.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"뱀은 어떤 소리를 낼까?\n"
+	"뱀은 어떤 소리를 낼까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -407,15 +407,15 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = LittleBoy
-	"와! 네가 전부\n맞힐 줄은 몰랐어!\n"
+	"와! 네가 전부\n맞힐 줄은 몰랐어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"너, 너 정말 대단하구나.\n"
+	"너, 너 정말 대단하구나.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"자, 여기 상품이야.\n"
+	"자, 여기 상품이야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -426,7 +426,7 @@ script 12 mmsf1 {
 	playerAnimate0
 		animation = 24
 	printPlayerName1
-	"가 획득:\n\""
+	"가 획득:\n\""
 	printItem
 		item = 72
 	"\"!!\n"
@@ -437,7 +437,7 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = LittleBoy
-	"새로운 문제를 좀\n생각해 내야겠어.\n"
+	"새로운 문제를 좀\n생각해 내야겠어.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -452,7 +452,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"으아아! 왜!?"
+	"으아아! 왜!?"
 	keyWait
 		type = 0
 	end
@@ -462,7 +462,7 @@ script 14 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"아니야! 미안해!"
+	"아니야! 미안해!"
 	keyWait
 		type = 1
 	clearMsg
@@ -476,7 +476,7 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"새로운 문제를 좀\n생각해 내야겠어.\n"
+	"새로운 문제를 좀\n생각해 내야겠어.\n"
 	keyWait
 		type = 0
 	end
@@ -490,27 +490,27 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Woman
-	"……어? 내가 왜 고민하는 것처럼\n보이냐고?\n"
+	"……어? 내가 왜 고민하는 것처럼\n보이냐고?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"와, 정말 여자의 마음을\n잘 아는구나!\n"
+	"와, 정말 여자의 마음을\n잘 아는구나!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그게, 이 교실 말이야.\n너무 추워서 말이지.\n"
+	"그게, 이 교실 말이야.\n너무 추워서 말이지.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"사랑스러운 학생들이\n감기에 걸리면 안 되잖니.\n"
+	"사랑스러운 학생들이\n감기에 걸리면 안 되잖니.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"온도 조절 장치에\n뭔가 문제가\n"
+	"온도 조절 장치에\n뭔가 문제가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"생긴 건\n아닐까……?\n"
+	"생긴 건\n아닐까……?\n"
 	keyWait
 		type = 2
 	flagSet
@@ -525,19 +525,19 @@ script 21 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Woman
-	"이 교실은\n너무 추워."
+	"이 교실은\n너무 추워."
 	keyWait
 		type = 1
 	clearMsg
-	"사랑스러운 학생들이\n감기에 걸리면 안 되잖니.\n"
+	"사랑스러운 학생들이\n감기에 걸리면 안 되잖니.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"온도 조절 장치에\n뭔가 문제가\n"
+	"온도 조절 장치에\n뭔가 문제가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"생긴 건\n아닐까……?\n"
+	"생긴 건\n아닐까……?\n"
 	keyWait
 		type = 0
 	end
@@ -551,25 +551,25 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"냉방에 문제가 있나?\n후우우웅!\n"
+	"냉방에 문제가 있나?\n후우우웅!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = Woman
-	"이 목소리는 알아...\n서모맨이야!\n"
+	"이 목소리는 알아...\n서모맨이야!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"때맞춰 잘 왔군.\n"
+	"때맞춰 잘 왔군.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그 카드로 여기 온도를\n좀 어떻게\n"
+	"그 카드로 여기 온도를\n좀 어떻게\n"
 	keyWait
 		type = 1
 	clearMsg
-	"해 줄 수 있겠니?\n"
+	"해 줄 수 있겠니?\n"
 	keyWait
 		type = 2
 	flagSet

@@ -7,7 +7,7 @@ script 0 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"지금은 서브 카드를\n사용할 필요가 없습니다."
+	"지금은 서브 카드를\n사용할 필요가 없습니다."
 	keyWait
 		type = 2
 	waitHold
@@ -61,7 +61,7 @@ script 3 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"지금은 그 카드를 사용할 필요가\n없습니다!\n"
+	"지금은 그 카드를 사용할 필요가\n없습니다!\n"
 	keyWait
 		type = 2
 	waitHold
@@ -73,7 +73,7 @@ script 4 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"이 카드는\n자동으로 사용됩니다.\n"
+	"이 카드는\n자동으로 사용됩니다.\n"
 	keyWait
 		type = 2
 	waitHold
@@ -85,7 +85,7 @@ script 5 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"사용되었습니다. 지금은 그\n카드가 필요 없습니다!"
+	"사용되었습니다. 지금은 그\n카드가 필요 없습니다!"
 	keyWait
 		type = 2
 	waitHold
@@ -97,7 +97,7 @@ script 6 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"이 강화 아이템은 보쿠타이\nDS와 함께 사용할 수 있습니다."
+	"이 강화 아이템은 보쿠타이\nDS와 함께 사용할 수 있습니다."
 	keyWait
 		type = 2
 	waitHold
@@ -108,7 +108,7 @@ script 10 mmsf1 {
 	textSpeed
 		delay = 0
 	mugshotHide
-	"록맨의 HP가 50 회복되었습니다!\n\n"
+	"록맨의 HP가 50\n회복되었습니다!\n\n"
 	keyWait
 		type = 2
 	waitHold
@@ -119,7 +119,7 @@ script 11 mmsf1 {
 	textSpeed
 		delay = 0
 	mugshotHide
-	"록맨의 HP가 200 회복되었습니다!\n"
+	"록맨의 HP가 200\n회복되었습니다!\n"
 	keyWait
 		type = 2
 	waitHold
@@ -130,7 +130,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	mugshotHide
-	"록맨의 HP가 모두\n회복되었습니다!"
+	"록맨의 HP가 모두\n회복되었습니다!"
 	keyWait
 		type = 2
 	waitHold
@@ -141,7 +141,7 @@ script 13 mmsf1 {
 	textSpeed
 		delay = 0
 	mugshotHide
-	"워록이 사라졌습니다!\n아무도 워록을 찾을 수 없습니다!\n"
+	"워록이 사라졌습니다!\n아무도 워록을 찾을 수 없습니다!\n"
 	keyWait
 		type = 2
 	waitHold
@@ -152,7 +152,7 @@ script 14 mmsf1 {
 	textSpeed
 		delay = 0
 	mugshotHide
-	"눈이 빛나고 있어\n적들이 워록을 쉽게 발견할 수 있습니다.\n"
+	"눈이 빛나고 있어 적들이 워록을\n쉽게 발견할 수 있습니다.\n"
 	keyWait
 		type = 2
 	waitHold
@@ -176,7 +176,7 @@ script 25 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"브라더에게 줄 선물을\n선택해 주세요.\n"
+	"브라더에게 줄 선물을\n선택해 주세요.\n"
 	keyWait
 		type = 2
 	waitHold
@@ -188,7 +188,7 @@ script 26 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"정말 아무것도 주지 않겠습니까? \n\n"
+	"정말 아무것도 주지 않겠습니까?\n\n"
 	positionOptionFromCenter
 		width = 14
 	optionText
@@ -225,7 +225,7 @@ script 27 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"브라더에게 \""
+	"브라더에게 \""
 	printItemBuffered
 		buffer = 0
 	"\"\n주겠습니까?\n"

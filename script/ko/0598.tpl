@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"츠카사에게 인사나 할까...\n"
+	"츠카사에게 인사나 할까...\n"
 	keyWait
 		type = 0
 	end
@@ -15,7 +15,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"지금은 저쪽으로\n갈 필요 없어.\n"
+	"지금은 저쪽으로\n갈 필요 없어.\n"
 	keyWait
 		type = 0
 	end
@@ -41,23 +41,23 @@ script 10 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"슈팅 스타 케이크라고 들어 봤어?\n"
+	"슈팅 스타 케이크라고 들어 봤어?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"단것을 좋아하는 사람들 사이에서\n아주 인기가 많대.\n"
+	"단것을 좋아하는 사람들 사이에서\n아주 인기가 많대.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아주 인기가 많대. 나도 한번\n먹어 보고 싶어.\n"
+	"아주 인기가 많대. 나도 한번\n먹어 보고 싶어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어디서 파는지\n알아?\n"
+	"어디서 파는지\n알아?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"음... 케이크..."
+	"음... 케이크..."
 	keyWait
 		type = 2
 	flagSet
@@ -68,23 +68,23 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleGirl
-	"그러니까, 슈팅 스타 케이크\n알고 있어?\n"
+	"그러니까, 슈팅 스타 케이크\n알고 있어?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"단것을 좋아하는 사람들 사이에서\n아주 인기가 많대.\n"
+	"단것을 좋아하는 사람들 사이에서\n아주 인기가 많대.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아주 인기가 많대. 나도 한번\n먹어 보고 싶어.\n"
+	"아주 인기가 많대. 나도 한번\n먹어 보고 싶어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어디서 파는지\n알아?\n"
+	"어디서 파는지\n알아?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"음... 케이크..."
+	"음... 케이크..."
 	keyWait
 		type = 0
 	end
@@ -98,11 +98,11 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"그거 슈팅 스타\n케이크야!?\n"
+	"그거 슈팅 스타\n케이크야!?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나한테 주는 거야!?"
+	"나한테 주는 거야!?"
 	keyWait
 		type = 1
 	clearMsg
@@ -111,10 +111,10 @@ script 12 mmsf1 {
 		item = 50
 		amount = 1
 	printPlayerName1
-	"가 소녀에게\n\""
+	"가 소녀에게\n\""
 	printItem
 		item = 50
-	"\"을 줬다!!"
+	"\"을 줬다!!"
 	keyWait
 		type = 1
 	clearMsg
@@ -132,15 +132,15 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"와, 정말 맛있다!\n\n"
+	"와, 정말 맛있다!\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하늘에서 별이\n떨어지는 맛이야!\n"
+	"하늘에서 별이\n떨어지는 맛이야!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"정말 고마워! 자,\n이거 받아.\n"
+	"정말 고마워! 자,\n이거 받아.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -150,7 +150,7 @@ script 12 mmsf1 {
 	playerAnimate0
 		animation = 24
 	printPlayerName1
-	"가\n\"5,000 제니\"를 받았다!!\n"
+	"가\n\"5,000 제니\"를 받았다!!\n"
 	keyWait
 		type = 2
 	playerFinish
@@ -158,7 +158,7 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = LittleGirl
-	"소문대로 정말 맛있어!\n"
+	"소문대로 정말 맛있어!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -173,7 +173,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleGirl
-	"소문대로 정말 맛있어!\n"
+	"소문대로 정말 맛있어!\n"
 	keyWait
 		type = 0
 	end
@@ -195,35 +195,35 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OldWoman
-	"세컨드 핸드 숍에 오신 걸\n환영합니다! 저희는\n"
+	"세컨드 핸드 숍에 오신 걸\n환영합니다! 저희는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"안 쓰는 물건은 비싸게 사고,\n싸게 판매합니다!\n"
+	"안 쓰는 물건은 비싸게 사고,\n싸게 판매합니다!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"대체 무슨 문제가\n있다는 거야?\n"
+	"대체 무슨 문제가\n있다는 거야?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아, 사실은 이\n냉장고 말이야...\n"
+	"아, 사실은 이\n냉장고 말이야...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"손님한테\n그저께 샀는데,\n"
+	"손님한테\n그저께 샀는데,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아무리 해도\n작동시킬 수가 없어.\n"
+	"아무리 해도\n작동시킬 수가 없어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그래도 아직 쓸 수는\n있을 것 같아.\n"
+	"그래도 아직 쓸 수는\n있을 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어떻게 해야 할지 모르겠어.\n\n"
+	"어떻게 해야 할지 모르겠어.\n\n"
 	keyWait
 		type = 2
 	flagSet
@@ -234,19 +234,19 @@ script 16 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OldWoman
-	"며칠 전에 손님한테 이 냉장고를 샀는데\n\n"
+	"며칠 전에 손님한테 이 냉장고를\n샀는데\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아무리 해도\n작동시킬 수가 없어.\n"
+	"아무리 해도\n작동시킬 수가 없어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그래도 아직 쓸 수 있을 것 같아.\n\n"
+	"그래도 아직 쓸 수 있을 것 같아.\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어떻게 해야 할지 모르겠어.\n"
+	"어떻게 해야 할지 모르겠어.\n"
 	keyWait
 		type = 0
 	end
@@ -260,11 +260,11 @@ script 17 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"아, 정말 고마워.\n수고 많았어.\n"
+	"아, 정말 고마워.\n수고 많았어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"별건 아니지만,\n"
+	"별건 아니지만,\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -272,7 +272,7 @@ script 17 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"받아 줘...\n"
+	"받아 줘...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -286,7 +286,7 @@ script 17 mmsf1 {
 	"가\n\""
 	printItem
 		item = 112
-	"\"을 받았다.\n"
+	"\"을 받았다.\n"
 	keyWait
 		type = 2
 	playerFinish
@@ -294,7 +294,7 @@ script 17 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = OldWoman
-	"안 쓰는 물건이 있으면\n언제든 가져오세요!\n"
+	"안 쓰는 물건이 있으면\n언제든 가져오세요!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -309,7 +309,7 @@ script 18 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleGirl
-	"안 쓰는 물건이 있으면\n언제든 가져오세요!\n"
+	"안 쓰는 물건이 있으면\n언제든 가져오세요!\n"
 	keyWait
 		type = 0
 	end
@@ -329,19 +329,19 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = BusinessMan
-	"그 표정... 그\n눈빛을 보니\n"
+	"그 표정... 그\n눈빛을 보니\n"
 	keyWait
 		type = 1
 	clearMsg
-	"퀴즈를 좋아하는\n사람 같군!\n"
+	"퀴즈를 좋아하는\n사람 같군!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"...나? 내가 누구냐고?\n\n"
+	"...나? 내가 누구냐고?\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하하하, 네가 물어보길\n기다리고 있었지.\n"
+	"하하하, 네가 물어보길\n기다리고 있었지.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -349,19 +349,19 @@ script 20 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"누가 퀴즈 왕을 찾았나!\n왕을 찾았나!\n"
+	"누가 퀴즈 왕을 찾았나!\n왕을 찾았나!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"말해도 좋아! 풀어도\n좋아!"
+	"말해도 좋아! 풀어도\n좋아!"
 	keyWait
 		type = 1
 	clearMsg
-	"헤이 헤이! 호 호!\n퀴즈 파워! 시작해 볼까!\n"
+	"헤이 헤이! 호 호!\n퀴즈 파워! 시작해 볼까!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나와 퀴즈 배틀을\n해 보겠나?\n"
+	"나와 퀴즈 배틀을\n해 보겠나?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -402,7 +402,7 @@ script 21 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = BusinessMan
-	"나와 퀴즈 배틀을\n해 보겠나?\n"
+	"나와 퀴즈 배틀을\n해 보겠나?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -443,11 +443,11 @@ script 22 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = BusinessMan
-	"좋아. 제1문제:\n"
+	"좋아. 제1문제:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"코다마 타운의 개집은 사실\n무엇일까?\n"
+	"코다마 타운의 개집은 사실\n무엇일까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -461,7 +461,7 @@ script 22 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"에어컨 실외기\n"
+	"에어컨 실외기\n"
 	positionOptionFromCenter
 		width = 16
 	optionText
@@ -469,7 +469,7 @@ script 22 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"보안 시스템\n"
+	"보안 시스템\n"
 	positionOptionFromCenter
 		width = 16
 	optionText
@@ -477,7 +477,7 @@ script 22 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"그냥 개집\n"
+	"그냥 개집\n"
 	selectText
 		default = 0
 		BContinue = false
@@ -498,11 +498,11 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"자, 제2문제:\n"
+	"자, 제2문제:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"’루나’는 다음 중\n무슨 뜻일까?\n"
+	"’루나’는 다음 중\n무슨 뜻일까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -553,11 +553,11 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아. 제3문제:\n"
+	"좋아. 제3문제:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아마켄 자판기에서 파는\n커피의 이름은?\n"
+	"아마켄 자판기에서 파는\n커피의 이름은?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -571,7 +571,7 @@ script 22 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"문 페이스 커피\n"
+	"문 페이스 커피\n"
 	positionOptionFromCenter
 		width = 12
 	optionText
@@ -579,7 +579,7 @@ script 22 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"빅뱅 커피\n"
+	"빅뱅 커피\n"
 	positionOptionFromCenter
 		width = 12
 	optionText
@@ -587,7 +587,7 @@ script 22 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"그래비티 커피\n"
+	"그래비티 커피\n"
 	selectText
 		default = 0
 		BContinue = false
@@ -608,11 +608,11 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아. 제4문제:\n"
+	"좋아. 제4문제:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"다음 중 두 번째로\n강력한 카드는?\n"
+	"다음 중 두 번째로\n강력한 카드는?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -626,7 +626,7 @@ script 22 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"브레이브 소드 1\n"
+	"브레이브 소드 1\n"
 	positionOptionFromCenter
 		width = 9
 	optionText
@@ -634,7 +634,7 @@ script 22 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"대걸레 랜스 2\n"
+	"대걸레 랜스 2\n"
 	positionOptionFromCenter
 		width = 9
 	optionText
@@ -642,7 +642,7 @@ script 22 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"파이어 바주카 2\n"
+	"파이어 바주카 2\n"
 	selectText
 		default = 0
 		BContinue = false
@@ -663,15 +663,15 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아. 제5문제:\n"
+	"좋아. 제5문제:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"학교 체육관에는 농구 코트가\n몇 개 있을까?\n"
+	"학교 체육관에는 농구 코트가\n몇 개 있을까?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"몇 개 있을까?"
+	"몇 개 있을까?"
 	keyWait
 		type = 1
 	clearMsg
@@ -722,11 +722,11 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아. 제6문제:\n"
+	"좋아. 제6문제:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"메트너와 핫 로더의\nHP 합계는?\n"
+	"메트너와 핫 로더의\nHP 합계는?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -773,7 +773,7 @@ script 22 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = BusinessMan
-	"여기에 캐논 베이스의 HP를\n더하면 합계는?\n"
+	"여기에 캐논 베이스의 HP를\n더하면 합계는?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -824,11 +824,11 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아. 제8문제:\n"
+	"좋아. 제8문제:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나는 퀴즈... "
+	"나는 퀴즈... "
 	keyWait
 		type = 1
 	clearMsg
@@ -879,11 +879,11 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아. 제9문제:\n"
+	"좋아. 제9문제:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"타임 스퀘어에 있는\n개 동상의 이름은?\n"
+	"타임 스퀘어에 있는\n개 동상의 이름은?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -934,11 +934,11 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아. 제10문제:\n"
+	"좋아. 제10문제:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"다음 중 에코 초등학교에\n없는 것은?\n"
+	"다음 중 에코 초등학교에\n없는 것은?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -968,7 +968,7 @@ script 22 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"화학 실험실\n"
+	"화학 실험실\n"
 	selectText
 		default = 0
 		BContinue = false
@@ -989,7 +989,7 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아. 제11문제:\n"
+	"좋아. 제11문제:\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -997,7 +997,7 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"내가 방금 뭐라고 했는지 말해 봐!\n"
+	"내가 방금 뭐라고 했는지 말해 봐!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -1048,7 +1048,7 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아. 제12문제\n"
+	"좋아. 제12문제\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -1056,7 +1056,7 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"뻥이야! 이게 몇 번째\n문제인지 말해 봐.\n"
+	"뻥이야! 이게 몇 번째\n문제인지 말해 봐.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -1107,11 +1107,11 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아. 제13문제:\n"
+	"좋아. 제13문제:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"타임 스퀘어에 있는\n백화점의 이름은?\n"
+	"타임 스퀘어에 있는\n백화점의 이름은?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -1162,11 +1162,11 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아. 제14문제:\n"
+	"좋아. 제14문제:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"다음 중 나시스 옥상에\n있는 것은?\n"
+	"다음 중 나시스 옥상에\n있는 것은?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -1217,15 +1217,15 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좋아. 마지막 문제다.\n제15문제:\n"
+	"좋아. 마지막 문제다.\n제15문제:\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어떤 사람이\n일하는 곳은\n"
+	"어떤 사람이\n일하는 곳은\n"
 	keyWait
 		type = 1
 	clearMsg
-	"중고 상점에서 일하는 사람은\n어떤 사람일까?\n"
+	"중고 상점에서 일하는 사람은\n어떤 사람일까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -1255,7 +1255,7 @@ script 22 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"어린 소녀\n"
+	"어린 소녀\n"
 	selectText
 		default = 0
 		BContinue = false
@@ -1272,19 +1272,19 @@ script 22 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = BusinessMan
-	"정말 놀랍군!!"
+	"정말 놀랍군!!"
 	keyWait
 		type = 1
 	clearMsg
-	"내 기발한 문제를\n전부 맞혔어!!\n"
+	"내 기발한 문제를\n전부 맞혔어!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"인정하지. 네가 바로\n진짜배기야.\n"
+	"인정하지. 네가 바로\n진짜배기야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네 상품은 이거다.\n"
+	"네 상품은 이거다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -1298,7 +1298,7 @@ script 22 mmsf1 {
 	"가\n\""
 	printItem
 		item = 113
-	"\"을 받았다!!\n"
+	"\"을 받았다!!\n"
 	keyWait
 		type = 2
 	playerFinish
@@ -1306,7 +1306,7 @@ script 22 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = BusinessMan
-	"이제 네가 퀴즈 왕이라고\n불려야겠는걸.\n"
+	"이제 네가 퀴즈 왕이라고\n불려야겠는걸.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -1321,7 +1321,7 @@ script 23 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = BusinessMan
-	"...겁먹은 건\n아니겠지?\n"
+	"...겁먹은 건\n아니겠지?\n"
 	keyWait
 		type = 0
 	end
@@ -1335,7 +1335,7 @@ script 24 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"다시 도전해!"
+	"다시 도전해!"
 	keyWait
 		type = 0
 	end
@@ -1345,7 +1345,7 @@ script 25 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = BusinessMan
-	"이제 네가 퀴즈 왕이라고\n불려야겠는걸.\n"
+	"이제 네가 퀴즈 왕이라고\n불려야겠는걸.\n"
 	keyWait
 		type = 0
 	end

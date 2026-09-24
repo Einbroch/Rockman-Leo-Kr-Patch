@@ -4,7 +4,7 @@
 script 0 mmsf1 {
 	msgOpen
 	mugshotHide
-	"이쿠타 미치모리 선생님!"
+	"이쿠타 미치모리 선생님!"
 	keyWait
 		type = 0
 	end
@@ -14,7 +14,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"여기에도 안 계셔...\n"
+	"여기에도 안 계셔...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -26,7 +26,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 5
-	"어디로 가신 거지?\n"
+	"어디로 가신 거지?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -38,7 +38,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 4
-	"뭔가 잘못\n드신 걸까?\n"
+	"뭔가 잘못\n드신 걸까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -50,7 +50,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 9
-	"열이 있으신 건 아닐까?\n"
+	"열이 있으신 건 아닐까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -62,11 +62,11 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 8
-	"아프지 않으셨다면\n이쿠타 미치모리 선생님이\n"
+	"아프지 않으셨다면\n이쿠타 미치모리 선생님이\n"
 	keyWait
 		type = 1
 	clearMsg
-	"성적을 올려야 한다는\n말씀을 하실 리 없어!\n"
+	"성적을 올려야 한다는\n말씀을 하실 리 없어!\n"
 	keyWait
 		type = 0
 	end
@@ -78,11 +78,11 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"그러니까 서둘러 병원에\n모셔 가야 해.\n"
+	"그러니까 서둘러 병원에\n모셔 가야 해.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리 선생님을\n다시 데려와야 해!\n"
+	"우리 선생님을\n다시 데려와야 해!\n"
 	keyWait
 		type = 1
 	clearMsg

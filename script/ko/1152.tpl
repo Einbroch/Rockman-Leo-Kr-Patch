@@ -5,11 +5,11 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"날씨 정보 나갑니다!!\n"
+	"날씨 정보 나갑니다!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"오늘은 대체로 맑고\n구름이 조금 끼겠습니다.\n"
+	"오늘은 대체로 맑고\n구름이 조금 끼겠습니다.\n"
 	keyWait
 		type = 0
 	end
@@ -28,15 +28,15 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"날씨 정보 나갑니다!!\n"
+	"날씨 정보 나갑니다!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"오늘은 대체로 맑고\n구름이 조금 끼겠습니다.\n"
+	"오늘은 대체로 맑고\n구름이 조금 끼겠습니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"뭐, 꼭 그렇다고는 못 하지만\n이게 제 일이니까요!\n"
+	"뭐, 꼭 그렇다고는 못 하지만\n이게 제 일이니까요!\n"
 	keyWait
 		type = 0
 	end
@@ -46,23 +46,23 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"*삐 삐*"
+	"*삐 삐*"
 	keyWait
 		type = 1
 	clearMsg
-	"저 반짝이는 빨간 부분을\n조준한 다음\nA 버튼을 누르면"
+	"저 반짝이는 빨간 부분을\n조준한 다음\nA 버튼을 누르면"
 	keyWait
 		type = 1
 	clearMsg
-	"즉시 워프 지점으로\n\n"
+	"즉시 워프 지점으로\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"워프할 수 있습니다!\n"
+	"워프할 수 있습니다!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"*삐 삐*"
+	"*삐 삐*"
 	keyWait
 		type = 0
 	end
@@ -77,11 +77,11 @@ script 50 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"밖이 꽤 시끄러워지고\n있네요...\n"
+	"밖이 꽤 시끄러워지고\n있네요...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"무슨 일이 벌어지고\n있는 걸까요?\n"
+	"무슨 일이 벌어지고\n있는 걸까요?\n"
 	keyWait
 		type = 0
 	end
@@ -96,7 +96,7 @@ script 51 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"싸움이라도 난 건가?"
+	"싸움이라도 난 건가?"
 	keyWait
 		type = 1
 	clearMsg
@@ -110,11 +110,11 @@ script 55 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"어서 오세요!"
+	"어서 오세요!"
 	keyWait
 		type = 1
 	clearMsg
-	"오늘 하루도 힘차게\n시작해 봅시다!\n"
+	"오늘 하루도 힘차게\n시작해 봅시다!\n"
 	keyWait
 		type = 0
 	end
@@ -124,7 +124,7 @@ script 56 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"어제 밖에서 뭔가\n일어났던데...\n"
+	"어제 밖에서 뭔가\n일어났던데...\n"
 	keyWait
 		type = 0
 	end

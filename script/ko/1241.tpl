@@ -7,7 +7,7 @@ script 2 mmsf1 {
 		mugshot = Bud
 	"야, "
 	printPlayerName1
-	"!\n다시 브라더가 되니 좋네!\n"
+	"!\n다시 브라더가 되니 좋네!\n"
 	keyWait
 		type = 0
 	end

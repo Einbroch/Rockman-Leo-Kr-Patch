@@ -17,7 +17,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이제 피칭 머신이\n작동할 거야.\n"
+	"이제 피칭 머신이\n작동할 거야.\n"
 	keyWait
 		type = 0
 	end
@@ -39,19 +39,19 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이제 현실 세계로\n돌아가자!\n"
+	"이제 현실 세계로\n돌아가자!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내가 늙은이를\n이쪽으로 유인할 테니까,\n"
+	"내가 늙은이를\n이쪽으로 유인할 테니까,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"넌 피칭 머신을\n사용해서\n"
+	"넌 피칭 머신을\n사용해서\n"
 	keyWait
 		type = 1
 	clearMsg
-	"제대로 한 방 먹여.\n"
+	"제대로 한 방 먹여.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -67,7 +67,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"으, 응..."
+	"으, 응..."
 	keyWait
 		type = 0
 	end

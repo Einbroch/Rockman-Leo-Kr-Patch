@@ -3,7 +3,7 @@
 
 script 0 mmsf1 {
 	msgOpen
-	"확인 중."
+	"확인 중."
 	wait
 		frames = 30
 	"."
@@ -28,7 +28,7 @@ script 0 mmsf1 {
 }
 script 1 mmsf1 {
 	msgOpen
-	"코드가 확인되었습니다.\n보안이\n해제되었습니다."
+	"코드가 확인되었습니다.\n보안이\n해제되었습니다."
 	keyWait
 		type = 2
 	soundPlay
@@ -37,7 +37,7 @@ script 1 mmsf1 {
 }
 script 10 mmsf1 {
 	msgOpen
-	"확인 중."
+	"확인 중."
 	wait
 		frames = 30
 	"."
@@ -64,7 +64,7 @@ script 11 mmsf1 {
 	msgOpen
 	soundPlay
 		sound = 105
-	"오류. 코드를\n다시 입력해 주세요.\n"
+	"오류. 코드를\n다시 입력해 주세요.\n"
 	keyWait
 		type = 0
 	end

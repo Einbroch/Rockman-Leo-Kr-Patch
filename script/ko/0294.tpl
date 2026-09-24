@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"아무래도 내가 일찍 왔나 봐...\n"
+	"아무래도 내가 일찍 왔나 봐...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -37,7 +37,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"오래 기다렸어?\n"
+	"오래 기다렸어?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -49,7 +49,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"나도 방금 왔어.\n"
+	"나도 방금 왔어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -61,7 +61,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"좀 불안해\n보이는데...\n"
+	"좀 불안해\n보이는데...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -73,7 +73,7 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"아, 응. 조금...\n"
+	"아, 응. 조금...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -85,11 +85,11 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"정말 긴장돼.\n"
+	"정말 긴장돼.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네가 내 첫\n브라더니까.\n"
+	"네가 내 첫\n브라더니까.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -101,15 +101,15 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"나도 긴장돼."
+	"나도 긴장돼."
 	keyWait
 		type = 1
 	clearMsg
-	"저, 그럼..."
+	"저, 그럼..."
 	keyWait
 		type = 1
 	clearMsg
-	"시작해 볼까?\n"
+	"시작해 볼까?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -125,7 +125,7 @@ script 9 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"우선 서로에게 가장 큰\n비밀을 말해야 해.\n"
+	"우선 서로에게 가장 큰\n비밀을 말해야 해.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -149,11 +149,11 @@ script 10 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"저기, 츠카사..."
+	"저기, 츠카사..."
 	keyWait
 		type = 1
 	clearMsg
-	"정말 나한테 비밀을\n말해도 괜찮겠어?\n"
+	"정말 나한테 비밀을\n말해도 괜찮겠어?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -169,7 +169,7 @@ script 11 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"너한테 모든 걸 말하기로\n결심했어...\n"
+	"너한테 모든 걸 말하기로\n결심했어...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -193,7 +193,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"내 비밀은."
+	"내 비밀은."
 	wait
 		frames = 15
 	"."
@@ -244,7 +244,7 @@ script 16 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"왜... 왜 지금이야!?\n"
+	"왜... 왜 지금이야!?\n"
 	keyWait
 		type = 2
 	soundPlayBGM
@@ -265,7 +265,7 @@ script 17 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"(이제 나머지는\n나한테 맡겨.)\n"
+	"(이제 나머지는\n나한테 맡겨.)\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -277,7 +277,7 @@ script 18 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"(히, 히카루! 뭘\n하려는 거야!?)\n"
+	"(히, 히카루! 뭘\n하려는 거야!?)\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -289,11 +289,11 @@ script 19 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Rey
-	"(지금 내 모습을\n드러내면,\n"
+	"(지금 내 모습을\n드러내면,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"저 녀석이 어떻게 반응할 것\n같아?)\n"
+	"저 녀석이 어떻게 반응할 것\n같아?)\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -305,7 +305,7 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"(아, 안 돼!!)"
+	"(아, 안 돼!!)"
 	keyWait
 		type = 1
 	clearMsg
@@ -317,7 +317,7 @@ script 21 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Rey
-	"(어서 비켜!)\n\n"
+	"(어서 비켜!)\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -341,7 +341,7 @@ script 23 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"왜 그래, 츠카사...?\n"
+	"왜 그래, 츠카사...?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -357,7 +357,7 @@ script 24 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"아무것도 아니야..."
+	"아무것도 아니야..."
 	keyWait
 		type = 0
 	end
@@ -369,7 +369,7 @@ script 25 mmsf1 {
 		mugshot = Rey
 	"자, "
 	printPlayerName1
-	", 우리\n브라더가 되자."
+	", 우리\n브라더가 되자."
 	keyWait
 		type = 1
 	clearMsg
@@ -381,7 +381,7 @@ script 26 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"...으, 응."
+	"...으, 응."
 	keyWait
 		type = 1
 	clearMsg
@@ -395,7 +395,7 @@ script 27 mmsf1 {
 		mugshot = OmegaXis
 	"("
 	printPlayerName1
-	"! 저 녀석한테서 떨어져!\n당장!!)"
+	"! 저 녀석한테서\n떨어져! 당장!!)"
 	keyWait
 		type = 1
 	clearMsg
@@ -419,7 +419,7 @@ script 29 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"(당장이라고 했잖아!!)"
+	"(당장이라고 했잖아!!)"
 	keyWait
 		type = 0
 	end
@@ -439,7 +439,7 @@ script 31 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Rey
-	"왜 그래, "
+	"왜 그래, "
 	printPlayerName1
 	"...?"
 	keyWait
@@ -453,7 +453,7 @@ script 32 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"(뭐 하는 거야, 워록!?)\n"
+	"(뭐 하는 거야, 워록!?)\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -465,11 +465,11 @@ script 33 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"(갑자기 완전히 달라졌어.\n마치 다른 사람이\n"
+	"(갑자기 완전히 달라졌어.\n마치 다른 사람이\n"
 	keyWait
 		type = 1
 	clearMsg
-	"된 것\n같아.)\n"
+	"된 것\n같아.)\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -493,11 +493,11 @@ script 35 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"(냄새가 나...)\n"
+	"(냄새가 나...)\n"
 	keyWait
 		type = 1
 	clearMsg
-	"(FM 성인에게 지배당한\n인간의\n"
+	"(FM 성인에게 지배당한\n인간의\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -513,7 +513,7 @@ script 36 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"FM 성인이라고!?"
+	"FM 성인이라고!?"
 	keyWait
 		type = 1
 	clearMsg
@@ -525,7 +525,7 @@ script 37 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Rey
-	"흥, 정체를 들켰군.\n"
+	"흥, 정체를 들켰군.\n"
 	keyWait
 		type = 0
 	end
@@ -547,7 +547,7 @@ script 39 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Rey
-	"뭐, 이제 슬슬\n나와도 되겠지...\n"
+	"뭐, 이제 슬슬\n나와도 되겠지...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -561,11 +561,11 @@ script 40 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Gemini
-	"이제야 나오는군."
+	"이제야 나오는군."
 	keyWait
 		type = 1
 	clearMsg
-	"슬슬 지루해지던\n참이었어.\n"
+	"슬슬 지루해지던\n참이었어.\n"
 	keyWait
 		type = 2
 	jump
@@ -588,11 +588,11 @@ script 42 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"뭐, 뭐라고!?"
+	"뭐, 뭐라고!?"
 	keyWait
 		type = 1
 	clearMsg
-	"츠카사가 왜 제미니와 함께 있는 거야!?\n"
+	"츠카사가 왜 제미니와 함께 있는\n거야!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -604,15 +604,15 @@ script 43 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Gemini
-	"아직도 모르겠어?\n"
+	"아직도 모르겠어?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 녀석은..."
+	"이 녀석은..."
 	keyWait
 		type = 1
 	clearMsg
-	"인격이 두 개야.\n"
+	"인격이 두 개야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -620,7 +620,7 @@ script 43 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"다중 인격 장애를\n앓고 있는 거지.\n"
+	"다중 인격 장애를\n앓고 있는 거지.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -632,7 +632,7 @@ script 44 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"그래서 그랬구나...\n"
+	"그래서 그랬구나...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -644,7 +644,7 @@ script 45 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"무슨 말인지 모르겠어...\n"
+	"무슨 말인지 모르겠어...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -656,19 +656,19 @@ script 46 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Gemini
-	"한 사람 안에\n한 명 이상의\n"
+	"한 사람 안에\n한 명 이상의\n"
 	keyWait
 		type = 1
 	clearMsg
-	"’사람’이 있다는 뜻이야.\n\n"
+	"’사람’이 있다는 뜻이야.\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 인간 안에는\n’츠카사’와 ’히카루’라는\n"
+	"이 인간 안에는\n’츠카사’와 ’히카루’라는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"두 인격이 함께\n있어.\n"
+	"두 인격이 함께\n있어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -680,7 +680,7 @@ script 47 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"한 몸에 두 사람이라고!?\n"
+	"한 몸에 두 사람이라고!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -696,27 +696,27 @@ script 48 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"네가 브라더가 되고 싶어 한\n상대가\n"
+	"네가 브라더가 되고 싶어 한\n상대가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이런 녀석일\n줄은\n"
+	"이런 녀석일\n줄은\n"
 	keyWait
 		type = 1
 	clearMsg
-	"꿈에도 몰랐겠지.\n\n"
+	"꿈에도 몰랐겠지.\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그런데 더 놀라운 사실이 있어.\n\n"
+	"그런데 더 놀라운 사실이 있어.\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내가 너에게 접근한\n유일한 이유는...\n"
+	"내가 너에게 접근한\n유일한 이유는...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"안드로메다 키를 손에 넣기\n위해서였어!\n"
+	"안드로메다 키를 손에 넣기\n위해서였어!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -740,11 +740,11 @@ script 50 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Rey
-	"너와 브라더가\n되면\n"
+	"너와 브라더가\n되면\n"
 	keyWait
 		type = 1
 	clearMsg
-	"식은 죽 먹기처럼\n쉽게 손에 넣을 수 있었겠지.\n"
+	"식은 죽 먹기처럼\n쉽게 손에 넣을 수 있었겠지.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -756,7 +756,7 @@ script 51 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"츠카사! 대체 어떻게 된\n거야!?\n"
+	"츠카사! 대체 어떻게 된\n거야!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -768,13 +768,13 @@ script 52 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"정신 차려, "
+	"정신 차려, "
 	printPlayerName1
 	"!"
 	keyWait
 		type = 1
 	clearMsg
-	"네가 아는 츠카사가\n아니야!!\n"
+	"네가 아는 츠카사가\n아니야!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -786,11 +786,11 @@ script 53 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"그럼 츠카사는 어떻게 된\n거야!?\n"
+	"그럼 츠카사는 어떻게 된\n거야!?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어디에 있어!?"
+	"어디에 있어!?"
 	keyWait
 		type = 1
 	clearMsg
@@ -821,7 +821,7 @@ script 55 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"가, 가만히 있어!!\n"
+	"가, 가만히 있어!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -847,7 +847,7 @@ script 57 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"츠카사? 츠카사! 너야!?\n"
+	"츠카사? 츠카사! 너야!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -859,7 +859,7 @@ script 58 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"미안해... 이렇게 될\n줄은...\n"
+	"미안해... 이렇게 될\n줄은...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -871,19 +871,19 @@ script 59 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Rey
-	"뭘 사과하는\n거야?\n"
+	"뭘 사과하는\n거야?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네가 옳은 일을 한 거야!!\n"
+	"네가 옳은 일을 한 거야!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"끝까지 버텨!\n\n"
+	"끝까지 버텨!\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리 목표를 잊지 마,\n츠카사!\n"
+	"우리 목표를 잊지 마,\n츠카사!\n"
 	keyWait
 		type = 0
 	end

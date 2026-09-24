@@ -18,7 +18,7 @@ script 0 mmsf1 {
 		jumpIfInRange = 30
 		jumpIfOutOfRange = continue
 	msgOpen
-	"임시 메시지"
+	"임시 메시지"
 	keyWait
 		type = 0
 	end
@@ -29,7 +29,7 @@ script 67 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"이 안 어딘가에 그 FM인이\n있어...\n"
+	"이 안 어딘가에 그 FM인이\n있어...\n"
 	keyWait
 		type = 0
 	end

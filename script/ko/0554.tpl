@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"반 친구들과\n이야기할 거지,\n"
+	"반 친구들과\n이야기할 거지,\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -35,27 +35,27 @@ script 10 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"내가 수업 시간에\n왜 자고 있냐고?\n"
+	"내가 수업 시간에\n왜 자고 있냐고?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"왜-왜 그런 걸 물어봐...?\n"
+	"왜-왜 그런 걸 물어봐...?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아, 좀 봐줘.\n나도 어쩔 수 없었다고.\n"
+	"아, 좀 봐줘.\n나도 어쩔 수 없었다고.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지붕에서 무슨 자장가 같은\n음악이 들려와서\n"
+	"지붕에서 무슨 자장가 같은\n음악이 들려와서\n"
 	keyWait
 		type = 1
 	clearMsg
-	"졸음이 쏟아지는 거야...\n정말이야!\n"
+	"졸음이 쏟아지는 거야...\n정말이야!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"진짜야! 날\n믿어 줘!\n"
+	"진짜야! 날\n믿어 줘!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -66,15 +66,15 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"지붕에서 무슨 자장가 같은\n음악이 들려와서\n"
+	"지붕에서 무슨 자장가 같은\n음악이 들려와서\n"
 	keyWait
 		type = 1
 	clearMsg
-	"졸음이 쏟아지는 거야...\n정말이야!\n"
+	"졸음이 쏟아지는 거야...\n정말이야!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"진짜야! 날\n믿어 줘!\n"
+	"진짜야! 날\n믿어 줘!\n"
 	keyWait
 		type = 2
 	end
@@ -83,11 +83,11 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"뭐? 이제\n자장가가 멈췄으니\n"
+	"뭐? 이제\n자장가가 멈췄으니\n"
 	keyWait
 		type = 1
 	clearMsg
-	"안심해도 된다고?\n\n"
+	"안심해도 된다고?\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -95,11 +95,11 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"알았어, 알았어. 믿을게.\n"
+	"알았어, 알았어. 믿을게.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"작은 감사의\n선물이야.\n"
+	"작은 감사의\n선물이야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -111,7 +111,7 @@ script 12 mmsf1 {
 		amount = 1
 	mugshotHide
 	printPlayerName1
-	"가 받은 것:\n「"
+	"가 받은 것:\n「"
 	printCard
 		card = 100
 	"」!!\n"
@@ -122,7 +122,7 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = LittleBoy
-	"이제 공부에\n집중할 수 있겠어!!\n"
+	"이제 공부에\n집중할 수 있겠어!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -141,7 +141,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleBoy
-	"이제 공부에\n집중할 수 있겠어!!\n"
+	"이제 공부에\n집중할 수 있겠어!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -155,11 +155,11 @@ script 101 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"전파 세계 말고 다른 데\n갈 곳은\n"
+	"전파 세계 말고 다른 데\n갈 곳은\n"
 	keyWait
 		type = 1
 	clearMsg
-	"전파 세계?"
+	"전파 세계?"
 	keyWait
 		type = 0
 	end
@@ -169,7 +169,7 @@ script 102 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"스튜디오에\n안 가는 거야!?"
+	"스튜디오에\n안 가는 거야!?"
 	keyWait
 		type = 0
 	end
@@ -179,7 +179,7 @@ script 103 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이제 집에\n갈 시간이잖아?\n"
+	"이제 집에\n갈 시간이잖아?\n"
 	keyWait
 		type = 0
 	end
@@ -189,7 +189,7 @@ script 104 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"반 친구들과\n이야기 안 할 거야?\n"
+	"반 친구들과\n이야기 안 할 거야?\n"
 	keyWait
 		type = 0
 	end

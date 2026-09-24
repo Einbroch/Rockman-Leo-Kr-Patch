@@ -11,7 +11,7 @@ script 1 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"밤하늘을 볼 수 있지만,\n절대 태양을 보면 안 된다.\n"
+	"밤하늘을 볼 수 있지만,\n절대 태양을 보면 안 된다.\n"
 	keyWait
 		type = 0
 	end
@@ -19,11 +19,11 @@ script 1 mmsf1 {
 }
 script 2 mmsf1 {
 	msgOpen
-	"멋진 지구본이다.\n"
+	"멋진 지구본이다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"보면 볼수록\n더 멋져 보인다.\n"
+	"보면 볼수록\n더 멋져 보인다.\n"
 	keyWait
 		type = 0
 	end
@@ -31,11 +31,11 @@ script 2 mmsf1 {
 }
 script 4 mmsf1 {
 	msgOpen
-	"책장에 책이\n많이 꽂혀 있다.\n"
+	"책장에 책이\n많이 꽂혀 있다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"대부분 우주에 관한\n책이다.\n"
+	"대부분 우주에 관한\n책이다.\n"
 	keyWait
 		type = 0
 	end
@@ -43,7 +43,7 @@ script 4 mmsf1 {
 }
 script 5 mmsf1 {
 	msgOpen
-	"야구 글러브다.\n조금 방치된 것 같다.\n"
+	"야구 글러브다.\n조금 방치된 것 같다.\n"
 	keyWait
 		type = 0
 	end
@@ -51,11 +51,11 @@ script 5 mmsf1 {
 }
 script 6 mmsf1 {
 	msgOpen
-	"작은 TV다..."
+	"작은 TV다..."
 	keyWait
 		type = 1
 	clearMsg
-	"다른 TV에 비하면 작지만,\n그래도 꽤 괜찮다.\n"
+	"다른 TV에 비하면 작지만,\n그래도 꽤 괜찮다.\n"
 	keyWait
 		type = 0
 	end
@@ -63,7 +63,7 @@ script 6 mmsf1 {
 }
 script 7 mmsf1 {
 	msgOpen
-	"창문을 통해 밖의 풍경이\n보인다.\n"
+	"창문을 통해 밖의 풍경이\n보인다.\n"
 	keyWait
 		type = 0
 	end
@@ -71,7 +71,7 @@ script 7 mmsf1 {
 }
 script 8 mmsf1 {
 	msgOpen
-	"이 패널로 방의\n온도를 조절한다.\n"
+	"이 패널로 방의\n온도를 조절한다.\n"
 	keyWait
 		type = 0
 	end
@@ -79,7 +79,7 @@ script 8 mmsf1 {
 }
 script 9 mmsf1 {
 	msgOpen
-	"멋진 포스터다."
+	"멋진 포스터다."
 	keyWait
 		type = 0
 	end
@@ -87,11 +87,11 @@ script 9 mmsf1 {
 }
 script 10 mmsf1 {
 	msgOpen
-	"아름다운 별이 총총한\n"
+	"아름다운 별이 총총한\n"
 	keyWait
 		type = 1
 	clearMsg
-	"밤하늘을 확대한\n사진이야.\n"
+	"밤하늘을 확대한\n사진이야.\n"
 	keyWait
 		type = 0
 	end
@@ -101,11 +101,11 @@ script 11 mmsf1 {
 	msgOpen
 	"아빠가 "
 	printPlayerName1
-	"에게 이 운석\n조각을 주셨어."
+	"에게 이 운석\n조각을 주셨어."
 	keyWait
 		type = 1
 	clearMsg
-	"방사능은\n없다고 하셨는데..."
+	"방사능은\n없다고 하셨는데..."
 	keyWait
 		type = 0
 	end
@@ -113,7 +113,7 @@ script 11 mmsf1 {
 }
 script 12 mmsf1 {
 	msgOpen
-	"자기엔 아직\n너무 이른데...\n"
+	"자기엔 아직\n너무 이른데...\n"
 	keyWait
 		type = 0
 	end
@@ -121,7 +121,7 @@ script 12 mmsf1 {
 }
 script 20 mmsf1 {
 	msgOpen
-	"책상에 컴퓨터가\n내장돼 있어...\n"
+	"책상에 컴퓨터가\n내장돼 있어...\n"
 	keyWait
 		type = 0
 	end
@@ -129,7 +129,7 @@ script 20 mmsf1 {
 }
 script 21 mmsf1 {
 	msgOpen
-	"책상에 컴퓨터가\n내장돼 있어...\n"
+	"책상에 컴퓨터가\n내장돼 있어...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -137,11 +137,11 @@ script 21 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"전원이 꺼져 있어."
+	"전원이 꺼져 있어."
 	keyWait
 		type = 1
 	clearMsg
-	"켜 볼까?"
+	"켜 볼까?"
 	keyWait
 		type = 1
 	clearMsg
@@ -175,11 +175,11 @@ script 21 mmsf1 {
 		jump7 = 0
 		jump8 = 0
 	clearMsg
-	"*위이잉* *웅*"
+	"*위이잉* *웅*"
 	keyWait
 		type = 1
 	clearMsg
-	"여기에 웨이브 홀이 있어!\n"
+	"여기에 웨이브 홀이 있어!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -192,7 +192,7 @@ script 29 mmsf1 {
 		delay = 0
 	mugshotShowNPC
 		npc = 0
-	"이제 잘까?\n\n"
+	"이제 잘까?\n\n"
 	positionOptionFromCenter
 		width = 9
 	optionText
@@ -232,7 +232,7 @@ script 30 mmsf1 {
 		delay = 0
 	flagClear
 		flag = 3370
-	"여기까지 진행한 내용을 저장할까요?\n\n"
+	"여기까지 진행한 내용을\n저장할까요?\n\n"
 	positionOptionFromCenter
 		width = 9
 	optionText
@@ -274,7 +274,7 @@ script 31 mmsf1 {
 		jumpIfNotExists = 37
 	textSpeed
 		delay = 0
-	"덮어써도 괜찮을까요?\n\n"
+	"덮어써도 괜찮을까요?\n\n"
 	positionOptionFromCenter
 		width = 13
 	optionText
@@ -313,7 +313,7 @@ script 32 mmsf1 {
 		animation = 0
 	textSpeed
 		delay = 0
-	"저장 중...\n전원을 끄지 마세요!"
+	"저장 중...\n전원을 끄지 마세요!"
 	checkSaveFinished
 		jumpIfSuccessful = 33
 		jumpIfFailed = 35
@@ -327,7 +327,7 @@ script 33 mmsf1 {
 		delay = 0
 	soundPlay
 		sound = 138
-	"저장 완료!"
+	"저장 완료!"
 	keyWait
 		type = 2
 	callFreeSaveBuffer
@@ -338,7 +338,7 @@ script 34 mmsf1 {
 		flag = 3370
 	textSpeed
 		delay = 0
-	"저장에 실패했습니다..."
+	"저장에 실패했습니다..."
 	keyWait
 		type = 2
 	callFreeSaveBuffer
@@ -350,7 +350,7 @@ script 35 mmsf1 {
 	controlUnlock
 	textSpeed
 		delay = 0
-	"저장에 실패했습니다. 다시 시도할까요?\n\n"
+	"저장에 실패했습니다. 다시\n시도할까요?\n\n"
 	positionOptionFromCenter
 		width = 13
 	optionText
@@ -389,7 +389,7 @@ script 37 mmsf1 {
 		delay = 0
 	mugshotAnimation
 		animation = 0
-	"백업 데이터를\n초기화하는 중...\n"
+	"백업 데이터를\n초기화하는 중...\n"
 	checkSaveInit
 		jumpIfFailed = 35
 	checkSaveInitFinished
@@ -402,11 +402,11 @@ script 38 mmsf1 {
 	textSpeed
 		delay = 0
 	msgOpenQuick
-	"데이터에 접근할 수 없습니다.\n전원을 끈 다음\n"
+	"데이터에 접근할 수 없습니다.\n전원을 끈 다음\n"
 	keyWait
 		type = 1
 	clearMsg
-	"게임 카드를 다시\n삽입해 주세요.\n"
+	"게임 카드를 다시\n삽입해 주세요.\n"
 	end
 	end
 }

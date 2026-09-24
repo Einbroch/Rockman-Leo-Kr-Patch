@@ -5,7 +5,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Luna
-	"다시 브라더가 된 걸 축하하자,\n"
+	"다시 브라더가 된 걸 축하하자,\n"
 	printPlayerName1
 	"!"
 	keyWait

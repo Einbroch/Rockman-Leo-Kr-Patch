@@ -4,11 +4,11 @@
 script 0 mmsf1 {
 	msgOpen
 	mugshotHide
-	"신스케 씨는 몇 시간\n뒤에 깨어났다.\n"
+	"신스케 씨는 몇 시간\n뒤에 깨어났다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"무슨 일이 있었는지는\n흐릿하게만 기억했고,\n"
+	"무슨 일이 있었는지는\n흐릿하게만 기억했고,\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -16,11 +16,11 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"하지만 아마치 씨의 말만큼은\n분명히 기억했다.\n"
+	"하지만 아마치 씨의 말만큼은\n분명히 기억했다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"\"관계야말로 사회의\n본질이다.\"\n"
+	"\"관계야말로 사회의\n본질이다.\"\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -43,11 +43,11 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"오늘 일은\n정말 미안하네.\n"
+	"오늘 일은\n정말 미안하네.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"너희를 위험에 빠뜨릴\n생각은 없었어.\n"
+	"너희를 위험에 빠뜨릴\n생각은 없었어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -59,7 +59,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 6
-	"그런 줄은 알고 있어.\n"
+	"그런 줄은 알고 있어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -71,7 +71,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 5
-	"정말 대단했어요!"
+	"정말 대단했어요!"
 	keyWait
 		type = 1
 	clearMsg
@@ -83,7 +83,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"언제든 다시 놀러\n와!\n"
+	"언제든 다시 놀러\n와!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -95,11 +95,11 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 4
-	"네, 물론이죠!"
+	"네, 물론이죠!"
 	keyWait
 		type = 1
 	clearMsg
-	"안녕히 가세요!"
+	"안녕히 가세요!"
 	keyWait
 		type = 0
 	end
@@ -109,7 +109,7 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"나도 이만 가야겠군…\n"
+	"나도 이만 가야겠군…\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -121,7 +121,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"그리고 네 어머니께 안부 전해\n줘!\n"
+	"그리고 네 어머니께 안부 전해\n줘!\n"
 	keyWait
 		type = 0
 	end
@@ -131,7 +131,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"아, 그리고 한 가지 더…\n"
+	"아, 그리고 한 가지 더…\n"
 	keyWait
 		type = 0
 	end
@@ -151,7 +151,7 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"\"관계야말로 사회의\n본질이다.\"\n"
+	"\"관계야말로 사회의\n본질이다.\"\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -178,15 +178,15 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 2
-	"그 말을…\n"
+	"그 말을…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내가 NAZA에서 일하던 시절,\n멘토에게 들었지.\n"
+	"내가 NAZA에서 일하던 시절,\n멘토에게 들었지.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네 아버지였어."
+	"네 아버지였어."
 	keyWait
 		type = 1
 	clearMsg
@@ -198,7 +198,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"아버지가… 그런\n말을…?\n"
+	"아버지가… 그런\n말을…?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -214,7 +214,7 @@ script 14 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"그 말을 네 마음속에\n받아들일 수 있겠나?\n"
+	"그 말을 네 마음속에\n받아들일 수 있겠나?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -232,7 +232,7 @@ script 15 mmsf1 {
 	clearMsg
 	mugshotAnimation
 		animation = 1
-	"(아빠, 나는…)"
+	"(아빠, 나는…)"
 	keyWait
 		type = 1
 	clearMsg
@@ -254,7 +254,7 @@ script 17 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 4
-	"어서 와!!"
+	"어서 와!!"
 	keyWait
 		type = 1
 	clearMsg
@@ -266,7 +266,7 @@ script 18 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"앗! 잠깐만!!\n"
+	"앗! 잠깐만!!\n"
 	keyWait
 		type = 0
 	end

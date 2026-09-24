@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"여기서 뭐 하는 거야!?\n"
+	"여기서 뭐 하는 거야!?\n"
 	keyWait
 		type = 0
 	end

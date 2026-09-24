@@ -13,11 +13,11 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"난 그루브 넘쳐..."
+	"난 그루브 넘쳐..."
 	keyWait
 		type = 1
 	clearMsg
-	"언제나 그렇지!!"
+	"언제나 그렇지!!"
 	keyWait
 		type = 1
 	clearMsg

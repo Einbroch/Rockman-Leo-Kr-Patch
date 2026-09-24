@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 8
-	"그게 전부냐?\n"
+	"그게 전부냐?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -17,7 +17,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"정, 정말 강해!\n"
+	"정, 정말 강해!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -29,7 +29,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 8
-	"이번엔 내 힘을\n맛보게 해 주지!\n"
+	"이번엔 내 힘을\n맛보게 해 주지!\n"
 	keyWait
 		type = 0
 	end
@@ -81,7 +81,7 @@ script 6 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"더는...버틸 수 없어...\n"
+	"더는...버틸 수 없어...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -93,7 +93,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 8
-	"자, 이것도 받아라!!\n"
+	"자, 이것도 받아라!!\n"
 	keyWait
 		type = 0
 	end

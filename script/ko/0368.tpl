@@ -11,7 +11,7 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"정거장이 무너지기\n시작했어!!\n"
+	"정거장이 무너지기\n시작했어!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -23,13 +23,13 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"알고 있어!"
+	"알고 있어!"
 	keyWait
 		type = 1
 	clearMsg
 	textSpeed
 		delay = 1
-	"전파 변환!"
+	"전파 변환!"
 	wait
 		frames = 20
 	"\n"
@@ -60,15 +60,15 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"안 돼!! 웨이브 홀이...!!\n"
+	"안 돼!! 웨이브 홀이...!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이제 지구로\n돌아갈 수 없어..."
+	"이제 지구로\n돌아갈 수 없어..."
 	keyWait
 		type = 1
 	clearMsg
-	"어, 어떡하지...?"
+	"어, 어떡하지...?"
 	keyWait
 		type = 1
 	clearMsg
@@ -80,7 +80,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"쳇, 일이 꼬였군...\n"
+	"쳇, 일이 꼬였군...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -115,11 +115,11 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"방금 아빠 목소리가\n들린 것 같아.\n"
+	"방금 아빠 목소리가\n들린 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이쪽으로 오라고 하셨어...\n"
+	"이쪽으로 오라고 하셨어...\n"
 	keyWait
 		type = 0
 	end
@@ -129,15 +129,15 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"이 스위치... "
+	"이 스위치... "
 	keyWait
 		type = 1
 	clearMsg
-	"이 모듈을 분리할 수\n있을 것 같아!\n"
+	"이 모듈을 분리할 수\n있을 것 같아!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그러면 지구로 돌아갈 수\n있을지도 몰라, 워록!!\n"
+	"그러면 지구로 돌아갈 수\n있을지도 몰라, 워록!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -149,7 +149,7 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"그런데 이걸 어떻게\n조종하는지는 알아?\n"
+	"그런데 이걸 어떻게\n조종하는지는 알아?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -161,19 +161,19 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"아빠가 예전에 이\n우주 정거장의\n"
+	"아빠가 예전에 이\n우주 정거장의\n"
 	keyWait
 		type = 1
 	clearMsg
-	"조종 패널을 한 번\n보여 주신 적이 있어...\n"
+	"조종 패널을 한 번\n보여 주신 적이 있어...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그러니까 할 수 있을 것 같아...\n\n"
+	"그러니까 할 수 있을 것 같아...\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"해치 폐쇄..."
+	"해치 폐쇄..."
 	keyWait
 		type = 0
 	end
@@ -183,7 +183,7 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"비상 탈출 모듈을\n발사합니다!\n"
+	"비상 탈출 모듈을\n발사합니다!\n"
 	keyWait
 		type = 0
 	end

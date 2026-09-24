@@ -17,7 +17,7 @@ script 10 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"네가 학교 방송을\n\n"
+	"네가 학교 방송을\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -25,23 +25,23 @@ script 10 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"그러면 좋겠네."
+	"그러면 좋겠네."
 	keyWait
 		type = 1
 	clearMsg
-	"실은 요즘 방송에\n\n"
+	"실은 요즘 방송에\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"잡음이 많이 끼고 있어.\n어디서 오는 건지\n"
+	"잡음이 많이 끼고 있어.\n어디서 오는 건지\n"
 	keyWait
 		type = 1
 	clearMsg
-	"알아봐 줬으면 해.\n이 방의 전파와\n"
+	"알아봐 줬으면 해.\n이 방의 전파와\n"
 	keyWait
 		type = 1
 	clearMsg
-	"관련이 있을지도\n몰라.\n"
+	"관련이 있을지도\n몰라.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -52,19 +52,19 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"실은 요즘 방송에\n\n"
+	"실은 요즘 방송에\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"잡음이 많이 끼고 있어.\n어디서 오는 건지\n"
+	"잡음이 많이 끼고 있어.\n어디서 오는 건지\n"
 	keyWait
 		type = 1
 	clearMsg
-	"알아봐 줬으면 해.\n이 방의 전파와\n"
+	"알아봐 줬으면 해.\n이 방의 전파와\n"
 	keyWait
 		type = 1
 	clearMsg
-	"관련이 있을지도\n몰라.\n"
+	"관련이 있을지도\n몰라.\n"
 	keyWait
 		type = 0
 	end
@@ -86,7 +86,7 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"뭐? 잡음이 어디서 오는지\n\n"
+	"뭐? 잡음이 어디서 오는지\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -98,7 +98,7 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"일을 잘해 준\n보답이야!\n"
+	"일을 잘해 준\n보답이야!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -121,7 +121,7 @@ script 12 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Boy
-	"방송부에 들어오지\n않을래?\n"
+	"방송부에 들어오지\n않을래?\n"
 	keyWait
 		type = 2
 	flagSet
@@ -136,7 +136,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"방송부에 들어오지\n않을래?\n"
+	"방송부에 들어오지\n않을래?\n"
 	keyWait
 		type = 0
 	end
@@ -158,7 +158,7 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MitchShepar
-	"흠, 어떻게 해야\n하지...?\n"
+	"흠, 어떻게 해야\n하지...?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -168,19 +168,19 @@ script 15 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"조금 곤란한 일이 생겼어.\n"
+	"조금 곤란한 일이 생겼어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"모와모와 알아?\n"
+	"모와모와 알아?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아이들이 모와모와\n피규어를 사 달라고 했는데,\n"
+	"아이들이 모와모와\n피규어를 사 달라고 했는데,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"사 줄 수가 없어. 오늘 갑자기\n출근하라는 부탁을 받아서\n"
+	"사 줄 수가 없어. 오늘 갑자기\n출근하라는 부탁을 받아서\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -188,7 +188,7 @@ script 15 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"아이들이 실망할\n거야.\n"
+	"아이들이 실망할\n거야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -196,15 +196,15 @@ script 15 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"네가 대신 사다\n주겠다고?\n"
+	"네가 대신 사다\n주겠다고?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"정말? 그럼 아주\n고맙지!\n"
+	"정말? 그럼 아주\n고맙지!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"여기 돈을 줄게.\n"
+	"여기 돈을 줄게.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -222,7 +222,7 @@ script 15 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = MitchShepar
-	"정말 고마워!\n\n"
+	"정말 고마워!\n\n"
 	keyWait
 		type = 2
 	flagSet
@@ -233,11 +233,11 @@ script 16 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MitchShepar
-	"아이들이 모와모와\n피규어를 사 달라고 했는데,\n"
+	"아이들이 모와모와\n피규어를 사 달라고 했는데,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"사 줄 수가 없어. 오늘 갑자기\n출근하라는 부탁을 받아서\n"
+	"사 줄 수가 없어. 오늘 갑자기\n출근하라는 부탁을 받아서\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -245,7 +245,7 @@ script 16 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"부탁인데 대신\n사다 줄래?\n"
+	"부탁인데 대신\n사다 줄래?\n"
 	keyWait
 		type = 0
 	end
@@ -255,7 +255,7 @@ script 17 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MitchShepar
-	"벌써 돌아왔구나!\n"
+	"벌써 돌아왔구나!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -267,21 +267,21 @@ script 17 mmsf1 {
 	"가:\n\""
 	printItem
 		item = 51
-	"\"을 이쿠타 미치모리 씨에게 건넸다."
+	"\"을 이쿠타\n미치모리 씨에게 건넸다."
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MitchShepar
-	"고마워! 정말 큰\n도움이 됐어.\n"
+	"고마워! 정말 큰\n도움이 됐어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네가 내 학생이라서\n정말 다행이야!\n"
+	"네가 내 학생이라서\n정말 다행이야!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이걸 받아 줘.\n"
+	"이걸 받아 줘.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -303,7 +303,7 @@ script 17 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = MitchShepar
-	"이제 아이들의 환한\n얼굴을 볼 수 있겠어!\n"
+	"이제 아이들의 환한\n얼굴을 볼 수 있겠어!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -320,7 +320,7 @@ script 18 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MitchShepar
-	"이제 아이들의 환한\n얼굴을 볼 수 있겠어!\n"
+	"이제 아이들의 환한\n얼굴을 볼 수 있겠어!\n"
 	keyWait
 		type = 2
 	end

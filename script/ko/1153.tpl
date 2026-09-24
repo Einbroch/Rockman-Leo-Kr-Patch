@@ -10,15 +10,15 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"그럼 오늘의 날씨입니다.\n"
+	"그럼 오늘의 날씨입니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"오늘 날씨는 맑은 하늘이\n이어지겠지만...\n"
+	"오늘 날씨는 맑은 하늘이\n이어지겠지만...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그 뒤로는...\n무기???\n"
+	"그 뒤로는...\n무기???\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -32,7 +32,7 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"나, 날씨가아아...\n삐이... 삐이이.\n"
+	"나, 날씨가아아...\n삐이... 삐이이.\n"
 	keyWait
 		type = 0
 	end

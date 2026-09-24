@@ -5,7 +5,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Sonia
-	"다시 브라더가 돼서 기뻐,\n"
+	"다시 브라더가 돼서 기뻐,\n"
 	printPlayerName1
 	"!"
 	keyWait

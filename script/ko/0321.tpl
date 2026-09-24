@@ -27,7 +27,7 @@ script 2 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"목숨을 구해 주셨어요!\n"
+	"목숨을 구해 주셨어요!\n"
 	keyWait
 		type = 0
 	end

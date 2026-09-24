@@ -21,7 +21,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"전화 왔어."
+	"전화 왔어."
 	keyWait
 		type = 1
 	clearMsg
@@ -48,11 +48,11 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"너 아까 그\n녀석이지!\n"
+	"너 아까 그\n녀석이지!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이번엔 또 무슨 일이야!?\n"
+	"이번엔 또 무슨 일이야!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -67,11 +67,11 @@ script 4 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"잘 들어. 너희에게\n할 말이 있다.\n"
+	"잘 들어. 너희에게\n할 말이 있다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"거기서 박살 나지 않게\n조심해라.\n"
+	"거기서 박살 나지 않게\n조심해라.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -99,7 +99,7 @@ script 5 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"대체 무슨\n뜻이야?\n\"박살 난다\"니?"
+	"대체 무슨\n뜻이야?\n\"박살 난다\"니?"
 	keyWait
 		type = 1
 	clearMsg
@@ -111,19 +111,19 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"박살 난다고?"
+	"박살 난다고?"
 	keyWait
 		type = 1
 	clearMsg
-	"나도 전혀 모르겠어.\n"
+	"나도 전혀 모르겠어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"됐어. 나중에\n처리하면 돼.\n"
+	"됐어. 나중에\n처리하면 돼.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"일단 집에 가자.\n\n"
+	"일단 집에 가자.\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -147,7 +147,7 @@ script 8 mmsf1 {
 	soundDisableTextSFX
 	soundPlay
 		sound = 321
-	"*삐 삐 삐*"
+	"*삐 삐 삐*"
 	wait
 		frames = 90
 	keyWait
@@ -160,7 +160,7 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"무슨 일이야?"
+	"무슨 일이야?"
 	keyWait
 		type = 1
 	clearMsg
@@ -171,7 +171,7 @@ script 9 mmsf1 {
 script 10 mmsf1 {
 	msgOpen
 	mugshotHide
-	"침입자 경보! 침입자\n경보!"
+	"침입자 경보! 침입자\n경보!"
 	keyWait
 		type = 2
 	soundPlayBGM
@@ -181,7 +181,7 @@ script 10 mmsf1 {
 script 11 mmsf1 {
 	msgOpen
 	mugshotHide
-	"침입자 경보! 침입자\n경보!"
+	"침입자 경보! 침입자\n경보!"
 	keyWait
 		type = 1
 	clearMsg
@@ -204,7 +204,7 @@ script 13 mmsf1 {
 script 14 mmsf1 {
 	msgOpen
 	mugshotHide
-	"즉시 폐기를 개시한다.\n"
+	"즉시 폐기를 개시한다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -237,7 +237,7 @@ script 16 mmsf1 {
 script 17 mmsf1 {
 	msgOpen
 	mugshotHide
-	"침입자 경보! 침입자\n경보!"
+	"침입자 경보! 침입자\n경보!"
 	keyWait
 		type = 0
 	end
@@ -247,19 +247,19 @@ script 18 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"여기에도 놈들이 왔어!\n"
+	"여기에도 놈들이 왔어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"놈들이 노리는 건\n나인 것 같아...\n"
+	"놈들이 노리는 건\n나인 것 같아...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하지만 왜?"
+	"하지만 왜?"
 	keyWait
 		type = 1
 	clearMsg
-	"앗! 츠카사도!\n"
+	"앗! 츠카사도!\n"
 	keyWait
 		type = 0
 	end
@@ -269,11 +269,11 @@ script 19 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"어디 있지!?"
+	"어디 있지!?"
 	keyWait
 		type = 1
 	clearMsg
-	"설마... 츠카사를\n\"폐기\"한 건 아니겠지!?\n"
+	"설마... 츠카사를\n\"폐기\"한 건 아니겠지!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -286,7 +286,7 @@ script 20 mmsf1 {
 	mugshotShow
 		mugshot = OmegaXis
 	printPlayerName1
-	"! 막다른 길이야!"
+	"! 막다른 길이야!"
 	keyWait
 		type = 0
 	end
@@ -296,7 +296,7 @@ script 21 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"서둘러! 비주얼라이저를\n써!\n"
+	"서둘러! 비주얼라이저를\n써!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -328,7 +328,7 @@ script 24 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"웨이브 홀이다!"
+	"웨이브 홀이다!"
 	keyWait
 		type = 1
 	clearMsg
@@ -340,7 +340,7 @@ script 25 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"일단 전파 세계로\n도망칠 수 있어!\n"
+	"일단 전파 세계로\n도망칠 수 있어!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -368,7 +368,7 @@ script 27 mmsf1 {
 		npc = 0
 	textSpeed
 		delay = 1
-	"전파 변환!"
+	"전파 변환!"
 	wait
 		frames = 20
 	"\n"

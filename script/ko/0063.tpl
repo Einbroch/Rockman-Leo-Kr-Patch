@@ -7,7 +7,7 @@ script 0 mmsf1 {
 	flagSet
 		flag = 601
 	printBrotherBuffer1
-	" "
+	"\n"
 	printBrotherBuffer2
 	end
 }
@@ -15,11 +15,11 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"안녕하세요, 여러분! 코다마 타운\n초등학교의\n"
+	"안녕하세요, 여러분! 코다마 타운\n초등학교의\n"
 	keyWait
 		type = 1
 	clearMsg
-	"인기 DJ입니다!\n"
+	"인기 DJ입니다!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -29,23 +29,23 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"안녕하세요, 여러분. 최근 잇따르는\n\n"
+	"안녕하세요, 여러분. 최근\n잇따르는\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"불가사의한 사건을 해결하기 위해\n저희\n"
+	"불가사의한 사건을 해결하기 위해\n저희\n"
 	keyWait
 		type = 1
 	clearMsg
-	"코다마 타운 초등학교 라디오\n방송국은\n"
+	"코다마 타운 초등학교 라디오\n방송국은\n"
 	keyWait
 		type = 1
 	clearMsg
-	"총력을 다해\n사건의\n"
+	"총력을 다해\n사건의\n"
 	keyWait
 		type = 1
 	clearMsg
-	"진상을 밝히고 있습니다.\n"
+	"진상을 밝히고 있습니다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -55,15 +55,15 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"안녕하세요, 여러분!"
+	"안녕하세요, 여러분!"
 	keyWait
 		type = 1
 	clearMsg
-	"최근 저희 방송 신호에\n\n"
+	"최근 저희 방송 신호에\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"간섭이 자주 발생하고 있습니다.\n수상한 점을\n"
+	"간섭이 자주 발생하고 있습니다.\n수상한 점을\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -71,23 +71,23 @@ script 4 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"즉시 학교 라디오 방송국에\n알려 주세요.\n"
+	"즉시 학교 라디오 방송국에\n알려 주세요.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"분명 FM인의\n소행일 거야.\n"
+	"분명 FM인의\n소행일 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = OmegaXis
-	"아마 네 말이 맞을 거야! 우리\n"
+	"아마 네 말이 맞을 거야! 우리\n"
 	keyWait
 		type = 1
 	clearMsg
-	"뭔가 해야 하지 않을까?\n\n"
+	"뭔가 해야 하지 않을까?\n\n"
 	positionOptionFromCenter
 		width = 15
 	textSpeed
@@ -124,13 +124,13 @@ script 4 mmsf1 {
 		jumpIfFalse = continue
 	mugshotShow
 		mugshot = OmegaXis
-	"가서 한바탕 소동을 벌이자!\n"
+	"가서 한바탕 소동을 벌이자!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"나한테 메모 메일을\n보내 둬야겠어…\n"
+	"나한테 메모 메일을\n보내 둬야겠어…\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -146,7 +146,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"아, 뭐야! 이제 막\n신나기 시작했는데.\n"
+	"아, 뭐야! 이제 막\n신나기 시작했는데.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -156,11 +156,11 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"최근 저희 방송 신호에\n\n"
+	"최근 저희 방송 신호에\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"간섭이 자주 발생하고 있습니다.\n수상한 점을\n"
+	"간섭이 자주 발생하고 있습니다.\n수상한 점을\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -168,7 +168,7 @@ script 6 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"즉시 학교 라디오 방송국에\n알려 주세요.\n"
+	"즉시 학교 라디오 방송국에\n알려 주세요.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -178,23 +178,23 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Boy
-	"안녕하세요, 여러분!"
+	"안녕하세요, 여러분!"
 	keyWait
 		type = 1
 	clearMsg
-	"코다마 타운 초등학교\n라디오 방송의\n"
+	"코다마 타운 초등학교\n라디오 방송의\n"
 	keyWait
 		type = 1
 	clearMsg
-	"신호를 방해하던\n문제가\n"
+	"신호를 방해하던\n문제가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"초록 안경을 쓴 소년 덕분에\n해결됐습니다.\n"
+	"초록 안경을 쓴 소년 덕분에\n해결됐습니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"고마워요, 미스터리\n소년!\n"
+	"고마워요, 미스터리\n소년!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -204,11 +204,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이봐, 이봐! 네가 할 일부터\n\n"
+	"이봐, 이봐! 네가 할 일부터\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"먼저 처리하는 게\n어때!?"
+	"먼저 처리하는 게\n어때!?"
 	keyWait
 		type = 1
 	clearMsg

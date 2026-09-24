@@ -7,7 +7,7 @@ script 0 mmsf1 {
 	flagSet
 		flag = 601
 	printBrotherBuffer1
-	" "
+	"\n"
 	printBrotherBuffer2
 	end
 }
@@ -15,7 +15,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = AaronBoreal
-	"내 트랜서에 온 걸 환영해!\n마음껏 둘러봐.\n"
+	"내 트랜서에 온 걸 환영해!\n마음껏 둘러봐.\n"
 	keyWait
 		type = 0
 	end
@@ -38,11 +38,11 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = AaronBoreal
-	"그날 사고는 절대 잊지\n않을 거야.\n"
+	"그날 사고는 절대 잊지\n않을 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"언젠가 반드시 내 친구\n다이고를 찾고 말 거야!!\n"
+	"언젠가 반드시 내 친구\n다이고를 찾고 말 거야!!\n"
 	keyWait
 		type = 0
 	end
@@ -52,11 +52,11 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = AaronBoreal
-	"그날 사고는 절대 잊지\n않을 거야.\n"
+	"그날 사고는 절대 잊지\n않을 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"언젠가 반드시 내 친구\n다이고를 찾고 말 거야!!\n"
+	"언젠가 반드시 내 친구\n다이고를 찾고 말 거야!!\n"
 	keyWait
 		type = 0
 	end
@@ -72,17 +72,17 @@ script 10 mmsf1 {
 	clearMsg
 	"오늘은 "
 	printPlayerName1
-	"에게\n그걸 보여 줄 거야!"
+	"에게\n그걸 보여 줄 거야!"
 	keyWait
 		type = 1
 	clearMsg
-	"하하하. 분명\n놀라겠지!\n"
+	"하하하. 분명\n놀라겠지!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"...저쪽에 가 볼까?\n\n"
+	"...저쪽에 가 볼까?\n\n"
 	positionOptionFromCenter
 		width = 14
 	textSpeed
@@ -119,13 +119,13 @@ script 10 mmsf1 {
 		jumpIfFalse = continue
 	mugshotShow
 		mugshot = OmegaXis
-	"나도 좀 궁금해.\n가 보자!\n"
+	"나도 좀 궁금해.\n가 보자!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"나한테 메모 메일을\n보내 둬야겠다...\n"
+	"나한테 메모 메일을\n보내 둬야겠다...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -147,11 +147,11 @@ script 11 mmsf1 {
 	clearMsg
 	"오늘은 "
 	printPlayerName1
-	"에게\n그걸 보여 줄 거야!"
+	"에게\n그걸 보여 줄 거야!"
 	keyWait
 		type = 1
 	clearMsg
-	"하하하. 분명\n놀라겠지!\n"
+	"하하하. 분명\n놀라겠지!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -165,7 +165,7 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"어쩔 수 없지..."
+	"어쩔 수 없지..."
 	keyWait
 		type = 1
 	clearMsg
@@ -175,11 +175,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이봐, 이봐! 우선 네가\n끝내지 못한 일을\n"
+	"이봐, 이봐! 우선 네가\n끝내지 못한 일을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"먼저 처리하는 게\n어때!?"
+	"먼저 처리하는 게\n어때!?"
 	keyWait
 		type = 1
 	clearMsg

@@ -5,19 +5,19 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"투구 머신이야.\n"
+	"투구 머신이야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"비스타 포인트에 있던 거야.\n\n"
+	"비스타 포인트에 있던 거야.\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"좋아, 이걸\n쓰면\n되겠다!"
+	"좋아, 이걸\n쓰면\n되겠다!"
 	keyWait
 		type = 1
 	clearMsg
-	"좋아! 이걸 사용할게!\n"
+	"좋아! 이걸 사용할게!\n"
 	keyWait
 		type = 0
 	end
@@ -27,11 +27,11 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"준비 끝!"
+	"준비 끝!"
 	keyWait
 		type = 1
 	clearMsg
-	"피처맨 카드\n카드 인!!\n"
+	"피처맨 카드\n카드 인!!\n"
 	keyWait
 		type = 0
 	end
@@ -41,11 +41,11 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PitcherMan
-	"언제든 출발할 준비가 됐어!\n"
+	"언제든 출발할 준비가 됐어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"버튼만 누르면 돼!\n"
+	"버튼만 누르면 돼!\n"
 	keyWait
 		type = 0
 	end
@@ -55,7 +55,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"잠깐... 조금만 더...\n"
+	"잠깐... 조금만 더...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -65,7 +65,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"자, 피처맨!"
+	"자, 피처맨!"
 	keyWait
 		type = 1
 	clearMsg
@@ -77,7 +77,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PitcherMan
-	"타자 나와라!!"
+	"타자 나와라!!"
 	keyWait
 		type = 0
 	end
@@ -97,15 +97,15 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"멋진 투구야!"
+	"멋진 투구야!"
 	keyWait
 		type = 1
 	clearMsg
-	"서둘러야 해!\n\n"
+	"서둘러야 해!\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"도움 요청 신호가\n바로 앞에서 오고 있어.\n"
+	"도움 요청 신호가\n바로 앞에서 오고 있어.\n"
 	keyWait
 		type = 0
 	end

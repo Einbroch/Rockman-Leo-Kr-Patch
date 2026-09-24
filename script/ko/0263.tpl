@@ -3,7 +3,7 @@
 
 script 0 mmsf1 {
 	msgOpen
-	"해독제가 미스터리 웨이브로\n변했습니다.\n"
+	"해독제가 미스터리 웨이브로\n변했습니다.\n"
 	keyWait
 		type = 2
 	jump
@@ -12,7 +12,7 @@ script 0 mmsf1 {
 }
 script 1 mmsf1 {
 	msgOpen
-	"록맨은 다음을 획득했다:\n"
+	"록맨은 다음을 획득했다:\n"
 	playerAnimate0
 		animation = 24
 	itemGiveCardBuffered
@@ -29,7 +29,7 @@ script 1 mmsf1 {
 }
 script 2 mmsf1 {
 	msgOpen
-	"해독제가 미스터리 웨이브로\n변했습니다.\n"
+	"해독제가 미스터리 웨이브로\n변했습니다.\n"
 	keyWait
 		type = 2
 	jump
@@ -38,12 +38,12 @@ script 2 mmsf1 {
 }
 script 3 mmsf1 {
 	msgOpen
-	"록맨은 다음을 획득했다:\n"
+	"록맨은 다음을 획득했다:\n"
 	playerAnimate0
 		animation = 24
 	itemGiveBuffered
 		buffer = 1
-	"서브 카드: \""
+	"서브 카드:\n\""
 	printItemBuffered
 		buffer = 2
 	"\"!!"
@@ -55,7 +55,7 @@ script 3 mmsf1 {
 }
 script 4 mmsf1 {
 	msgOpen
-	"해독제가 미스터리 웨이브로\n변했습니다.\n"
+	"해독제가 미스터리 웨이브로\n변했습니다.\n"
 	keyWait
 		type = 2
 	jump
@@ -64,7 +64,7 @@ script 4 mmsf1 {
 }
 script 5 mmsf1 {
 	msgOpen
-	"록맨은 다음을 획득했다:\n"
+	"록맨은 다음을 획득했다:\n"
 	playerAnimate0
 		animation = 24
 	itemGiveZennyBuffered
@@ -83,7 +83,7 @@ script 5 mmsf1 {
 }
 script 6 mmsf1 {
 	msgOpen
-	"록맨의 몸에서 독이\n빠졌습니다!!\n"
+	"록맨의 몸에서 독이\n빠졌습니다!!\n"
 	keyWait
 		type = 2
 	end

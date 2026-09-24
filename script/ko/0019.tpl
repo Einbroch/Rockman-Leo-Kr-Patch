@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"이 녀석한테는 전혀 공격이 안 먹혀!!"
+	"이 녀석한테는 전혀 공격이 안\n먹혀!!"
 	keyWait
 		type = 1
 	clearMsg
@@ -17,7 +17,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"정말, 정말 강해!!"
+	"정말, 정말 강해!!"
 	keyWait
 		type = 1
 	clearMsg

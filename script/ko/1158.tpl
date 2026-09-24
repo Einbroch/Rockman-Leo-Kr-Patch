@@ -11,15 +11,15 @@ script 60 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 19
-	"크르릉! 이게 바로 내\n파형이야...\n"
+	"크르릉! 이게 바로 내\n파형이야...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"보름달만 보면\n피가 끓는다고!\n"
+	"보름달만 보면\n피가 끓는다고!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어서 와서 이 열기를\n식혀 보시지!\n"
+	"어서 와서 이 열기를\n식혀 보시지!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -39,7 +39,7 @@ script 60 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"안 싸운다"
+	"안 싸운다"
 	selectText
 		default = 0
 		BContinue = false
@@ -64,11 +64,11 @@ script 61 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"또, 또 흥분해 버렸어!\n"
+	"또, 또 흥분해 버렸어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"날 진정시킬 수 있나\n어디 한번 해 봐!!\n"
+	"날 진정시킬 수 있나\n어디 한번 해 봐!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -88,7 +88,7 @@ script 61 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"안 싸운다"
+	"안 싸운다"
 	selectText
 		default = 0
 		BContinue = false
@@ -111,7 +111,7 @@ script 63 mmsf1 {
 		mugshot = OmegaXis
 	"각오해, "
 	printPlayerName1
-	"!!\n자, 간다!"
+	"!!\n자, 간다!"
 	keyWait
 		type = 2
 	flagSet
@@ -127,7 +127,7 @@ script 64 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"좋아, 해 보자고, "
+	"좋아, 해 보자고, "
 	printPlayerName1
 	"!"
 	keyWait
@@ -144,7 +144,7 @@ script 65 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"정신 바짝 차려, "
+	"정신 바짝 차려, "
 	printPlayerName1
 	"!"
 	keyWait
@@ -157,11 +157,11 @@ script 67 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 19
-	"크르릉! 나쁘지 않은데...\n"
+	"크르릉! 나쁘지 않은데...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"일단 내 흥분은\n가라앉혔군.\n"
+	"일단 내 흥분은\n가라앉혔군.\n"
 	keyWait
 		type = 0
 	end
@@ -171,7 +171,7 @@ script 68 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 19
-	"그런 식으로는 내 흥분을\n잠재울 수 없어!\n"
+	"그런 식으로는 내 흥분을\n잠재울 수 없어!\n"
 	keyWait
 		type = 0
 	end
@@ -181,7 +181,7 @@ script 69 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 19
-	"어서 내 불을\n꺼 버리라고!\n"
+	"어서 내 불을\n꺼 버리라고!\n"
 	keyWait
 		type = 1
 	clearMsg

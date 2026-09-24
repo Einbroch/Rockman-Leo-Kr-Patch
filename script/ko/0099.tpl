@@ -7,7 +7,7 @@ script 0 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"방송 중에는 그 메뉴를\n사용할 수 없습니다. "
+	"방송 중에는 그 메뉴를\n사용할 수 없습니다. "
 	keyWait
 		type = 2
 	end
@@ -18,7 +18,7 @@ script 1 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"아직 그 메뉴를 사용할 수 없습니다."
+	"아직 그 메뉴를 사용할 수\n없습니다."
 	keyWait
 		type = 2
 	end
@@ -31,7 +31,7 @@ script 2 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"이 메뉴에 들어가려면 먼저\n저장해야 합니다. "
+	"이 메뉴에 들어가려면 먼저\n저장해야 합니다. "
 	keyWait
 		type = 1
 	clearMsg
@@ -75,7 +75,7 @@ script 3 mmsf1 {
 		animation = 0
 	textSpeed
 		delay = 0
-	"백업 데이터를 초기화하는 중...\n\n"
+	"백업 데이터를 초기화하는 중...\n\n"
 	checkSaveInit
 		jumpIfFailed = 6
 	checkSaveInitFinished
@@ -89,7 +89,7 @@ script 4 mmsf1 {
 		animation = 0
 	textSpeed
 		delay = 0
-	"저장 중...\n전원을 끄지 마세요.\n"
+	"저장 중...\n전원을 끄지 마세요.\n"
 	checkSaveFinished
 		jumpIfSuccessful = 5
 		jumpIfFailed = 6
@@ -103,7 +103,7 @@ script 5 mmsf1 {
 		delay = 0
 	soundPlay
 		sound = 138
-	"저장 완료."
+	"저장 완료."
 	keyWait
 		type = 2
 	flagSet
@@ -116,7 +116,7 @@ script 6 mmsf1 {
 	controlUnlock
 	textSpeed
 		delay = 0
-	"저장에 실패했습니다.\n다시 시도할까요? \n"
+	"저장에 실패했습니다.\n다시 시도할까요? \n"
 	positionOptionFromCenter
 		width = 13
 	optionText
@@ -152,7 +152,7 @@ script 8 mmsf1 {
 		flag = 3370
 	textSpeed
 		delay = 0
-	"저장 실패..."
+	"저장 실패..."
 	keyWait
 		type = 2
 	end
@@ -207,7 +207,7 @@ script 10 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"그 폴더는 사용할 수 없습니다.\n예비 폴더로 전환합니다. "
+	"그 폴더는 사용할 수 없습니다.\n예비 폴더로 전환합니다. "
 	keyWait
 		type = 2
 	end
@@ -217,10 +217,10 @@ script 11 mmsf1 {
 		flag = 3370
 	textSpeed
 		delay = 0
-	"데이터에 접근할 수 없습니다.\n전원을 끄고\n"
+	"데이터에 접근할 수 없습니다.\n전원을 끄고\n"
 	keyWait
 		type = 1
 	clearMsg
-	"게임 카드를 다시 삽입하세요."
+	"게임 카드를 다시 삽입하세요."
 	end
 }

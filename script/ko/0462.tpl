@@ -9,7 +9,7 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"친구를 많이 사귀렴!\n"
+	"친구를 많이 사귀렴!\n"
 	keyWait
 		type = 0
 	end

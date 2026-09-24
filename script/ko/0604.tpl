@@ -25,7 +25,7 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"분명 이 근처에\n떨어뜨린 것 같은데.\n"
+	"분명 이 근처에\n떨어뜨린 것 같은데.\n"
 	keyWait
 		type = 0
 	end
@@ -39,7 +39,7 @@ script 1 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"분명 이 근처에\n떨어뜨린 것 같은데.\n"
+	"분명 이 근처에\n떨어뜨린 것 같은데.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -51,7 +51,7 @@ script 1 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Worker
-	"음? 그래?"
+	"음? 그래?"
 	keyWait
 		type = 1
 	clearMsg
@@ -59,27 +59,27 @@ script 1 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"셔블맨 카드를\n빌리고 싶다고?\n"
+	"셔블맨 카드를\n빌리고 싶다고?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그게, 사실은..."
+	"그게, 사실은..."
 	keyWait
 		type = 1
 	clearMsg
-	"셔블맨 카드를\n잃어버렸거든...\n"
+	"셔블맨 카드를\n잃어버렸거든...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어젯밤에 침입자에게\n습격을 받아서\n"
+	"어젯밤에 침입자에게\n습격을 받아서\n"
 	keyWait
 		type = 1
 	clearMsg
-	"기절했는데, 그때\n잃어버린 것 같아.\n"
+	"기절했는데, 그때\n잃어버린 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"같이 찾아 줄 수\n있겠니?\n"
+	"같이 찾아 줄 수\n있겠니?\n"
 	keyWait
 		type = 2
 	flagSet
@@ -90,19 +90,19 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Worker
-	"셔블맨 카드를\n잃어버렸거든...\n"
+	"셔블맨 카드를\n잃어버렸거든...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어젯밤에 침입자에게\n습격을 받아서\n"
+	"어젯밤에 침입자에게\n습격을 받아서\n"
 	keyWait
 		type = 1
 	clearMsg
-	"기절했는데, 그때\n잃어버린 것 같아.\n"
+	"기절했는데, 그때\n잃어버린 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"같이 찾아 줄 수\n있겠니?\n"
+	"같이 찾아 줄 수\n있겠니?\n"
 	keyWait
 		type = 0
 	end
@@ -112,15 +112,15 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Worker
-	"오! 찾았구나!? 정말\n다행이다!\n"
+	"오! 찾았구나!? 정말\n다행이다!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"저 굴착기를 옮겨 줄 수\n있겠니?\n"
+	"저 굴착기를 옮겨 줄 수\n있겠니?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내가 너무 바빠서 말이야.\n부탁할게.\n"
+	"내가 너무 바빠서 말이야.\n부탁할게.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -131,11 +131,11 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Worker
-	"저 굴착기를 옮겨 줄 수\n있겠니?\n"
+	"저 굴착기를 옮겨 줄 수\n있겠니?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"내가 너무 바빠서 말이야.\n부탁할게.\n"
+	"내가 너무 바빠서 말이야.\n부탁할게.\n"
 	keyWait
 		type = 0
 	end
@@ -145,7 +145,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"보여 주고 싶은 곳은\n조금 더 안쪽에 있어.\n"
+	"보여 주고 싶은 곳은\n조금 더 안쪽에 있어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -159,7 +159,7 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"자, 집에 갈 시간이구나.\n"
+	"자, 집에 갈 시간이구나.\n"
 	keyWait
 		type = 0
 	end
@@ -169,7 +169,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"이번에는 정말\n집에 가자."
+	"이번에는 정말\n집에 가자."
 	keyWait
 		type = 0
 	end

@@ -5,19 +5,19 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"*삐 삐*"
+	"*삐 삐*"
 	keyWait
 		type = 1
 	clearMsg
-	"안녕, 친구!"
+	"안녕, 친구!"
 	keyWait
 		type = 1
 	clearMsg
-	"내 착각일지도 모르지만,\n왠지\n"
+	"내 착각일지도 모르지만,\n왠지\n"
 	keyWait
 		type = 1
 	clearMsg
-	"널 오래전부터\n알고 지낸 것 같아."
+	"널 오래전부터\n알고 지낸 것 같아."
 	keyWait
 		type = 0
 	end
@@ -48,11 +48,11 @@ script 51 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"참으로, 그대는 약속을\n지켜 주었구나.\n"
+	"참으로, 그대는 약속을\n지켜 주었구나.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그 답례로 이것을\n내려 주도록 하지.\n"
+	"그 답례로 이것을\n내려 주도록 하지.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -64,10 +64,10 @@ script 51 mmsf1 {
 		amount = 1
 	playerAnimate0
 		animation = 24
-	"록맨은 메가 웨폰\n\""
+	"록맨은 메가 웨폰\n\""
 	printItem
 		item = 31
-	"\"을 손에 넣었다!!"
+	"\"을 손에\n넣었다!!"
 	keyWait
 		type = 2
 	playerFinish
@@ -75,7 +75,7 @@ script 51 mmsf1 {
 	clearMsg
 	mugshotShowNPC
 		npc = 3
-	"용기를 내 이걸 지니고\n명예롭게 싸워라…\n"
+	"용기를 내 이걸 지니고\n명예롭게 싸워라…\n"
 	keyWait
 		type = 0
 	end
@@ -85,7 +85,7 @@ script 52 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"네가 가진 카드만으로는\n부족하다…\n"
+	"네가 가진 카드만으로는\n부족하다…\n"
 	keyWait
 		type = 0
 	end
@@ -101,18 +101,18 @@ script 53 mmsf1 {
 	"\",\n\""
 	printCard
 		card = 92
-	"\", 그리고\n\""
+	"\", 그리고\n\""
 	printCard
 		card = 93
 	"\"을"
 	keyWait
 		type = 1
 	clearMsg
-	"내게 넘겨라.\n"
+	"내게 넘겨라.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그러면 용맹한 주먹을\n내려 주지.\n"
+	"그러면 용맹한 주먹을\n내려 주지.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -122,14 +122,14 @@ script 53 mmsf1 {
 	"\",\n\""
 	printCard
 		card = 92
-	"\", 그리고\n\""
+	"\", 그리고\n\""
 	printCard
 		card = 93
 	"\"을"
 	keyWait
 		type = 1
 	clearMsg
-	"내게 넘겨라.\n"
+	"내게 넘겨라.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -149,7 +149,7 @@ script 53 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"안 준다"
+	"안 준다"
 	selectText
 		default = 0
 		BContinue = false
@@ -166,7 +166,7 @@ script 53 mmsf1 {
 	clearMsg
 	mugshotShowNPC
 		npc = 3
-	"눈앞의 작은 이득에\n현혹되지 마라.\n"
+	"눈앞의 작은 이득에\n현혹되지 마라.\n"
 	keyWait
 		type = 0
 	end
@@ -176,7 +176,7 @@ script 54 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 3
-	"용기를 내 이걸 지니고\n명예롭게 싸워라…\n"
+	"용기를 내 이걸 지니고\n명예롭게 싸워라…\n"
 	keyWait
 		type = 0
 	end

@@ -25,7 +25,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"분류 로봇을 그만\n조종해!\n"
+	"분류 로봇을 그만\n조종해!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -51,7 +51,7 @@ script 4 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"너는 록맨이잖아!"
+	"너는 록맨이잖아!"
 	keyWait
 		type = 1
 	clearMsg
@@ -63,7 +63,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Jammer
-	"왜, 왜 네가 여기 있어!?\n"
+	"왜, 왜 네가 여기 있어!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -98,7 +98,7 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이 기척은..."
+	"이 기척은..."
 	keyWait
 		type = 2
 	soundFadeOutBGM
@@ -119,7 +119,7 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Gemini
-	"성가신 벌레들 같으니.\n처리해라.\n"
+	"성가신 벌레들 같으니.\n처리해라.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -131,7 +131,7 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Jammer
-	"예, 곧바로 처리하겠습니다,\n제미니 님!\n"
+	"예, 곧바로 처리하겠습니다,\n제미니 님!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -143,15 +143,15 @@ script 12 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"제, 제미니라고??"
+	"제, 제미니라고??"
 	keyWait
 		type = 1
 	clearMsg
-	"네가 제미니야? 그럼\n네가\n"
+	"네가 제미니야? 그럼\n네가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리 일을 계속 방해해 온\n녀석이구나!\n"
+	"우리 일을 계속 방해해 온\n녀석이구나!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -163,19 +163,19 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Gemini
-	"네가 워록이군.\n"
+	"네가 워록이군.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이렇게 얼굴을 마주한 건\n처음이지만,\n"
+	"이렇게 얼굴을 마주한 건\n처음이지만,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"너에 대한 이야기는 많이\n들었다. 예를 들면...\n"
+	"너에 대한 이야기는 많이\n들었다. 예를 들면...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"안드로메다의 열쇠를\n훔친 게 너라든가...\n"
+	"안드로메다의 열쇠를\n훔친 게 너라든가...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -187,11 +187,11 @@ script 14 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"너에 대한 이야기도\n많이 들었지, 꼬맹아.\n"
+	"너에 대한 이야기도\n많이 들었지, 꼬맹아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하지만 하나같이\n좋은 이야기는 아니더군.\n"
+	"하지만 하나같이\n좋은 이야기는 아니더군.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -207,15 +207,15 @@ script 15 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"내가 뭘 하려는지도\n알겠지?\n"
+	"내가 뭘 하려는지도\n알겠지?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네놈은 여기서 쓰러진다!\n"
+	"네놈은 여기서 쓰러진다!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그리고 안드로메다의 열쇠는\n내 차지가 된다!!\n"
+	"그리고 안드로메다의 열쇠는\n내 차지가 된다!!\n"
 	keyWait
 		type = 0
 	end
@@ -225,7 +225,7 @@ script 16 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"놈들이 공격해 와, "
+	"놈들이 공격해 와, "
 	printPlayerName1
 	"!"
 	keyWait

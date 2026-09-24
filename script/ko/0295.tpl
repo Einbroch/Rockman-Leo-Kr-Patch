@@ -5,11 +5,11 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Rey
-	"그렇게 착하게 굴지 마!\n"
+	"그렇게 착하게 굴지 마!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그리고 목표에만\n집중해!!\n"
+	"그리고 목표에만\n집중해!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -21,7 +21,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"알아... 안다고... 하지만...\n"
+	"알아... 안다고... 하지만...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -33,11 +33,11 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Rey
-	"우린 아기 때부터 이걸\n바라왔잖아!\n"
+	"우린 아기 때부터 이걸\n바라왔잖아!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"언젠가 우리를\n버린 부모에게\n"
+	"언젠가 우리를\n버린 부모에게\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -59,11 +59,11 @@ script 3 mmsf1 {
 	clearMsg
 	"하지만 "
 	printPlayerName1
-	"는 이 일과\n아무 상관도 없잖아!"
+	"는 이 일과\n아무 상관도 없잖아!"
 	keyWait
 		type = 1
 	clearMsg
-	"그냥 소동을 벌이고 싶은 거지,\n히카루!?\n"
+	"그냥 소동을 벌이고 싶은 거지,\n히카루!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -79,23 +79,23 @@ script 4 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"제미니에게 들었어!\n"
+	"제미니에게 들었어!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그 녀석의 파트너가 가진\n안드로메다 키만 있으면\n"
+	"그 녀석의 파트너가 가진\n안드로메다 키만 있으면\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 행성을\n파괴할 수 있대!\n"
+	"이 행성을\n파괴할 수 있대!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그런 힘을 손에\n넣으면,\n"
+	"그런 힘을 손에\n넣으면,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"복수 따윈 누워서\n떡 먹기야!\n"
+	"복수 따윈 누워서\n떡 먹기야!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -107,7 +107,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"하, 하지만..."
+	"하, 하지만..."
 	keyWait
 		type = 1
 	clearMsg
@@ -119,15 +119,15 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Rey
-	"우리가 아주 어렸을 때를\n떠올려 봐.\n"
+	"우리가 아주 어렸을 때를\n떠올려 봐.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그 끔찍했던 날들을\n기억해!!\n"
+	"그 끔찍했던 날들을\n기억해!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우리 힘으로 살아가야 했던\n고통을 기억하라고!!\n"
+	"우리 힘으로 살아가야 했던\n고통을 기억하라고!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -151,19 +151,19 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Rey
-	"그 트라우마\n때문에\n"
+	"그 트라우마\n때문에\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네 인격이 둘로\n나뉘었고,\n"
+	"네 인격이 둘로\n나뉘었고,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우린 불완전한\n인간이 된 거야!\n"
+	"우린 불완전한\n인간이 된 거야!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이제 우릴 구할 방법은\n하나뿐이야!\n"
+	"이제 우릴 구할 방법은\n하나뿐이야!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -171,11 +171,11 @@ script 8 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"이 세상에 대한 증오를\n보여 줘야 해.\n"
+	"이 세상에 대한 증오를\n보여 줘야 해.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그런 증오는 그렇게\n쉽게 사라지지\n않으니까!"
+	"그런 증오는 그렇게\n쉽게 사라지지\n않으니까!"
 	keyWait
 		type = 0
 	end

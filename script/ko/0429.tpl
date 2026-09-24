@@ -33,7 +33,7 @@ script 0 mmsf1 {
 		jumpIfInRange = 5
 		jumpIfOutOfRange = continue
 	msgOpen
-	"임시 메시지"
+	"임시 메시지"
 	keyWait
 		type = 0
 	end
@@ -43,11 +43,11 @@ script 8 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"그럼 순간이동해서\n"
+	"그럼 순간이동해서\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그 사람의 컴퓨터 공간으로 들어가야겠네...\n꿀꺽\n"
+	"그 사람의 컴퓨터 공간으로\n들어가야겠네... 꿀꺽\n"
 	keyWait
 		type = 0
 	end
@@ -57,11 +57,11 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"남의 트랜서를\n뒤지는 건\n"
+	"남의 트랜서를\n뒤지는 건\n"
 	keyWait
 		type = 1
 	clearMsg
-	"기분이 영 찜찜한데...\n\n"
+	"기분이 영 찜찜한데...\n\n"
 	keyWait
 		type = 0
 	end
@@ -71,11 +71,11 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"마을 어딘가의\n컴퓨터 공간에 FM 성인이\n"
+	"마을 어딘가의\n컴퓨터 공간에 FM 성인이\n"
 	keyWait
 		type = 1
 	clearMsg
-	"숨어 있는 걸까?\n\n"
+	"숨어 있는 걸까?\n\n"
 	keyWait
 		type = 0
 	end
@@ -85,7 +85,7 @@ script 14 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"일단 집에\n가야겠다..."
+	"일단 집에\n가야겠다..."
 	keyWait
 		type = 0
 	end
@@ -95,7 +95,7 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"하암… 좀 쉬어야겠어.\n"
+	"하암… 좀 쉬어야겠어.\n"
 	keyWait
 		type = 0
 	end
@@ -129,11 +129,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"곧 별이\n나오겠지...\n"
+	"곧 별이\n나오겠지...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"비스타 포인트로\n올라가야겠다.\n"
+	"비스타 포인트로\n올라가야겠다.\n"
 	keyWait
 		type = 0
 	end
@@ -143,7 +143,7 @@ script 21 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"비스타 포인트로\n올라가 볼까.\n"
+	"비스타 포인트로\n올라가 볼까.\n"
 	keyWait
 		type = 0
 	end
@@ -153,7 +153,7 @@ script 22 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"집에 가야겠다...\n"
+	"집에 가야겠다...\n"
 	keyWait
 		type = 0
 	end
@@ -163,7 +163,7 @@ script 23 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"저 트럭을 멈출 방법이\n있을 거야...\n"
+	"저 트럭을 멈출 방법이\n있을 거야...\n"
 	keyWait
 		type = 0
 	end
@@ -173,7 +173,7 @@ script 24 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"트럭 컴퓨터 안으로\n들어가야 해...\n"
+	"트럭 컴퓨터 안으로\n들어가야 해...\n"
 	keyWait
 		type = 0
 	end
@@ -183,7 +183,7 @@ script 25 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"다른 방법은 없어...\n다시 들어가야 해...\n"
+	"다른 방법은 없어...\n다시 들어가야 해...\n"
 	keyWait
 		type = 0
 	end
@@ -193,7 +193,7 @@ script 31 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"신호가 어디서 오는지\n알아내야 해.\n"
+	"신호가 어디서 오는지\n알아내야 해.\n"
 	keyWait
 		type = 0
 	end
@@ -203,11 +203,11 @@ script 32 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"높은 곳까지 닿을 수 있는\n무언가라...\n"
+	"높은 곳까지 닿을 수 있는\n무언가라...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"비스타 포인트의 그 날아다니는\n사람에게 물어볼까.\n"
+	"비스타 포인트의 그 날아다니는\n사람에게 물어볼까.\n"
 	keyWait
 		type = 0
 	end
@@ -217,11 +217,11 @@ script 33 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"높은 곳까지 닿을 수 있는\n무언가가 필요해...\n"
+	"높은 곳까지 닿을 수 있는\n무언가가 필요해...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"저쪽에 뭔가\n있을까?\n"
+	"저쪽에 뭔가\n있을까?\n"
 	keyWait
 		type = 0
 	end
@@ -231,7 +231,7 @@ script 34 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"저 음료는 사야겠다.\n"
+	"저 음료는 사야겠다.\n"
 	keyWait
 		type = 0
 	end
@@ -241,7 +241,7 @@ script 35 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"자판기의 컴퓨터 공간을\n확인해 보자!\n"
+	"자판기의 컴퓨터 공간을\n확인해 보자!\n"
 	keyWait
 		type = 0
 	end
@@ -251,7 +251,7 @@ script 36 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"자판기가\n고쳐져 있으면 좋겠는데...\n"
+	"자판기가\n고쳐져 있으면 좋겠는데...\n"
 	keyWait
 		type = 0
 	end
@@ -261,7 +261,7 @@ script 37 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"이걸 RC 헬리콥터와\n바꾸자!\n"
+	"이걸 RC 헬리콥터와\n바꾸자!\n"
 	keyWait
 		type = 0
 	end
@@ -271,11 +271,11 @@ script 38 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"RC 헬리콥터는 손에\n넣었고... 이제\n"
+	"RC 헬리콥터는 손에\n넣었고... 이제\n"
 	keyWait
 		type = 1
 	clearMsg
-	"나무에 걸린 공을\n내려야 해.\n"
+	"나무에 걸린 공을\n내려야 해.\n"
 	keyWait
 		type = 0
 	end
@@ -285,7 +285,7 @@ script 39 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"이제 집에\n가야겠다."
+	"이제 집에\n가야겠다."
 	keyWait
 		type = 0
 	end
@@ -295,11 +295,11 @@ script 40 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"어서 집에 돌아가야지.\n"
+	"어서 집에 돌아가야지.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"좀 쉬어야겠어!\n"
+	"좀 쉬어야겠어!\n"
 	keyWait
 		type = 0
 	end
@@ -345,7 +345,7 @@ script 45 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"AMAKEN에는 버스를 타고\n가는 거 맞지?\n"
+	"AMAKEN에는 버스를 타고\n가는 거 맞지?\n"
 	keyWait
 		type = 0
 	end

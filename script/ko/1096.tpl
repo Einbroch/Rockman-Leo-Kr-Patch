@@ -10,11 +10,11 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MrHertz
-	"삐이익-삐익 조금만 더\n하면 나는\n"
+	"삐이익-삐익 조금만 더\n하면 나는\n"
 	keyWait
 		type = 1
 	clearMsg
-	"우주로 날아갈 수\n있을 것 같아"
+	"우주로 날아갈 수\n있을 것 같아"
 	keyWait
 		type = 1
 	clearMsg
@@ -37,7 +37,7 @@ script 1 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"더 빠르게… 더 높이…\n"
+	"더 빠르게… 더 높이…\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -55,11 +55,11 @@ script 20 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"심상치 않은 무언가가\n이쪽으로 오고 있어.\n"
+	"심상치 않은 무언가가\n이쪽으로 오고 있어.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"다 끝났어…"
+	"다 끝났어…"
 	keyWait
 		type = 0
 	end
@@ -73,7 +73,7 @@ script 21 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"지구… 이제\n끝장이야…\n"
+	"지구… 이제\n끝장이야…\n"
 	keyWait
 		type = 0
 	end

@@ -4,7 +4,7 @@
 script 0 mmsf1 {
 	msgOpen
 	mugshotHide
-	"한편, 학교에서는...\n"
+	"한편, 학교에서는...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -14,7 +14,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MitchShepar
-	"오늘은 일찍 집에 가서\n아이들을 봐야겠어."
+	"오늘은 일찍 집에 가서\n아이들을 봐야겠어."
 	wait
 		frames = 90
 	end
@@ -25,7 +25,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Principal
-	"이쿠타 선생님..."
+	"이쿠타 선생님..."
 	keyWait
 		type = 0
 	end
@@ -35,7 +35,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MitchShepar
-	"루드 교장 선생님."
+	"루드 교장 선생님."
 	keyWait
 		type = 1
 	clearMsg
@@ -47,7 +47,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Principal
-	"잠깐 이야기 좀\n나누고 싶습니다.\n"
+	"잠깐 이야기 좀\n나누고 싶습니다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -63,7 +63,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MitchShepar
-	"네, 교장 선생님."
+	"네, 교장 선생님."
 	keyWait
 		type = 0
 	end

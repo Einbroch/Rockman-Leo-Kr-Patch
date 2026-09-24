@@ -9,7 +9,7 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"제, 제미니 님!!"
+	"제, 제미니 님!!"
 	keyWait
 		type = 0
 	end
@@ -29,7 +29,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"이걸 밀기만 하면...\n좋아!\n"
+	"이걸 밀기만 하면...\n좋아!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -56,11 +56,11 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이제 고쳐졌을 거야.\n"
+	"이제 고쳐졌을 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"웨이브 아웃, "
+	"웨이브 아웃, "
 	printPlayerName1
 	"!"
 	keyWait

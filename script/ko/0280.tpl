@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"지금은 집에 가고\n싶네...\n"
+	"지금은 집에 가고\n싶네...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -45,7 +45,7 @@ script 2 mmsf1 {
 script 3 mmsf1 {
 	msgOpen
 	mugshotHide
-	"그래? 브라더들이\n싸우는 걸 구경하니 재미있었어?\n"
+	"그래? 브라더들이\n싸우는 걸 구경하니 재미있었어?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -57,7 +57,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"아까 그\n사람이야!\n"
+	"아까 그\n사람이야!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -68,19 +68,19 @@ script 4 mmsf1 {
 script 5 mmsf1 {
 	msgOpen
 	mugshotHide
-	"하지만 이런 일은\n그다지 놀랄 것도 아니지.\n"
+	"하지만 이런 일은\n그다지 놀랄 것도 아니지.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"방금 본 것처럼, 내가 하는 건\n이 세상의 가짜들을\n"
+	"방금 본 것처럼, 내가 하는 건\n이 세상의 가짜들을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"드러내는 것뿐이야.\n\n"
+	"드러내는 것뿐이야.\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"브라더 밴드 같은\n가짜 말이지.\n"
+	"브라더 밴드 같은\n가짜 말이지.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -92,7 +92,7 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"대체 넌 누구야!?\n"
+	"대체 넌 누구야!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -107,7 +107,7 @@ script 7 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"나는 \"후타바 히카루\"야."
+	"나는 \"후타바 히카루\"야."
 	keyWait
 		type = 1
 	clearMsg
@@ -118,7 +118,7 @@ script 7 mmsf1 {
 	"*딸깍!*"
 	wait
 		frames = 30
-	"\n*삐 삐 삐*"
+	"\n*삐 삐 삐*"
 	wait
 		frames = 120
 	keyWait
@@ -145,7 +145,7 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이 \"후타바 히카루\"라는\n사람, 들어본 적 있어?\n"
+	"이 \"후타바 히카루\"라는\n사람, 들어본 적 있어?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -157,7 +157,7 @@ script 10 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"아니, 전혀."
+	"아니, 전혀."
 	keyWait
 		type = 1
 	clearMsg
@@ -169,11 +169,11 @@ script 11 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"그럼 우리가 할 수 있는 건\n아무것도 없겠네.\n"
+	"그럼 우리가 할 수 있는 건\n아무것도 없겠네.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"오늘은 이 정도가\n한계인 것 같아...\n"
+	"오늘은 이 정도가\n한계인 것 같아...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -189,7 +189,7 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"집에 가자."
+	"집에 가자."
 	keyWait
 		type = 0
 	end

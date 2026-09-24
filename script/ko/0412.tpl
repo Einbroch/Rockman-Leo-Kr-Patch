@@ -5,7 +5,7 @@ script 84 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"이 컴프를 복구해야 해!\n"
+	"이 컴프를 복구해야 해!\n"
 	keyWait
 		type = 0
 	end
@@ -20,7 +20,7 @@ script 87 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"이 컴프를 복구해야 해!\n"
+	"이 컴프를 복구해야 해!\n"
 	keyWait
 		type = 0
 	end
@@ -35,7 +35,7 @@ script 90 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"츠카사는 이 안 어딘가에 있어.\n"
+	"츠카사는 이 안 어딘가에 있어.\n"
 	keyWait
 		type = 0
 	end
@@ -45,7 +45,7 @@ script 91 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"이 컴프는 이제\n정상적으로 작동하는 것 같아...\n"
+	"이 컴프는 이제\n정상적으로 작동하는 것 같아...\n"
 	keyWait
 		type = 0
 	end

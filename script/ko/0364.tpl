@@ -5,11 +5,11 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = QueenOphiuca
-	"폐하… 용서해\n주십시오!!\n"
+	"폐하… 용서해\n주십시오!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네놈… 저주받은\n워록… 안드로메…\n"
+	"네놈… 저주받은\n워록… 안드로메…\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -25,7 +25,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"이제 남은 건 FM\n왕과…\n"
+	"이제 남은 건 FM\n왕과…\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -33,7 +33,7 @@ script 1 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"서둘러야 해!\n"
+	"서둘러야 해!\n"
 	keyWait
 		type = 0
 	end
@@ -43,7 +43,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"마지막 잠금 장치가 열렸어.\n"
+	"마지막 잠금 장치가 열렸어.\n"
 	keyWait
 		type = 0
 	end
@@ -53,7 +53,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"드디어 마지막\n전투야!\n"
+	"드디어 마지막\n전투야!\n"
 	keyWait
 		type = 1
 	clearMsg

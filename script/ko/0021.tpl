@@ -7,7 +7,7 @@ script 0 mmsf1 {
 	flagSet
 		flag = 601
 	printBrotherBuffer1
-	" "
+	"\n"
 	printBrotherBuffer2
 	end
 }
@@ -15,7 +15,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"어서 오세요"
+	"어서 오세요"
 	keyWait
 		type = 1
 	clearMsg
@@ -25,7 +25,7 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"어서 오세요"
+	"어서 오세요"
 	keyWait
 		type = 1
 	clearMsg

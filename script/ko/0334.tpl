@@ -13,11 +13,11 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"안 돼! 이대로\n가다간\n"
+	"안 돼! 이대로\n가다간\n"
 	keyWait
 		type = 1
 	clearMsg
-	"엄마가 파동 덩어리로\n변해 버려!!\n"
+	"엄마가 파동 덩어리로\n변해 버려!!\n"
 	keyWait
 		type = 0
 	end
@@ -29,7 +29,7 @@ script 1 mmsf1 {
 		npc = 0
 	textSpeed
 		delay = 1
-	"전파 변환!"
+	"전파 변환!"
 	wait
 		frames = 20
 	"\n"
@@ -55,11 +55,11 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"아, 맞다... 워록이\n없잖아.\n"
+	"아, 맞다... 워록이\n없잖아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이럴 때 록맨이 있다면...!\n아니, 록맨은 필요 없어.\n"
+	"이럴 때 록맨이 있다면...!\n아니, 록맨은 필요 없어.\n"
 	keyWait
 		type = 0
 	end
@@ -75,11 +75,11 @@ script 3 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Jammer
-	"한 명 놓친 모양이군.\n"
+	"한 명 놓친 모양이군.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그냥 계속 숨어 있었어야지,\n꼬맹아...\n"
+	"그냥 계속 숨어 있었어야지,\n꼬맹아...\n"
 	keyWait
 		type = 0
 	end
@@ -89,7 +89,7 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Jammer
-	"저 녀석도 EM파로 만들어 버리자.\n어때?\n"
+	"저 녀석도 EM파로 만들어\n버리자. 어때?\n"
 	keyWait
 		type = 0
 	end
@@ -99,7 +99,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Jammer
-	"뭐, 상관없어.\n어차피 파동으로 변해서\n"
+	"뭐, 상관없어.\n어차피 파동으로 변해서\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -111,15 +111,15 @@ script 5 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"왕이 준 이 EM파\n덩어리 덕분에\n"
+	"왕이 준 이 EM파\n덩어리 덕분에\n"
 	keyWait
 		type = 1
 	clearMsg
-	"인간처럼 진짜 몸도\n얻었고 말이야.\n"
+	"인간처럼 진짜 몸도\n얻었고 말이야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"하지만 인간들은 우릴\n해칠 수 없잖아, 그렇지?\n"
+	"하지만 인간들은 우릴\n해칠 수 없잖아, 그렇지?\n"
 	keyWait
 		type = 0
 	end
@@ -133,15 +133,15 @@ script 6 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"인간들은 전파 세계의\n장점은 하나도 모르면서\n"
+	"인간들은 전파 세계의\n장점은 하나도 모르면서\n"
 	keyWait
 		type = 1
 	clearMsg
-	"전파 세계는 모르면서도\n자기들이 대단한 줄만 알지.\n"
+	"전파 세계는 모르면서도\n자기들이 대단한 줄만 알지.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"건방진 것들."
+	"건방진 것들."
 	keyWait
 		type = 0
 	end
@@ -155,11 +155,11 @@ script 7 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"그러니까 인간 씨, 개인적인 감정은\n없지만\n"
+	"그러니까 인간 씨, 개인적인\n감정은 없지만\n"
 	keyWait
 		type = 1
 	clearMsg
-	"땅바닥에 처박아\n주마!!\n"
+	"땅바닥에 처박아\n주마!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -227,7 +227,7 @@ script 13 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Jammer
-	"한 방 더 간다!"
+	"한 방 더 간다!"
 	keyWait
 		type = 1
 	clearMsg
@@ -253,7 +253,7 @@ script 15 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Jammer
-	"내 것도 받아라!!\n"
+	"내 것도 받아라!!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -277,15 +277,15 @@ script 17 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"으으... 윽..."
+	"으으... 윽..."
 	keyWait
 		type = 1
 	clearMsg
-	"크으윽... 록맨으로\n변할 수만 있다면,\n"
+	"크으윽... 록맨으로\n변할 수만 있다면,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"반격할 수 있을 텐데...\n\n"
+	"반격할 수 있을 텐데...\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -295,7 +295,7 @@ script 18 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Jammer
-	"아직 저 녀석, 싸울 힘이\n남아 있군.\n"
+	"아직 저 녀석, 싸울 힘이\n남아 있군.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -315,11 +315,11 @@ script 19 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"꼬맹이 하나 때문에\n안드로메다가\n"
+	"꼬맹이 하나 때문에\n안드로메다가\n"
 	keyWait
 		type = 1
 	clearMsg
-	"손해를 봤다고 누가 알겠어!\n\n"
+	"손해를 봤다고 누가 알겠어!\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -331,7 +331,7 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"그, 그만..."
+	"그, 그만..."
 	keyWait
 		type = 1
 	clearMsg
@@ -343,7 +343,7 @@ script 21 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Jammer
-	"각오는 됐겠지!?"
+	"각오는 됐겠지!?"
 	keyWait
 		type = 1
 	clearMsg
@@ -357,7 +357,7 @@ script 22 mmsf1 {
 	printPlayerName1
 	" "
 	printPlayerName2
-	",\n너무 일찍 포기하는군."
+	",\n너무 일찍 포기하는군."
 	keyWait
 		type = 2
 	soundStop
@@ -397,11 +397,11 @@ script 26 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"살았어...\n하지만 누가 구해 준 거지...?\n"
+	"살았어...\n하지만 누가 구해 준 거지...?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아! 엄마!!"
+	"아! 엄마!!"
 	keyWait
 		type = 0
 	end
@@ -422,7 +422,7 @@ script 27 mmsf1 {
 script 28 mmsf1 {
 	mugshotHide
 	msgOpen
-	"걱정하지 마라.\n그녀는 그저 의식을 잃었을 뿐이다.\n"
+	"걱정하지 마라. 그녀는 그저\n의식을 잃었을 뿐이다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -444,7 +444,7 @@ script 30 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"위성 관리자들이다!\n"
+	"위성 관리자들이다!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -459,7 +459,7 @@ script 31 mmsf1 {
 	printPlayerName1
 	" "
 	printPlayerName2
-	".\n워록을 찾아라."
+	".\n워록을 찾아라."
 	keyWait
 		type = 1
 	clearMsg
@@ -471,7 +471,7 @@ script 32 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"거대한 재앙이\n점점 다가오고 있다.\n"
+	"거대한 재앙이\n점점 다가오고 있다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -483,11 +483,11 @@ script 33 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"그 재앙에 맞설\n수 있는 건\n"
+	"그 재앙에 맞설\n수 있는 건\n"
 	keyWait
 		type = 1
 	clearMsg
-	"너와 워록뿐이다.\n\n"
+	"너와 워록뿐이다.\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -497,23 +497,23 @@ script 34 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"갑자기 워록을\n찾아서\n"
+	"갑자기 워록을\n찾아서\n"
 	keyWait
 		type = 1
 	clearMsg
-	"재앙을 막으라니!\n그럴 수는 없어!!\n"
+	"재앙을 막으라니!\n그럴 수는 없어!!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"게다가 워록은 날 떠났고\n우린 더 이상 연결되어 있지 않아.\n"
+	"게다가 워록은 날 떠났고\n우린 더 이상 연결되어 있지 않아.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"설령 록맨을 찾는다\n해도,\n"
+	"설령 록맨을 찾는다\n해도,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"다시는 내 편에서 싸워\n주지 않을 거야!\n"
+	"다시는 내 편에서 싸워\n주지 않을 거야!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -525,7 +525,7 @@ script 35 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"정말 그렇게\n믿느냐?\n"
+	"정말 그렇게\n믿느냐?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -549,11 +549,11 @@ script 37 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"마지막 싸움과\n관계가 없다면\n"
+	"마지막 싸움과\n관계가 없다면\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그가 나타나지 않을 거라고\n믿느냐?\n"
+	"그가 나타나지 않을 거라고\n믿느냐?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -565,11 +565,11 @@ script 38 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"록맨은 날 생각하지\n않아...\n"
+	"록맨은 날 생각하지\n않아...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그럴 리가 없어.\n"
+	"그럴 리가 없어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -581,7 +581,7 @@ script 39 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"그의 마음이 변했다고는\n생각하지 않느냐?\n"
+	"그의 마음이 변했다고는\n생각하지 않느냐?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -593,7 +593,7 @@ script 40 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"마음이... 변했다고...?\n"
+	"마음이... 변했다고...?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -605,15 +605,15 @@ script 41 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"그래. 예전에는\n없던 감정을\n"
+	"그래. 예전에는\n없던 감정을\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지금 그는 갖고 있다.\n어쩌면 다른 이를\n"
+	"지금 그는 갖고 있다.\n어쩌면 다른 이를\n"
 	keyWait
 		type = 1
 	clearMsg
-	"헤아리는 법을 배운 걸지도\n모르지.\n"
+	"헤아리는 법을 배운 걸지도\n모르지.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -623,7 +623,7 @@ script 42 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"다른 이를 헤아리는 법을\n배웠다고?\n"
+	"다른 이를 헤아리는 법을\n배웠다고?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -644,7 +644,7 @@ script 44 mmsf1 {
 	"."
 	waitSkip
 		frames = 30
-	"그런\n걸 대체 왜 배웠을까?"
+	"그런\n걸 대체 왜 배웠을까?"
 	keyWait
 		type = 1
 	clearMsg
@@ -660,7 +660,7 @@ script 45 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"바로 너다, "
+	"바로 너다, "
 	printPlayerName1
 	" "
 	printPlayerName2
@@ -668,7 +668,7 @@ script 45 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"네가 워록을\n바꿨다.\n"
+	"네가 워록을\n바꿨다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -680,7 +680,7 @@ script 46 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"내, 내가 워록을!?\n"
+	"내, 내가 워록을!?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -692,19 +692,19 @@ script 47 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"워록이 너와\n함께 지내면서\n"
+	"워록이 너와\n함께 지내면서\n"
 	keyWait
 		type = 1
 	clearMsg
-	"남을 헤아리는\n법을 배웠지.\n"
+	"남을 헤아리는\n법을 배웠지.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그리고 서로 친구가\n되어 가며,\n"
+	"그리고 서로 친구가\n되어 가며,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"너희는 서로에게 소중한 것을\n가르쳤다.\n"
+	"너희는 서로에게 소중한 것을\n가르쳤다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -716,7 +716,7 @@ script 48 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"내가 워록에게 남을\n헤아리는 법을 가르쳤다고...\n"
+	"내가 워록에게 남을\n헤아리는 법을 가르쳤다고...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -728,11 +728,11 @@ script 49 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"그래, 네가 그랬다."
+	"그래, 네가 그랬다."
 	keyWait
 		type = 1
 	clearMsg
-	"너 역시 소중한\n것을 배웠지.\n"
+	"너 역시 소중한\n것을 배웠지.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -756,11 +756,11 @@ script 51 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"그래. 눈을 감으면\n들릴 거다...\n"
+	"그래. 눈을 감으면\n들릴 거다...\n"
 	keyWait
 		type = 1
 	clearMsg
-	"워록이 네게 준\n’용기’가 들릴 거야!\n"
+	"워록이 네게 준\n’용기’가 들릴 거야!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -784,51 +784,51 @@ script 53 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"그래. 워록은 네게 소중한 것을\n지키기 위해\n"
+	"그래. 워록은 네게 소중한 것을\n지키기 위해\n"
 	keyWait
 		type = 1
 	clearMsg
-	"싸웠고, 네게 용기를\n주었지.\n"
+	"싸웠고, 네게 용기를\n주었지.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"너는 더 이상 예전의\n네가 아니다.\n"
+	"너는 더 이상 예전의\n네가 아니다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그가 준 용기를\n불러내라.\n"
+	"그가 준 용기를\n불러내라.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"잃는 것이 두려웠던\n너는 이제\n없다."
+	"잃는 것이 두려웠던\n너는 이제\n없다."
 	keyWait
 		type = 1
 	clearMsg
-	"그는 네가 자신에게 베푼 배려를\n네게 돌려주었다.\n"
+	"그는 네가 자신에게 베푼 배려를\n네게 돌려주었다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이제 네가 그에게\n그가 준 용기를 보여 줘라.\n"
+	"이제 네가 그에게\n그가 준 용기를 보여 줘라.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지구는 지금\n위기에 처해 있다.\n"
+	"지구는 지금\n위기에 처해 있다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네 소중한 사람들을\n지킬 수 있는 건\n"
+	"네 소중한 사람들을\n지킬 수 있는 건\n"
 	keyWait
 		type = 1
 	clearMsg
-	"네 소중한 사람들을\n바로 너뿐이다.\n"
+	"네 소중한 사람들을\n바로 너뿐이다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"저 인간들은 사테라\n경찰에 맡겨라.\n"
+	"저 인간들은 사테라\n경찰에 맡겨라.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지구를 구하는 데\n집중해라.\n"
+	"지구를 구하는 데\n집중해라.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -840,7 +840,7 @@ script 54 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"소중한 것을\n지킬 용기...\n"
+	"소중한 것을\n지킬 용기...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -886,7 +886,7 @@ script 58 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"이게 뭐야?"
+	"이게 뭐야?"
 	keyWait
 		type = 1
 	clearMsg
@@ -902,11 +902,11 @@ script 59 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"내 힘이\n봉인된 카드다.\n"
+	"내 힘이\n봉인된 카드다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"분명 도움이 될\n거다.\n"
+	"분명 도움이 될\n거다.\n"
 	keyWait
 		type = 0
 	end
@@ -916,11 +916,11 @@ script 60 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"내 힘이\n봉인된 카드다.\n"
+	"내 힘이\n봉인된 카드다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"분명 도움이 될\n거다.\n"
+	"분명 도움이 될\n거다.\n"
 	keyWait
 		type = 0
 	end
@@ -930,11 +930,11 @@ script 61 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"내 힘이\n봉인된 카드다.\n"
+	"내 힘이\n봉인된 카드다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"분명 도움이 될\n거다.\n"
+	"분명 도움이 될\n거다.\n"
 	keyWait
 		type = 0
 	end
@@ -955,7 +955,7 @@ script 62 mmsf1 {
 	"가\n\""
 	printCard
 		card = 231
-	"\"을 얻었다!!\n"
+	"\"을 얻었다!!\n"
 	keyWait
 		type = 2
 	waitOWVar
@@ -974,7 +974,7 @@ script 63 mmsf1 {
 	"가\n\""
 	printCard
 		card = 236
-	"\"을 얻었다!!\n"
+	"\"을 얻었다!!\n"
 	keyWait
 		type = 2
 	waitOWVar
@@ -993,7 +993,7 @@ script 64 mmsf1 {
 	"가\n\""
 	printCard
 		card = 241
-	"\"을 얻었다!!\n"
+	"\"을 얻었다!!\n"
 	keyWait
 		type = 2
 	waitOWVar
@@ -1009,7 +1009,7 @@ script 65 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = PegasusMagicShadow
-	"이제 가라, "
+	"이제 가라, "
 	printPlayerName1
 	"!\n"
 	keyWait
@@ -1021,7 +1021,7 @@ script 66 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LeoKingdomShadow
-	"이제 가라, "
+	"이제 가라, "
 	printPlayerName1
 	"!\n"
 	keyWait
@@ -1033,7 +1033,7 @@ script 67 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = DragonSkyShadow
-	"이제 가라, "
+	"이제 가라, "
 	printPlayerName1
 	"!\n"
 	keyWait
@@ -1045,7 +1045,7 @@ script 68 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"워록... 내가 꼭 찾을 테니까\n조금만 기다려!\n"
+	"워록... 내가 꼭 찾을 테니까\n조금만 기다려!\n"
 	keyWait
 		type = 0
 	end

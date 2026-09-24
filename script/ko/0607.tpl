@@ -7,21 +7,21 @@ script 0 mmsf1 {
 		jumpIfTrue = continue
 		jumpIfFalse = 7
 	msgOpen
-	"포클레인이 길을\n막고 있어.\n"
+	"포클레인이 길을\n막고 있어.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShowNPC
 		npc = 0
-	"츠카사이 말한\n폐기물 처리장이\n"
+	"츠카사이 말한\n폐기물 처리장이\n"
 	keyWait
 		type = 1
 	clearMsg
-	"바로 이 너머에 있는\n것 같아... 어떻게든\n"
+	"바로 이 너머에 있는\n것 같아... 어떻게든\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이 포클레인을 옮겨야 해...\n"
+	"이 포클레인을 옮겨야 해...\n"
 	keyWait
 		type = 2
 	flagSet
@@ -30,7 +30,7 @@ script 0 mmsf1 {
 }
 script 2 mmsf1 {
 	msgOpen
-	"이 트럭들이 쓰레기를\n여기로 가져오는구나.\n"
+	"이 트럭들이 쓰레기를\n여기로 가져오는구나.\n"
 	keyWait
 		type = 0
 	end
@@ -38,7 +38,7 @@ script 2 mmsf1 {
 }
 script 3 mmsf1 {
 	msgOpen
-	"분류 로봇들이 쓰레기를\n분류하느라 바쁘게 움직이고 있어.\n"
+	"분류 로봇들이 쓰레기를\n분류하느라 바쁘게 움직이고 있어.\n"
 	keyWait
 		type = 0
 	end
@@ -46,11 +46,11 @@ script 3 mmsf1 {
 }
 script 4 mmsf1 {
 	msgOpen
-	"도시 쓰레기장이야.\n"
+	"도시 쓰레기장이야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"강한 불길이 탈 수 있는\n쓰레기를 모두 태우고 있어.\n"
+	"강한 불길이 탈 수 있는\n쓰레기를 모두 태우고 있어.\n"
 	keyWait
 		type = 0
 	end
@@ -62,7 +62,7 @@ script 5 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"아마 무거운 걸 옮길 때\n쓰겠지.\n"
+	"아마 무거운 걸 옮길 때\n쓰겠지.\n"
 	keyWait
 		type = 0
 	end
@@ -70,7 +70,7 @@ script 5 mmsf1 {
 }
 script 6 mmsf1 {
 	msgOpen
-	"\"앞에 폐기물 처리장 있음\"\n"
+	"\"앞에 폐기물 처리장 있음\"\n"
 	keyWait
 		type = 0
 	end
@@ -78,7 +78,7 @@ script 6 mmsf1 {
 }
 script 7 mmsf1 {
 	msgOpen
-	"이 포클레인이 길을\n막고 있네...\n"
+	"이 포클레인이 길을\n막고 있네...\n"
 	keyWait
 		type = 0
 	end
@@ -86,11 +86,11 @@ script 7 mmsf1 {
 }
 script 10 mmsf1 {
 	msgOpen
-	"쓰레기를 분류하는\n크레인이야.\n"
+	"쓰레기를 분류하는\n크레인이야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"큰 물건들을 옮길 때\n쓰는 것 같아.\n"
+	"큰 물건들을 옮길 때\n쓰는 것 같아.\n"
 	keyWait
 		type = 0
 	end
@@ -98,7 +98,7 @@ script 10 mmsf1 {
 }
 script 11 mmsf1 {
 	msgOpen
-	"쓰레기를 분류하는\n크레인이야.\n"
+	"쓰레기를 분류하는\n크레인이야.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -106,7 +106,7 @@ script 11 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"작동하지 않는 것 같아.\n"
+	"작동하지 않는 것 같아.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -150,7 +150,7 @@ script 11 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"크레인 위에\n웨이브 홀이 나타났어!\n"
+	"크레인 위에\n웨이브 홀이 나타났어!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -159,11 +159,11 @@ script 11 mmsf1 {
 }
 script 13 mmsf1 {
 	msgOpen
-	"쓰레기를 분류하는\n크레인이야.\n"
+	"쓰레기를 분류하는\n크레인이야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"응? 여기에 뭔가\n있어.\n"
+	"응? 여기에 뭔가\n있어.\n"
 	keyWait
 		type = 1
 	clearMsg

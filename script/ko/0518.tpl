@@ -17,27 +17,27 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"…응? 내가 무슨\n생각을 하고 있냐고?\n"
+	"…응? 내가 무슨\n생각을 하고 있냐고?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"…아, 별거 아니야.\n"
+	"…아, 별거 아니야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"날 찾아준 그 분류 로봇\n말이야.\n"
+	"날 찾아준 그 분류 로봇\n말이야.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지금 어디서 뭘\n하고 있을까 싶어서.\n"
+	"지금 어디서 뭘\n하고 있을까 싶어서.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"벌써 10년도\n더 지났네…\n"
+	"벌써 10년도\n더 지났네…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아직도 시티 덤프에서\n일하고 있으려나.\n"
+	"아직도 시티 덤프에서\n일하고 있으려나.\n"
 	keyWait
 		type = 2
 	flagSet
@@ -48,19 +48,19 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"날 찾아준 그 분류 로봇\n말이야…\n"
+	"날 찾아준 그 분류 로봇\n말이야…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"지금 어디서 뭘\n하고 있을까 싶어서.\n"
+	"지금 어디서 뭘\n하고 있을까 싶어서.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"벌써 10년도\n더 지났네…\n"
+	"벌써 10년도\n더 지났네…\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아직도 시티 덤프에서\n일하고 있으려나.\n"
+	"아직도 시티 덤프에서\n일하고 있으려나.\n"
 	keyWait
 		type = 0
 	end
@@ -70,15 +70,15 @@ script 2 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"어? 그 분류 로봇이 어디\n있는지 알아냈다고?\n"
+	"어? 그 분류 로봇이 어디\n있는지 알아냈다고?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"타임 스퀘어\n백화점에 있다고?\n"
+	"타임 스퀘어\n백화점에 있다고?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"그렇구나. 그렇게\n됐던 거구나."
+	"그렇구나. 그렇게\n됐던 거구나."
 	keyWait
 		type = 1
 	clearMsg
@@ -88,7 +88,7 @@ script 2 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"고마운 마음을 담아\n이걸 줄게.\n"
+	"고마운 마음을 담아\n이걸 줄게.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -102,7 +102,7 @@ script 2 mmsf1 {
 	"가\n\""
 	printItem
 		item = 112
-	"\" 받았다!!\n"
+	"\" 받았다!!\n"
 	keyWait
 		type = 2
 	playerFinish
@@ -110,7 +110,7 @@ script 2 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = Pat
-	"곧 만나러 가야겠다!\n"
+	"곧 만나러 가야겠다!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -127,7 +127,7 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Pat
-	"곧 만나러 가야겠다!\n"
+	"곧 만나러 가야겠다!\n"
 	keyWait
 		type = 0
 	end

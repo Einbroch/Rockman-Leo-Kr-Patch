@@ -7,7 +7,7 @@ script 0 mmsf1 {
 	flagSet
 		flag = 601
 	printBrotherBuffer1
-	" "
+	"\n"
 	printBrotherBuffer2
 	end
 }
@@ -15,7 +15,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Worker
-	"오! 내 트랜서에 온 걸 환영해!\n\n"
+	"오! 내 트랜서에 온 걸 환영해!\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -25,11 +25,11 @@ script 3 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Worker
-	"남자는 손으로 일을\n해야지\n"
+	"남자는 손으로 일을\n해야지\n"
 	keyWait
 		type = 1
 	clearMsg
-	"책상에 앉아 있을 게 아니야!\n"
+	"책상에 앉아 있을 게 아니야!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -39,35 +39,35 @@ script 4 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Worker
-	"이런, 안 돼!"
+	"이런, 안 돼!"
 	keyWait
 		type = 1
 	clearMsg
-	"이 로봇이 또\n말썽을 부리잖아!"
+	"이 로봇이 또\n말썽을 부리잖아!"
 	keyWait
 		type = 1
 	clearMsg
-	"손으로 하는 일은 자신\n있는데,\n"
+	"손으로 하는 일은 자신\n있는데,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이런 로봇만 보면\n속수무책이라니까!\n"
+	"이런 로봇만 보면\n속수무책이라니까!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아, 이런! 이러다\n감독님께 혼나겠어!\n"
+	"아, 이런! 이러다\n감독님께 혼나겠어!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"이 사람, 꽤 고생하고\n있는 모양인데.\n"
+	"이 사람, 꽤 고생하고\n있는 모양인데.\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = OmegaXis
-	"그래, 그럼 좀\n도와줄래?\n"
+	"그래, 그럼 좀\n도와줄래?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -110,13 +110,13 @@ script 4 mmsf1 {
 		jumpIfFalse = continue
 	mugshotShow
 		mugshot = OmegaXis
-	"좋아, 해 보자."
+	"좋아, 해 보자."
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"메모 메일을\n써 두는 게 좋겠어…\n"
+	"메모 메일을\n써 두는 게 좋겠어…\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -132,7 +132,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"…뭐, 됐어."
+	"…뭐, 됐어."
 	keyWait
 		type = 1
 	clearMsg
@@ -142,23 +142,23 @@ script 6 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Worker
-	"이런, 안 돼!"
+	"이런, 안 돼!"
 	keyWait
 		type = 1
 	clearMsg
-	"이 로봇이 또\n말썽을 부리잖아!"
+	"이 로봇이 또\n말썽을 부리잖아!"
 	keyWait
 		type = 1
 	clearMsg
-	"손으로 하는 일은 자신\n있는데,\n"
+	"손으로 하는 일은 자신\n있는데,\n"
 	keyWait
 		type = 1
 	clearMsg
-	"이런 로봇만 보면\n속수무책이라니까!\n"
+	"이런 로봇만 보면\n속수무책이라니까!\n"
 	keyWait
 		type = 1
 	clearMsg
-	"아, 이런! 이러다\n감독님께 혼나겠어!\n"
+	"아, 이런! 이러다\n감독님께 혼나겠어!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -168,11 +168,11 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Worker
-	"아, 살았다!"
+	"아, 살았다!"
 	keyWait
 		type = 1
 	clearMsg
-	"열심히 공부해 두길\n잘했네!\n"
+	"열심히 공부해 두길\n잘했네!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -182,11 +182,11 @@ script 20 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"이봐, 이봐! 네가 할\n일부터\n"
+	"이봐, 이봐! 네가 할\n일부터\n"
 	keyWait
 		type = 1
 	clearMsg
-	"마저 처리하는 게\n어때!?"
+	"마저 처리하는 게\n어때!?"
 	keyWait
 		type = 1
 	clearMsg

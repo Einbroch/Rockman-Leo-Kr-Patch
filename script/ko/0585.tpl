@@ -3,11 +3,11 @@
 
 script 3 mmsf1 {
 	msgOpen
-	"파란 개구리와 빨간\n물고기다.\n"
+	"파란 개구리와 빨간\n물고기다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"미끈미끈하고 번들번들해서,\n좀 징그럽게 생겼다.\n"
+	"미끈미끈하고 번들번들해서,\n좀 징그럽게 생겼다.\n"
 	keyWait
 		type = 0
 	end
@@ -15,11 +15,11 @@ script 3 mmsf1 {
 }
 script 4 mmsf1 {
 	msgOpen
-	"기린 놀이기구다."
+	"기린 놀이기구다."
 	keyWait
 		type = 1
 	clearMsg
-	"돈을 넣으면 사방으로\n마구 흔들린다.\n"
+	"돈을 넣으면 사방으로\n마구 흔들린다.\n"
 	keyWait
 		type = 0
 	end
@@ -27,7 +27,7 @@ script 4 mmsf1 {
 }
 script 6 mmsf1 {
 	msgOpen
-	"고양이 놀이기구다. 고양이라고\n하기엔 너무 크다.\n"
+	"고양이 놀이기구다. 고양이라고\n하기엔 너무 크다.\n"
 	keyWait
 		type = 0
 	end
@@ -35,11 +35,11 @@ script 6 mmsf1 {
 }
 script 7 mmsf1 {
 	msgOpen
-	"벤치가 있다."
+	"벤치가 있다."
 	keyWait
 		type = 1
 	clearMsg
-	"여기 누워 있으면\n잠들 것 같다.\n"
+	"여기 누워 있으면\n잠들 것 같다.\n"
 	keyWait
 		type = 0
 	end
@@ -47,11 +47,11 @@ script 7 mmsf1 {
 }
 script 9 mmsf1 {
 	msgOpen
-	"모아이를 테마로 한 게임\n’모아이 더 라이드’의\n"
+	"모아이를 테마로 한 게임\n’모아이 더 라이드’의\n"
 	keyWait
 		type = 1
 	clearMsg
-	"눈이 번쩍번쩍 빛나고\n있다.\n"
+	"눈이 번쩍번쩍 빛나고\n있다.\n"
 	keyWait
 		type = 0
 	end
@@ -59,11 +59,11 @@ script 9 mmsf1 {
 }
 script 10 mmsf1 {
 	msgOpen
-	"인형 뽑기 게임이다.\n"
+	"인형 뽑기 게임이다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"보기보다 항상\n어렵다.\n"
+	"보기보다 항상\n어렵다.\n"
 	keyWait
 		type = 0
 	end
@@ -71,11 +71,11 @@ script 10 mmsf1 {
 }
 script 11 mmsf1 {
 	msgOpen
-	"버거 숍 메뉴다.\n"
+	"버거 숍 메뉴다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"더블 치즈 모아이\n버거가 제일 맛있다.\n"
+	"더블 치즈 모아이\n버거가 제일 맛있다.\n"
 	keyWait
 		type = 0
 	end
@@ -83,7 +83,7 @@ script 11 mmsf1 {
 }
 script 12 mmsf1 {
 	msgOpen
-	"다크 소드 뱀파이어 헌터의\n포스터다.\n"
+	"다크 소드 뱀파이어 헌터의\n포스터다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -95,7 +95,7 @@ script 12 mmsf1 {
 }
 script 15 mmsf1 {
 	msgOpen
-	"야구 게임이다."
+	"야구 게임이다."
 	keyWait
 		type = 0
 	end
@@ -103,11 +103,11 @@ script 15 mmsf1 {
 }
 script 16 mmsf1 {
 	msgOpen
-	"야구 게임이다."
+	"야구 게임이다."
 	keyWait
 		type = 1
 	clearMsg
-	"해 볼까?"
+	"해 볼까?"
 	keyWait
 		type = 1
 	clearMsg
@@ -127,7 +127,7 @@ script 16 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"안 한다"
+	"안 한다"
 	selectText
 		default = 0
 		BContinue = false
@@ -146,28 +146,28 @@ script 16 mmsf1 {
 		flag = 65
 		jumpIfTrue = 18
 		jumpIfFalse = continue
-	"\"플레이 볼!!\""
+	"\"플레이 볼!!\""
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = Geo
-	"오! 시작했어!"
+	"오! 시작했어!"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotHide
-	"5분 후."
+	"5분 후."
 	keyWait
 		type = 1
 	clearMsg
-	"\"게임 셋!!\""
+	"\"게임 셋!!\""
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = Geo
-	"나, 나 졌어…… 역시 어렵다.\n"
+	"나, 나 졌어…… 역시 어렵다.\n"
 	keyWait
 		type = 0
 	end
@@ -177,7 +177,7 @@ script 17 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Geo
-	"그냥 그만두는 게\n나을지도……\n"
+	"그냥 그만두는 게\n나을지도……\n"
 	keyWait
 		type = 0
 	end
@@ -191,46 +191,46 @@ script 18 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"야구라면 나한테\n맡겨.\n"
+	"야구라면 나한테\n맡겨.\n"
 	keyWait
 		type = 1
 	clearMsg
 	" "
 	mugshotHide
-	"\"플레이 볼!!\""
+	"\"플레이 볼!!\""
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = PitcherMan
-	"말한 대로\n정확히 움직일 거야!\n"
+	"말한 대로\n정확히 움직일 거야!\n"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotHide
-	"5분 후."
+	"5분 후."
 	keyWait
 		type = 1
 	clearMsg
-	"\"게임 셋!!\""
+	"\"게임 셋!!\""
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = Geo
-	"우리가 이겼어!!"
+	"우리가 이겼어!!"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = PitcherMan
-	"식은 죽 먹기지!"
+	"식은 죽 먹기지!"
 	keyWait
 		type = 1
 	clearMsg
 	mugshotShow
 		mugshot = Geo
-	"오, 카드가 나왔어.\n"
+	"오, 카드가 나왔어.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -256,11 +256,11 @@ script 18 mmsf1 {
 }
 script 20 mmsf1 {
 	msgOpen
-	"버거 숍이다. 이곳의\n최고 인기 메뉴는……\n"
+	"버거 숍이다. 이곳의\n최고 인기 메뉴는……\n"
 	keyWait
 		type = 1
 	clearMsg
-	"모아이 갤럭시\n버거다.\n"
+	"모아이 갤럭시\n버거다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -272,15 +272,15 @@ script 20 mmsf1 {
 }
 script 25 mmsf1 {
 	msgOpen
-	"엄청나게 인기 있는\n’모와 모와’다.\n"
+	"엄청나게 인기 있는\n’모와 모와’다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"안에 들어가서 제니 100을\n넣으면\n"
+	"안에 들어가서 제니 100을\n넣으면\n"
 	keyWait
 		type = 1
 	clearMsg
-	"빙글빙글 돌아간다.\n그런데 좀 무서워 보인다.\n"
+	"빙글빙글 돌아간다.\n그런데 좀 무서워 보인다.\n"
 	keyWait
 		type = 0
 	end
@@ -288,15 +288,15 @@ script 25 mmsf1 {
 }
 script 26 mmsf1 {
 	msgOpen
-	"엄청나게 인기 있는\n’모와 모와’다.\n"
+	"엄청나게 인기 있는\n’모와 모와’다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"안에 들어가서 제니 100을\n넣으면\n"
+	"안에 들어가서 제니 100을\n넣으면\n"
 	keyWait
 		type = 1
 	clearMsg
-	"빙글빙글 돌아간다.\n그런데 좀 무서워 보인다.\n"
+	"빙글빙글 돌아간다.\n그런데 좀 무서워 보인다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -304,7 +304,7 @@ script 26 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"자세히 보니 여기에\n웨이브 홀이 있어!\n"
+	"자세히 보니 여기에\n웨이브 홀이 있어!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -313,11 +313,11 @@ script 26 mmsf1 {
 }
 script 30 mmsf1 {
 	msgOpen
-	"판다 놀이기구다."
+	"판다 놀이기구다."
 	keyWait
 		type = 1
 	clearMsg
-	"판다는 사실 곰의\n일종이다.\n"
+	"판다는 사실 곰의\n일종이다.\n"
 	keyWait
 		type = 0
 	end
@@ -325,11 +325,11 @@ script 30 mmsf1 {
 }
 script 31 mmsf1 {
 	msgOpen
-	"판다 놀이기구다."
+	"판다 놀이기구다."
 	keyWait
 		type = 1
 	clearMsg
-	"판다는 사실 곰의\n일종이다.\n"
+	"판다는 사실 곰의\n일종이다.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -337,11 +337,11 @@ script 31 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"꺼져 있다."
+	"꺼져 있다."
 	keyWait
 		type = 1
 	clearMsg
-	"켜 볼까?"
+	"켜 볼까?"
 	keyWait
 		type = 1
 	clearMsg
@@ -377,11 +377,11 @@ script 31 mmsf1 {
 	clearMsg
 	textSpeed
 		delay = 2
-	"*윙* *웅*"
+	"*윙* *웅*"
 	keyWait
 		type = 1
 	clearMsg
-	"여기에 웨이브 홀이 있어!\n"
+	"여기에 웨이브 홀이 있어!\n"
 	keyWait
 		type = 2
 	flagSet
@@ -390,7 +390,7 @@ script 31 mmsf1 {
 }
 script 35 mmsf1 {
 	msgOpen
-	"이 기계는 이벤트\n스테이지 입장권을\n판매한다."
+	"이 기계는 이벤트\n스테이지 입장권을\n판매한다."
 	keyWait
 		type = 0
 	end
@@ -398,11 +398,11 @@ script 35 mmsf1 {
 }
 script 36 mmsf1 {
 	msgOpen
-	"이벤트 스테이지 입장권을\n판매한다.\n"
+	"이벤트 스테이지 입장권을\n판매한다.\n"
 	keyWait
 		type = 1
 	clearMsg
-	"어……? 이건 뭐지?\n"
+	"어……? 이건 뭐지?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -414,10 +414,10 @@ script 36 mmsf1 {
 	playerAnimate0
 		animation = 24
 	printPlayerName1
-	" 메가 웨폰:\n\""
+	" 메가 웨폰:\n\""
 	printItem
 		item = 28
-	"\"을 얻었다!!"
+	"\"을 얻었다!!"
 	keyWait
 		type = 2
 	playerFinish
