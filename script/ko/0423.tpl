@@ -221,6 +221,16 @@ script 18 mmsf1 {
 	end
 	end
 }
+script 20 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"반장을 쫓아가야 해!!"
+	keyWait
+		type = 0
+	end
+	end
+}
 script 25 mmsf1 {
 	checkFlag
 		flag = 1584

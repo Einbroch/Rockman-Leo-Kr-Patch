@@ -92,7 +92,7 @@ script 10 mmsf1 {
 	clearMsg
 	"그 아이를 도와주겠다고 해야\n할까?\n\n"
 	positionOptionFromCenter
-		width = 15
+		width = 8
 	textSpeed
 		delay = 0
 	optionText

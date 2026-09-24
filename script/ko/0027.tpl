@@ -249,3 +249,154 @@ script 18 mmsf1 {
 	end
 	end
 }
+script 30 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = Zack
+	"저는 생각합니다"
+	keyWait
+		type = 1
+	clearMsg
+	"저의 정체성…\n존재 의의에 대해\n생각하는 겁니다"
+	keyWait
+		type = 1
+	clearMsg
+	"저는 브라더들에게\n도움이 되고 있는 걸까요?"
+	keyWait
+		type = 1
+	clearMsg
+	"저는…"
+	keyWait
+		type = 1
+	clearMsg
+	"저는…"
+	keyWait
+		type = 1
+	clearMsg
+	"너무 슬픈 나머지\n키가 줄어들었습니다"
+	keyWait
+		type = 1
+	clearMsg
+	"오늘의 키\n117.4센티…"
+	keyWait
+		type = 0
+	end
+	mugshotShow
+		mugshot = OmegaXis
+	"키가 줄어들었군"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = MegaMan
+	"응…\n\n"
+	textSpeed
+		delay = 0
+	positionOptionFromCenter
+		width = 17
+	optionText
+		up = 0
+		down = 0
+		left = 1
+		right = 1
+	" 얘기를 듣는다  "
+	optionText
+		up = 1
+		down = 1
+		left = 0
+		right = 0
+	" 내버려 둔다"
+	selectText
+		default = 0
+		BContinue = false
+		disableB = false
+		unused = false
+		jump1 = continue
+		jump2 = 32
+		jump3 = 0
+		jump4 = 0
+		jump5 = 0
+		jump6 = 0
+		jump7 = 0
+		jump8 = 0
+	clearMsg
+	checkFlag
+		flag = 6911
+		jumpIfTrue = 20
+		jumpIfFalse = continue
+	mugshotShow
+		mugshot = MegaMan
+	"나로는 효과가\n없을지도 모르지만…"
+	keyWait
+		type = 1
+	clearMsg
+	"얘기해 볼게!"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = OmegaXis
+	"오…오오"
+	keyWait
+		type = 1
+	clearMsg
+	flagSet
+		flag = 6191
+	flagSet
+		flag = 6911
+	jump
+		target = 41
+	end
+}
+script 31 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = Zack
+	"저는 생각합니다"
+	keyWait
+		type = 1
+	clearMsg
+	"저의 정체성…\n존재 의의에 대해\n생각하는 겁니다"
+	keyWait
+		type = 1
+	clearMsg
+	"저는 브라더들에게\n도움이 되고 있는 걸까요?"
+	keyWait
+		type = 1
+	clearMsg
+	"저는…"
+	keyWait
+		type = 1
+	clearMsg
+	"저는…"
+	keyWait
+		type = 1
+	clearMsg
+	"너무 슬픈 나머지\n키가 줄어들었습니다"
+	keyWait
+		type = 1
+	clearMsg
+	"오늘의 키\n117.4센티…"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 32 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"안 도와주는 거냐?"
+	keyWait
+		type = 1
+	clearMsg
+	"이 녀석 키가\n점점 줄어들고 있다고…"
+	keyWait
+		type = 1
+	clearMsg
+	"뭐, 상관없지만"
+	keyWait
+		type = 1
+	clearMsg
+	end
+}

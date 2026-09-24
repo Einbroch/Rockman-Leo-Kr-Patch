@@ -369,7 +369,7 @@ script 20 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 4
 	optionText
 		up = 0
 		down = 0
@@ -410,7 +410,7 @@ script 21 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 4
 	optionText
 		up = 0
 		down = 0
@@ -455,7 +455,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 16
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -463,7 +463,7 @@ script 22 mmsf1 {
 		right = 0
 	"에어컨 실외기\n"
 	positionOptionFromCenter
-		width = 16
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -471,7 +471,7 @@ script 22 mmsf1 {
 		right = 1
 	"보안 시스템\n"
 	positionOptionFromCenter
-		width = 16
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -510,7 +510,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 2
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -518,7 +518,7 @@ script 22 mmsf1 {
 		right = 0
 	"달\n"
 	positionOptionFromCenter
-		width = 2
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -526,7 +526,7 @@ script 22 mmsf1 {
 		right = 1
 	"별\n"
 	positionOptionFromCenter
-		width = 2
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -565,7 +565,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 12
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -573,7 +573,7 @@ script 22 mmsf1 {
 		right = 0
 	"문 페이스 커피\n"
 	positionOptionFromCenter
-		width = 12
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -581,7 +581,7 @@ script 22 mmsf1 {
 		right = 1
 	"빅뱅 커피\n"
 	positionOptionFromCenter
-		width = 12
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -620,7 +620,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -628,7 +628,7 @@ script 22 mmsf1 {
 		right = 0
 	"브레이브 소드 1\n"
 	positionOptionFromCenter
-		width = 9
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -636,7 +636,7 @@ script 22 mmsf1 {
 		right = 1
 	"대걸레 랜스 2\n"
 	positionOptionFromCenter
-		width = 9
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -679,7 +679,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 8
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -687,7 +687,7 @@ script 22 mmsf1 {
 		right = 0
 	"3\n"
 	positionOptionFromCenter
-		width = 8
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -695,7 +695,7 @@ script 22 mmsf1 {
 		right = 1
 	"1\n"
 	positionOptionFromCenter
-		width = 8
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -734,7 +734,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -742,7 +742,7 @@ script 22 mmsf1 {
 		right = 0
 	"100\n"
 	positionOptionFromCenter
-		width = 4
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -750,7 +750,7 @@ script 22 mmsf1 {
 		right = 1
 	"110\n"
 	positionOptionFromCenter
-		width = 4
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -781,7 +781,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -789,7 +789,7 @@ script 22 mmsf1 {
 		right = 0
 	"150\n"
 	positionOptionFromCenter
-		width = 4
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -797,7 +797,7 @@ script 22 mmsf1 {
 		right = 1
 	"160\n"
 	positionOptionFromCenter
-		width = 4
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -836,7 +836,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 5
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -844,7 +844,7 @@ script 22 mmsf1 {
 		right = 0
 	"신\n"
 	positionOptionFromCenter
-		width = 5
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -852,7 +852,7 @@ script 22 mmsf1 {
 		right = 1
 	"왕\n"
 	positionOptionFromCenter
-		width = 5
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -891,7 +891,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 5
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -899,7 +899,7 @@ script 22 mmsf1 {
 		right = 0
 	"로버\n"
 	positionOptionFromCenter
-		width = 5
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -907,7 +907,7 @@ script 22 mmsf1 {
 		right = 1
 	"도둑\n"
 	positionOptionFromCenter
-		width = 5
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -946,7 +946,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 7
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -954,7 +954,7 @@ script 22 mmsf1 {
 		right = 0
 	"스튜디오\n"
 	positionOptionFromCenter
-		width = 7
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -962,7 +962,7 @@ script 22 mmsf1 {
 		right = 1
 	"체육관\n"
 	positionOptionFromCenter
-		width = 7
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -1005,7 +1005,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 7
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -1013,7 +1013,7 @@ script 22 mmsf1 {
 		right = 0
 	"우와!\n"
 	positionOptionFromCenter
-		width = 7
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -1021,7 +1021,7 @@ script 22 mmsf1 {
 		right = 1
 	"우와아!\n"
 	positionOptionFromCenter
-		width = 7
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -1064,7 +1064,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 3
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -1072,7 +1072,7 @@ script 22 mmsf1 {
 		right = 0
 	"12\n"
 	positionOptionFromCenter
-		width = 3
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -1080,7 +1080,7 @@ script 22 mmsf1 {
 		right = 1
 	"13\n"
 	positionOptionFromCenter
-		width = 3
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -1119,7 +1119,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -1127,7 +1127,7 @@ script 22 mmsf1 {
 		right = 0
 	"나키스\n"
 	positionOptionFromCenter
-		width = 4
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -1135,7 +1135,7 @@ script 22 mmsf1 {
 		right = 1
 	"나시스\n"
 	positionOptionFromCenter
-		width = 4
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -1174,7 +1174,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -1182,7 +1182,7 @@ script 22 mmsf1 {
 		right = 0
 	"기린\n"
 	positionOptionFromCenter
-		width = 4
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -1190,7 +1190,7 @@ script 22 mmsf1 {
 		right = 1
 	"개\n"
 	positionOptionFromCenter
-		width = 4
+		width = 198
 	optionText
 		up = 1
 		down = 0
@@ -1233,7 +1233,7 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 6
+		width = 198
 	optionText
 		up = 2
 		down = 1
@@ -1241,7 +1241,7 @@ script 22 mmsf1 {
 		right = 0
 	"할아버지\n"
 	positionOptionFromCenter
-		width = 6
+		width = 198
 	optionText
 		up = 0
 		down = 2
@@ -1249,7 +1249,7 @@ script 22 mmsf1 {
 		right = 1
 	"할머니\n"
 	positionOptionFromCenter
-		width = 6
+		width = 198
 	optionText
 		up = 1
 		down = 0

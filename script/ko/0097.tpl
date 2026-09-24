@@ -21,7 +21,7 @@ script 1 mmsf1 {
 		mugshot = Geo
 	"작성을 그만둘까요? \n\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -129,7 +129,7 @@ script 6 mmsf1 {
 		mugshot = Geo
 	"편지를 보낼까요?\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -772,7 +772,7 @@ script 43 mmsf1 {
 		mugshot = Geo
 	"편지를 보낸 후\n자동 저장할까요?\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0

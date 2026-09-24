@@ -72,7 +72,7 @@ script 5 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 6
 	optionText
 		up = 1
 		down = 1
@@ -80,7 +80,7 @@ script 5 mmsf1 {
 		right = 0
 	"그래\n"
 	positionOptionFromCenter
-		width = 4
+		width = 6
 	optionText
 		up = 0
 		down = 0

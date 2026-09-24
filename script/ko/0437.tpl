@@ -1,6 +1,26 @@
 @archive 0437
 @size 256
 
+script 37 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"펜던트에 대해\n아마치 씨한테 물어보러 가자"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 38 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"학교라…\n뭐, 세트장을 보기만 하는 거라면\n…"
+	keyWait
+		type = 0
+	end
+	end
+}
 script 39 mmsf1 {
 	msgOpen
 	mugshotShow

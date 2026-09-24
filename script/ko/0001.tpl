@@ -9,7 +9,7 @@ script 14 mmsf1 {
 		mugshot = Geo
 	"친구 코드를 입력하지\n않을래?\n"
 	positionOptionFromCenter
-		width = 15
+		width = 9
 	optionText
 		up = 0
 		down = 0
@@ -46,7 +46,7 @@ script 15 mmsf1 {
 		mugshot = Geo
 	"여기에 아무것도 쓰지\n않을래?\n"
 	positionOptionFromCenter
-		width = 15
+		width = 9
 	optionText
 		up = 0
 		down = 0
@@ -83,7 +83,7 @@ script 16 mmsf1 {
 		mugshot = Geo
 	"비밀 내용을 다\n입력했어?\n"
 	positionOptionFromCenter
-		width = 15
+		width = 9
 	optionText
 		up = 0
 		down = 0
@@ -120,7 +120,7 @@ script 17 mmsf1 {
 		mugshot = Geo
 	"메시지를 입력하지 않을래?\n\n"
 	positionOptionFromCenter
-		width = 15
+		width = 9
 	optionText
 		up = 0
 		down = 0
@@ -157,7 +157,7 @@ script 19 mmsf1 {
 		mugshot = Geo
 	"이 친구 코드로 괜찮아?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -198,7 +198,7 @@ script 20 mmsf1 {
 	clearMsg
 	"닌텐도 Wi-Fi\n커넥션에 연결할까요?\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -235,7 +235,7 @@ script 21 mmsf1 {
 		mugshot = Geo
 	"다 끝났어?\n\n"
 	positionOptionFromCenter
-		width = 11
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -400,7 +400,7 @@ script 29 mmsf1 {
 		delay = 0
 	"폴더 이름을 정하지\n않을래?\n"
 	positionOptionFromCenter
-		width = 8
+		width = 9
 	optionText
 		up = 0
 		down = 0
@@ -649,7 +649,7 @@ script 39 mmsf1 {
 		mugshot = Geo
 	"숫자 입력을 취소할까?\n\n"
 	positionOptionFromCenter
-		width = 11
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -732,7 +732,7 @@ script 42 mmsf1 {
 		mugshot = Geo
 	"제목을 입력할까?\n\n"
 	positionOptionFromCenter
-		width = 8
+		width = 9
 	optionText
 		up = 0
 		down = 0
@@ -790,7 +790,7 @@ script 45 mmsf1 {
 		mugshot = Geo
 	"이름을\n입력할까?\n"
 	positionOptionFromCenter
-		width = 15
+		width = 9
 	optionText
 		up = 0
 		down = 0

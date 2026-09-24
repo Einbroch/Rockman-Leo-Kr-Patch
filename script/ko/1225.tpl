@@ -696,7 +696,7 @@ script 65 mmsf1 {
 		delay = 0
 	"저장에 실패했습니다... 다시\n시도할까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0

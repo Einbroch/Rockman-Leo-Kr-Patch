@@ -53,7 +53,7 @@ script 1 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 15
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -104,7 +104,7 @@ script 3 mmsf1 {
 		delay = 0
 	"여기에 등록할까요?\n\n"
 	positionOptionFromCenter
-		width = 10
+		width = 8
 	textSpeed
 		delay = 0
 	optionText
@@ -340,7 +340,7 @@ script 19 mmsf1 {
 		mugshot = Geo
 	"준비 아이콘은\n어떻게 하지?\n"
 	positionOptionFromCenter
-		width = 15
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -484,7 +484,7 @@ script 27 mmsf1 {
 		mugshot = Geo
 	"친구가 준비되지 않았습니다. 다시\n시도할까요?\n"
 	positionOptionFromCenter
-		width = 15
+		width = 8
 	textSpeed
 		delay = 0
 	optionText
@@ -754,7 +754,7 @@ script 101 mmsf1 {
 		delay = 0
 	"여기에 등록할까요?\n\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	textSpeed
 		delay = 0
 	optionText
@@ -797,7 +797,7 @@ script 102 mmsf1 {
 	printNameBuffer1
 	" 삭제할까요?\n"
 	positionOptionFromCenter
-		width = 13
+		width = 7
 	textSpeed
 		delay = 0
 	optionText
@@ -841,7 +841,7 @@ script 103 mmsf1 {
 		delay = 0
 	"정말 삭제할까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 9
 	textSpeed
 		delay = 0
 	optionText
@@ -881,7 +881,7 @@ script 104 mmsf1 {
 		delay = 0
 	"브라더 등록을 취소할까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	textSpeed
 		delay = 0
 	optionText
@@ -981,7 +981,7 @@ script 109 mmsf1 {
 		delay = 0
 	"이 비밀로\n브라더가 될까요?\n"
 	positionOptionFromCenter
-		width = 11
+		width = 10
 	textSpeed
 		delay = 0
 	optionText
@@ -1021,7 +1021,7 @@ script 110 mmsf1 {
 		delay = 0
 	"한 번 더 시도할까요?\n\n"
 	positionOptionFromCenter
-		width = 12
+		width = 9
 	textSpeed
 		delay = 0
 	optionText
@@ -1072,7 +1072,7 @@ script 112 mmsf1 {
 		delay = 0
 	"그 비밀은 쓸 수 없습니다.\n\n"
 	positionOptionFromCenter
-		width = 14
+		width = 11
 	textSpeed
 		delay = 0
 	optionText
@@ -1114,7 +1114,7 @@ script 113 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 14
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -1152,7 +1152,7 @@ script 114 mmsf1 {
 		delay = 0
 	"덮어쓸까요?\n\n"
 	positionOptionFromCenter
-		width = 11
+		width = 8
 	textSpeed
 		delay = 0
 	optionText
@@ -1474,7 +1474,7 @@ script 141 mmsf1 {
 		delay = 0
 	"여기로 보낼까요?\n\n"
 	positionOptionFromCenter
-		width = 11
+		width = 8
 	textSpeed
 		delay = 0
 	optionText
@@ -1512,7 +1512,7 @@ script 142 mmsf1 {
 		mugshot = Geo
 	"취소할까요?\n\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	textSpeed
 		delay = 0
 	optionText
@@ -1569,7 +1569,7 @@ script 144 mmsf1 {
 		part = 1
 	"에게 보낼까요?\n"
 	positionOptionFromCenter
-		width = 9
+		width = 10
 	textSpeed
 		delay = 0
 	optionText
@@ -1637,7 +1637,7 @@ script 160 mmsf1 {
 		delay = 0
 	"보내지 않은 메일을 보낼까요?\n\n"
 	positionOptionFromCenter
-		width = 14
+		width = 8
 	textSpeed
 		delay = 0
 	optionText
@@ -1694,7 +1694,7 @@ script 162 mmsf1 {
 	clearMsg
 	"그래도\n보내시겠습니까?\n"
 	positionOptionFromCenter
-		width = 9
+		width = 11
 	textSpeed
 		delay = 0
 	optionText
@@ -1756,7 +1756,7 @@ script 164 mmsf1 {
 		delay = 0
 	"다시 시도할까요?\n\n"
 	positionOptionFromCenter
-		width = 11
+		width = 8
 	textSpeed
 		delay = 0
 	optionText
@@ -1955,7 +1955,7 @@ script 183 mmsf1 {
 	printBrotherBuffer2
 	"하고\n교체할까요?\n"
 	positionOptionFromCenter
-		width = 13
+		width = 10
 	textSpeed
 		delay = 0
 	optionText

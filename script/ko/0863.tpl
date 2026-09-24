@@ -63,7 +63,7 @@ script 50 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 11
+		width = 4
 	optionText
 		up = 0
 		down = 0
@@ -209,7 +209,7 @@ script 53 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 11
+		width = 4
 	optionText
 		up = 0
 		down = 0

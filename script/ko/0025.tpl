@@ -345,3 +345,205 @@ script 17 mmsf1 {
 	end
 	end
 }
+script 30 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = Luna
+	"…후우"
+	keyWait
+		type = 1
+	clearMsg
+	"…사실 나한테는\n소중한 사람이 있어"
+	keyWait
+		type = 1
+	clearMsg
+	"…하아"
+	keyWait
+		type = 1
+	clearMsg
+	"…그 사람한테\n선물을 주고 싶어"
+	keyWait
+		type = 1
+	clearMsg
+	"하지만 그 사람 앞에 서면\n솔직해질 수가 없단 말이야…"
+	keyWait
+		type = 1
+	clearMsg
+	"…휴우"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = MegaMan
+	"…"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = OmegaXis
+	"…오?"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = MegaMan
+	"…뭐야"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = OmegaXis
+	"…너, 신경 쓰이는구나?"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = MegaMan
+	"벼"
+	wait
+		frames = 10
+	" 별로\n그런 거 아니야!"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = OmegaXis
+	"…흐응"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = MegaMan
+	"…뭐야"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = OmegaXis
+	"…아무것도 아닌데~"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = MegaMan
+	"…\n\n"
+	textSpeed
+		delay = 0
+	positionOptionFromCenter
+		width = 14
+	optionText
+		up = 0
+		down = 0
+		left = 1
+		right = 1
+	" 도와준다  "
+	optionText
+		up = 1
+		down = 1
+		left = 0
+		right = 0
+	" 내버려 둔다"
+	selectText
+		default = 0
+		BContinue = false
+		disableB = false
+		unused = false
+		jump1 = continue
+		jump2 = 32
+		jump3 = 0
+		jump4 = 0
+		jump5 = 0
+		jump6 = 0
+		jump7 = 0
+		jump8 = 0
+	clearMsg
+	checkFlag
+		flag = 6911
+		jumpIfTrue = 20
+		jumpIfFalse = continue
+	mugshotShow
+		mugshot = OmegaXis
+	"…"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = MegaMan
+	"…뭐, 뭐야!"
+	keyWait
+		type = 1
+	clearMsg
+	"도와주러 가는 것뿐이야!\n친구니까!"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = OmegaXis
+	"…흐~응"
+	keyWait
+		type = 1
+	clearMsg
+	flagSet
+		flag = 6189
+	flagSet
+		flag = 6911
+	jump
+		target = 41
+	end
+}
+script 31 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = Luna
+	"…후우"
+	keyWait
+		type = 1
+	clearMsg
+	"…사실 나한테는\n소중한 사람이 있어"
+	keyWait
+		type = 1
+	clearMsg
+	"…하아"
+	keyWait
+		type = 1
+	clearMsg
+	"…그 사람한테\n선물을 주고 싶어"
+	keyWait
+		type = 1
+	clearMsg
+	"하지만 그 사람 앞에 서면\n솔직해질 수가 없단 말이야…"
+	keyWait
+		type = 1
+	clearMsg
+	"…휴우"
+	keyWait
+		type = 1
+	clearMsg
+	end
+}
+script 32 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"…"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = MegaMan
+	"…뭐, 뭐야!"
+	keyWait
+		type = 1
+	clearMsg
+	"벼, 별로 과, 관심 없어!\n정말로! 전혀!"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = OmegaXis
+	"…흐~응"
+	keyWait
+		type = 1
+	clearMsg
+	end
+}

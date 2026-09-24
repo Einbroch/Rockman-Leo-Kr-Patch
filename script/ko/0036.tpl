@@ -55,7 +55,7 @@ script 4 mmsf1 {
 	clearMsg
 	"할까...\n\n"
 	positionOptionFromCenter
-		width = 15
+		width = 8
 	textSpeed
 		delay = 0
 	optionText

@@ -79,7 +79,7 @@ script 4 mmsf1 {
 		mugshot = OmegaXis
 	"그 아이의 비행 파트너가 되어 줘!\n\n"
 	positionOptionFromCenter
-		width = 15
+		width = 8
 	textSpeed
 		delay = 0
 	optionText

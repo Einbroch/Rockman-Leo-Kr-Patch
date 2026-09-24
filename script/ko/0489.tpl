@@ -129,7 +129,7 @@ script 13 mmsf1 {
 		delay = 0
 	"카드 트레이더 3에 카드\n3장을 넣을까?\n"
 	positionOptionFromCenter
-		width = 13
+		width = 5
 	textSpeed
 		delay = 0
 	optionText
@@ -184,7 +184,7 @@ script 14 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 13
+		width = 5
 	optionText
 		up = 0
 		down = 0
@@ -273,7 +273,7 @@ script 20 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 13
+		width = 5
 	optionText
 		up = 0
 		down = 0

@@ -126,7 +126,7 @@ script 5 mmsf1 {
 		delay = 0
 	"스캐너 데이터를 저장할까?\n\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -168,7 +168,7 @@ script 6 mmsf1 {
 		delay = 0
 	"다른 데이터를 덮어쓰게 돼.\n괜찮아?\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -241,7 +241,7 @@ script 10 mmsf1 {
 		delay = 0
 	"저장되지 않은 모양이야.\n다시 시도할까?\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -352,7 +352,7 @@ script 15 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -393,7 +393,7 @@ script 16 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -432,7 +432,7 @@ script 17 mmsf1 {
 		delay = 0
 	"스캐너 데이터를 적용할까?\n\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -471,7 +471,7 @@ script 18 mmsf1 {
 		delay = 0
 	"스캐너 데이터 정보를 무시할까?\n\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -510,7 +510,7 @@ script 19 mmsf1 {
 		delay = 0
 	"현재 스캐너 데이터를 삭제할까?\n\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0

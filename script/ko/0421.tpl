@@ -189,6 +189,164 @@ script 25 mmsf1 {
 	end
 	end
 }
+script 31 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"구조 신호를 보낸 곳을\n찾아볼까…"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 32 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"높은 곳에 있는 공…"
+	keyWait
+		type = 1
+	clearMsg
+	"아까 비스타 포인트에\n있던 사람한테 물어볼까"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 33 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"높은 곳에 손이 닿으면\n되는 거지…?"
+	keyWait
+		type = 1
+	clearMsg
+	"뭔가 쓸 만한 게 없는지\n주변을 찾아볼까"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 34 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"주스를 사 올까…"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 35 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"자판기 컴프를\n조사하러 가자"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 36 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"자판기, 고쳐졌을까?"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 37 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"주스랑 RC를\n바꿔 달라고 하자"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 38 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"RC도 손에 넣었으니\n공을 꺼내 줘야지"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 39 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"슬슬 집에 돌아가자"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 40 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"이제 그만 집에 돌아가자"
+	keyWait
+		type = 1
+	clearMsg
+	"오늘은 이만 잘까"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 45 mmsf1 {
+	checkFlag
+		flag = 790
+		jumpIfTrue = 54
+		jumpIfFalse = continue
+	checkFlag
+		flag = 788
+		jumpIfTrue = 53
+		jumpIfFalse = continue
+	checkFlag
+		flag = 837
+		jumpIfTrue = 52
+		jumpIfFalse = continue
+	checkFlag
+		flag = 847
+		jumpIfTrue = 51
+		jumpIfFalse = continue
+	checkFlag
+		flag = 836
+		jumpIfTrue = 50
+		jumpIfFalse = continue
+	checkFlag
+		flag = 786
+		jumpIfTrue = 49
+		jumpIfFalse = continue
+	checkFlag
+		flag = 835
+		jumpIfTrue = 48
+		jumpIfFalse = continue
+	checkFlag
+		flag = 784
+		jumpIfTrue = 47
+		jumpIfFalse = continue
+	checkFlag
+		flag = 782
+		jumpIfTrue = 46
+		jumpIfFalse = continue
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"아마치 연구소는\n버스로 가는 거였지"
+	keyWait
+		type = 0
+	end
+	end
+}
 script 48 mmsf1 {
 	msgOpen
 	mugshotShow

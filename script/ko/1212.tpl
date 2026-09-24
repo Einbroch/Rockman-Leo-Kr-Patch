@@ -88,7 +88,7 @@ script 20 mmsf1 {
 	printPlayerName1
 	"?\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -130,7 +130,7 @@ script 25 mmsf1 {
 	printPlayerName1
 	"?\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -428,7 +428,7 @@ script 78 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 10
+		width = 8
 	optionText
 		up = 0
 		down = 0

@@ -57,7 +57,7 @@ script 10 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 6
 	optionText
 		up = 0
 		down = 0
@@ -121,7 +121,7 @@ script 11 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 6
 	optionText
 		up = 0
 		down = 0
@@ -188,7 +188,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 5
+		width = 193
 	optionText
 		up = 2
 		down = 1
@@ -196,7 +196,7 @@ script 12 mmsf1 {
 		right = 0
 	"달빛이!\n"
 	positionOptionFromCenter
-		width = 5
+		width = 193
 	optionText
 		up = 0
 		down = 2
@@ -204,7 +204,7 @@ script 12 mmsf1 {
 		right = 1
 	"푸른 하늘이!\n"
 	positionOptionFromCenter
-		width = 5
+		width = 193
 	optionText
 		up = 1
 		down = 0
@@ -235,7 +235,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 5
+		width = 193
 	optionText
 		up = 2
 		down = 1
@@ -243,7 +243,7 @@ script 12 mmsf1 {
 		right = 0
 	"태양이\n"
 	positionOptionFromCenter
-		width = 5
+		width = 193
 	optionText
 		up = 0
 		down = 2
@@ -251,7 +251,7 @@ script 12 mmsf1 {
 		right = 1
 	"화성이\n"
 	positionOptionFromCenter
-		width = 5
+		width = 193
 	optionText
 		up = 1
 		down = 0
@@ -282,7 +282,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 15
+		width = 193
 	optionText
 		up = 2
 		down = 1
@@ -290,7 +290,7 @@ script 12 mmsf1 {
 		right = 0
 	"추운지?\n"
 	positionOptionFromCenter
-		width = 15
+		width = 193
 	optionText
 		up = 0
 		down = 2
@@ -298,7 +298,7 @@ script 12 mmsf1 {
 		right = 1
 	"외로운지?\n"
 	positionOptionFromCenter
-		width = 15
+		width = 193
 	optionText
 		up = 1
 		down = 0
@@ -329,7 +329,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 13
+		width = 193
 	optionText
 		up = 2
 		down = 1
@@ -337,7 +337,7 @@ script 12 mmsf1 {
 		right = 0
 	"이어져 있다고.\n"
 	positionOptionFromCenter
-		width = 13
+		width = 193
 	optionText
 		up = 0
 		down = 2
@@ -345,7 +345,7 @@ script 12 mmsf1 {
 		right = 1
 	"따로 떨어져 있다고.\n"
 	positionOptionFromCenter
-		width = 13
+		width = 193
 	optionText
 		up = 1
 		down = 0
@@ -380,7 +380,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 5
+		width = 193
 	optionText
 		up = 2
 		down = 1
@@ -388,7 +388,7 @@ script 12 mmsf1 {
 		right = 0
 	"밤하늘 덕분인지\n"
 	positionOptionFromCenter
-		width = 5
+		width = 193
 	optionText
 		up = 0
 		down = 2
@@ -396,7 +396,7 @@ script 12 mmsf1 {
 		right = 1
 	"그림자 덕분인지\n"
 	positionOptionFromCenter
-		width = 5
+		width = 193
 	optionText
 		up = 1
 		down = 0
@@ -427,7 +427,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 8
+		width = 193
 	optionText
 		up = 2
 		down = 1
@@ -435,7 +435,7 @@ script 12 mmsf1 {
 		right = 0
 	"뜨겁지도\n"
 	positionOptionFromCenter
-		width = 8
+		width = 193
 	optionText
 		up = 0
 		down = 2
@@ -443,7 +443,7 @@ script 12 mmsf1 {
 		right = 1
 	"행복하지도\n"
 	positionOptionFromCenter
-		width = 8
+		width = 193
 	optionText
 		up = 1
 		down = 0
@@ -478,7 +478,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 8
+		width = 193
 	optionText
 		up = 2
 		down = 1
@@ -486,7 +486,7 @@ script 12 mmsf1 {
 		right = 0
 	"밝아질 거야\n"
 	positionOptionFromCenter
-		width = 8
+		width = 193
 	optionText
 		up = 0
 		down = 2
@@ -494,7 +494,7 @@ script 12 mmsf1 {
 		right = 1
 	"작아질 거야\n"
 	positionOptionFromCenter
-		width = 8
+		width = 193
 	optionText
 		up = 1
 		down = 0
@@ -531,7 +531,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 10
+		width = 193
 	optionText
 		up = 2
 		down = 1
@@ -539,7 +539,7 @@ script 12 mmsf1 {
 		right = 0
 	"졸릴 수 있어\n"
 	positionOptionFromCenter
-		width = 10
+		width = 193
 	optionText
 		up = 0
 		down = 2
@@ -547,7 +547,7 @@ script 12 mmsf1 {
 		right = 1
 	"강해질 수 있어\n"
 	positionOptionFromCenter
-		width = 10
+		width = 193
 	optionText
 		up = 1
 		down = 0
@@ -582,7 +582,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 8
+		width = 193
 	optionText
 		up = 2
 		down = 1
@@ -590,7 +590,7 @@ script 12 mmsf1 {
 		right = 0
 	"유대를 찾는 거야\n"
 	positionOptionFromCenter
-		width = 8
+		width = 193
 	optionText
 		up = 0
 		down = 2
@@ -598,7 +598,7 @@ script 12 mmsf1 {
 		right = 1
 	"노래를 찾는 거야\n"
 	positionOptionFromCenter
-		width = 8
+		width = 193
 	optionText
 		up = 1
 		down = 0
@@ -750,7 +750,7 @@ script 52 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 4
 	optionText
 		up = 0
 		down = 0

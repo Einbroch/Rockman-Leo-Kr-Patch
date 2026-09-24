@@ -1,6 +1,24 @@
 @archive 0412
 @size 256
 
+script 0 mmsf1 {
+	checkChapter
+		lower = 82
+		upper = 82
+		jumpIfInRange = 75
+		jumpIfOutOfRange = continue
+	checkChapter
+		lower = 81
+		upper = 81
+		jumpIfInRange = 75
+		jumpIfOutOfRange = continue
+	msgOpen
+	"임시 메시지입니다"
+	keyWait
+		type = 0
+	end
+	end
+}
 script 84 mmsf1 {
 	msgOpen
 	mugshotShow

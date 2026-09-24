@@ -39,7 +39,7 @@ script 10 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 4
 	optionText
 		up = 0
 		down = 0
@@ -84,7 +84,7 @@ script 11 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 4
 	optionText
 		up = 0
 		down = 0
@@ -141,7 +141,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 51
 	optionText
 		up = 2
 		down = 1
@@ -149,7 +149,7 @@ script 12 mmsf1 {
 		right = 0
 	"하얗다\n"
 	positionOptionFromCenter
-		width = 9
+		width = 51
 	optionText
 		up = 0
 		down = 2
@@ -157,7 +157,7 @@ script 12 mmsf1 {
 		right = 1
 	"노랗다\n"
 	positionOptionFromCenter
-		width = 9
+		width = 51
 	optionText
 		up = 1
 		down = 0
@@ -192,7 +192,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 5
+		width = 51
 	optionText
 		up = 2
 		down = 1
@@ -200,7 +200,7 @@ script 12 mmsf1 {
 		right = 0
 	"다 자랐다\n"
 	positionOptionFromCenter
-		width = 5
+		width = 51
 	optionText
 		up = 0
 		down = 2
@@ -208,7 +208,7 @@ script 12 mmsf1 {
 		right = 1
 	"명랑하다\n"
 	positionOptionFromCenter
-		width = 5
+		width = 51
 	optionText
 		up = 1
 		down = 0
@@ -239,7 +239,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 5
+		width = 51
 	optionText
 		up = 2
 		down = 1
@@ -247,7 +247,7 @@ script 12 mmsf1 {
 		right = 0
 	"순진하다\n"
 	positionOptionFromCenter
-		width = 5
+		width = 51
 	optionText
 		up = 0
 		down = 2
@@ -255,7 +255,7 @@ script 12 mmsf1 {
 		right = 1
 	"무섭다\n"
 	positionOptionFromCenter
-		width = 5
+		width = 51
 	optionText
 		up = 1
 		down = 0
@@ -294,7 +294,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 51
 	optionText
 		up = 2
 		down = 1
@@ -302,7 +302,7 @@ script 12 mmsf1 {
 		right = 0
 	"초등학교\n"
 	positionOptionFromCenter
-		width = 9
+		width = 51
 	optionText
 		up = 0
 		down = 2
@@ -310,7 +310,7 @@ script 12 mmsf1 {
 		right = 1
 	"중학교\n"
 	positionOptionFromCenter
-		width = 9
+		width = 51
 	optionText
 		up = 1
 		down = 0
@@ -487,7 +487,7 @@ script 20 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 4
 	optionText
 		up = 0
 		down = 0
@@ -536,7 +536,7 @@ script 21 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 4
 	optionText
 		up = 0
 		down = 0

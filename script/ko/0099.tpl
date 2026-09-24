@@ -37,7 +37,7 @@ script 2 mmsf1 {
 	clearMsg
 	"저장할까요?\n\n"
 	positionOptionFromCenter
-		width = 12
+		width = 8
 	textSpeed
 		delay = 0
 	optionText
@@ -118,7 +118,7 @@ script 6 mmsf1 {
 		delay = 0
 	"저장에 실패했습니다.\n다시 시도할까요? \n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -173,7 +173,7 @@ script 9 mmsf1 {
 		mugshot = Geo
 	"덮어쓸까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 7
 	optionText
 		up = 0
 		down = 0

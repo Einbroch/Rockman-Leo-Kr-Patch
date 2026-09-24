@@ -1,6 +1,16 @@
 @archive 0391
 @size 256
 
+script 38 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"학교라고…?\n뭐, 난 상관없지만"
+	keyWait
+		type = 0
+	end
+	end
+}
 script 39 mmsf1 {
 	msgOpen
 	mugshotShow
@@ -290,6 +300,56 @@ script 64 mmsf1 {
 	mugshotShow
 		mugshot = OmegaXis
 	"스터디 웨이브\n컴으로 돌아가!\n"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 200 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = PropellerMan
+	"넓은 하늘을 마음껏\n날아다니고 싶은 기분이다!!"
+	keyWait
+		type = 1
+	clearMsg
+	"인간은 불쌍하군, 어쨌든\n프로펠러가 없으니까 말이야"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 201 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = KeyMan
+	"오~~~프~~은~!!"
+	keyWait
+		type = 1
+	clearMsg
+	"오~~프~~은~~!!\n뭐든지 열고 싶다~!!"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 202 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = PitcherMan
+	"공 하나에 혼을 담아!!"
+	keyWait
+		type = 1
+	clearMsg
+	"온 힘을 공 하나에\n쏟아붓는 게\n내 방식이지!!"
+	keyWait
+		type = 1
+	clearMsg
+	"…풀이닝 완투?\n무리무리!!"
+	keyWait
+		type = 1
+	clearMsg
+	"어쨌든 공 하나에\n혼을 담으니까"
 	keyWait
 		type = 0
 	end

@@ -47,7 +47,7 @@ script 1 mmsf1 {
 	printBestComboBuffer
 	"\"?\n"
 	positionOptionFromCenter
-		width = 11
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -108,7 +108,7 @@ script 7 mmsf1 {
 	printBestComboBuffer
 	"\"?\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -199,7 +199,7 @@ script 12 mmsf1 {
 		mugshot = Geo
 	"베스트 콤보\n목록 편집을 끝낼까?\n"
 	positionOptionFromCenter
-		width = 12
+		width = 7
 	optionText
 		up = 0
 		down = 0
@@ -236,7 +236,7 @@ script 13 mmsf1 {
 		mugshot = Geo
 	"이 베스트 콤보를 저장하지 않고\n끝낼까?\n"
 	positionOptionFromCenter
-		width = 12
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -333,7 +333,7 @@ script 23 mmsf1 {
 		mugshot = Geo
 	"팝업 메시지를 입력할까요?\n\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0

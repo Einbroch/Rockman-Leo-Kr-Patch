@@ -9,7 +9,7 @@ script 100 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"실례합니다, 마모루 씨인가요?\n"
+	"실례합니다, 장고 씨인가요?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -19,7 +19,7 @@ script 100 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"그런데 제가 마모루인 건 어떻게\n아셨어요?\n"
+	"그런데 제가 장고인 건 어떻게\n아셨어요?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -29,7 +29,7 @@ script 100 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"루시안이 마모루 씨를 찾아 달라고\n부탁했어요.\n"
+	"루시안이 장고 씨를 찾아 달라고\n부탁했어요.\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -109,7 +109,7 @@ script 100 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = MegaMan
-	"마모루 씨, 나한테 맡겨!"
+	"장고 씨, 나한테 맡겨!"
 	keyWait
 		type = 1
 	clearMsg

@@ -148,7 +148,7 @@ script 21 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 4
 	optionText
 		up = 0
 		down = 0
@@ -194,7 +194,7 @@ script 29 mmsf1 {
 		npc = 0
 	"이제 잘까?\n\n"
 	positionOptionFromCenter
-		width = 9
+		width = 5
 	optionText
 		up = 0
 		down = 0
@@ -234,7 +234,7 @@ script 30 mmsf1 {
 		flag = 3370
 	"여기까지 진행한 내용을\n저장할까요?\n\n"
 	positionOptionFromCenter
-		width = 9
+		width = 5
 	optionText
 		up = 0
 		down = 0
@@ -276,7 +276,7 @@ script 31 mmsf1 {
 		delay = 0
 	"덮어써도 괜찮을까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 7
 	optionText
 		up = 0
 		down = 0
@@ -352,7 +352,7 @@ script 35 mmsf1 {
 		delay = 0
 	"저장에 실패했습니다. 다시\n시도할까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 4
 	optionText
 		up = 0
 		down = 0

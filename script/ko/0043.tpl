@@ -81,7 +81,7 @@ script 4 mmsf1 {
 		mugshot = MegaMan
 	"음, 저 사람을 도와줄까?\n\n"
 	positionOptionFromCenter
-		width = 15
+		width = 7
 	textSpeed
 		delay = 0
 	optionText

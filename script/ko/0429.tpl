@@ -351,3 +351,101 @@ script 45 mmsf1 {
 	end
 	end
 }
+script 48 mmsf1 {
+	msgOpen
+	mugshotShowNPC
+		npc = 1
+	"연구소 안쪽으로\n가 볼까…"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 49 mmsf1 {
+	msgOpen
+	mugshotShowNPC
+		npc = 1
+	"과학 박물관에 가야지…"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 50 mmsf1 {
+	msgOpen
+	mugshotShowNPC
+		npc = 1
+	"과학 박물관에서\n전시물이라도 볼까…"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 51 mmsf1 {
+	msgOpen
+	mugshotShowNPC
+		npc = 1
+	"아마치 씨한테\n돌아갈까…"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 52 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = MegaMan
+	"연구실에 가야지…"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 53 mmsf1 {
+	msgOpen
+	mugshotShowNPC
+		npc = 1
+	"스페이스 심 투어라…"
+	keyWait
+		type = 1
+	clearMsg
+	"과학 박물관에 가면\n되려나"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 65 mmsf1 {
+	msgOpen
+	mugshotShowNPC
+		npc = 1
+	"전파를 끌어당기는…"
+	keyWait
+		type = 1
+	clearMsg
+	"분명 그런 전시물이\n있었던 것 같은데…"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 66 mmsf1 {
+	msgOpen
+	mugshotShowNPC
+		npc = 1
+	"전파가 연결된 것 같아.\n이제 앞으로 갈 수 있어"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 67 mmsf1 {
+	msgOpen
+	mugshotShowNPC
+		npc = 1
+	"스페이스 심 컴프에 가야 해"
+	keyWait
+		type = 0
+	end
+	end
+}

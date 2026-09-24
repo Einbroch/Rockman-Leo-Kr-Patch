@@ -61,7 +61,7 @@ script 10 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 3
 	optionText
 		up = 0
 		down = 0
@@ -110,7 +110,7 @@ script 11 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 3
 	optionText
 		up = 0
 		down = 0
@@ -159,7 +159,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 12
+		width = 33
 	optionText
 		up = 2
 		down = 1
@@ -169,7 +169,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 13
+		width = 33
 	optionText
 		up = 0
 		down = 2
@@ -179,7 +179,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 13
+		width = 33
 	optionText
 		up = 1
 		down = 0
@@ -218,7 +218,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 2
+		width = 33
 	optionText
 		up = 2
 		down = 1
@@ -228,7 +228,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 2
+		width = 33
 	optionText
 		up = 0
 		down = 2
@@ -238,7 +238,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 2
+		width = 33
 	optionText
 		up = 1
 		down = 0
@@ -277,7 +277,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 7
+		width = 33
 	optionText
 		up = 2
 		down = 1
@@ -287,7 +287,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 6
+		width = 33
 	optionText
 		up = 0
 		down = 2
@@ -297,7 +297,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 6
+		width = 33
 	optionText
 		up = 1
 		down = 0

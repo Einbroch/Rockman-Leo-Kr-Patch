@@ -26,7 +26,7 @@ script 2 mmsf1 {
 		buffer = 0
 	"\"\n사용하시겠습니까?\n"
 	positionOptionFromCenter
-		width = 12
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -190,7 +190,7 @@ script 26 mmsf1 {
 		mugshot = Geo
 	"정말 아무것도 주지 않겠습니까?\n\n"
 	positionOptionFromCenter
-		width = 14
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -230,7 +230,7 @@ script 27 mmsf1 {
 		buffer = 0
 	"\"\n주겠습니까?\n"
 	positionOptionFromCenter
-		width = 14
+		width = 8
 	optionText
 		up = 0
 		down = 0

@@ -73,7 +73,7 @@ script 5 mmsf1 {
 	clearMsg
 	"가서 확인해 볼래?\n\n"
 	positionOptionFromCenter
-		width = 16
+		width = 7
 	textSpeed
 		delay = 0
 	optionText

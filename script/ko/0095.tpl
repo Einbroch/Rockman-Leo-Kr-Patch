@@ -793,6 +793,18 @@ script 12 mmsf1 {
 	waitHold
 	end
 }
+script 13 mmsf1 {
+	msgOpenQuick
+	mugshotShowNPC
+		npc = 0
+	textSpeed
+		delay = 3
+	"환영합니다 8"
+	keyWait
+		type = 2
+	waitHold
+	end
+}
 script 14 mmsf1 {
 	msgOpenQuick
 	mugshotShow

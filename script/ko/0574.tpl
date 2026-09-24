@@ -528,7 +528,7 @@ script 25 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 4
 	optionText
 		up = 0
 		down = 0
@@ -569,7 +569,7 @@ script 26 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 4
 	optionText
 		up = 0
 		down = 0
@@ -614,7 +614,7 @@ script 27 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 99
 	optionText
 		up = 2
 		down = 1
@@ -622,7 +622,7 @@ script 27 mmsf1 {
 		right = 0
 	"80\n"
 	positionOptionFromCenter
-		width = 4
+		width = 99
 	optionText
 		up = 0
 		down = 2
@@ -630,7 +630,7 @@ script 27 mmsf1 {
 		right = 1
 	"90\n"
 	positionOptionFromCenter
-		width = 4
+		width = 99
 	optionText
 		up = 1
 		down = 0
@@ -669,7 +669,7 @@ script 27 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 11
+		width = 99
 	optionText
 		up = 2
 		down = 1
@@ -677,7 +677,7 @@ script 27 mmsf1 {
 		right = 0
 	"박물관\n"
 	positionOptionFromCenter
-		width = 11
+		width = 99
 	optionText
 		up = 0
 		down = 2
@@ -685,7 +685,7 @@ script 27 mmsf1 {
 		right = 1
 	"도서관\n"
 	positionOptionFromCenter
-		width = 11
+		width = 99
 	optionText
 		up = 1
 		down = 0
@@ -724,7 +724,7 @@ script 27 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 99
 	optionText
 		up = 2
 		down = 1
@@ -732,7 +732,7 @@ script 27 mmsf1 {
 		right = 0
 	"3\n"
 	positionOptionFromCenter
-		width = 4
+		width = 99
 	optionText
 		up = 0
 		down = 2
@@ -740,7 +740,7 @@ script 27 mmsf1 {
 		right = 1
 	"4\n"
 	positionOptionFromCenter
-		width = 4
+		width = 99
 	optionText
 		up = 1
 		down = 0
@@ -779,7 +779,7 @@ script 27 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 3
+		width = 99
 	optionText
 		up = 2
 		down = 1
@@ -787,7 +787,7 @@ script 27 mmsf1 {
 		right = 0
 	"돼지\n"
 	positionOptionFromCenter
-		width = 3
+		width = 99
 	optionText
 		up = 0
 		down = 2
@@ -795,7 +795,7 @@ script 27 mmsf1 {
 		right = 1
 	"소\n"
 	positionOptionFromCenter
-		width = 3
+		width = 99
 	optionText
 		up = 1
 		down = 0
@@ -834,7 +834,7 @@ script 27 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 12
+		width = 99
 	optionText
 		up = 2
 		down = 1
@@ -842,7 +842,7 @@ script 27 mmsf1 {
 		right = 0
 	"켄 서더\n"
 	positionOptionFromCenter
-		width = 12
+		width = 99
 	optionText
 		up = 0
 		down = 2
@@ -850,7 +850,7 @@ script 27 mmsf1 {
 		right = 1
 	"켄 사우스\n"
 	positionOptionFromCenter
-		width = 12
+		width = 99
 	optionText
 		up = 1
 		down = 0
@@ -889,7 +889,7 @@ script 27 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 2
+		width = 99
 	optionText
 		up = 2
 		down = 1
@@ -897,7 +897,7 @@ script 27 mmsf1 {
 		right = 0
 	"5\n"
 	positionOptionFromCenter
-		width = 2
+		width = 99
 	optionText
 		up = 0
 		down = 2
@@ -905,7 +905,7 @@ script 27 mmsf1 {
 		right = 1
 	"6\n"
 	positionOptionFromCenter
-		width = 2
+		width = 99
 	optionText
 		up = 1
 		down = 0
@@ -944,7 +944,7 @@ script 27 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 2
+		width = 99
 	optionText
 		up = 2
 		down = 1
@@ -952,7 +952,7 @@ script 27 mmsf1 {
 		right = 0
 	"1\n"
 	positionOptionFromCenter
-		width = 2
+		width = 99
 	optionText
 		up = 0
 		down = 2
@@ -960,7 +960,7 @@ script 27 mmsf1 {
 		right = 1
 	"2\n"
 	positionOptionFromCenter
-		width = 2
+		width = 99
 	optionText
 		up = 1
 		down = 0
@@ -1001,7 +1001,7 @@ script 27 mmsf1 {
 	clearMsg
 	mugshotHide
 	positionOptionFromCenter
-		width = 2
+		width = 99
 	optionText
 		up = 2
 		down = 1
@@ -1009,7 +1009,7 @@ script 27 mmsf1 {
 		right = 0
 	"3\n"
 	positionOptionFromCenter
-		width = 2
+		width = 99
 	optionText
 		up = 0
 		down = 2
@@ -1017,7 +1017,7 @@ script 27 mmsf1 {
 		right = 1
 	"4\n"
 	positionOptionFromCenter
-		width = 2
+		width = 99
 	optionText
 		up = 1
 		down = 0
@@ -1054,7 +1054,7 @@ script 27 mmsf1 {
 	clearMsg
 	mugshotHide
 	positionOptionFromCenter
-		width = 2
+		width = 99
 	optionText
 		up = 2
 		down = 1
@@ -1062,7 +1062,7 @@ script 27 mmsf1 {
 		right = 0
 	"9\n"
 	positionOptionFromCenter
-		width = 3
+		width = 99
 	optionText
 		up = 0
 		down = 2
@@ -1070,7 +1070,7 @@ script 27 mmsf1 {
 		right = 1
 	"10\n"
 	positionOptionFromCenter
-		width = 3
+		width = 99
 	optionText
 		up = 1
 		down = 0
@@ -1107,7 +1107,7 @@ script 27 mmsf1 {
 	clearMsg
 	mugshotHide
 	positionOptionFromCenter
-		width = 11
+		width = 99
 	optionText
 		up = 2
 		down = 1
@@ -1115,7 +1115,7 @@ script 27 mmsf1 {
 		right = 0
 	"제트 어택 1\n"
 	positionOptionFromCenter
-		width = 11
+		width = 99
 	optionText
 		up = 0
 		down = 2
@@ -1123,7 +1123,7 @@ script 27 mmsf1 {
 		right = 1
 	"파워 봄 1\n"
 	positionOptionFromCenter
-		width = 10
+		width = 99
 	optionText
 		up = 1
 		down = 0

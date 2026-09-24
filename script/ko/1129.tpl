@@ -33,7 +33,7 @@ script 50 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 7
+		width = 5
 	" "
 	optionText
 		up = 1
@@ -42,7 +42,7 @@ script 50 mmsf1 {
 		right = 0
 	"겨울\n"
 	positionOptionFromCenter
-		width = 7
+		width = 5
 	" "
 	optionText
 		up = 0

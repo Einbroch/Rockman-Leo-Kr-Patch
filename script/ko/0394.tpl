@@ -604,3 +604,93 @@ script 90 mmsf1 {
 	end
 	end
 }
+script 200 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = PropellerMan
+	"넓은 하늘을 마음껏\n날아다니고 싶은 기분이다!!"
+	keyWait
+		type = 1
+	clearMsg
+	"인간은 불쌍하군, 어쨌든\n프로펠러가 없으니까 말이야"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 201 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = KeyMan
+	"오~~~프~~은~!!"
+	keyWait
+		type = 1
+	clearMsg
+	"오~~프~~은~~!!\n뭐든지 열고 싶다~!!"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 202 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = PitcherMan
+	"공 하나에 혼을 담아!!"
+	keyWait
+		type = 1
+	clearMsg
+	"온 힘을 공 하나에\n쏟아붓는 게\n내 방식이지!!"
+	keyWait
+		type = 1
+	clearMsg
+	"…풀이닝 완투?\n무리무리!!"
+	keyWait
+		type = 1
+	clearMsg
+	"어쨌든 공 하나에\n혼을 담으니까"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 203 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = ThermoMan
+	"니시시시싯!!"
+	keyWait
+		type = 1
+	clearMsg
+	"더운 거랑 추운 거,\n어느 쪽이 좋아!?"
+	keyWait
+		type = 1
+	clearMsg
+	"나는 말이야, 둘 다 싫어!!"
+	keyWait
+		type = 1
+	clearMsg
+	"쾌적한 온도가\n내 모토라고!!"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 204 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = ShovelMan
+	"나는 뭐든지 파헤치는\n파워풀 내비, 셔블맨이다!!"
+	keyWait
+		type = 1
+	clearMsg
+	"하지만 남의 과거는\n파헤치지 않는다!!"
+	keyWait
+		type = 1
+	clearMsg
+	"그리고 하나 더,\n나는 삽맨이 아니다!"
+	keyWait
+		type = 0
+	end
+	end
+}

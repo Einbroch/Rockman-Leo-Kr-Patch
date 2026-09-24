@@ -22,7 +22,7 @@ script 1 mmsf1 {
 		delay = 0
 	"클라이언트가 접속을\n요청했습니다...\n\n"
 	positionOptionFromCenter
-		width = 14
+		width = 9
 	optionText
 		up = 0
 		down = 0
@@ -82,7 +82,7 @@ script 3 mmsf1 {
 		padMode = leftPadZeroes
 	"가\n접속을 요청했습니다.\n"
 	positionOptionFromCenter
-		width = 14
+		width = 9
 	optionText
 		up = 0
 		down = 0
@@ -215,7 +215,7 @@ script 17 mmsf1 {
 		mugshot = Geo
 	"기가 클래스 카드\n안드로메다를 받겠습니까?\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -618,7 +618,7 @@ script 45 mmsf1 {
 		mugshot = Geo
 	"브라더 관계를 취소하겠습니까?\n\n"
 	positionOptionFromCenter
-		width = 12
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -733,7 +733,7 @@ script 80 mmsf1 {
 		mugshot = Geo
 	"진행 상황을 저장할까요?\n\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -772,7 +772,7 @@ script 81 mmsf1 {
 		mugshot = Geo
 	"덮어쓸까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -837,7 +837,7 @@ script 85 mmsf1 {
 		delay = 0
 	"저장에 실패했습니다... 다시\n시도할까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	" "
 	optionText
 		up = 0
@@ -959,7 +959,7 @@ script 98 mmsf1 {
 		mugshot = Geo
 	"연습, 1라운드 매치!\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -995,7 +995,7 @@ script 99 mmsf1 {
 		mugshot = Geo
 	"연습, 3라운드 매치!\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -1031,7 +1031,7 @@ script 100 mmsf1 {
 		mugshot = Geo
 	"실전! 1라운드...\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -1067,7 +1067,7 @@ script 101 mmsf1 {
 		mugshot = Geo
 	"실전! 3라운드...\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -1103,7 +1103,7 @@ script 104 mmsf1 {
 		mugshot = Geo
 	"교환을 시작할까요?\n\n"
 	positionOptionFromCenter
-		width = 14
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -1139,7 +1139,7 @@ script 105 mmsf1 {
 		mugshot = Geo
 	"무선 접속을 종료할까요?\n\n"
 	positionOptionFromCenter
-		width = 15
+		width = 13
 	optionText
 		up = 0
 		down = 0
@@ -1229,7 +1229,7 @@ script 112 mmsf1 {
 		delay = 0
 	"무선 접속을 종료할까요?\n\n"
 	positionOptionFromCenter
-		width = 15
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -1308,7 +1308,7 @@ script 120 mmsf1 {
 		delay = 0
 	"서버에 데이터를 업로드할까요?\n\n"
 	positionOptionFromCenter
-		width = 11
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -1515,7 +1515,7 @@ script 142 mmsf1 {
 		mugshot = Geo
 	"기가 클래스 카드\n안드로메다를 받겠습니까?\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -1590,7 +1590,7 @@ script 150 mmsf1 {
 		mugshot = Geo
 	"호스트에 접속할까요?\n\n"
 	positionOptionFromCenter
-		width = 15
+		width = 7
 	optionText
 		up = 0
 		down = 0
@@ -1667,7 +1667,7 @@ script 165 mmsf1 {
 		mugshot = Geo
 	"저장에 실패했습니다... 다시\n시도할까요?\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -1748,7 +1748,7 @@ script 172 mmsf1 {
 		mugshot = Geo
 	"이 메뉴에 들어가려면 저장해야\n합니다!\n"
 	positionOptionFromCenter
-		width = 12
+		width = 9
 	textSpeed
 		delay = 0
 	optionText
@@ -1829,7 +1829,7 @@ script 176 mmsf1 {
 		delay = 0
 	"저장에 실패했습니다... 다시\n시도할까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	" "
 	optionText
 		up = 0
@@ -1886,7 +1886,7 @@ script 179 mmsf1 {
 		mugshot = Geo
 	"덮어쓸까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0

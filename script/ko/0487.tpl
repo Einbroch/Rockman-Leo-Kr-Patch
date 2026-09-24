@@ -191,7 +191,7 @@ script 26 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 6
 	optionText
 		up = 0
 		down = 0

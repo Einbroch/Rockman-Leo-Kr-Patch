@@ -227,7 +227,7 @@ script 17 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"이름은 마모루야."
+	"이름은 장고야."
 	keyWait
 		type = 1
 	clearMsg
@@ -239,7 +239,7 @@ script 18 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 0
-	"마모루..."
+	"장고..."
 	keyWait
 		type = 1
 	clearMsg

@@ -30,7 +30,8 @@ USA = ROOT / 'work' / 'usa'
 USA_TPL = USA / 'tpl'
 PC_JSON = ROOT / 'ref' / 'pc_ko' / 'rr1.json'
 BLOCK_MAP = ROOT / 'ref' / 'pc_ko' / 'block_map.tsv'
-ALIGN_FIX = ROOT / 'ref' / 'pc_ko' / 'align_fix.json'   # 단위 수가 다른 블록의 짝 (tools/pc_align.py 참고)
+ALIGN_FIX = ROOT / 'ref' / 'pc_ko' / 'align_fix.json'
+JA_ONLY = ROOT / 'ref' / 'ja_only_ko.json'   # 영어판·PC판에 없는 일본판 전용 대사의 번역   # 단위 수가 다른 블록의 짝 (tools/pc_align.py 참고)
 # 선택지 버튼 글자 명령과 고정 글자 수 (None 이면 길이를 따로 적는 명령)
 OPTION_FIXED = {'optionButtonSmall8': 8, 'optionButtonWide16': 16, 'optionButtonSmall': None, 'optionButtonWide': None}
 KO_DIR = ROOT / 'script' / 'ko'
@@ -429,12 +430,18 @@ def ja_sizes():
 
 
 def center_width(items):
-    """선택지 없이 positionOptionFromCenter 로 가운데 맞추는 글(엔딩 크레딧 등)은 폭(글자 수)을 새 글에 맞춘다."""
+    """positionOptionFromCenter 의 폭(글자 수)을 새 글에 맞춘다. optionText 선택지면 선택지 글자 수의 합,
+    선택지가 없으면(엔딩 크레딧 등) 가장 긴 줄의 글자 수. 고정 폭 선택지 버튼(optionButton*)은 그대로 둔다."""
     names = [it[1] for it in items if it[0] == 'cmd']
-    if 'positionOptionFromCenter' not in names or any(n.startswith('option') for n in names):
+    if 'positionOptionFromCenter' not in names or any(n.startswith('optionButton') for n in names):
         return items
-    text = ''.join(it[1] for it in items if it[0] == 'text')
-    width = max((len(line) for line in text.split('\n')), default=0)
+    opts = [items[k + 1][1] for k, it in enumerate(items[:-1])
+            if it[0] == 'cmd' and it[1] == 'optionText' and items[k + 1][0] == 'text']
+    if opts:
+        width = sum(len(t) for t in opts)
+    else:
+        text = ''.join(it[1] for it in items if it[0] == 'text')
+        width = max((len(line) for line in text.split('\n')), default=0)
     for it in items:
         if it[0] == 'cmd' and it[1] == 'positionOptionFromCenter' and width:
             it[2]['width'] = str(width)
@@ -520,6 +527,80 @@ def load_groups(block_map, units, pc, fixes):
     return groups
 
 
+JA_TEXT = re.compile(r'[\u3040-\u30ff\u4e00-\u9fff]')
+
+
+def unit_key(items):
+    """일본판 글자 덩어리의 열쇠: 글자는 그대로, 글자 안의 명령은 {0}, {1} …"""
+    out, n = [], 0
+    for it in items:
+        if it[0] == 'text':
+            out.append(it[1])
+        else:
+            out.append('{%d}' % n)
+            n += 1
+    return ''.join(out)
+
+
+def from_key(text, cmds):
+    """번역문의 {n} 자리에 원래 명령을 넣은 항목 목록."""
+    out = []
+    for piece in re.split(r'(\{\d+\})', text):
+        if re.fullmatch(r'\{\d+\}', piece):
+            out.append(cmds[int(piece[1:-1])])
+        elif piece:
+            out.append(['text', ko_text(piece)])
+    return out
+
+
+def add_ja_only(outputs, skip, stats, report):
+    """한글이 들어가지 않은 일본판 스크립트 중 ref/ja_only_ko.json 에 번역이 모두 있는 것을
+    일본판 스크립트를 틀로 써서 넣는다(영어판에서 지워져 PC판에 없는 대사)."""
+    table = {k: v for k, v in json.loads(JA_ONLY.read_text(encoding='utf-8')).items() if not k.startswith('_')}
+    used, left = set(), collections.Counter()
+    for path in sorted(JA_DIR.glob('*.tpl')):
+        block = int(path.stem)
+        if block in skip or block >= JA_BLOCKS:
+            continue
+        ja = parse_tpl(path.read_text(encoding='utf-8-sig'))
+        done = outputs.get(block, {})
+        for num, items in ja.items():
+            if num in done:
+                continue
+            spans = unit_spans(items)
+            keys = [unit_key(items[s:e] if kind == 'run' else [['text', items[s][2]['string'].strip('"')]])
+                    for kind, s, e in spans]
+            if not any(JA_TEXT.search(k) for k in keys):
+                continue
+            if not all(k in table for k in keys if JA_TEXT.search(k)):
+                left[block] += 1
+                continue
+            items = [[it[0], it[1], dict(it[2])] if it[0] == 'cmd' else list(it) for it in items]
+            new, last = [], 0
+            for (kind, s, e), key in zip(spans, keys):
+                new += items[last:s]
+                last = e
+                if key not in table:
+                    new += items[s:e]
+                    continue
+                used.add(key)
+                if kind == 'opt':
+                    item = items[s]
+                    label, _ = option_label([table[key]], OPTION_FIXED[item[1]])
+                    item[2]['string'] = '"' + label + '"'
+                    new.append(item)
+                    continue
+                cmds = [it for it in items[s:e] if it[0] == 'cmd']
+                splittable = e < len(items) and items[e][0] == 'cmd' and items[e][1] == 'keyWait'
+                new += fit_run(from_key(table[key], cmds), splittable, stats)
+            outputs.setdefault(block, {})[num] = center_width(new + items[last:])
+            stats['일본판 전용 대사 스크립트(직접 번역)'] += 1
+    for key in sorted(set(table) - used):
+        report.append(f'-\t-\tja_only_ko.json 에서 쓰이지 않은 번역: {key!r:.60}')
+    for block, count in sorted(left.items()):
+        report.append(f'{block}\t-\t번역이 없어 일본어로 남은 일본판 스크립트 {count}개')
+
+
 def main():
     usa = load_usa_tpl()
     sizes = ja_sizes()
@@ -542,8 +623,11 @@ def main():
     KO_DIR.mkdir(parents=True)
     stats = collections.Counter()
     report = []
+    outputs = {}
     for block, name in sorted(block_map.items()):
         entries = pc[name]
+        for old, new in fixes.get(str(block), {}).get('replace', []):
+            entries = [e.replace(old, new) for e in entries]   # PC판 오역 바로잡기
         if block >= JA_BLOCKS:
             report.append(f'{block}\t{name}\t영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)')
             continue
@@ -626,10 +710,16 @@ def main():
             scripts[num] = center_width(new + items[last:])
         if not scripts:
             continue
-        (KO_DIR / f'{block:04d}.tpl').write_text(write_tpl(f'{block:04d}', sizes[block], scripts), encoding='utf-8')
-        stats['만든 블록'] += 1
+        outputs[block] = scripts
         stats['넣은 한글 항목'] += sum(len(b) for a, b in groups[block] if a) + \
             len(fixes.get(str(block), {}).get('texts', {}))
+
+    skip = {b for b, name in block_map.items() if name[4:-4] in LIST_FILES} | \
+        {int(b) for b, fix in fixes.items() if fix.get('skip')}
+    add_ja_only(outputs, skip, stats, report)
+    for block, scripts in sorted(outputs.items()):
+        (KO_DIR / f'{block:04d}.tpl').write_text(write_tpl(f'{block:04d}', sizes[block], scripts), encoding='utf-8')
+        stats['만든 블록'] += 1
     (ROOT / 'script' / 'ko_report.txt').write_text('# 한글을 넣지 못한 곳\n' + '\n'.join(report) + '\n', encoding='utf-8')
     for key, value in stats.items():
         print(f'{key}: {value:,}')

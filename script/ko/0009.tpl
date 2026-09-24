@@ -174,7 +174,7 @@ script 17 mmsf1 {
 		delay = 0
 	"친구와 온 에어를\n시작할까요? \n"
 	positionOptionFromCenter
-		width = 15
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -220,7 +220,7 @@ script 19 mmsf1 {
 		delay = 0
 	"클라이언트 접수를 중지할까요?\n\n"
 	positionOptionFromCenter
-		width = 15
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -373,7 +373,7 @@ script 30 mmsf1 {
 		mugshot = Geo
 	"저장해야 이 메뉴에\n들어갈 수 있어! \n"
 	positionOptionFromCenter
-		width = 12
+		width = 9
 	textSpeed
 		delay = 0
 	optionText
@@ -417,7 +417,7 @@ script 31 mmsf1 {
 		mugshot = Geo
 	"덮어쓸까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -495,7 +495,7 @@ script 35 mmsf1 {
 		mugshot = Geo
 	"저장에 실패했습니다. 다시\n시도할까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0

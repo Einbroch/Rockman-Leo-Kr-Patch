@@ -560,3 +560,268 @@ script 45 mmsf1 {
 	end
 	end
 }
+script 46 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"…여기가\n아마치 연구소라는\n곳이로군"
+	keyWait
+		type = 1
+	clearMsg
+	"좀 더 안쪽으로 가 보자고"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 47 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"…여기가\n아마치 연구소라는\n곳이로군"
+	keyWait
+		type = 1
+	clearMsg
+	"좀 더 안쪽으로 가 보자고"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 48 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"…여기가\n아마치 연구소라는\n곳이로군"
+	keyWait
+		type = 1
+	clearMsg
+	"좀 더 안쪽으로 가 보자고"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 49 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"과학 박물관을 둘러볼 거지?"
+	keyWait
+		type = 1
+	clearMsg
+	"뭔가 재미있는 거라도\n있으면 좋겠는데"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 50 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"과학 박물관을 둘러볼 거지?"
+	keyWait
+		type = 1
+	clearMsg
+	"뭔가 재미있는 거라도\n있으면 좋겠는데"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 51 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"아마치라는 아저씨한테\n돌아가자고"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 52 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"연구실이라는 곳에\n갈 거지? 얼른 가자고"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 53 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"스페이스 심 투어라는 데\n참가할 거지?"
+	keyWait
+		type = 1
+	clearMsg
+	"그럼 얼른\n과학 박물관으로 돌아가자고"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 54 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"여기가 스페이스 심인가…\n좀 둘러보자고"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 60 mmsf1 {
+	checkFlag
+		flag = 806
+		jumpIfTrue = 67
+		jumpIfFalse = continue
+	checkFlag
+		flag = 804
+		jumpIfTrue = 66
+		jumpIfFalse = continue
+	checkFlag
+		flag = 802
+		jumpIfTrue = 65
+		jumpIfFalse = continue
+	checkFlag
+		flag = 800
+		jumpIfTrue = 64
+		jumpIfFalse = continue
+	checkFlag
+		flag = 855
+		jumpIfTrue = 63
+		jumpIfFalse = continue
+	checkFlag
+		flag = 861
+		jumpIfTrue = 62
+		jumpIfFalse = continue
+	checkFlag
+		flag = 798
+		jumpIfTrue = 61
+		jumpIfFalse = continue
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"키그너스 녀석이 있는\n스페이스 심 장치의\n컴프로 가는 거다"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 61 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"일단 여기서 나가자"
+	keyWait
+		type = 1
+	clearMsg
+	"밖에서 웨이브 홀을\n찾으면 돼"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 62 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"문을 여닫던\n녀석이라고?"
+	keyWait
+		type = 1
+	clearMsg
+	"그 녀석은 분명…"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 63 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"「"
+	printItem
+		item = 14
+	"」를 써서\n문을 열자!"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 64 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"서둘러 전파 변환하자!\n웨이브 홀을 찾아!"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 65 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"전파가 연결되어 있지 않으면\n전자 기기를 이리저리\n만져 보면 돼"
+	keyWait
+		type = 1
+	clearMsg
+	"떠올려 봐,\n여기 전시물 중에\n뭐가 있었는지!"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 66 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"좋아, 전파가 연결됐다!\n키그너스 녀석을 쫓자!"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 67 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"스페이스 심 컴프로 돌아가자!"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 200 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = PropellerMan
+	"넓은 하늘을 마음껏\n날아다니고 싶은 기분이다!!"
+	keyWait
+		type = 1
+	clearMsg
+	"인간은 불쌍하군, 어쨌든\n프로펠러가 없으니까 말이야"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 201 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = KeyMan
+	"오~~~프~~은~!!"
+	keyWait
+		type = 1
+	clearMsg
+	"오~~프~~은~~!!\n뭐든지 열고 싶다~!!"
+	keyWait
+		type = 0
+	end
+	end
+}

@@ -101,7 +101,7 @@ script 11 mmsf1 {
 		delay = 0
 	"카드 트레이더 5다. 카드 5장을\n넣을까?\n"
 	positionOptionFromCenter
-		width = 13
+		width = 5
 	textSpeed
 		delay = 0
 	optionText
@@ -192,7 +192,7 @@ script 17 mmsf1 {
 	clearMsg
 	"줄 테니까. 어쩔 거냐,\n네 녀석!?\n"
 	positionOptionFromCenter
-		width = 13
+		width = 6
 	optionText
 		up = 0
 		down = 0

@@ -79,7 +79,7 @@ script 5 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"록맨, 마모루는\n찾았어?\n"
+	"록맨, 장고는\n찾았어?\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -99,7 +99,7 @@ script 6 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"마모루가 준비될 때까지\n라이머를 붙잡아 둬야 해...\n"
+	"장고가 준비될 때까지\n라이머를 붙잡아 둬야 해...\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -568,7 +568,7 @@ script 42 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"가자, 마모루."
+	"가자, 장고."
 	keyWait
 		type = 0
 	end
@@ -626,7 +626,7 @@ script 47 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = MegaMan
-	"루시안, 마모루...\n그곳에서도 행운을 빌게.\n"
+	"루시안, 장고...\n그곳에서도 행운을 빌게.\n"
 	keyWait
 		type = 0
 	end

@@ -13,7 +13,7 @@ script 0 mmsf1 {
 		mugshot = Geo
 	"클리어 데이터를 저장할까요?\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -92,7 +92,7 @@ script 5 mmsf1 {
 		mugshot = Geo
 	"저장에 실패했습니다. 다시\n시도할까요?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0

@@ -73,3 +73,42 @@ script 7 mmsf1 {
 	end
 	end
 }
+script 10 mmsf1 {
+	checkFlag
+		flag = 1603
+		jumpIfTrue = 11
+		jumpIfFalse = continue
+	msgOpen
+	mugshotShowNPC
+		npc = 0
+	"아, 안 돼…!\n잠겨 있어!!"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = BobCopper
+	"왜냐!! 왜 안 열리는 거냐!!\n이 Z파는 대체 뭐냐!?"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShowNPC
+		npc = 0
+	"이 문은 쉽게\n열릴 것 같지 않아…"
+	keyWait
+		type = 1
+	clearMsg
+	"이렇게 된 이상\n반장을 데리고\n밖으로 도망쳐야 해!"
+	keyWait
+		type = 2
+	flagSet
+		flag = 1603
+	end
+}
+script 11 mmsf1 {
+	msgOpen
+	"문이 단단히\n닫혀 있다…"
+	keyWait
+		type = 0
+	end
+	end
+}

@@ -67,7 +67,7 @@ script 4 mmsf1 {
 		mugshot = MegaMan
 	"퀴즈? 한번 해 볼까?\n\n"
 	positionOptionFromCenter
-		width = 16
+		width = 8
 	textSpeed
 		delay = 0
 	optionText

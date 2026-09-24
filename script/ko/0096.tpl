@@ -73,7 +73,7 @@ script 3 mmsf1 {
 		delay = 0
 	"이 메일을 저장할까?\n\n"
 	positionOptionFromCenter
-		width = 12
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -119,7 +119,7 @@ script 5 mmsf1 {
 		mugshot = Geo
 	"저장된 다른 메일을 덮어쓸까?\n\n"
 	positionOptionFromCenter
-		width = 16
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -174,7 +174,7 @@ script 7 mmsf1 {
 		delay = 0
 	"계속할까요?\n"
 	positionOptionFromCenter
-		width = 12
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -248,7 +248,7 @@ script 9 mmsf1 {
 		mugshot = Geo
 	"메일을 저장할까?\n\n"
 	positionOptionFromCenter
-		width = 12
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -306,7 +306,7 @@ script 10 mmsf1 {
 		mugshot = Geo
 	"메일을 저장할까?\n\n"
 	positionOptionFromCenter
-		width = 12
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -343,7 +343,7 @@ script 11 mmsf1 {
 		mugshot = Geo
 	"저장을 취소할까?\n\n"
 	positionOptionFromCenter
-		width = 14
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -384,7 +384,7 @@ script 12 mmsf1 {
 	clearMsg
 	"이 메일을 삭제할까?\n\n"
 	positionOptionFromCenter
-		width = 16
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -484,7 +484,7 @@ script 17 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -532,7 +532,7 @@ script 20 mmsf1 {
 		mugshot = Geo
 	"이 메일을 어떻게\n할까?\n"
 	positionOptionFromCenter
-		width = 14
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -568,7 +568,7 @@ script 21 mmsf1 {
 		mugshot = Geo
 	"정말\n삭제할까요?\n"
 	positionOptionFromCenter
-		width = 9
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -604,7 +604,7 @@ script 22 mmsf1 {
 		mugshot = Geo
 	"이 내용을 저장할까요?\n\n"
 	positionOptionFromCenter
-		width = 12
+		width = 8
 	optionText
 		up = 0
 		down = 0

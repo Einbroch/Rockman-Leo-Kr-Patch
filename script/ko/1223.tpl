@@ -128,7 +128,7 @@ script 10 mmsf1 {
 		mugshot = Geo
 	"자신의 기록을 삭제할까요?\n\n"
 	positionOptionFromCenter
-		width = 12
+		width = 8
 	optionText
 		up = 0
 		down = 0
@@ -169,7 +169,7 @@ script 11 mmsf1 {
 		mugshot = Geo
 	"친구의 기록을 삭제할까요?\n\n"
 	positionOptionFromCenter
-		width = 12
+		width = 8
 	optionText
 		up = 0
 		down = 0

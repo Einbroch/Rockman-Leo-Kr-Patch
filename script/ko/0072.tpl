@@ -79,7 +79,7 @@ script 4 mmsf1 {
 	clearMsg
 	"도와줄 거야, 말 거야?\n\n"
 	positionOptionFromCenter
-		width = 14
+		width = 8
 	textSpeed
 		delay = 0
 	optionText

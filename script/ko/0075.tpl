@@ -65,7 +65,7 @@ script 4 mmsf1 {
 		mugshot = OmegaXis
 	"바이러스 퇴치라도\n해 볼까!?\n"
 	positionOptionFromCenter
-		width = 16
+		width = 8
 	textSpeed
 		delay = 0
 	optionText

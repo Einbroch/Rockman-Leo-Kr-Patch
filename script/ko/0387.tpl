@@ -269,3 +269,31 @@ script 67 mmsf1 {
 	end
 	end
 }
+script 200 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = PropellerMan
+	"넓은 하늘을 마음껏\n날아다니고 싶은 기분이다!!"
+	keyWait
+		type = 1
+	clearMsg
+	"인간은 불쌍하군, 어쨌든\n프로펠러가 없으니까 말이야"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 201 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = KeyMan
+	"오~~~프~~은~!!"
+	keyWait
+		type = 1
+	clearMsg
+	"오~~프~~은~~!!\n뭐든지 열고 싶다~!!"
+	keyWait
+		type = 0
+	end
+	end
+}

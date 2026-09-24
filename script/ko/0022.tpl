@@ -98,7 +98,7 @@ script 10 mmsf1 {
 		mugshot = MegaMan
 	"엄마를 도와드리러 갈까?\n\n"
 	positionOptionFromCenter
-		width = 13
+		width = 8
 	textSpeed
 		delay = 0
 	optionText

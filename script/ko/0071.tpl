@@ -111,7 +111,7 @@ script 4 mmsf1 {
 		mugshot = OmegaXis
 	"흥, 그래서 어쩔래? 저 사람을\n도와줄 거야?\n"
 	positionOptionFromCenter
-		width = 16
+		width = 8
 	textSpeed
 		delay = 0
 	optionText

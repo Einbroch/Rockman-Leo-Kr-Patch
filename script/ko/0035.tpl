@@ -47,7 +47,7 @@ script 3 mmsf1 {
 	clearMsg
 	"도와주고\n싶지?\n"
 	positionOptionFromCenter
-		width = 15
+		width = 8
 	textSpeed
 		delay = 0
 	optionText

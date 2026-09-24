@@ -272,3 +272,148 @@ script 18 mmsf1 {
 	end
 	end
 }
+script 30 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = Bud
+	"크아아!"
+	keyWait
+		type = 1
+	clearMsg
+	"먹고 싶다!"
+	keyWait
+		type = 1
+	clearMsg
+	"고기가 먹고 싶다!"
+	keyWait
+		type = 1
+	clearMsg
+	"나를 만족시킬 고기는\n이 세상에 없는 거냐!?"
+	keyWait
+		type = 1
+	clearMsg
+	"우가아!"
+	keyWait
+		type = 1
+	clearMsg
+	"상관없는 얘기지만,\n야키소바가 먹고 싶다…"
+	keyWait
+		type = 0
+	end
+	mugshotShow
+		mugshot = OmegaXis
+	"오? 황소 꼬마 녀석이\n난리가 났는데?"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = MegaMan
+	"고기라…\n\n"
+	textSpeed
+		delay = 0
+	positionOptionFromCenter
+		width = 13
+	optionText
+		up = 0
+		down = 0
+		left = 1
+		right = 1
+	" 나도…  "
+	optionText
+		up = 1
+		down = 1
+		left = 0
+		right = 0
+	" 내버려 두자"
+	selectText
+		default = 0
+		BContinue = false
+		disableB = false
+		unused = false
+		jump1 = continue
+		jump2 = 32
+		jump3 = 0
+		jump4 = 0
+		jump5 = 0
+		jump6 = 0
+		jump7 = 0
+		jump8 = 0
+	clearMsg
+	checkFlag
+		flag = 6911
+		jumpIfTrue = 20
+		jumpIfFalse = continue
+	mugshotShow
+		mugshot = OmegaXis
+	"오?"
+	keyWait
+		type = 1
+	clearMsg
+	"너도 고기가 먹고 싶은 거냐?"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = MegaMan
+	"그게 아니라\n곤타가 만족할 만한\n고기는 어떤 걸까 해서"
+	keyWait
+		type = 1
+	clearMsg
+	mugshotShow
+		mugshot = OmegaXis
+	"아… 아무래도 좋다"
+	keyWait
+		type = 1
+	clearMsg
+	flagSet
+		flag = 6190
+	flagSet
+		flag = 6911
+	jump
+		target = 41
+	end
+}
+script 31 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = Bud
+	"크아아!"
+	keyWait
+		type = 1
+	clearMsg
+	"먹고 싶다!"
+	keyWait
+		type = 1
+	clearMsg
+	"고기가 먹고 싶다!"
+	keyWait
+		type = 1
+	clearMsg
+	"나를 만족시킬 고기는\n이 세상에 없는 거냐!?"
+	keyWait
+		type = 1
+	clearMsg
+	"우가아!"
+	keyWait
+		type = 1
+	clearMsg
+	"상관없는 얘기지만,\n야키소바가 먹고 싶다…"
+	keyWait
+		type = 0
+	end
+	end
+}
+script 32 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = OmegaXis
+	"오오?\n내버려 두는 거냐?"
+	keyWait
+		type = 1
+	clearMsg
+	"뭐, 상관없나"
+	keyWait
+		type = 1
+	clearMsg
+	end
+}

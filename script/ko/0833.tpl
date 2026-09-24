@@ -27,3 +27,21 @@ script 0 mmsf1 {
 	end
 	end
 }
+script 10 mmsf1 {
+	msgOpen
+	mugshotShow
+		mugshot = Lucian
+	"그렇게 어렵진 않을\n거야."
+	keyWait
+		type = 1
+	clearMsg
+	"사람들이 모이고\n햇빛이 드는 곳에 있을\n거야."
+	keyWait
+		type = 1
+	clearMsg
+	"아마 옥상\n어딘가에..."
+	keyWait
+		type = 0
+	end
+	end
+}

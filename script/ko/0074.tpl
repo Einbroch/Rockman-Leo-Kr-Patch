@@ -83,7 +83,7 @@ script 4 mmsf1 {
 	clearMsg
 	"대체 뭔지\n알아볼까?\n"
 	positionOptionFromCenter
-		width = 14
+		width = 8
 	textSpeed
 		delay = 0
 	optionText
