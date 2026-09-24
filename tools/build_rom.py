@@ -3,8 +3,11 @@
 
 먼저 할 일: tools/unpack.py, tools/textpet/build.sh, tools/pc2ds.py
 사용법: python3 tools/build_rom.py [출력 경로]      (기본: build/rnr1_leo_ko.nds)
+xdelta3 가 있으면 원본과의 차이를 patch/rnr1_leo_ko.xdelta 로도 만든다.
 """
 import pathlib
+import shutil
+import subprocess
 import sys
 
 import ndspy.rom
@@ -44,6 +47,11 @@ def main():
     rom.saveToFile(str(out))
     print('한글 출력 코드:', ', '.join(f'{k} {v}' for k, v in info.items()))
     print(f'{out} 저장 ({out.stat().st_size:,} 바이트)')
+    if shutil.which('xdelta3'):
+        patch = ROOT / 'patch' / 'rnr1_leo_ko.xdelta'
+        patch.parent.mkdir(exist_ok=True)
+        subprocess.run(['xdelta3', '-e', '-f', '-9', '-s', str(ORIGINAL), str(out), str(patch)], check=True)
+        print(f'{patch} 저장 ({patch.stat().st_size:,} 바이트)')
 
 
 if __name__ == '__main__':

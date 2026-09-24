@@ -24,7 +24,7 @@ import kotable  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 GALMURI_DIR = ROOT / 'work' / 'galmuri'
-GALMURI_COMMIT = '71e1cac'
+GALMURI_COMMIT = '71e1cacf1437a11220307120e63e30bc275312d4'  # v2.40.4
 GALMURI_BDF = GALMURI_DIR / 'dist' / 'Galmuri11.bdf'
 
 ARM9_BASE = 0x02000000
@@ -48,9 +48,15 @@ CODE_RESERVE = 0x400        # 첫 빈 구간 앞부분: 코드, 표, 버퍼
 
 # ---------------------------------------------------------------- 폰트
 def ensure_galmuri():
-    if not GALMURI_BDF.exists():
-        subprocess.run(['git', 'clone', '-q', '--depth', '1', 'https://github.com/quiple/galmuri', str(GALMURI_DIR)],
-                       check=True)
+    """갈무리 폰트(https://github.com/quiple/galmuri, SIL OFL 1.1)를 정해진 버전으로 work/galmuri 에 받는다."""
+    git = ['git', '-C', str(GALMURI_DIR)]
+    if not (GALMURI_DIR / '.git').exists():
+        subprocess.run(['git', 'init', '-q', str(GALMURI_DIR)], check=True)
+        subprocess.run(git + ['remote', 'add', 'origin', 'https://github.com/quiple/galmuri'], check=True)
+    head = subprocess.run(git + ['rev-parse', '-q', '--verify', 'HEAD'], capture_output=True, text=True).stdout.strip()
+    if head != GALMURI_COMMIT:
+        subprocess.run(git + ['fetch', '-q', '--depth', '1', 'origin', GALMURI_COMMIT], check=True)
+        subprocess.run(git + ['checkout', '-q', '--force', GALMURI_COMMIT], check=True)
     return GALMURI_BDF
 
 

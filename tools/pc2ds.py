@@ -32,6 +32,9 @@ PC_JSON = ROOT / 'ref' / 'pc_ko' / 'rr1.json'
 BLOCK_MAP = ROOT / 'ref' / 'pc_ko' / 'block_map.tsv'
 KO_DIR = ROOT / 'script' / 'ko'
 JA_BLOCKS = 1247  # 일본판 mess.bin 블록 수. 그 뒤는 영어판에만 있다.
+# 목록 화면(카드·아이템 설명 등)에서 쓰는 블록. 대사 상자와 다른 출력 코드를 거치므로 그쪽을 고친 뒤에 넣는다.
+LIST_FILES = {'CHIPINFO', 'CHIPINFO2', 'POWERUP', 'CARDFORCE', 'WARROCK_WEAPON', 'ITEMINF', 'TITLE', 'COCKPIT',
+              'DECKSELECT', 'EDITDECKSCREEN'}
 
 INLINE = {'wait', 'waitHold', 'waitSkip'}
 MAX_WIDTH = 192             # 대사 한 줄 최대 폭(픽셀). 일본판 대사의 99%가 이 안이다.
@@ -386,6 +389,10 @@ def main():
         n_runs = len(runs_of(block))
         if block >= JA_BLOCKS:
             report.append(f'{block}\t{name}\t영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)')
+            continue
+        if name[4:-4] in LIST_FILES:
+            report.append(f'{block}\t{name}\t목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음')
+            stats['목록 화면용이라 뺀 블록'] += 1
             continue
         if n_runs != len(entries):
             report.append(f'{block}\t{name}\t덩어리 수가 다름: 영어 {n_runs}, 한글 {len(entries)}')

@@ -2,12 +2,18 @@
 0	RR1_MESSTEST_ENG	덩어리 수가 다름: 영어 142, 한글 154
 1	RR1_INPUTSCREEN_ENG	덩어리 수가 다름: 영어 286, 한글 314
 2	RR1_SAVESCREEN_ENG	덩어리 수가 다름: 영어 23, 한글 26
+3	RR1_EDITDECKSCREEN_ENG	목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음
 4	RR1_TRANSERSCREEN_ENG	덩어리 수가 다름: 영어 3, 한글 5
 5	RR1_BATTLE_ENG	덩어리 수가 다름: 영어 50, 한글 52
+6	RR1_COCKPIT_ENG	목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음
 7	RR1_CUSTOM_ENG	덩어리 수가 다름: 영어 17, 한글 21
+8	RR1_DECKSELECT_ENG	목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음
 9	RR1_CONNECTSCREEN_ENG	덩어리 수가 다름: 영어 49, 한글 57
 10	RR1_BROTHERVIEWSCREEN_ENG	덩어리 수가 다름: 영어 317, 한글 330
 11	RR1_INFOSCREEN_ENG	덩어리 수가 다름: 영어 36, 한글 43
+12	RR1_POWERUP_ENG	목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음
+13	RR1_CHIPINFO_ENG	목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음
+14	RR1_CHIPINFO2_ENG	목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음
 69	RR1_NPCPARSONAL31_ENG	덩어리 수가 다름: 영어 13, 한글 15
 75	RR1_NPCPARSONAL37_ENG	덩어리 수가 다름: 영어 23, 한글 24
 94	RR1_MAILNAME_ENG	덩어리 수가 다름: 영어 132, 한글 202
@@ -15,6 +21,7 @@
 98	RR1_NUMBERTRADER_ENG	덩어리 수가 다름: 영어 120, 한글 187
 100	RR1_TUTO_SUBSCRN_ENG	덩어리 수가 다름: 영어 118, 한글 119
 101	RR1_WARROCKSCRN_ENG	덩어리 수가 다름: 영어 65, 한글 70
+102	RR1_WARROCK_WEAPON_ENG	목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음
 121	RR1_DM0012_ENG	덩어리 수가 다름: 영어 40, 한글 41
 238	RR1_DM0402_ENG	덩어리 수가 다름: 영어 67, 한글 68
 273	RR1_DM0500_ENG	덩어리 수가 다름: 영어 6, 한글 7
@@ -46,11 +53,13 @@
 1211	RR1_IBOXDATA_ENG	덩어리 수가 다름: 영어 61, 한글 73
 1212	RR1_COMMON_ENG	덩어리 수가 다름: 영어 103, 한글 104
 1213	RR1_NETSCREEN_ENG	덩어리 수가 다름: 영어 183, 한글 189
+1214	RR1_CARDFORCE_ENG	목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음
 1215	RR1_SHOP00_ENG	덩어리 수가 다름: 영어 13, 한글 22
 1216	RR1_SHOP01_ENG	덩어리 수가 다름: 영어 13, 한글 20
 1217	RR1_SHOP02_ENG	덩어리 수가 다름: 영어 13, 한글 20
 1218	RR1_SHOP03_ENG	덩어리 수가 다름: 영어 13, 한글 20
 1219	RR1_SHOP04_ENG	덩어리 수가 다름: 영어 13, 한글 20
+1220	RR1_ITEMINF_ENG	목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음
 1222	RR1_FACESCRN_ENG	덩어리 수가 다름: 영어 10, 한글 20
 1223	RR1_RECSCRN_ENG	덩어리 수가 다름: 영어 23, 한글 32
 1224	RR1_COMBOSCRN_ENG	덩어리 수가 다름: 영어 49, 한글 56
@@ -58,6 +67,7 @@
 1228	RR1_QUIZ00_ENG	덩어리 수가 다름: 영어 27, 한글 79
 1229	RR1_QUIZ01_ENG	덩어리 수가 다름: 영어 25, 한글 97
 1230	RR1_QUIZ02_ENG	덩어리 수가 다름: 영어 25, 한글 121
+1231	RR1_TITLE_ENG	목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음
 1245	RR1_ENDING_ENG	덩어리 수가 다름: 영어 103, 한글 134
 1247	RR1_ITEMNAME_ENG	영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)
 1248	RR1_DECKNAME_ENG	영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)

@@ -1,2 +1,5 @@
 ndspy>=4.2
 py7zr>=0.20
+zstandard
+keystone-engine
+capstone

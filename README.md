@@ -31,39 +31,59 @@
 > 배포할 때는 원본과의 차이만 담긴 xdelta 패치 파일만 공유한다.
 > 한 번 커밋한 롬은 git 기록에 계속 남으므로, 나중에 저장소를 공개하려면 기록에서 지워야 한다.
 
+## 시험용 한글 패치
+
+`patch/rnr1_leo_ko.xdelta`를 원본 롬 `Ryuusei no Rockman - Leo (Japan).nds`(CRC32 `EA4F4898`)에 적용한다.
+윈도우에서는 Delta Patcher나 xdelta UI 같은 xdelta 패치 도구를 쓰면 된다.
+
+지금 들어간 것: PC판 한글패치의 대사(스토리, 맵 대사, NPC, 튜토리얼, 상점 등) 763개 블록, 대사 상자 20,000개.
+아직 일본어로 남는 것: 개수가 맞지 않아 보류한 60개 블록, 목록 화면(카드·아이템 설명 등), 메뉴와 이름처럼
+mess.bin 밖에 있는 글자, 그림으로 된 글자. 남은 일본어의 가나는 그대로 보이지만 한자 자리는 한글 폰트로
+쓰였기 때문에 깨져 보인다.
+
 ## 진행 상황
 
 분석 내용은 [docs/analysis.md](docs/analysis.md)에 정리했다.
 
 - [x] **롬 풀기**: `tools/unpack.py`
 - [x] **대사 파일 찾기**: `datbin/com/mess.bin` (LZ10 압축 블록 1,247개)
-- [x] **문자 코드표 / 폰트 위치 확인**: ARM9 안의 16×16 대사 폰트와 8×8 작은 폰트
+- [x] **문자 코드표 / 폰트 위치 확인**: ARM9 안의 16×16 대사 폰트, 8×16 메뉴 폰트 둘, 8×8 작은 폰트
 - [x] **대사 뽑기 / 다시 넣기**: `tools/script.py` (원본과 바이트 단위로 같게 되돌아가는 것 확인)
-- [ ] **한글 출력 엔진 수정**: 글자 칸이 484개뿐이라 한글용 2바이트 코드와 새 폰트를 쓰도록 코드 수정
-- [ ] **번역**: `script/ja/*.tpl` → `script/ko/*.tpl` (스크립트 11,062개, 약 41만 자)
-- [ ] **메뉴·배틀 카드 이름 등 mess.bin 밖의 글자, 그림 속 글자 수정**
-- [ ] **빌드**: 수정된 롬과 xdelta 패치 파일 생성
+- [x] **한글 출력 엔진(대사 상자)**: `tools/engine.py` (한글 2바이트 코드, 갈무리11 폰트)
+- [x] **PC판 한글 대사 적용**: `tools/pcpak.py` → `tools/pc2ds.py` (영어판 스크립트 틀 사용)
+- [ ] **개수가 맞지 않는 60개 블록** 맞추기 (`script/ko_report.txt`)
+- [ ] **메뉴·목록 화면 출력 코드 수정**과 카드·아이템·인물·장소 이름 등 mess.bin 밖의 글자
+- [ ] **그림 속 글자**(타이틀 등)
+- [x] **빌드**: `tools/build_rom.py` → `build/rnr1_leo_ko.nds`, `patch/rnr1_leo_ko.xdelta`
 
 ## 준비
 
 - Python 3 패키지: `pip install -r requirements.txt`
 - .NET 8 SDK (대사 변환 도구 TextPet 실행용): 우분투는 `apt install dotnet-sdk-8.0`
 - TextPet 빌드: `tools/textpet/build.sh` → `work/textpet/bin/TextPet.dll`
+- 패치 파일을 만들려면 xdelta3 (`apt install xdelta3`)
 
 ## 사용법
 
 ```
-python3 tools/unpack.py              # 롬을 work/ 에 푼다
-python3 tools/script.py dump         # 대사를 script/ja/*.tpl 로 뽑는다
-python3 tools/script.py check        # 뽑은 대사로 다시 만든 결과가 원본과 같은지 확인
-python3 tools/script.py build script/ko build/mess.bin   # 번역본으로 mess.bin 만들기
+python3 tools/unpack.py                                       # 일본판 롬을 work/ 에 푼다
+python3 tools/unpack.py "ref/Mega Man Star Force - Leo (USA).zip" work/usa   # 영어판
+tools/textpet/build.sh                                        # TextPet 빌드
+python3 tools/script.py dump                                  # 일본어 원문을 script/ja/*.tpl 로
+python3 tools/pcpak.py ref/re_chunk_000.pak.patch_002.pak ref/pc_ko/rr1.json  # PC판 한글 뽑기
+python3 tools/pc2ds.py                                        # 한글 스크립트 script/ko/*.tpl 만들기
+python3 tools/build_rom.py                                    # 한글판 롬과 패치 파일 만들기
 ```
 
-`script/*/NNNN.tpl`은 대사 블록 하나이고, 글자가 있는 스크립트만 들어 있다. 따옴표 안의 글자만 번역하고
+`script/*/NNNN.tpl`은 대사 블록 하나이고, 글자가 있는 스크립트만 들어 있다. 따옴표 안의 글자만 고치고
 명령(`keyWait`, `mugshotShow` 등)은 그대로 둔다. 파일에 없는 스크립트는 빌드할 때 원본이 그대로 쓰인다.
+`script/ko`는 `tools/pc2ds.py`가 다시 만들므로, 한글 대사를 고칠 때는 `ref/pc_ko/rr1.json`을 고친다.
 
-## 사용한 도구
+## 사용한 것과 고마운 분들
 
+- PC판(레거시 컬렉션) 한글패치: 원작자의 사용 허락을 받아 대사를 가져왔다.
 - [TextPet](https://github.com/Prof9/TextPet) (Prof. 9, MIT 라이선스): 스크립트 변환.
   `tools/textpet/`에 .NET 8 빌드용 프로젝트 파일과 수정 사항(`dotnet8.patch`), 게임 정의(`plugins/`)가 있다.
+- [갈무리](https://github.com/quiple/galmuri) (이민서, SIL OFL 1.1): 한글 폰트 (갈무리11). 라이선스는 `licenses/Galmuri-OFL.md`.
 - [ndspy](https://github.com/RoadrunnerWMC/ndspy): 롬 파일 시스템과 LZ10 압축.
+- [keystone](https://www.keystone-engine.org/)·[capstone](https://www.capstone-engine.org/): 게임 코드 어셈블·역어셈블.
