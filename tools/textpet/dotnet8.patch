@@ -1,0 +1,82 @@
+diff -ruN a/LibTextPet/IO/TPL/TPLReader.cs b/LibTextPet/IO/TPL/TPLReader.cs
+--- a/LibTextPet/IO/TPL/TPLReader.cs
++++ b/LibTextPet/IO/TPL/TPLReader.cs
+@@ -40,14 +40,14 @@
+ 						// """
+ 						// Blah blah
+ 						// """
+-						@"(?:(?<" + nameof(TPLTokenType.HeredocStart) + @">^[^\S\r\n]*?"""""")[^\S\r]*\r?\n" +
++						@"(?:(?<" + nameof(TPLTokenType.HeredocStart) + @">^[^\S\r\n]*?"""""")[^\S\r\n]*\r?\n" +
+ 						@"(?<" + nameof(TPLTokenType.Heredoc) + @">^.*?)\r?\n[^\S\r\n]*" +
+ 						@"(?<" + nameof(TPLTokenType.HeredocEnd) + @">""""""))" +
+ 						@"|" +
+ 						// Unterminated heredoc (consumes rest of input):
+ 						// """
+ 						// Blah
+-						@"(?:^[^\S\r\n]*?(?<" + nameof(TPLTokenType.UnterminatedHeredoc) + @">""""""[^\S\r]*\r?\n.*))" +
++						@"(?:^[^\S\r\n]*?(?<" + nameof(TPLTokenType.UnterminatedHeredoc) + @">""""""[^\S\r\n]*\r?\n.*))" +
+ 						@"|" +
+ 						// Regular string:
+ 						// "Blah blah"
+diff -ruN a/LibTextPet/Text/LookupTableEncoder.cs b/LibTextPet/Text/LookupTableEncoder.cs
+--- a/LibTextPet/Text/LookupTableEncoder.cs
++++ b/LibTextPet/Text/LookupTableEncoder.cs
+@@ -77,12 +77,12 @@
+ 		public override int GetByteCount(char[] chars, int index, int count, bool flush) {
+ 			if (chars == null)
+ 				throw new ArgumentNullException(nameof(chars), "The character array cannot be null.");
+-			if (index < 0 || index >= chars.Length)
++			if (index < 0 || index > chars.Length || (count > 0 && index >= chars.Length))
+ 				throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+ 			if (count < 0 || index + count > chars.Length)
+ 				throw new ArgumentOutOfRangeException(nameof(count), "Character count is out of range.");
+ 
+-			if (count == 0) {
++			if (count == 0 && !(flush && this.Paths.Count > 0)) {
+ 				return 0;
+ 			}
+ 
+@@ -111,14 +111,14 @@
+ 				throw new ArgumentNullException(nameof(chars), "The character array cannot be null.");
+ 			if (bytes == null)
+ 				throw new ArgumentNullException(nameof(bytes), "The byte array cannot be null.");
+-			if (charIndex < 0 || charIndex >= chars.Length)
++			if (charIndex < 0 || charIndex > chars.Length || (charCount > 0 && charIndex >= chars.Length))
+ 				throw new ArgumentOutOfRangeException(nameof(charIndex), "The index of the first character is out of range.");
+ 			if (charCount < 0 || charIndex + charCount > chars.Length)
+ 				throw new ArgumentOutOfRangeException(nameof(charCount), "The number of characters is out of range.");
+ 			if (charCount > 0 && (byteIndex < 0 || byteIndex >= bytes.Length))
+ 				throw new ArgumentOutOfRangeException(nameof(byteIndex), "The index in the byte array is out of range.");
+ 
+-			if (charCount == 0) {
++			if (charCount == 0 && !(flush && this.Paths.Count > 0)) {
+ 				return 0;
+ 			}
+ 
+diff -ruN a/TextPet/Program.cs b/TextPet/Program.cs
+--- a/TextPet/Program.cs
++++ b/TextPet/Program.cs
+@@ -6,12 +6,12 @@
+ 		public static string Version => "v1.0.0";
+ 		
+ 		static int Main(string[] args) {
+-			string originalConsoleTitle = Console.Title;
++			string originalConsoleTitle = OperatingSystem.IsWindows() ? Console.Title : null;
+ 			int errorLevel = 0;
+ #if !DEBUG
+ 			try {
+ #endif
+-				Console.Title = "TextPet CLI";
++				if (OperatingSystem.IsWindows()) Console.Title = "TextPet CLI";
+ 				Console.WriteLine("TextPet " + Version + " by Prof. 9");
+ 				Console.WriteLine();
+ 				
+@@ -26,7 +26,7 @@
+ #else
+ 			Console.ReadKey();
+ #endif
+-			Console.Title = originalConsoleTitle;
++			if (OperatingSystem.IsWindows()) Console.Title = originalConsoleTitle;
+ 			return errorLevel;
+ 		}
+ 	}

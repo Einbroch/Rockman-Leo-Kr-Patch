@@ -31,18 +31,39 @@
 > 배포할 때는 원본과의 차이만 담긴 xdelta 패치 파일만 공유한다.
 > 한 번 커밋한 롬은 git 기록에 계속 남으므로, 나중에 저장소를 공개하려면 기록에서 지워야 한다.
 
-## 작업 순서
+## 진행 상황
 
-1. **롬 풀기**: `python3 tools/unpack.py` → `work/`에 내부 파일, ARM9 코드, 파일 목록(`filelist.tsv`) 생성
-2. **대사 파일 찾기**: 대사가 든 파일과 압축 방식(LZ10/LZ11, NARC 등) 파악
-3. **문자 코드표 만들기**: 게임의 문자 코드와 글자의 대응표(`.tbl`) 작성
-4. **폰트 수정**: 일본어 폰트의 한자 자리에 한글 글자 그려 넣기
-5. **대사 뽑기 → 번역 → 다시 넣기**
-6. **그림 속 글자 수정**: 타이틀·메뉴 등 이미지로 된 일본어
-7. **빌드**: 수정된 롬과 xdelta 패치 파일 생성
+분석 내용은 [docs/analysis.md](docs/analysis.md)에 정리했다.
+
+- [x] **롬 풀기**: `tools/unpack.py`
+- [x] **대사 파일 찾기**: `datbin/com/mess.bin` (LZ10 압축 블록 1,247개)
+- [x] **문자 코드표 / 폰트 위치 확인**: ARM9 안의 16×16 대사 폰트와 8×8 작은 폰트
+- [x] **대사 뽑기 / 다시 넣기**: `tools/script.py` (원본과 바이트 단위로 같게 되돌아가는 것 확인)
+- [ ] **한글 출력 엔진 수정**: 글자 칸이 484개뿐이라 한글용 2바이트 코드와 새 폰트를 쓰도록 코드 수정
+- [ ] **번역**: `script/ja/*.tpl` → `script/ko/*.tpl` (스크립트 11,062개, 약 41만 자)
+- [ ] **메뉴·배틀 카드 이름 등 mess.bin 밖의 글자, 그림 속 글자 수정**
+- [ ] **빌드**: 수정된 롬과 xdelta 패치 파일 생성
 
 ## 준비
 
+- Python 3 패키지: `pip install -r requirements.txt`
+- .NET 8 SDK (대사 변환 도구 TextPet 실행용): 우분투는 `apt install dotnet-sdk-8.0`
+- TextPet 빌드: `tools/textpet/build.sh` → `work/textpet/bin/TextPet.dll`
+
+## 사용법
+
 ```
-pip install -r requirements.txt
+python3 tools/unpack.py              # 롬을 work/ 에 푼다
+python3 tools/script.py dump         # 대사를 script/ja/*.tpl 로 뽑는다
+python3 tools/script.py check        # 뽑은 대사로 다시 만든 결과가 원본과 같은지 확인
+python3 tools/script.py build script/ko build/mess.bin   # 번역본으로 mess.bin 만들기
 ```
+
+`script/*/NNNN.tpl`은 대사 블록 하나이고, 글자가 있는 스크립트만 들어 있다. 따옴표 안의 글자만 번역하고
+명령(`keyWait`, `mugshotShow` 등)은 그대로 둔다. 파일에 없는 스크립트는 빌드할 때 원본이 그대로 쓰인다.
+
+## 사용한 도구
+
+- [TextPet](https://github.com/Prof9/TextPet) (Prof. 9, MIT 라이선스): 스크립트 변환.
+  `tools/textpet/`에 .NET 8 빌드용 프로젝트 파일과 수정 사항(`dotnet8.patch`), 게임 정의(`plugins/`)가 있다.
+- [ndspy](https://github.com/RoadrunnerWMC/ndspy): 롬 파일 시스템과 LZ10 압축.

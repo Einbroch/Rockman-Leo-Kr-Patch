@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- 원본 TextPet.csproj(.NET Framework 4.8.1)를 대신하는 .NET 8용 프로젝트. build.sh 가 work/textpet/build/ 로 복사해서 쓴다. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <NoWarn>$(NoWarn);CS0618;CA1416;CA2013;SYSLIB0011;SYSLIB0051</NoWarn>
+    <TextPetSrc>$(MSBuildThisFileDirectory)../../src</TextPetSrc>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(TextPetSrc)/TextPet/**/*.cs" Exclude="$(TextPetSrc)/TextPet/obj/**;$(TextPetSrc)/TextPet/bin/**" />
+    <ProjectReference Include="../LibTextPet/LibTextPet.csproj" />
+  </ItemGroup>
+</Project>
