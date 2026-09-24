@@ -12,6 +12,7 @@
 
 한글 번호 k 는 tools/kotable.py 의 NEW_CHARS 순번이다. 폰트는 갈무리11(Galmuri11, SIL OFL 1.1)을 쓴다.
 """
+import os
 import pathlib
 import struct
 import subprocess
@@ -43,8 +44,22 @@ DECODE_SITES = [(0x0201FA5E, 0x28), (0x0201FAF8, 0x28), (0x02020060, 0x28), (0x0
 # 실행하고, 한글·E4 면 Z=1, 아니면 Z=0 으로 돌아가서 원래 bne 가 그대로 갈라지게 한다.
 FLAG_SITES = [(0x0201B254, 0x28, 'ldr r1, [r6]')]   # A 로 남은 글자를 한꺼번에 찍는 경로
 WIDTH_SITE = 0x0201E576
+# 8×16 폰트로 한 줄에 이어 그리는 경로(글자 상자 +0x30 이 0 이 아닐 때): 0x0201FA8C 의 "bl 0x0201E724" 를 가로챈다.
+# 원래 함수는 글자마다 8픽셀 칸 하나(줄 버퍼 0x02112B98, 한 줄 100바이트, 4bpp)를 통째로 쓴다.
+# 한글은 폭 12픽셀로 점마다 그리고(색 1 글자, 색 2 그림자, 굵은 폰트면 가로로 한 점 더), 한글 뒤에 오는
+# 한바이트 글자는 다음 8픽셀 칸으로 x 를 올린 뒤 원래 함수로 보낸다.
+MODE1_CALL = 0x0201FA8C
+MODE1_FUNC = 0x0201E724
+ROW_BUFFER = 0x02112B98
+ROW_STRIDE = 100
+ROW_PIXELS = 200
+BOLD_FONT = 0x020E0F9C      # 굵은 8×16 폰트 글자 0번 (0x02009A68 의 2번)
+GLYPH_TOP = 4               # 8×16 칸에서 한글 윗줄 (일본판 가나도 4번째 줄부터)
+# 글자를 칸 단위로 타일에 복사하는 경로(0x0201E7BC): "ldr r0,[r6,#0x1c]; ldr r2,[r4]" 를 가로채서
+# 16×16 칸의 한글이면 글자 그림 버퍼 주소를 쓰게 한다.
+TILE_SITE = 0x0201E7DC
 GLYPH_SITE = 0x0201E5A2
-CODE_RESERVE = 0x400        # 가장 긴 빈 구간 앞부분: 코드와 글자 그림 버퍼 (구간 표는 그 뒤)
+CODE_RESERVE = 0x700        # 가장 긴 빈 구간 앞부분: 코드, 작업 공간, 글자 그림 버퍼 (구간 표는 그 뒤)
 
 
 # ---------------------------------------------------------------- 폰트
@@ -160,6 +175,8 @@ ASM = '''
     b ko_glyph              @ +2
 {site_entries}
 {flag_entries}
+    b ko_mode1              @ 8×16 줄 그리기 호출 자리
+    b ko_tile               @ 칸 단위(타일) 그리기의 글자 그림 주소
 
 ko_width:                   @ r1 = 글자 번호 → r0 = 폭
     ldr r0, lit_hangul_base
@@ -261,18 +278,387 @@ ko_glyph_next:
     cmp r4, #{cell}
     blo ko_glyph_y
     pop {{r2-r7, pc}}
-{site_helpers}
-{flag_helpers}
+
     .align 2
-code_end_marker: .word 0x4C4F4B4F
+    .word 0x4C4F4F50        @ 리터럴 구역 시작 (check_thumb1 이 건너뛴다)
 lit_hangul_base: .word {hangul_base}
-lit_pre_base: .word {pre_base}
 lit_extra_first: .word {extra_first}
 lit_width_table: .word {width_table}
 lit_buffer: .word {buffer}
 lit_chunks: .word {chunks}
 extra_widths:
     .byte {extra_widths}
+    .align 2
+    .word 0x4C4F4F51        @ 리터럴 구역 끝
+
+@ 8×16 폰트 모양 한글 그리기(ko_draw8)의 매개변수 (lit2_params):
+@ [0] 폭 [4] X [8] 기준 주소 [12] 굵은 글씨 [16] 한 줄 바이트 수 [20] 배치(0 줄 버퍼, 1 칸 띠) [24] 오른쪽 끝(px)
+@ [28] 칸 띠 시작 주소 [32] 칸 띠의 다음 x
+
+ko_mode1:                   @ r0 = 글자 상자. 8×16 폰트로 한 줄에 이어 그리는 경로(원래 0x0201E724)
+    ldrh r1, [r0, #0x28]
+    ldr r2, lit2_hangul_base
+    cmp r1, r2
+    bhs ko_mode1_hangul
+    mov r2, r0              @ 한글이 아니면 x 를 8픽셀 칸에 맞춰 올리고 원래 함수로
+    adds r2, #0x44
+    ldrh r3, [r2]
+    adds r3, #0x1f
+    lsrs r3, r3, #5
+    lsls r3, r3, #5
+    strh r3, [r2]
+    ldr r1, lit2_mode1_func
+    bx r1
+ko_mode1_hangul:
+    push {{r4-r7, lr}}
+    mov r7, r0
+    ldrh r0, [r7, #0x28]
+    bl ko_glyph             @ r1 = 16×16 글자 그림 버퍼
+    mov r6, r1
+    ldrh r1, [r7, #0x28]
+    bl ko_width             @ r0 = 폭(픽셀)
+    ldr r3, lit2_params
+    str r0, [r3, #0]
+    mov r2, r7
+    adds r2, #0x44
+    ldrh r1, [r2]           @ x (1/4 픽셀)
+    lsls r4, r0, #2
+    adds r4, r1, r4
+    strh r4, [r2]           @ 다음 글자 자리
+    lsrs r1, r1, #2
+    str r1, [r3, #4]        @ X
+    mov r2, r7
+    adds r2, #0x46
+    ldrh r2, [r2]
+    movs r1, #{row_stride}
+    str r1, [r3, #16]
+    muls r2, r1
+    ldr r1, lit2_row_buffer
+    adds r2, r2, r1
+    str r2, [r3, #8]
+    movs r1, #0
+    str r1, [r3, #20]       @ 줄 버퍼
+    movs r1, #{row_pixels}
+    str r1, [r3, #24]
+    bl ko_bold              @ [r3+12] = 굵은 글씨 (r7 = 글자 상자)
+    bl ko_draw8
+    pop {{r4-r7, pc}}
+
+ko_bold:                    @ r7 = 글자 상자, r3 = 매개변수 → [r3+12] = 굵은 8×16 폰트면 1. r1, r2 사용
+    ldr r2, [r7, #0x1c]
+    ldr r1, lit2_bold_font
+    cmp r2, r1
+    beq ko_bold_yes
+    movs r1, #0
+    b ko_bold_set
+ko_bold_yes:
+    movs r1, #1
+ko_bold_set:
+    str r1, [r3, #12]
+    bx lr
+
+ko_draw8:                   @ 8×16 폰트 모양으로 한글 그리기. r6 = 16×16 글자 그림 버퍼, 매개변수는 위
+    push {{r4, r5, lr}}
+    movs r4, #0             @ y
+ko_draw8_y:
+    movs r5, #0             @ x
+ko_draw8_x:
+    mov r0, r5              @ 글자: (x, y-{glyph_top}), 굵은 글씨는 (x-1, ...)도
+    subs r1, r4, #{glyph_top}
+    bl ko_src
+    cmp r0, #0
+    bne ko_draw8_one
+    ldr r3, lit2_params
+    ldr r0, [r3, #12]
+    cmp r0, #0
+    beq ko_draw8_shadow
+    subs r0, r5, #1
+    subs r1, r4, #{glyph_top}
+    bl ko_src
+    cmp r0, #0
+    bne ko_draw8_one
+ko_draw8_shadow:            @ 그림자: 오른쪽 아래 한 칸
+    subs r0, r5, #1
+    subs r1, r4, #{glyph_top1}
+    bl ko_src
+    cmp r0, #0
+    bne ko_draw8_two
+    ldr r3, lit2_params
+    ldr r0, [r3, #12]
+    cmp r0, #0
+    beq ko_draw8_zero
+    subs r0, r5, #2
+    subs r1, r4, #{glyph_top1}
+    bl ko_src
+    cmp r0, #0
+    bne ko_draw8_two
+ko_draw8_zero:
+    movs r2, #0
+    b ko_draw8_put
+ko_draw8_one:
+    movs r2, #1
+    b ko_draw8_put
+ko_draw8_two:
+    movs r2, #2
+ko_draw8_put:               @ (X + x, y) 점 = r2
+    ldr r3, lit2_params
+    ldr r0, [r3, #4]
+    adds r0, r0, r5         @ px
+    ldr r1, [r3, #24]
+    cmp r0, r1
+    bhs ko_draw8_next       @ 오른쪽 끝을 넘는 점은 쓰지 않는다
+    ldr r1, [r3, #20]
+    cmp r1, #0
+    bne ko_draw8_cells
+    ldr r1, [r3, #16]       @ 줄 버퍼: 기준 + y×한 줄 + px/2
+    muls r1, r4
+    b ko_draw8_addr
+ko_draw8_cells:             @ 칸 띠: 기준 + (px/8)×64 + (y/8)×32 + (y%8)×4 + (px%8)/2
+    lsrs r1, r0, #3
+    lsls r1, r1, #6
+    push {{r2}}
+    lsrs r2, r4, #3
+    lsls r2, r2, #5
+    adds r1, r1, r2
+    movs r2, #7
+    ands r2, r4
+    lsls r2, r2, #2
+    adds r1, r1, r2
+    movs r2, #7
+    ands r2, r0
+    lsls r0, r2, #0         @ px%8 (홀짝은 아래에서 본다)
+    pop {{r2}}
+ko_draw8_addr:
+    ldr r3, [r3, #8]
+    adds r1, r1, r3
+    lsrs r3, r0, #1
+    adds r1, r1, r3
+    ldrb r3, [r1]
+    lsls r0, r0, #31
+    bmi ko_draw8_high
+    movs r0, #0xf0
+    ands r3, r0
+    orrs r3, r2
+    b ko_draw8_store
+ko_draw8_high:
+    movs r0, #0x0f
+    ands r3, r0
+    lsls r2, r2, #4
+    orrs r3, r2
+ko_draw8_store:
+    strb r3, [r1]
+ko_draw8_next:
+    adds r5, #1
+    ldr r3, lit2_params
+    ldr r0, [r3, #0]
+    cmp r5, r0
+    blo ko_draw8_x
+    adds r4, #1
+    cmp r4, #16
+    blo ko_draw8_y
+    pop {{r4, r5, pc}}
+
+ko_src:                     @ r0 = x, r1 = y → r0 = 글자 그림 버퍼(r6)의 점이 있으면 1. r2, r3 사용
+    cmp r0, #{cell}
+    bhs ko_src_zero         @ 음수도 부호 없이 비교하면 크다
+    cmp r1, #{cell}
+    bhs ko_src_zero
+    lsrs r2, r1, #3
+    lsls r2, r2, #1
+    lsrs r3, r0, #3
+    adds r2, r2, r3         @ 타일 = (y/8)*2 + x/8
+    lsls r2, r2, #5
+    movs r3, #7
+    ands r3, r1
+    lsls r3, r3, #2
+    adds r2, r2, r3
+    movs r3, #7
+    ands r3, r0
+    lsrs r3, r3, #1
+    adds r2, r2, r3
+    ldrb r2, [r6, r2]
+    lsls r3, r0, #31
+    bpl ko_src_even
+    lsrs r2, r2, #4
+ko_src_even:
+    movs r0, #15
+    ands r0, r2
+    bx lr
+ko_src_zero:
+    movs r0, #0
+    bx lr
+
+@ 칸 단위 그리기(0x0201E7BC)의 글자 그림 주소. 들어올 때 r2 = 글자 번호, r1 = 번호×글자 크기, r4 = 쓸 곳 주소가
+@ 든 곳, r6 = 글자 상자, 원래 함수의 [sp] = 칸 오른쪽을 빈 타일로 채움(8×16 을 16픽셀 간격으로), [sp+8] = 한 줄의
+@ 타일 수(16×16 폰트 2, 8×16 폰트 1). 돌아간 뒤 원래 코드가 "r1 = r0 + r1" 로 복사할 글자 그림 주소를 만든다.
+ko_tile:
+    ldr r0, [sp, #8]
+    cmp r0, #2
+    beq ko_tile_wide
+    ldr r0, [sp, #0]
+    cmp r0, #0
+    bne ko_tile_pitch16
+    b ko_tile_strip
+ko_tile_normal:
+    ldr r0, [r6, #0x1c]
+    ldr r2, [r4]
+    bx lr
+
+ko_tile_wide:               @ 16×16 폰트 칸: 한글이면 글자 그림 버퍼
+    ldr r0, lit2_hangul_base
+    cmp r2, r0
+    blo ko_tile_normal
+    push {{r3, lr}}
+    mov r0, r2
+    bl ko_glyph             @ r1 = 한글 글자 그림 버퍼 (r2–r7 보존)
+    movs r0, #0
+    ldr r2, [r4]
+    pop {{r3, pc}}
+
+ko_tile_pitch16:            @ 8×16 글자를 16픽셀 간격으로: 한글은 그 16×16 칸 전체에 그린다
+    ldr r0, lit2_hangul_base
+    cmp r2, r0
+    blo ko_tile_normal
+    push {{r4-r7, lr}}
+    mov r7, r6
+    bl ko_tile_draw16       @ r6 = 16×16 타일 순서의 글자 그림
+    movs r0, #0
+    str r0, [sp, #20]       @ 원래 [sp]: 빈 타일 채우기 끔
+    movs r0, #2
+    str r0, [sp, #28]       @ 원래 [sp+8]: 타일 4개
+    mov r1, r6
+    movs r0, #0
+    pop {{r4-r7}}
+    ldr r2, [r4]
+    pop {{r3}}
+    bx r3
+
+ko_tile_draw16:             @ r2 = 글자 번호, r7 = 글자 상자 → r6 = 8×16 모양 한글을 16×16 타일 순서로 그린 버퍼
+    push {{lr}}
+    mov r0, r2
+    bl ko_glyph
+    mov r6, r1
+    ldr r3, lit2_params
+    movs r0, #16
+    str r0, [r3, #0]        @ 폭 16
+    str r0, [r3, #24]       @ 오른쪽 끝 16
+    movs r0, #0
+    str r0, [r3, #4]        @ X = 0
+    str r0, [r3, #20]       @ 줄 버퍼 모양
+    movs r0, #8
+    str r0, [r3, #16]       @ 한 줄 8바이트
+    ldr r0, lit2_tile_rows
+    str r0, [r3, #8]
+    bl ko_bold
+    bl ko_draw8
+    ldr r0, lit2_tile_rows  @ 줄 순서(16줄×8바이트) → 16×16 타일 순서(왼위, 오른위, 왼아래, 오른아래)
+    movs r2, #0             @ 줄
+ko_tile_d16_row:
+    lsrs r1, r2, #3
+    lsls r1, r1, #6         @ (줄/8)×64
+    movs r3, #7
+    ands r3, r2
+    lsls r3, r3, #2
+    adds r1, r1, r3         @ + (줄%8)×4
+    adds r1, r1, r6
+    ldr r3, [r0]
+    str r3, [r1]            @ 왼쪽 타일
+    ldr r3, [r0, #4]
+    str r3, [r1, #32]       @ 오른쪽 타일
+    adds r0, #8
+    adds r2, #1
+    cmp r2, #16
+    blo ko_tile_d16_row
+    pop {{pc}}
+
+ko_tile_strip:              @ 8×16 글자를 8픽셀 칸에 이어서: 문자열을 한 줄의 픽셀 띠로 보고 한글은 폭 12로 그린다
+    push {{r1, r4-r7, lr}}  @ 원래 [sp] → [sp+24]
+    mov r7, r6
+    ldr r3, lit2_params
+    mov r0, r7
+    adds r0, #0xe8
+    ldr r0, [r0]            @ 이번 글자까지 센 값
+    mov r1, r7
+    adds r1, #0xe4
+    ldr r1, [r1]            @ 글자마다 늘어나는 값
+    cmp r0, r1
+    bne ko_strip_cont
+    ldr r0, [r4]            @ 문자열 첫 글자: 띠 시작과 x 를 새로
+    str r0, [r3, #28]
+    movs r0, #0
+    str r0, [r3, #32]
+ko_strip_cont:
+    ldr r0, lit2_hangul_base
+    cmp r2, r0
+    bhs ko_strip_hangul
+    ldr r0, [r3, #32]       @ 한바이트 글자: x 를 8의 배수로 올린 칸에 원래대로 쓴다
+    adds r0, #7
+    lsrs r0, r0, #3
+    lsls r1, r0, #6
+    ldr r5, [r3, #28]
+    adds r1, r1, r5
+    str r1, [r4]
+    lsls r0, r0, #3
+    adds r0, #8
+    str r0, [r3, #32]
+    pop {{r1, r4-r7}}
+    ldr r0, [r6, #0x1c]
+    ldr r2, [r4]
+    pop {{r3}}
+    bx r3
+ko_strip_hangul:
+    mov r0, r2
+    bl ko_glyph
+    mov r6, r1
+    ldrh r1, [r7, #0x28]
+    bl ko_width
+    ldr r3, lit2_params
+    str r0, [r3, #0]        @ 폭
+    ldr r1, [r3, #32]
+    str r1, [r3, #4]        @ X
+    adds r0, r0, r1
+    str r0, [r3, #32]       @ 다음 x
+    ldr r0, [r3, #28]
+    str r0, [r3, #8]        @ 기준 = 띠 시작
+    movs r0, #1
+    str r0, [r3, #20]       @ 칸 띠 모양
+    mov r0, r7
+    adds r0, #0xe0
+    ldr r0, [r0]            @ 문자열 칸 전체 바이트 수 → 오른쪽 끝 = 바이트/8 픽셀
+    lsrs r0, r0, #3
+    str r0, [r3, #24]
+    bl ko_bold
+    bl ko_draw8
+    ldr r3, lit2_params     @ 원래 함수의 복사는 X 가 든 칸을 제자리에 복사하게 한다(바뀌는 것 없음)
+    ldr r0, [r3, #4]
+    lsrs r0, r0, #3
+    lsls r0, r0, #6
+    ldr r1, [r3, #28]
+    adds r0, r0, r1
+    str r0, [r4]
+    mov r12, r0
+    add sp, #4              @ 저장한 r1 은 버린다
+    pop {{r4-r7}}
+    mov r0, r12
+    movs r1, #0
+    ldr r2, [r4]
+    pop {{r3}}
+    bx r3
+
+    .align 2
+    .word 0x4C4F4F50
+lit2_hangul_base: .word {hangul_base}
+lit2_mode1_func: .word {mode1_func}
+lit2_row_buffer: .word {row_buffer}
+lit2_bold_font: .word {bold_font}
+lit2_params: .word {params}
+lit2_tile_rows: .word {tile_rows}
+    .word 0x4C4F4F51
+{site_helpers}
+{flag_helpers}
+    .align 2
+code_end_marker: .word 0x4C4F4B4F
+lit_pre_base: .word {pre_base}
 '''
 
 FLAG_ASM = '''
@@ -339,13 +725,22 @@ def check_thumb1(code, addr):
     import capstone
     end = code.index(struct.pack('<I', 0x4C4F4B4F))
     cs = capstone.Cs(capstone.CS_ARCH_ARM, capstone.CS_MODE_THUMB)
-    pos = 0
-    for ins in cs.disasm(code[:end], addr):
-        if ins.size != 2 and ins.mnemonic != 'bl':
-            sys.exit(f'Thumb-1 이 아닌 명령: {ins.address:#x} {ins.mnemonic} {ins.op_str}')
-        pos += ins.size
-    if pos < end - 2:
-        sys.exit(f'코드를 끝까지 해석하지 못했습니다 ({pos}/{end}).')
+    start, pieces = 0, []
+    while True:                            # 중간 리터럴 구역(0x4C4F4F50 … 0x4C4F4F51)은 건너뛴다
+        pool = code.find(struct.pack('<I', 0x4C4F4F50), start, end)
+        if pool < 0:
+            pieces.append((start, end))
+            break
+        pieces.append((start, pool))
+        start = code.index(struct.pack('<I', 0x4C4F4F51), pool) + 4
+    for a, b in pieces:
+        pos = a
+        for ins in cs.disasm(code[a:b], addr + a):
+            if ins.size != 2 and ins.mnemonic != 'bl':
+                sys.exit(f'Thumb-1 이 아닌 명령: {ins.address:#x} {ins.mnemonic} {ins.op_str}')
+            pos += ins.size
+        if pos < b - 2:
+            sys.exit(f'코드를 끝까지 해석하지 못했습니다 ({addr + pos:#x}).')
 
 
 def table_size(runs):
@@ -353,11 +748,23 @@ def table_size(runs):
     return 8 * (len(runs) + 1)
 
 
-def data_runs(runs):
-    """폰트를 넣을 구간: 가장 긴 구간의 코드 예약 공간 뒤에 구간 표를 두고, 나머지 전부."""
+def layout(runs):
+    """(구간 표 주소, 폰트를 넣을 구간들). 가장 긴 구간 앞부분은 코드 예약 공간이다.
+    구간 표는 코드 예약 공간 바로 뒤에 들어가면 거기에, 아니면 표가 들어가는 가장 짧은 다른 구간 앞에 둔다."""
     code_addr, code_room = runs[0]
-    first = code_addr + CODE_RESERVE + table_size(runs)
-    return [(first, code_addr + code_room - first)] + runs[1:]
+    size = table_size(runs)
+    rest = [(code_addr + CODE_RESERVE, code_room - CODE_RESERVE)] + runs[1:]
+    fits = [k for k, (_, room) in enumerate(rest) if room >= size]
+    if not fits:
+        sys.exit('구간 표를 넣을 빈 구간이 없습니다.')
+    k = 0 if 0 in fits else min(fits, key=lambda k: rest[k][1])
+    table = rest[k][0]
+    rest[k] = (table + size, rest[k][1] - size)
+    return table, rest
+
+
+def data_runs(runs):
+    return layout(runs)[1]
 
 
 def font_room(runs):
@@ -375,11 +782,13 @@ def build(arm9, keep=()):
         keep.pop()
     runs = free_runs(keep)
     code_addr, code_room = runs[0]
-    buffer = code_addr + CODE_RESERVE - GLYPH
-    table = code_addr + CODE_RESERVE
+    buffer = code_addr + CODE_RESERVE - GLYPH          # 16×16 글자 그림
+    tile_rows = buffer - GLYPH                         # 8×16 두 칸 그림을 줄 순서로 그리는 곳
+    params = tile_rows - 48                            # ko_draw8 매개변수
+    table, fill = layout(runs)
 
     placed, chunks = 0, []
-    for addr, size in data_runs(runs):
+    for addr, size in fill:
         cap = min(size // PACKED, len(font) - placed)
         if cap <= 0:
             continue
@@ -402,6 +811,11 @@ def build(arm9, keep=()):
         sites.append((site, slot, target - (site + 4)))
     common = dict(lead_first=kotable.LEAD_FIRST, lead_last=kotable.LEAD_FIRST + kotable.LEAD_COUNT - 1,
                   trail_count=kotable.TRAIL_COUNT)
+    if bytes(arm9[MODE1_CALL - ARM9_BASE:MODE1_CALL - ARM9_BASE + 4]) != assemble(f'bl {MODE1_FUNC:#x}', MODE1_CALL):
+        sys.exit(f'{MODE1_CALL:#x} 가 예상한 코드(bl {MODE1_FUNC:#x})가 아닙니다.')
+    if bytes(arm9[TILE_SITE - ARM9_BASE:TILE_SITE - ARM9_BASE + 6]) != \
+            assemble('ldr r0, [r6, #0x1c]\nldr r2, [r4]\nadds r1, r0, r1', TILE_SITE):
+        sys.exit(f'{TILE_SITE:#x} 가 예상한 코드(ldr r0,[r6,#0x1c]; ldr r2,[r4]; adds r1,r0,r1)가 아닙니다.')
     for site, slot, extra in FLAG_SITES:
         before = bytes(arm9[site - ARM9_BASE:site - ARM9_BASE + 6])
         if before[:2] != bytes([0xE4, 0x28]) or before[5] != 0xD1 or \
@@ -417,10 +831,13 @@ def build(arm9, keep=()):
         hangul_base=HANGUL_BASE, pre_base=HANGUL_BASE - kotable.TRAIL_FIRST, width_table=WIDTH_TABLE,
         extra_first=len(kotable.HANGUL),
         extra_widths=', '.join(str(kotable.EXTRA_WIDTH.get(c, 12)) for c in kotable.EXTRA),
-        buffer=buffer, cell=CELL, chunks=table)
+        buffer=buffer, cell=CELL, chunks=table, mode1_func=MODE1_FUNC | 1, row_buffer=ROW_BUFFER,
+        params=params, tile_rows=tile_rows,
+        row_stride=ROW_STRIDE, row_pixels=ROW_PIXELS, bold_font=BOLD_FONT, glyph_top=GLYPH_TOP,
+        glyph_top1=GLYPH_TOP + 1)
     code = assemble(src, code_addr)
     check_thumb1(code, code_addr)
-    if code_addr + len(code) > buffer:
+    if code_addr + len(code) > params:
         sys.exit(f'코드가 예약 공간을 넘습니다 ({len(code)}바이트).')
     arm9[code_addr - ARM9_BASE:code_addr - ARM9_BASE + len(code)] = code
 
@@ -434,5 +851,11 @@ def build(arm9, keep=()):
         put(site, f'bl {code_addr + 4 + 2 * (len(sites) + i):#x}')
     put(WIDTH_SITE, f'bl {code_addr:#x}')
     put(GLYPH_SITE, f'bl {code_addr + 2:#x}\nmov r8, r8')
+    extra_entry = code_addr + 4 + 2 * (len(sites) + len(FLAG_SITES))
+    skip = os.environ.get('KO_ENGINE_SKIP', '').split(',')   # 시험용: 특정 연결을 빼고 빌드
+    if 'mode1' not in skip:
+        put(MODE1_CALL, f'bl {extra_entry:#x}')
+    if 'tile' not in skip:
+        put(TILE_SITE, f'bl {extra_entry + 2:#x}')
     return {'코드': len(code), '한글 글자': placed, '구간': len(chunks), '코드 주소': hex(code_addr),
             '버퍼': hex(buffer), '남긴 한자': ''.join(keep)}
