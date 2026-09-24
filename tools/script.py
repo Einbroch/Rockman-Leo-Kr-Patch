@@ -7,6 +7,7 @@ mess.bin: 8바이트 항목(위치, 크기) 표 + 블록 1,247개. 크기의 최
 사용법 (먼저 tools/unpack.py 와 tools/textpet/build.sh 를 실행해 둔다):
   python3 tools/script.py dump            원본 대사를 script/ja/*.tpl 로 뽑는다 (글자가 있는 스크립트만)
   python3 tools/script.py build DIR OUT   DIR/*.tpl 로 원본 대사를 덮어써서 mess.bin 을 OUT 에 만든다
+  python3 tools/script.py build DIR OUT rnr1-ko   한글 코드표(tools/kotable.py)로 만든다
   python3 tools/script.py check           script/ja 로 build 한 결과가 원본과 같은지 확인한다
 """
 import pathlib
@@ -57,10 +58,10 @@ def write_mess(blocks):
     return bytes(table + body)
 
 
-def textpet(*args):
+def textpet(*args, game='rnr1'):
     if not TEXTPET.exists():
         sys.exit('TextPet이 없습니다. 먼저 tools/textpet/build.sh 를 실행하세요.')
-    cmd = ['dotnet', str(TEXTPET), 'load-plugins', str(PLUGINS), 'game', 'rnr1', *map(str, args)]
+    cmd = ['dotnet', str(TEXTPET), 'load-plugins', str(PLUGINS), 'game', game, *map(str, args)]
     res = subprocess.run(cmd, capture_output=True, text=True)
     if res.returncode != 0 or 'ERROR' in res.stdout or 'FATAL' in res.stdout:
         sys.exit(f'TextPet 실패:\n{res.stdout}{res.stderr}')
@@ -109,17 +110,40 @@ def dump():
     print(f'블록 {len(blocks)}개 중 대사가 있는 {kept}개를 {JA_DIR.relative_to(ROOT)} 에 저장했습니다.')
 
 
-def build(tpl_dir, out):
-    """원본 블록을 읽고 tpl_dir 의 스크립트로 덮어쓴(patch) 뒤 mess.bin 을 만든다."""
+def split_archive(data):
+    """블록(텍스트 아카이브)을 스크립트 바이트 목록으로 나눈다."""
+    count = struct.unpack_from('<H', data, 0)[0] // 2
+    offs = list(struct.unpack_from(f'<{count}H', data, 0)) + [len(data)]
+    return [data[offs[i]:offs[i + 1]] for i in range(count)]
+
+
+def join_archive(scripts):
+    table, body = bytearray(), bytearray()
+    for s in scripts:
+        table += struct.pack('<H', len(scripts) * 2 + len(body))
+        body += s
+    return bytes(table + body)
+
+
+def build(tpl_dir, out, game='rnr1'):
+    """tpl_dir 의 .tpl 을 컴파일해서, 원본 블록에서 같은 번호의 스크립트만 바꿔 끼운 mess.bin 을 만든다."""
+    tpl_dir = pathlib.Path(tpl_dir)
     blocks = unpack_msgs()
     built = WORK / 'build-msg'
     shutil.rmtree(built, ignore_errors=True)
     built.mkdir()
-    textpet('read-text-archives', MSG_DIR, '-f', 'msg',
-            'read-text-archives', tpl_dir, '-f', 'tpl', '--patch',
-            'write-text-archives', built, '-f', 'msg')
-    new_blocks = [((built / f'{i:04d}.msg').read_bytes(), compressed)
-                  for i, (_, compressed) in enumerate(blocks)]
+    textpet('read-text-archives', tpl_dir, '-f', 'tpl', 'write-text-archives', built, '-f', 'msg', game=game)
+    new_blocks = []
+    for i, (block, compressed) in enumerate(blocks):
+        tpl = tpl_dir / f'{i:04d}.tpl'
+        if tpl.exists():
+            nums = map(int, re.findall(r'^script (\d+) ', tpl.read_text(encoding='utf-8-sig'), re.M))
+            compiled = split_archive((built / f'{i:04d}.msg').read_bytes())
+            scripts = split_archive(block)
+            for n in nums:
+                scripts[n] = compiled[n]
+            block = join_archive(scripts)
+        new_blocks.append((block, compressed))
     out = pathlib.Path(out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_bytes(write_mess(new_blocks))
@@ -143,8 +167,8 @@ def main():
     args = sys.argv[1:]
     if args == ['dump']:
         dump()
-    elif len(args) == 3 and args[0] == 'build':
-        build(pathlib.Path(args[1]), args[2])
+    elif len(args) in (3, 4) and args[0] == 'build':
+        build(pathlib.Path(args[1]), args[2], *args[3:])
     elif args == ['check']:
         check()
     else:

@@ -1,0 +1,37 @@
+@archive 0676
+@size 256
+
+script 0 mmsf1 {
+	msgOpen
+	checkFlag
+		flag = 53
+		jumpIfTrue = 1
+		jumpIfFalse = continue
+	checkFlag
+		flag = 54
+		jumpIfTrue = 1
+		jumpIfFalse = continue
+	checkFlag
+		flag = 55
+		jumpIfTrue = 1
+		jumpIfFalse = continue
+	"모든 스테이지를\n클리어했습니다...\n"
+	keyWait
+		type = 1
+	clearMsg
+	"잘했습니다!!"
+	keyWait
+		type = 1
+	clearMsg
+	flagClear
+		flag = 48
+	end
+}
+script 1 mmsf1 {
+	msgOpen
+	"모든 스테이지를 클리어한 자에게\n길이 열릴 것입니다.\n"
+	keyWait
+		type = 1
+	clearMsg
+	end
+}

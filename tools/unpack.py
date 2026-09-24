@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """rom/ 폴더의 NDS 롬을 work/ 아래로 풀어서 분석용 파일을 만든다.
 
+다른 롬을 풀 때: python3 tools/unpack.py <롬 파일 또는 폴더> <출력 폴더>
+
 rom/ 에는 .nds, .zip, .7z 를 그대로 넣거나, 25MB 업로드 제한 때문에 나눈 조각을 넣는다.
   - 이름.001, 이름.002 ...        (7-Zip 볼륨 나누기/파일 분할, 반디집 7Z 분할 압축)
   - 이름.z01, 이름.z02 ..., 이름.zip (반디집 등의 ZIP 분할 압축)
@@ -157,7 +159,8 @@ def read_nds(path):
 
 def load_rom_bytes():
     JOINED.mkdir(parents=True, exist_ok=True)
-    for path in join_split_files() + sorted(ROM_DIR.iterdir()):
+    candidates = [ROM_DIR] if ROM_DIR.is_file() else join_split_files() + sorted(ROM_DIR.iterdir())
+    for path in candidates:
         data = read_nds(path)
         if data:
             return path.name, data
@@ -171,6 +174,12 @@ def describe(data):
 
 
 def main():
+    global ROM_DIR, WORK, JOINED
+    if len(sys.argv) == 3:
+        ROM_DIR, WORK = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
+        JOINED = WORK / 'joined'
+    elif len(sys.argv) != 1:
+        sys.exit('사용법: python3 tools/unpack.py [<롬 파일 또는 폴더> <출력 폴더>]')
     source, data = load_rom_bytes()
     (WORK / 'original.nds').write_bytes(data)
 
