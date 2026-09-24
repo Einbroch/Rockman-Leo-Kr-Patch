@@ -4,7 +4,7 @@
 mess.bin: 8바이트 항목(위치, 크기) 표 + 블록 1,247개. 크기의 최상위 비트가 켜져 있으면 LZ10 압축.
 블록 하나는 TextPet의 바이너리 텍스트 아카이브(.msg) 형식이다: u16 위치 표 + 스크립트들.
 
-사용법 (먼저 tools/unpack.py 와 tools/textpet/build.sh 를 실행해 둔다):
+사용법 (먼저 tools/unpack.py 와 tools/textpet/build.py 를 실행해 둔다):
   python3 tools/script.py dump            원본 대사를 script/ja/*.tpl 로 뽑는다 (글자가 있는 스크립트만)
   python3 tools/script.py build DIR OUT   DIR/*.tpl 로 원본 대사를 덮어써서 mess.bin 을 OUT 에 만든다
   python3 tools/script.py build DIR OUT rnr1-ko   한글 코드표(tools/kotable.py)로 만든다
@@ -60,7 +60,7 @@ def write_mess(blocks):
 
 def textpet(*args, game='rnr1'):
     if not TEXTPET.exists():
-        sys.exit('TextPet이 없습니다. 먼저 tools/textpet/build.sh 를 실행하세요.')
+        sys.exit('TextPet이 없습니다. 먼저 tools/textpet/build.py 를 실행하세요.')
     cmd = ['dotnet', str(TEXTPET), 'load-plugins', str(PLUGINS), 'game', game, *map(str, args)]
     res = subprocess.run(cmd, capture_output=True, text=True)
     if res.returncode != 0 or 'ERROR' in res.stdout or 'FATAL' in res.stdout:

@@ -3,3 +3,4 @@ py7zr>=0.20
 zstandard
 keystone-engine
 capstone
+# 에뮬레이터 시험(tools/emutest.py)을 하려면: py-desmume, pillow

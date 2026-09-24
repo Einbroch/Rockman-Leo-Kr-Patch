@@ -68,23 +68,37 @@
 - [ ] **그림 속 글자**(타이틀 등)
 - [x] **빌드**: `tools/build_rom.py` → `build/rnr1_leo_ko.nds`, `patch/rnr1_leo_ko.xdelta`
 
-## 준비
+## 로컬에서 작업하기
 
-- Python 3 패키지: `pip install -r requirements.txt`
-- .NET 8 SDK (대사 변환 도구 TextPet 실행용): 우분투는 `apt install dotnet-sdk-8.0`
-- TextPet 빌드: `tools/textpet/build.sh` → `work/textpet/bin/TextPet.dll`
-- 패치 파일을 만들려면 xdelta3 (`apt install xdelta3`)
+```
+git clone https://github.com/Einbroch/ClaudeGithub.git
+cd ClaudeGithub
+git checkout claude/zealous-euler-abczwl
+```
+
+준비물:
+- Python 3.10 이상과 패키지: `pip install -r requirements.txt`
+- git, .NET 8 SDK (대사 변환 도구 TextPet 실행용). 윈도우는 https://dotnet.microsoft.com/download/dotnet/8.0 ,
+  우분투는 `apt install dotnet-sdk-8.0`
+- 패치 파일을 만들려면 xdelta3 (없으면 롬만 만든다). 윈도우는 xdelta3.exe 를 PATH 에 두면 된다.
+- 에뮬레이터로 시험하려면 `pip install py-desmume pillow`
+- 윈도우 명령 창에서 한글·일본어가 깨지면 `set PYTHONUTF8=1`
+
+롬(`rom/`)과 영어판·PC판 자료(`ref/`)는 저장소에 들어 있다. `work/`(푼 파일, 중간 결과)와 `build/`(만든 롬)는
+저장소에 없으므로 처음에 아래 순서대로 한 번 만든다.
 
 ## 사용법
 
 ```
-python3 tools/unpack.py                                       # 일본판 롬을 work/ 에 푼다
-python3 tools/unpack.py "ref/Mega Man Star Force - Leo (USA).zip" work/usa   # 영어판
-tools/textpet/build.sh                                        # TextPet 빌드
-python3 tools/script.py dump                                  # 일본어 원문을 script/ja/*.tpl 로
-python3 tools/pcpak.py ref/re_chunk_000.pak.patch_002.pak ref/pc_ko/rr1.json  # PC판 한글 뽑기
-python3 tools/pc2ds.py                                        # 한글 스크립트 script/ko/*.tpl 만들기
-python3 tools/build_rom.py                                    # 한글판 롬과 패치 파일 만들기
+python tools/unpack.py                                        # 일본판 롬을 work/ 에 푼다
+python tools/unpack.py "ref/Mega Man Star Force - Leo (USA).zip" work/usa   # 영어판
+python tools/textpet/build.py                                 # TextPet 빌드 (리눅스는 build.sh 도 된다)
+python tools/script.py dump                                   # 일본어 원문을 script/ja/*.tpl 로 (이미 들어 있음)
+python tools/pcpak.py ref/re_chunk_000.pak.patch_002.pak ref/pc_ko/rr1.json  # PC판 한글 뽑기 (이미 들어 있음)
+python tools/pc2ds.py                                         # 한글 스크립트 script/ko/*.tpl 만들기
+python tools/build_rom.py                                     # 한글판 롬(build/)과 패치 파일(patch/) 만들기
+python tools/emutest.py free build/rnr1_leo_ko.nds a          # 에뮬레이터로 처음부터 집 앞까지 (work/emutest/)
+python tools/emutest.py keys build/rnr1_leo_ko.nds a_free m X,w30,A,w90,S   # 그 상태에서 메뉴 열기
 ```
 
 `script/*/NNNN.tpl`은 대사 블록 하나이고, 글자가 있는 스크립트만 들어 있다. 따옴표 안의 글자만 고치고

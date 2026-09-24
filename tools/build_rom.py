@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """한글판 롬을 만든다: 일본판 원본 + 한글 대사(mess.bin) + 한글 출력 코드와 폰트(ARM9).
 
-먼저 할 일: tools/unpack.py, tools/textpet/build.sh, tools/pc2ds.py
+먼저 할 일: tools/unpack.py, tools/textpet/build.py, tools/pc2ds.py
 사용법: python3 tools/build_rom.py [출력 경로]      (기본: build/rnr1_leo_ko.nds)
 xdelta3 가 있으면 원본과의 차이를 patch/rnr1_leo_ko.xdelta 로도 만든다.
 """

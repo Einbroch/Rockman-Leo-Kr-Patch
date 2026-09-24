@@ -9,7 +9,7 @@ PC판 항목 하나는 영어판 스크립트의 "글자 덩어리" 하나다: �
 먼저 할 일:
   python3 tools/unpack.py                                              (일본판 → work/)
   python3 tools/unpack.py "ref/Mega Man Star Force - Leo (USA).zip" work/usa
-  tools/textpet/build.sh
+  tools/textpet/build.py
 
 사용법: python3 tools/pc2ds.py        → script/ko/*.tpl, script/ko_report.txt
 """
