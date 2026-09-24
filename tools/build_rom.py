@@ -5,7 +5,9 @@
 사용법: python3 tools/build_rom.py [출력 경로]      (기본: build/rnr1_leo_ko.nds)
 xdelta3 가 있으면 원본과의 차이를 patch/rnr1_leo_ko.xdelta 로도 만든다.
 """
+import collections
 import pathlib
+import re
 import shutil
 import subprocess
 import sys
@@ -21,6 +23,26 @@ ROOT = script.ROOT
 ORIGINAL = ROOT / 'work' / 'original.nds'
 KO_SCRIPT = ROOT / 'script' / 'ko'
 MESS_PATH = 'datbin/com/mess.bin'
+
+
+def remaining_kanji():
+    """한글로 바꾸지 않고 일본판 그대로 남는 스크립트에 쓰인 한자(자주 쓰이는 순).
+    대사(목록 화면 밖)에 쓰인 한자를 먼저, 목록 화면 블록의 한자를 뒤에 둔다. 개발용 블록 0은 뺀다."""
+    list_blocks = {int(line.split('\t')[0]) for line in (ROOT / 'script' / 'ko_report.txt').read_text(
+        encoding='utf-8').splitlines() if '목록 화면용' in line}
+    talk, menu = collections.Counter(), collections.Counter()
+    for path in sorted(script.JA_DIR.glob('*.tpl')):
+        block = int(path.stem)
+        if block == 0:
+            continue
+        ko = KO_SCRIPT / path.name
+        done = set(map(int, re.findall(r'^script (\d+) ', ko.read_text(encoding='utf-8'), re.M))) if ko.exists() else set()
+        for m in re.finditer(r'^script (\d+) \S+ \{\n(.*?)^\}\n', path.read_text(encoding='utf-8-sig'), re.M | re.S):
+            if int(m.group(1)) not in done:
+                kanji = [c for c in m.group(2) if '\u4e00' <= c <= '\u9fff' or c == '々']
+                (menu if block in list_blocks else talk).update(kanji)
+    order = [c for c, _ in talk.most_common()]
+    return order + [c for c, _ in menu.most_common() if c not in talk]
 
 
 def main():
@@ -39,7 +61,7 @@ def main():
     if main_section.ramAddress != engine.ARM9_BASE:
         sys.exit('ARM9 첫 구역이 0x02000000 이 아닙니다.')
     data = bytearray(main_section.data)
-    info = engine.build(data)
+    info = engine.build(data, remaining_kanji())
     main_section.data = bytes(data)
     rom.arm9 = code.save(compress=False)
 

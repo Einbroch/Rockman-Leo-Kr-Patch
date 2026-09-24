@@ -30,7 +30,11 @@ USA = ROOT / 'work' / 'usa'
 USA_TPL = USA / 'tpl'
 PC_JSON = ROOT / 'ref' / 'pc_ko' / 'rr1.json'
 BLOCK_MAP = ROOT / 'ref' / 'pc_ko' / 'block_map.tsv'
+ALIGN_FIX = ROOT / 'ref' / 'pc_ko' / 'align_fix.json'   # 단위 수가 다른 블록의 짝 (tools/pc_align.py 참고)
+# 선택지 버튼 글자 명령과 고정 글자 수 (None 이면 길이를 따로 적는 명령)
+OPTION_FIXED = {'optionButtonSmall8': 8, 'optionButtonWide16': 16, 'optionButtonSmall': None, 'optionButtonWide': None}
 KO_DIR = ROOT / 'script' / 'ko'
+JA_DIR = script.JA_DIR
 JA_BLOCKS = 1247  # 일본판 mess.bin 블록 수. 그 뒤는 영어판에만 있다.
 # 목록 화면(카드·아이템 설명 등)에서 쓰는 블록. 대사 상자와 다른 출력 코드를 거치므로 그쪽을 고친 뒤에 넣는다.
 LIST_FILES = {'CHIPINFO', 'CHIPINFO2', 'POWERUP', 'CARDFORCE', 'WARROCK_WEAPON', 'ITEMINF', 'TITLE', 'COCKPIT',
@@ -122,6 +126,47 @@ def run_spans(items):
     return spans
 
 
+def is_option(item):
+    return item[0] == 'cmd' and item[1] in OPTION_FIXED and 'string' in item[2]
+
+
+def unit_spans(items):
+    """PC판 항목 하나에 해당하는 단위 [(종류, 시작, 끝)]. 'run' 은 글자 덩어리, 'opt' 는 선택지 버튼 글자.
+    선택지 버튼 바로 뒤의 공백뿐인 덩어리(버튼 사이 간격)는 PC판 항목이 아니다."""
+    units = []
+    for s, e in run_spans(items):
+        blank = all(it[0] == 'text' for it in items[s:e]) and not ''.join(it[1] for it in items[s:e]).strip()
+        if blank and s > 0 and is_option(items[s - 1]):
+            continue
+        units.append(('run', s, e))
+    units += [('opt', i, i + 1) for i, it in enumerate(items) if is_option(it)]
+    return sorted(units, key=lambda u: u[1])
+
+
+def block_units(scripts):
+    """블록 전체의 단위 [(스크립트 번호, 종류, 시작, 끝)] (스크립트 순서대로)."""
+    return [(num, kind, s, e) for num in sorted(scripts) for kind, s, e in unit_spans(scripts[num])]
+
+
+def unit_items(scripts, unit):
+    num, kind, s, e = unit
+    items = scripts[num]
+    return items[s:e] if kind == 'run' else [['text', items[s][2]['string']]]
+
+
+def option_label(entries, fixed):
+    """선택지 버튼 글자: 게임이 읽는 글자 수(fixed)에 맞게 가운데 정렬로 공백을 채운다."""
+    label = ' '.join(ko_text(TAG_RE.sub('', e)).strip() for e in entries)
+    if fixed is None:
+        return label, False
+    if len(label) > fixed:
+        label = label.replace(' ', '')        # 칸이 모자라면 안쪽 공백부터 뺀다 (예: "5 + 3 + 2" → "5+3+2")
+    if len(label) > fixed:
+        return label[:fixed], True
+    left = (fixed - len(label)) // 2
+    return ' ' * left + label + ' ' * (fixed - len(label) - left), False
+
+
 def cmd_key(item):
     return item[1] + '(' + ','.join(f'{k}={v}' for k, v in item[2].items()) + ')'
 
@@ -147,8 +192,25 @@ def ko_text(s):
 
 def build_run(run, entry, tag2key, stats):
     """영어 덩어리 run(항목 목록)을 한글 entry 로 바꾼 항목 목록."""
+    return build_parts(run, [entry], tag2key, stats)[0]
+
+
+def build_parts(run, entries, tag2key, stats):
+    """영어 덩어리 하나를 한글 항목 여러 개로 바꾼다. 덩어리 안의 명령은 꼬리표에 맞춰 나눠 쓴다."""
     pool = [it for it in run if it[0] == 'cmd']
     used = [False] * len(pool)
+    parts = [build_one(entry, pool, used, tag2key, stats) for entry in entries]
+    for k, it in enumerate(pool):
+        if not used[k] and not it[1] in INLINE:
+            stats['한글에 없는 출력 명령(뒤에 붙임)'] += 1
+            parts[-1].append(it)
+    for part in parts:
+        if not any(it[0] == 'text' for it in part):
+            part.append(['text', ''])
+    return parts
+
+
+def build_one(entry, pool, used, tag2key, stats):
     out = []
 
     def take(pred):
@@ -174,12 +236,6 @@ def build_run(run, entry, tag2key, stats):
         out.append(cmd)
     if pos < len(entry):
         out.append(['text', ko_text(entry[pos:])])
-    for k, it in enumerate(pool):
-        if not used[k] and not it[1] in INLINE:
-            stats['한글에 없는 출력 명령(뒤에 붙임)'] += 1
-            out.append(it)
-    if not any(it[0] == 'text' for it in out):
-        out.append(['text', ''])
     return out
 
 
@@ -353,7 +409,16 @@ def load_usa_tpl():
         USA_TPL.mkdir()
         script.textpet('read-text-archives', msg_dir, '-f', 'msg', 'write-text-archives', USA_TPL, '-f', 'tpl',
                        game='mmsf1')
-    return {int(p.stem): parse_tpl(p.read_text(encoding='utf-8-sig')) for p in sorted(USA_TPL.glob('*.tpl'))}
+    usa = {int(p.stem): parse_tpl(p.read_text(encoding='utf-8-sig')) for p in sorted(USA_TPL.glob('*.tpl'))}
+    # 영어판에만 있는 명령(TextPet 이 $EB 처럼 읽는 선택지 버튼)이 든 스크립트는 뒤따르는 글자까지 잘못 읽히므로
+    # 일본판 스크립트를 틀로 쓴다. 선택지·질문의 순서도 PC판 한글 항목과 같다.
+    for block, scripts in usa.items():
+        bad = [num for num, items in scripts.items() if any(it[0] == 'cmd' and it[1].startswith('$') for it in items)]
+        if bad:
+            ja = parse_tpl((JA_DIR / f'{block:04d}.tpl').read_text(encoding='utf-8-sig'))
+            for num in bad:
+                scripts[num] = ja[num]
+    return usa
 
 
 def ja_sizes():
@@ -361,6 +426,98 @@ def ja_sizes():
         script.unpack_msgs()
     return {int(p.stem): struct.unpack_from('<H', p.read_bytes(), 0)[0] // 2
             for p in sorted(script.MSG_DIR.glob('*.msg'))}
+
+
+def center_width(items):
+    """선택지 없이 positionOptionFromCenter 로 가운데 맞추는 글(엔딩 크레딧 등)은 폭(글자 수)을 새 글에 맞춘다."""
+    names = [it[1] for it in items if it[0] == 'cmd']
+    if 'positionOptionFromCenter' not in names or any(n.startswith('option') for n in names):
+        return items
+    text = ''.join(it[1] for it in items if it[0] == 'text')
+    width = max((len(line) for line in text.split('\n')), default=0)
+    for it in items:
+        if it[0] == 'cmd' and it[1] == 'positionOptionFromCenter' and width:
+            it[2]['width'] = str(width)
+    return items
+
+
+def merge_tag_only(texts):
+    """글자 없이 꼬리표(대기 등)만 있는 항목은 상자를 따로 만들지 않고 앞(없으면 뒤) 항목에 붙인다."""
+    out, carry = [], ''
+    for t in texts:
+        if TAG_RE.sub('', t).strip():
+            out.append(carry + t)
+            carry = ''
+        elif out:
+            out[-1] = out[-1].rstrip('\n') + t
+        else:
+            carry += t
+    if carry:
+        out.append(carry)
+    return out
+
+
+def split_entry(entry, n):
+    """한글 항목 하나를 영어 덩어리 n 개에 나눠 담는다 (줄 단위로 고르게)."""
+    lines = entry.rstrip('\n').split('\n')
+    if len(lines) < n:
+        return [entry] + [''] * (n - 1)
+    size = -(-len(lines) // n)
+    return ['\n'.join(lines[i * size:(i + 1) * size]) for i in range(n)]
+
+
+def expand_groups(anchors, n_units, n_entries):
+    """align_fix.json 의 짝(1:1 이 아닌 곳만)을 사이를 1:1 로 채워 전체 짝 목록으로 편다."""
+    out, i, j = [], 0, 0
+    for a, b in anchors:
+        ti = a[0] if a else None
+        tj = b[0] if b else None
+        ti = i + (tj - j) if ti is None else ti
+        tj = j + (ti - i) if tj is None else tj
+        if ti - i != tj - j or ti < i or a != list(range(ti, ti + len(a))) or b != list(range(tj, tj + len(b))):
+            raise ValueError(f'짝이 어긋남: 단위 {i}/한글 {j} 다음에 {a}/{b}')
+        out += [([i + k], [j + k]) for k in range(ti - i)]
+        out.append((a, b))
+        i, j = ti + len(a), tj + len(b)
+    if n_units - i != n_entries - j:
+        raise ValueError(f'끝이 어긋남: 단위 {n_units - i}개, 한글 {n_entries - j}개 남음')
+    out += [([i + k], [j + k]) for k in range(n_units - i)]
+    return out
+
+
+def load_fixes():
+    return json.loads(ALIGN_FIX.read_text(encoding='utf-8')) if ALIGN_FIX.exists() else {}
+
+
+def apply_templates(usa, fixes):
+    """align_fix.json 의 template/ja_scripts: 영어판 틀 대신 일본판 스크립트를 쓴다.
+    template "ja" 는 블록 전체(영어판에서 비워 둔 블록이나 크레딧처럼 내용이 다른 블록),
+    ja_scripts 는 영어판 선택지 명령이 뒤 글자를 삼켜서("   Searc" + "h") 덩어리가 어긋난 스크립트."""
+    for block, fix in fixes.items():
+        nums = fix.get('ja_scripts', [])
+        if fix.get('template') != 'ja' and not nums:
+            continue
+        ja = parse_tpl((JA_DIR / f'{int(block):04d}.tpl').read_text(encoding='utf-8-sig'))
+        if fix.get('template') == 'ja':
+            usa[int(block)] = ja
+        for num in nums:
+            usa[int(block)][num] = ja[num]
+
+
+def load_groups(block_map, units, pc, fixes):
+    """블록마다 [(단위 번호 목록, 한글 항목 번호 목록)]. align_fix.json 에 있으면 그것, 수가 같으면 1:1."""
+    groups = {}
+    for block, name in block_map.items():
+        n_units, n_entries = len(units[block]), len(pc[name])
+        fix = fixes.get(str(block), {})
+        if 'groups' in fix:
+            try:
+                groups[block] = expand_groups(fix['groups'], n_units, n_entries)
+            except ValueError as e:
+                raise ValueError(f'align_fix.json 블록 {block}: {e}') from None
+        elif n_units == n_entries:
+            groups[block] = [([i], [i]) for i in range(n_units)]
+    return groups
 
 
 def main():
@@ -372,12 +529,13 @@ def main():
         if line and not line.startswith('#') and not line.startswith('block'):
             b, f = line.split('\t')
             block_map[int(b)] = f
+    fixes = load_fixes()
+    apply_templates(usa, fixes)
+    units = {b: block_units(usa[b]) for b in block_map}
+    groups = load_groups(block_map, units, pc, fixes)
 
-    def runs_of(block):
-        return [items[s:e] for num in sorted(usa[block]) for items in [usa[block][num]]
-                for s, e in run_spans(items)]
-
-    pairs = [(runs_of(b), pc[f]) for b, f in block_map.items() if len(runs_of(b)) == len(pc[f])]
+    pairs = [([unit_items(usa[b], u) for u in units[b]], pc[block_map[b]])
+             for b in block_map if len(units[b]) == len(pc[block_map[b]])]
     tag2key = learn_tags(pairs)
 
     shutil.rmtree(KO_DIR, ignore_errors=True)
@@ -386,7 +544,6 @@ def main():
     report = []
     for block, name in sorted(block_map.items()):
         entries = pc[name]
-        n_runs = len(runs_of(block))
         if block >= JA_BLOCKS:
             report.append(f'{block}\t{name}\t영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)')
             continue
@@ -394,30 +551,86 @@ def main():
             report.append(f'{block}\t{name}\t목록 화면용이라 메뉴 출력 코드를 고친 뒤에 넣음')
             stats['목록 화면용이라 뺀 블록'] += 1
             continue
-        if n_runs != len(entries):
-            report.append(f'{block}\t{name}\t덩어리 수가 다름: 영어 {n_runs}, 한글 {len(entries)}')
+        if fixes.get(str(block), {}).get('skip'):
+            report.append(f'{block}\t{name}\t일본판 그대로 둠: {fixes[str(block)].get("note", "")}')
+            stats['일부러 일본판 그대로 둔 블록'] += 1
+            continue
+        if block not in groups:
+            report.append(f'{block}\t{name}\t단위 수가 다르고 짝이 정해지지 않음: 영어 {len(units[block])}, 한글 {len(entries)}')
             stats['건너뛴 블록'] += 1
             continue
-        k = 0
+        # 단위별 한글 항목
+        assign = {}
+        for unit_ids, entry_ids in groups[block]:
+            texts = merge_tag_only([entries[j] for j in entry_ids])
+            if not unit_ids:
+                continue                       # 버리는 한글 항목
+            if len(unit_ids) == 1:
+                assign[unit_ids[0]] = texts
+            elif texts:
+                for u, part in zip(unit_ids, split_entry('\n'.join(t.rstrip('\n') for t in texts), len(unit_ids))):
+                    assign[u] = [part]
+        for k, text in fixes.get(str(block), {}).get('texts', {}).items():
+            assign[int(k)] = [text]            # PC판에 없거나 순서가 달라 직접 쓴 글
         scripts = {}
         for num in sorted(usa[block]):
-            items = [list(it) for it in usa[block][num]]
-            spans = run_spans(items)
-            if not spans:
+            items = [[it[0], it[1], dict(it[2])] if it[0] == 'cmd' else list(it) for it in usa[block][num]]
+            mine = [(k, u) for k, u in enumerate(units[block]) if u[0] == num]
+            if not mine:
                 continue
-            new = []
-            last = 0
-            for s, e in spans:
-                splittable = e < len(items) and items[e][0] == 'cmd' and items[e][1] == 'keyWait'
-                run = build_run(items[s:e], entries[k], tag2key, stats)
-                new += items[last:s] + fit_run(run, splittable, stats)
-                k += 1
+            if not any(assign.get(k) for k, _ in mine):
+                stats['한글이 없어 일본판 그대로 둔 스크립트'] += 1
+                continue
+            new, last = [], 0
+            for k, (_, kind, s, e) in mine:
+                texts = assign.get(k)
+                new += items[last:s]
                 last = e
-            scripts[num] = new + items[last:]
+                if not texts:
+                    stats['한글이 없어 영어로 남은 단위'] += 1
+                    report.append(f'{block}\t{name}\t단위 {k} 한글 없음: {unit_items(usa[block], units[block][k])!r:.80}')
+                    new += items[s:e]
+                    continue
+                if kind == 'opt':
+                    item = items[s]
+                    label, cut = option_label(texts, OPTION_FIXED[item[1]])
+                    if cut:
+                        stats['선택지 글자가 길어 잘림'] += 1
+                        report.append(f'{block}\t{name}\t선택지 잘림: {texts!r}')
+                    item[2]['string'] = '"' + label + '"'
+                    new.append(item)
+                    stats['선택지 글자'] += 1
+                    continue
+                splittable = e < len(items) and items[e][0] == 'cmd' and items[e][1] == 'keyWait'
+                parts = build_parts(items[s:e], texts, tag2key, stats)
+                if len(parts) == 1:
+                    new += fit_run(parts[0], splittable, stats)
+                elif splittable:
+                    for p, part in enumerate(parts):
+                        if p:
+                            new += [['cmd', 'keyWait', {'type': '1'}], ['cmd', 'clearMsg', {}]]
+                        new += fit_run(part, True, stats)
+                else:
+                    # 덩어리 안에서 쓰이지 않은 waitHold 가 있으면 그것으로 상자를 나누고, 없으면 줄을 바꿔 잇는다
+                    holds = [it for it in items[s:e] if it[0] == 'cmd' and it[1] == 'waitHold'
+                             and not any(it is x for part in parts for x in part)]
+                    joined = []
+                    for p, part in enumerate(parts):
+                        if p and holds:
+                            new += fit_run(joined, False, stats) + [holds.pop(0)]
+                            joined = []
+                        elif p:
+                            joined.append(['text', '\n'])
+                        joined += part
+                    new += fit_run(joined, False, stats)
+            scripts[num] = center_width(new + items[last:])
+        if not scripts:
+            continue
         (KO_DIR / f'{block:04d}.tpl').write_text(write_tpl(f'{block:04d}', sizes[block], scripts), encoding='utf-8')
         stats['만든 블록'] += 1
-        stats['넣은 대사 상자'] += len(entries)
-    (ROOT / 'script' / 'ko_report.txt').write_text('# 한글을 넣지 못한 블록\n' + '\n'.join(report) + '\n', encoding='utf-8')
+        stats['넣은 한글 항목'] += sum(len(b) for a, b in groups[block] if a) + \
+            len(fixes.get(str(block), {}).get('texts', {}))
+    (ROOT / 'script' / 'ko_report.txt').write_text('# 한글을 넣지 못한 곳\n' + '\n'.join(report) + '\n', encoding='utf-8')
     for key, value in stats.items():
         print(f'{key}: {value:,}')
 

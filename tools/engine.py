@@ -35,15 +35,16 @@ WIDTH_TABLE = 0x020D09F0
 HANGUL_BASE = 0x1000        # 한글 글자 번호 = HANGUL_BASE + k
 CELL = 11                   # 한글 그림 크기 (11×11)
 PACKED = 16                 # 글자당 바이트 (121비트)
-# (cmp r0,#0xE4 의 주소, 글자 칸 오프셋): 대사 상자 네 곳 + 한 글자씩 찍는 경로 두 곳
+# (cmp r0,#0xE4 의 주소, 글자 칸 오프셋): 대사 상자 네 곳 + 한 글자씩 찍는 경로 두 곳 + 선택지 버튼 두 곳
 DECODE_SITES = [(0x0201FA5E, 0x28), (0x0201FAF8, 0x28), (0x02020060, 0x28), (0x0202030C, 0x28),
-                (0x0201B11A, 0x52), (0x0201B15C, 0x28)]
+                (0x0201B11A, 0x52), (0x0201B15C, 0x28),
+                (0x0201B88C, 0x28), (0x0201B9C4, 0x28)]     # 선택지 버튼 글자 (optionButton*)
 # "cmp r0,#0xE4" 과 bne 사이에 명령이 하나 더 있는 위치: (주소, 글자 칸, 그 명령). 도우미가 그 명령을 대신
 # 실행하고, 한글·E4 면 Z=1, 아니면 Z=0 으로 돌아가서 원래 bne 가 그대로 갈라지게 한다.
 FLAG_SITES = [(0x0201B254, 0x28, 'ldr r1, [r6]')]   # A 로 남은 글자를 한꺼번에 찍는 경로
 WIDTH_SITE = 0x0201E576
 GLYPH_SITE = 0x0201E5A2
-CODE_RESERVE = 0x400        # 첫 빈 구간 앞부분: 코드, 표, 버퍼
+CODE_RESERVE = 0x400        # 가장 긴 빈 구간 앞부분: 코드와 글자 그림 버퍼 (구간 표는 그 뒤)
 
 
 # ---------------------------------------------------------------- 폰트
@@ -121,8 +122,8 @@ def build_font():
 FONTS = [(FONT0, GLYPH), (0x020D879C, 64), (0x020E0F9C, 64)]
 
 
-def free_glyphs():
-    """한자이거나 코드표에 없는 글자 번호 (한글판에서 쓰지 않는 칸)."""
+def free_glyphs(keep=()):
+    """한자이거나 코드표에 없는 글자 번호 (한글판에서 쓰지 않는 칸). keep 의 한자는 남긴다."""
     used = {}
     for line in (kotable.PLUGINS / 'rnr1-utf8.tbl').read_text(encoding='utf-8-sig').splitlines():
         if '=' not in line:
@@ -133,12 +134,13 @@ def free_glyphs():
         if index is not None and index < FONT0_COUNT:
             used[index] = value
     return [i for i in range(1, FONT0_COUNT)
-            if i not in used or any('\u4e00' <= c <= '\u9fff' or c in '々ヶ' for c in used[i])]
+            if i not in used or (any('\u4e00' <= c <= '\u9fff' or c in '々ヶ' for c in used[i])
+                                 and used[i] not in keep)]
 
 
-def free_runs():
+def free_runs(keep=()):
     """빈 칸의 연속 구간 [(주소, 바이트 수)]. 가장 긴 구간이 맨 앞(코드를 넣는다)."""
-    free = free_glyphs()
+    free = free_glyphs(keep)
     runs = []
     for base, size in FONTS:
         cur = []
@@ -190,7 +192,7 @@ ko_glyph:                   @ r0 = 글자 번호, r1 = 폰트 주소 → r1 = �
     pop {{r2-r7, pc}}
 ko_glyph_hangul:
     subs r0, r0, r2         @ k
-    adr r2, chunks
+    ldr r2, lit_chunks
 ko_glyph_find:
     ldr r3, [r2, #4]        @ 구간 용량
     cmp r0, r3
@@ -268,9 +270,7 @@ lit_pre_base: .word {pre_base}
 lit_extra_first: .word {extra_first}
 lit_width_table: .word {width_table}
 lit_buffer: .word {buffer}
-chunks:
-{chunks}
-    .word 0, 0xFFFFFFFF
+lit_chunks: .word {chunks}
 extra_widths:
     .byte {extra_widths}
 '''
@@ -348,16 +348,38 @@ def check_thumb1(code, addr):
         sys.exit(f'코드를 끝까지 해석하지 못했습니다 ({pos}/{end}).')
 
 
-def build(arm9):
-    """arm9(0x02000000부터의 bytearray)에 한글 출력 코드와 폰트를 넣는다. 사용량 정보를 돌려준다."""
+def table_size(runs):
+    """구간 표(구간마다 주소·글자 수, 끝 표시) 크기의 상한."""
+    return 8 * (len(runs) + 1)
+
+
+def data_runs(runs):
+    """폰트를 넣을 구간: 가장 긴 구간의 코드 예약 공간 뒤에 구간 표를 두고, 나머지 전부."""
+    code_addr, code_room = runs[0]
+    first = code_addr + CODE_RESERVE + table_size(runs)
+    return [(first, code_addr + code_room - first)] + runs[1:]
+
+
+def font_room(runs):
+    """코드 예약 공간과 구간 표를 뺀 구간들에 들어가는 한글 글자 수."""
+    return sum(max(size, 0) // PACKED for _, size in data_runs(runs))
+
+
+def build(arm9, keep=()):
+    """arm9(0x02000000부터의 bytearray)에 한글 출력 코드와 폰트를 넣는다. 사용량 정보를 돌려준다.
+    keep: 번역하지 않고 남는 일본어에 쓰이는 한자(자주 쓰이는 순). 한글 폰트가 들어가는 한도 안에서
+    앞에서부터 그 한자 칸을 남긴다."""
     font = build_font()
-    runs = free_runs()
+    keep = list(keep)
+    while font_room(free_runs(keep)) < len(font):
+        keep.pop()
+    runs = free_runs(keep)
     code_addr, code_room = runs[0]
     buffer = code_addr + CODE_RESERVE - GLYPH
-    data_runs = [(code_addr + CODE_RESERVE, code_room - CODE_RESERVE)] + runs[1:]
+    table = code_addr + CODE_RESERVE
 
     placed, chunks = 0, []
-    for addr, size in data_runs:
+    for addr, size in data_runs(runs):
         cap = min(size // PACKED, len(font) - placed)
         if cap <= 0:
             continue
@@ -367,6 +389,9 @@ def build(arm9):
         placed += cap
     if placed < len(font):
         sys.exit(f'한글 폰트를 다 넣지 못했습니다 ({placed}/{len(font)}).')
+    blob = b''.join(struct.pack('<II', a, c) for a, c in chunks) + struct.pack('<II', 0, 0xFFFFFFFF)
+    assert len(blob) <= table_size(runs)
+    arm9[table - ARM9_BASE:table - ARM9_BASE + len(blob)] = blob
 
     sites = []
     for site, slot in DECODE_SITES:
@@ -392,7 +417,7 @@ def build(arm9):
         hangul_base=HANGUL_BASE, pre_base=HANGUL_BASE - kotable.TRAIL_FIRST, width_table=WIDTH_TABLE,
         extra_first=len(kotable.HANGUL),
         extra_widths=', '.join(str(kotable.EXTRA_WIDTH.get(c, 12)) for c in kotable.EXTRA),
-        buffer=buffer, cell=CELL, chunks='\n'.join(f'    .word {a:#x}, {c}' for a, c in chunks))
+        buffer=buffer, cell=CELL, chunks=table)
     code = assemble(src, code_addr)
     check_thumb1(code, code_addr)
     if code_addr + len(code) > buffer:
@@ -410,4 +435,4 @@ def build(arm9):
     put(WIDTH_SITE, f'bl {code_addr:#x}')
     put(GLYPH_SITE, f'bl {code_addr + 2:#x}\nmov r8, r8')
     return {'코드': len(code), '한글 글자': placed, '구간': len(chunks), '코드 주소': hex(code_addr),
-            '버퍼': hex(buffer)}
+            '버퍼': hex(buffer), '남긴 한자': ''.join(keep)}
