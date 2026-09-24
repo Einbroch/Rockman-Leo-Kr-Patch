@@ -4,20 +4,28 @@
 
 ## 롬 올리는 방법
 
-롬은 `rom/` 폴더에 넣는다. zip 파일 그대로 올려도 되고, 풀어서 나온 `.nds` 파일을 올려도 된다.
+롬은 `rom/` 폴더에 넣는다. `.nds`, `.zip`, `.7z` 모두 되고, 나눈 조각도 된다.
+웹 업로드 페이지: https://github.com/Einbroch/ClaudeGithub/upload/claude/zealous-euler-abczwl/rom
+(또는 저장소에서 브랜치를 `claude/zealous-euler-abczwl`로 바꾸고 `rom` 폴더에서 `Add file` → `Upload files`)
 
-- **25MB 이하면 웹에서 올리기**: 저장소 페이지에서 작업 브랜치로 바꾸고 `rom` 폴더를 연 다음
-  `Add file` → `Upload files`로 zip 파일을 끌어다 놓고 커밋한다.
-- **25MB가 넘으면 git으로 올리기** (파일 하나당 100MB까지 가능):
-  ```
-  git clone https://github.com/Einbroch/ClaudeGithub.git
-  cd ClaudeGithub
-  git checkout claude/zealous-euler-abczwl
-  copy "D:\Games\Kor Patch\NDS\록맨 시리즈\Ryuusei no Rockman - Leo (Japan).zip" rom\
-  git add rom
-  git commit -m "원본 롬 추가"
-  git push
-  ```
+웹 업로드는 **파일 하나당 25MB까지**다.
+
+1. **원래 받은 zip이 25MB 이하면** 그대로 올린다.
+2. **25MB가 넘으면 20MB씩 나눠서** 나온 조각을 한꺼번에 올린다.
+   - 반디집: 롬 파일 우클릭 → `압축하기...` → `분할 압축`을 켜고 크기 `20MB` → `압축 시작`
+   - 7-Zip: 롬 파일 우클릭 → `7-Zip` → `압축하기...` → `볼륨 나누기, 바이트`에 `20M` → `확인`
+   - 조각(`이름.001, 이름.002 ...` 또는 `이름.z01, 이름.z02 ..., 이름.zip`)은 `tools/unpack.py`가 알아서 합친다.
+     조각이 하나라도 빠지면 어떤 게 빠졌는지 알려준다.
+3. **git으로 올리기** (나누지 않고 파일 하나당 100MB까지):
+   ```
+   git clone https://github.com/Einbroch/ClaudeGithub.git
+   cd ClaudeGithub
+   git checkout claude/zealous-euler-abczwl
+   copy "D:\Games\Kor Patch\NDS\록맨 시리즈\Ryuusei no Rockman - Leo (Japan).zip" rom\
+   git add rom
+   git commit -m "원본 롬 추가"
+   git push
+   ```
 
 > 이 저장소는 **비공개**로 유지해야 한다. 원본 롬과 패치된 롬은 절대 배포하지 않고,
 > 배포할 때는 원본과의 차이만 담긴 xdelta 패치 파일만 공유한다.
