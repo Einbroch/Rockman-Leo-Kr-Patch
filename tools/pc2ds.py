@@ -36,7 +36,10 @@ JA_ONLY = ROOT / 'ref' / 'ja_only_ko.json'   # 영어판·PC판에 없는 일본
 OPTION_FIXED = {'optionButtonSmall8': 8, 'optionButtonWide16': 16, 'optionButtonSmall': None, 'optionButtonWide': None}
 KO_DIR = ROOT / 'script' / 'ko'
 JA_DIR = script.JA_DIR
-JA_BLOCKS = 1247  # 일본판 mess.bin 블록 수. 그 뒤는 영어판에만 있다.
+JA_BLOCKS = 1247  # 일본판 mess.bin 블록 수. 그 뒤(이름 목록)는 일본판에서는 ARM9 안에 있다(script.NAME_ARCHIVES).
+# 이름 목록 블록. 메뉴·목록 칸에 한 글자씩 찍히므로 줄을 나누지 않고, 띄어쓰기도 좁은 빈칸으로 바꾸지 않는다
+# (좁은 빈칸은 2바이트 글자라 칸 하나를 차지하는 건 같고 크기만 커진다). 1256(안드로메다)은 설명 대사가 있어 뺀다.
+NAME_BLOCKS = set(range(1247, 1256))
 # 목록 화면(카드·아이템 설명 등)에서 쓰는 블록. 대사 상자와 다른 출력 코드를 거치므로 그쪽을 고친 뒤에 넣는다.
 # 넣지 않는 PC판 파일: 전투 화면 문구(DOUBLE DELETE! 등)는 일본판도 영어이고 전투 화면 글자 경로를 아직 고치지 않았다
 SKIP_FILES = {'COCKPIT'}
@@ -638,7 +641,7 @@ def add_ja_only(outputs, skip, stats, report):
     used, left = set(), collections.Counter()
     for path in sorted(JA_DIR.glob('*.tpl')):
         block = int(path.stem)
-        if block in skip or block >= JA_BLOCKS:
+        if block in skip:
             continue
         ja = parse_tpl(path.read_text(encoding='utf-8-sig'))
         done = outputs.get(block, {})
@@ -670,13 +673,37 @@ def add_ja_only(outputs, skip, stats, report):
                     continue
                 cmds = [it for it in items[s:e] if it[0] == 'cmd']
                 splittable = e < len(items) and items[e][0] == 'cmd' and items[e][1] == 'keyWait'
-                new += fit_run(from_key(table[key], cmds), splittable, stats)
+                run = from_key(table[key], cmds)
+                new += run if block in NAME_BLOCKS else fit_run(run, splittable, stats)
             outputs.setdefault(block, {})[num] = center_width(new + items[last:])
             stats['일본판 전용 대사 스크립트(직접 번역)'] += 1
     for key in sorted(set(table) - used):
         report.append(f'-\t-\tja_only_ko.json 에서 쓰이지 않은 번역: {key!r:.60}')
     for block, count in sorted(left.items()):
         report.append(f'{block}\t-\t번역이 없어 일본어로 남은 일본판 스크립트 {count}개')
+
+
+BRACKET = re.compile(r'\[[A-Za-z0-9]+\]')   # [EX], [SP] 같은 글자 하나짜리 기호
+
+
+def name_cells(items):
+    """이름이 메뉴에서 차지하는 칸 수 (글자 하나 = 8픽셀 칸 하나, 출력 명령은 cell_width). 뒤쪽 채움 공백은 뺀다."""
+    items = [it for it in items if it[0] == 'text' or it[1] != 'end']
+    text = ''.join(BRACKET.sub('#', it[1]) if it[0] == 'text' else '#' * cell_width(it) for it in items)
+    return len(text.rstrip(' '))
+
+
+def name_lengths(outputs, stats, report):
+    """이름 목록에서 일본판의 가장 긴 이름보다 칸을 더 쓰는 한글 이름을 적는다(메뉴 칸을 넘칠 수 있다)."""
+    for block in sorted(NAME_BLOCKS & set(outputs)):
+        ja = parse_tpl((JA_DIR / f'{block:04d}.tpl').read_text(encoding='utf-8-sig'))
+        limit = max(name_cells(items) for items in ja.values())
+        for num, items in sorted(outputs[block].items()):
+            cells = name_cells(items)
+            if cells > limit:
+                stats['일본판 최장보다 긴 이름'] += 1
+                text = ''.join(it[1] if it[0] == 'text' else '{' + it[1] + '}' for it in items if it[1] != 'end')
+                report.append(f'{block}\t-\t스크립트 {num}: 이름 {cells}칸 > 일본판 최장 {limit}칸: {text!r}')
 
 
 def main():
@@ -706,9 +733,6 @@ def main():
         entries = pc[name]
         for old, new in fixes.get(str(block), {}).get('replace', []):
             entries = [e.replace(old, new) for e in entries]   # PC판 오역 바로잡기
-        if block >= JA_BLOCKS:
-            report.append(f'{block}\t{name}\t영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)')
-            continue
         if name[4:-4] in SKIP_FILES:
             report.append(f'{block}\t{name}\t전투 화면 문구(일본판도 영어)라 그대로 둠')
             stats['그대로 둔 블록'] += 1
@@ -734,6 +758,8 @@ def main():
                     assign[u] = [part]
         for k, text in fixes.get(str(block), {}).get('texts', {}).items():
             assign[int(k)] = [text]            # PC판에 없거나 순서가 달라 직접 쓴 글
+        for k, j in fixes.get(str(block), {}).get('move', {}).items():
+            assign[int(k)] = [entries[j]]      # 순서가 다른 PC판 항목 (groups 에서는 [[], [j]] 로 버린다)
         ja_menu = parse_tpl((JA_DIR / f'{block:04d}.tpl').read_text(encoding='utf-8-sig')) if block in MENU_BLOCKS else {}
         scripts = {}
         for num in sorted(usa[block]):
@@ -777,6 +803,9 @@ def main():
                         joined += part
                     new += menu_fit(joined, menu_shape(ref), stats, report, f'{block}\t{name}\t단위 {k}')
                     continue
+                if block in NAME_BLOCKS:               # 이름은 줄을 나누지 않고 그대로 넣는다
+                    new += join_lines([[it for part in parts for it in part]], 0)
+                    continue
                 if len(parts) == 1:
                     new += fit_run(parts[0], splittable, stats)
                 elif splittable:
@@ -807,6 +836,7 @@ def main():
     skip = {b for b, name in block_map.items() if name[4:-4] in SKIP_FILES} | \
         {int(b) for b, fix in fixes.items() if fix.get('skip')}
     add_ja_only(outputs, skip, stats, report)
+    name_lengths(outputs, stats, report)
     for block, scripts in sorted(outputs.items()):
         (KO_DIR / f'{block:04d}.tpl').write_text(write_tpl(f'{block:04d}', sizes[block], scripts), encoding='utf-8')
         stats['만든 블록'] += 1

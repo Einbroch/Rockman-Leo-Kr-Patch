@@ -2,14 +2,4 @@
 0	RR1_MESSTEST_ENG	일본판 그대로 둠: 개발용 메시지 시험 블록(게임에 나오지 않음). 일본판에 없는 기호가 있어 그대로 둠
 6	RR1_COCKPIT_ENG	전투 화면 문구(일본판도 영어)라 그대로 둠
 98	RR1_NUMBERTRADER_ENG	일본판 그대로 둠: 암호는 일본판 가나 입력 화면으로 입력하는 답이라 번역하면 풀 수 없음. 일본판 그대로 둠
-1247	RR1_ITEMNAME_ENG	영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)
-1248	RR1_DECKNAME_ENG	영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)
-1249	RR1_CHIPNAME_ENG	영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)
-1250	RR1_CHIPNAME2_ENG	영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)
-1251	RR1_COLORNAME_ENG	영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)
-1252	RR1_MANNAME_ENG	영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)
-1253	RR1_MAPNAME_ENG	영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)
-1254	RR1_EMNAME1_ENG	영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)
-1255	RR1_EMNAME2_ENG	영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)
-1256	RR1_ANDROMEDA_ENG	영어판에만 있는 블록 (일본판은 mess.bin 밖에 있음)
 1	-	번역이 없어 일본어로 남은 일본판 스크립트 101개

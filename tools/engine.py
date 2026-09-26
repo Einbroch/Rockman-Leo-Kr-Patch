@@ -11,6 +11,8 @@
   한글이면 압축 폰트(11×11 점, 글자당 16바이트)를 4bpp 16×16 글자로 풀어 버퍼 주소를 r1 로 돌려준다.
 
 한글 번호 k 는 tools/kotable.py 의 NEW_CHARS 순번이다. 폰트는 갈무리11(Galmuri11, SIL OFL 1.1)을 쓴다.
+폰트(큰 한글·작은 한글)에는 한글 스크립트에 쓰인 글자만 넣고, "있는 글자 비트맵 + 낱말마다 앞의 글자 수"로
+k 의 폰트 안 순번을 찾는다(ko_rank). 없는 글자는 빈 칸으로 그린다.
 """
 import os
 import pathlib
@@ -65,7 +67,21 @@ SMALL_TOP = 6               # 8×16 칸에서 작은 한글 윗줄 (가나 4–1
 # 16×16 칸의 한글이면 글자 그림 버퍼 주소를 쓰게 한다.
 TILE_SITE = 0x0201E7DC
 GLYPH_SITE = 0x0201E5A2
-CODE_RESERVE = 0x780        # 가장 긴 빈 구간 앞부분: 코드, 작업 공간, 글자 그림 버퍼 (구간 표는 그 뒤)
+CODE_RESERVE = 0xA00        # 가장 긴 빈 구간 앞부분: 코드, 작업 공간, 글자 그림 버퍼 (구간 표는 그 뒤)
+# 글자 위치 목록 경로(0x020202D8, 카드 이름 목록)는 글자마다 "폰트 안 위치(번호×64)"만 적고, 목록을 받은 화면이
+# 그 값을 타일 번호((위치+0x20)>>5)로 바꿔 쓴다. 폰트(굵은 8×16)는 화면을 열 때 VRAM 에 올려 둔다(자리+0x20 에,
+# 폴더 화면은 글자 0~0x17F, 라이브러리는 0~0xFF). 그래서 한글은 VRAM 에 올라간 폰트의 가나·한자 칸(카드 이름이
+# 모두 한글이 되어 이 화면들에서는 쓰지 않는다)에 작은 한글을 직접 그리고 그 칸 번호를 적는다.
+# 칸은 가장 오래 안 쓴 것부터 다시 쓴다.
+LIST8_SITE = 0x02020360     # "lsls r1, r0, #6; ldr r0, [r5, #0x64]": 8×16 목록에 위치를 적는 곳
+LIST_GLYPH_LIMIT = 0x100    # 모든 목록 화면이 VRAM 에 올리는 글자 범위 (라이브러리는 0~0xFF 만 올린다)
+LIST_BASES = 4              # 굵은 8×16 폰트를 올린 VRAM 자리를 이만큼 기억한다
+LIST_CHECK = 0x5E           # 자리가 아직 폰트인지 볼 때 대조하는 글자 ('A')
+# 그림(글자 폰트 포함)을 VRAM 에 올리는 로더들의 복사 호출: (호출 위치, 복사 함수). 굵은 8×16 폰트를 올리면
+# 그 자리를 기억하고 지금 칸에 든 한글을 그 자리에도 그린다.
+UPLOAD_SITES = [(0x0202F37C, 0x0202E5A4), (0x0202F3A0, 0x0202E5A4), (0x0202F3C4, 0x0202E5A4),
+                (0x0202F3E8, 0x0202E5A4), (0x0202F40C, 0x0202E56C), (0x0202F430, 0x0202E56C),
+                (0x0202F454, 0x0202E56C), (0x0202F478, 0x0202E56C)]
 
 
 # ---------------------------------------------------------------- 폰트
@@ -128,13 +144,30 @@ def pack(pts):
     return bytes(int(''.join(map(str, bits[i:i + 8])), 2) for i in range(0, len(bits), 8))
 
 
-def build_font():
+def index_bits(present):
+    """present(새 글자 순번 집합)의 비트맵 낱말과 낱말마다 앞의 글자 수. ko_rank 가 이 표로 순번을 찾는다."""
+    words = [0] * ((len(kotable.NEW_CHARS) + 31) // 32)
+    for k in present:
+        words[k >> 5] |= 1 << (k & 31)
+    prefix, total = [], 0
+    for w in words:
+        prefix.append(total)
+        total += bin(w).count('1')
+    return words, prefix
+
+
+def build_font(chars):
+    """대사용 큰 한글(갈무리11, 11×11 점, 글자당 16바이트). chars 에 든 새 글자만 넣는다.
+    (글자 그림 목록, 있는 글자 비트맵 낱말, 낱말마다 앞의 글자 수)"""
     glyphs = load_bdf(ensure_galmuri())
     blank = {kotable.THIN_SPACE}
-    missing = [c for c in kotable.NEW_CHARS if ord(c) not in glyphs and c not in blank]
+    missing = [c for c in kotable.NEW_CHARS if c in chars and ord(c) not in glyphs and c not in blank]
     if missing:
         sys.exit(f'갈무리11에 없는 글자: {missing}')
-    return [pack([] if c in blank else glyph_bits(glyphs[ord(c)])) for c in kotable.NEW_CHARS]
+    present = [k for k, c in enumerate(kotable.NEW_CHARS) if c in chars]
+    out = [pack([] if kotable.NEW_CHARS[k] in blank else glyph_bits(glyphs[ord(kotable.NEW_CHARS[k])]))
+           for k in present]
+    return (out, *index_bits(present))
 
 
 # ---------------------------------------------------------------- 빈 칸
@@ -217,6 +250,12 @@ ko_glyph:                   @ r0 = 글자 번호, r1 = 폰트 주소 → r1 = �
     pop {{r2-r7, pc}}
 ko_glyph_hangul:
     subs r0, r0, r2         @ k
+    ldr r1, lit_big_bits
+    ldr r2, lit_big_prefix
+    bl ko_rank              @ r0 = 폰트 안 순번, 없는 글자면 음수
+    movs r3, #0             @ 없는 글자는 빈 칸
+    cmp r0, #0
+    blt ko_glyph_clear0
     ldr r2, lit_chunks
 ko_glyph_find:
     ldr r3, [r2, #4]        @ 구간 용량
@@ -229,6 +268,7 @@ ko_glyph_found:
     ldr r3, [r2]            @ 구간 주소
     lsls r0, r0, #4
     adds r3, r3, r0         @ 압축 글자
+ko_glyph_clear0:
     ldr r1, lit_buffer
     movs r0, #0
     movs r2, #32
@@ -237,6 +277,8 @@ ko_glyph_clear:
     stmia r4!, {{r0}}
     subs r2, #1
     bne ko_glyph_clear
+    cmp r3, #0
+    beq ko_glyph_ret
     movs r6, #0             @ 남은 비트
     movs r4, #0             @ y
 ko_glyph_y:
@@ -285,7 +327,40 @@ ko_glyph_next:
     adds r4, #1
     cmp r4, #{cell}
     blo ko_glyph_y
+ko_glyph_ret:
     pop {{r2-r7, pc}}
+
+ko_rank:                    @ r0 = k, r1 = 있는 글자 비트맵, r2 = 낱말마다 앞의 글자 수 → r0 = 폰트 안 순번
+    push {{r4, r5, lr}}      @ (없는 글자면 -1). r1–r3 사용
+    ldr r3, lit_new_chars
+    cmp r0, r3
+    bhs ko_rank_none        @ 한글 코드 범위 밖(한글 첫 바이트와 겹친 가타카나 두 글자 등)
+    lsrs r3, r0, #5         @ 낱말 번호
+    lsls r4, r3, #2
+    ldr r4, [r1, r4]
+    movs r5, #31
+    ands r5, r0
+    movs r1, #1
+    lsls r1, r5             @ 이 글자의 비트
+    tst r4, r1
+    beq ko_rank_none
+    subs r1, #1
+    ands r4, r1             @ 같은 낱말에서 앞선 글자들
+    lsls r3, r3, #1
+    ldrh r0, [r2, r3]
+ko_rank_count:
+    cmp r4, #0
+    beq ko_rank_done
+    subs r1, r4, #1
+    ands r4, r1
+    adds r0, #1
+    b ko_rank_count
+ko_rank_done:
+    pop {{r4, r5, pc}}
+ko_rank_none:
+    movs r0, #0
+    mvns r0, r0
+    pop {{r4, r5, pc}}
 
     .align 2
     .word 0x4C4F4F50        @ 리터럴 구역 시작 (check_thumb1 이 건너뛴다)
@@ -294,6 +369,9 @@ lit_extra_first: .word {extra_first}
 lit_width_table: .word {width_table}
 lit_buffer: .word {buffer}
 lit_chunks: .word {chunks}
+lit_big_bits: .word {big_bits}
+lit_big_prefix: .word {big_prefix}
+lit_new_chars: .word {new_chars}
 extra_widths:
     .byte {extra_widths}
     .align 2
@@ -384,32 +462,12 @@ ko_pick8_big:
     pop {{r4, pc}}
 
 ko_small:                   @ r0 = k → r0 = 작은 한글 그림 주소, 없으면 0. r1–r3 사용
-    push {{r4, lr}}
-    lsrs r1, r0, #5         @ 비트맵 낱말 번호
-    lsls r3, r1, #2
-    ldr r2, lit2_small_bits
-    ldr r2, [r2, r3]
-    movs r3, #31
-    ands r3, r0
-    movs r4, #1
-    lsls r4, r3             @ 이 글자의 비트
-    tst r2, r4
-    beq ko_small_none
-    subs r4, #1
-    ands r2, r4             @ 같은 낱말에서 앞선 글자들
-    movs r3, #0
-ko_small_count:
-    cmp r2, #0
-    beq ko_small_rank
-    subs r4, r2, #1
-    ands r2, r4
-    adds r3, #1
-    b ko_small_count
-ko_small_rank:
+    push {{lr}}
+    ldr r1, lit2_small_bits
     ldr r2, lit2_small_prefix
-    lsls r1, r1, #1
-    ldrh r1, [r2, r1]
-    adds r0, r1, r3         @ 작은 폰트 안의 순번
+    bl ko_rank              @ r0 = 작은 폰트 안의 순번
+    cmp r0, #0
+    blt ko_small_none
     ldr r2, lit2_small_chunks
 ko_small_find:
     ldr r3, [r2, #4]
@@ -422,10 +480,10 @@ ko_small_found:
     ldr r3, [r2]
     lsls r0, r0, #3
     adds r0, r3, r0
-    pop {{r4, pc}}
+    pop {{pc}}
 ko_small_none:
     movs r0, #0
-    pop {{r4, pc}}
+    pop {{pc}}
 
 ko_bold:                    @ r7 = 글자 상자, r3 = 매개변수 → [r3+12] = 굵은 8×16 폰트면 1. r1, r2 사용
     ldr r2, [r7, #0x1c]
@@ -721,8 +779,255 @@ lit2_small_chunks: .word {small_chunks}
 {site_helpers}
 {flag_helpers}
     .align 2
-code_end_marker: .word 0x4C4F4B4F
+    .word 0x4C4F4F50
 lit_pre_base: .word {pre_base}
+    .word 0x4C4F4F51
+
+@ 글자 위치 목록(8×16, 카드 이름 목록)의 한글: VRAM 에 올라간 굵은 폰트의 가나·한자 칸에 작은 한글을 그려 두고
+@ 그 칸 번호를 목록에 적는다. 칸 표: slot_g[칸] = 글자 번호(빌드할 때 정함), slot_k[칸] = 그려 둔 한글 k
+@ (없으면 0xFFFF), slot_t[칸] = 마지막으로 쓴 때. bases[] = 굵은 폰트를 올린 VRAM 자리(글자 0번 - 0x20).
+ko_list8:                   @ 0x02020360 "lsls r1, r0, #6; ldr r0, [r5, #0x64]" 대신. r0 = 글자 번호, r5 = 글자 상자
+    push {{r2-r7, lr}}
+    ldr r2, lit3_hangul_base
+    cmp r0, r2
+    blo ko_list8_done
+    subs r0, r0, r2         @ k
+    bl ko_slot              @ r0 = k 를 그려 둔 글자 칸 번호
+ko_list8_done:
+    lsls r1, r0, #6
+    ldr r0, [r5, #0x64]
+    pop {{r2-r7, pc}}
+
+ko_slot:                    @ r0 = k → r0 = k 를 그려 둔 글자 칸 번호 (없으면 가장 오래 안 쓴 칸에 새로 그린다)
+    push {{r4-r7, lr}}
+    mov r7, r0
+    ldr r4, lit3_slot_k
+    movs r5, #0
+ko_slot_find:
+    lsls r1, r5, #1
+    ldrh r2, [r4, r1]
+    cmp r2, r7
+    beq ko_slot_hit
+    adds r5, #1
+    cmp r5, #{slot_count}
+    blo ko_slot_find
+    ldr r4, lit3_slot_t     @ 쓴 지 가장 오래된 칸
+    movs r5, #0
+    ldr r3, [r4]
+    movs r6, #1
+ko_slot_lru:
+    lsls r1, r6, #2
+    ldr r2, [r4, r1]
+    cmp r2, r3
+    bhs ko_slot_lru_next
+    mov r3, r2
+    mov r5, r6
+ko_slot_lru_next:
+    adds r6, #1
+    cmp r6, #{slot_count}
+    blo ko_slot_lru
+    ldr r4, lit3_slot_k
+    lsls r1, r5, #1
+    strh r7, [r4, r1]
+    mov r0, r5
+    bl ko_slot_draw
+ko_slot_hit:                @ r5 = 칸 순번
+    ldr r4, lit3_stamp
+    ldr r2, [r4]
+    adds r2, #1
+    str r2, [r4]
+    ldr r4, lit3_slot_t
+    lsls r1, r5, #2
+    str r2, [r4, r1]
+    ldr r4, lit3_slot_g
+    lsls r1, r5, #1
+    ldrh r0, [r4, r1]
+    pop {{r4-r7, pc}}
+
+ko_slot_draw:               @ r0 = 칸 순번 → 그 칸의 한글을 기억한 VRAM 폰트 자리마다 그린다
+    push {{r4-r7, lr}}
+    mov r7, r0
+    ldr r4, lit3_slot_k
+    lsls r1, r7, #1
+    ldrh r0, [r4, r1]       @ k
+    ldr r1, lit3_empty
+    cmp r0, r1
+    beq ko_slot_draw_ret    @ 빈 칸
+    bl ko_render8b          @ tile_rows = 굵은 8×16 글자 모양의 작은 한글 (64바이트)
+    ldr r4, lit3_slot_g
+    lsls r1, r7, #1
+    ldrh r6, [r4, r1]
+    lsls r6, r6, #6
+    adds r6, #32            @ 폰트 자리 안의 위치 (글자 0번이 +0x20)
+    movs r5, #0
+ko_slot_draw_base:
+    ldr r4, lit3_bases
+    lsls r1, r5, #2
+    ldr r0, [r4, r1]
+    cmp r0, #0
+    beq ko_slot_draw_next
+    bl ko_base_ok           @ r0 = 폰트가 아직 그 자리에 있으면 1
+    lsls r1, r5, #2
+    cmp r0, #0
+    bne ko_slot_draw_copy
+    str r0, [r4, r1]        @ 폰트가 사라진 자리는 잊는다
+    b ko_slot_draw_next
+ko_slot_draw_copy:
+    ldr r0, [r4, r1]
+    adds r0, r0, r6
+    ldr r1, lit3_tile_rows
+    movs r2, #16
+ko_slot_draw_word:
+    ldmia r1!, {{r3}}
+    stmia r0!, {{r3}}
+    subs r2, #1
+    bne ko_slot_draw_word
+ko_slot_draw_next:
+    adds r5, #1
+    cmp r5, #{base_count}
+    blo ko_slot_draw_base
+ko_slot_draw_ret:
+    pop {{r4-r7, pc}}
+
+ko_base_ok:                 @ r0 = VRAM 폰트 자리 → 굵은 8×16 폰트의 대조 글자가 그대로 있으면 1, 아니면 0. r1–r3 사용
+    push {{r4, lr}}
+    ldr r1, lit3_check_ofs
+    adds r0, r0, r1
+    ldr r1, lit3_check_src
+    movs r2, #16
+ko_base_ok_word:
+    ldmia r0!, {{r3}}
+    ldmia r1!, {{r4}}
+    cmp r3, r4
+    bne ko_base_ok_no
+    subs r2, #1
+    bne ko_base_ok_word
+    movs r0, #1
+    pop {{r4, pc}}
+ko_base_ok_no:
+    movs r0, #0
+    pop {{r4, pc}}
+
+ko_render8b:                @ r0 = k → tile_rows 에 굵은 8×16 글자 모양의 작은 한글 (64바이트). r0–r3 사용
+    push {{r4-r7, lr}}
+    ldr r1, lit3_hangul_base
+    adds r0, r0, r1
+    bl ko_pick8             @ r6 = 글자 그림, 매개변수 [36] = 작은 한글이면 1
+    ldr r3, lit3_params
+    ldr r1, lit3_tile_rows
+    ldr r0, [r3, #36]
+    cmp r0, #0
+    beq ko_render8b_blank   @ 작은 한글이 없는 글자는 빈 칸 (8픽셀에 큰 한글은 못 그린다)
+    movs r0, #8
+    str r0, [r3, #0]        @ 폭 8
+    str r0, [r3, #24]       @ 오른쪽 끝 8
+    movs r0, #0
+    str r0, [r3, #4]        @ X = 0
+    str r0, [r3, #20]
+    movs r0, #4
+    str r0, [r3, #16]       @ 한 줄 4바이트
+    str r1, [r3, #8]
+    movs r0, #{list_bold}
+    str r0, [r3, #12]       @ 굵은 글씨로 할지 (7×7 한글을 굵게 하면 획이 뭉개진다)
+    bl ko_draw8
+    pop {{r4-r7, pc}}
+ko_render8b_blank:
+    movs r0, #0
+    movs r2, #16
+ko_render8b_clear:
+    stmia r1!, {{r0}}
+    subs r2, #1
+    bne ko_render8b_clear
+    pop {{r4-r7, pc}}
+
+ko_upload_a:                @ 로더의 "bl 복사 함수" 대신. r1 = 원본, r2 = VRAM, r3 = 크기 (복사 함수 인자 그대로)
+    push {{r1-r4, lr}}       @ (keystone 은 긴 소스 안의 절대 주소 bl 을 어긋나게 만들므로 blx 로 부른다)
+    ldr r4, lit3_copy_a
+    blx r4
+    b ko_upload_after
+ko_upload_b:
+    push {{r1-r4, lr}}
+    ldr r4, lit3_copy_b
+    blx r4
+ko_upload_after:
+    pop {{r1-r4}}
+    push {{r0}}
+    ldr r0, lit3_bold_font
+    cmp r1, r0
+    bne ko_upload_ret
+    ldr r0, lit3_min_size   @ 한글 칸까지 다 올리는 복사만 기억한다 (카드 번호용으로 앞부분만 다른 자리에
+    cmp r3, r0              @ 올리는 화면이 있는데, 그 자리를 폰트 자리로 알면 남의 칸을 덮는다)
+    blo ko_upload_ret
+    subs r2, #32            @ 글자 0번이 +0x20 에 올라가므로 폰트 자리 = VRAM - 0x20
+    bl ko_upload_record
+ko_upload_ret:
+    pop {{r0}}
+    pop {{pc}}
+
+ko_upload_record:           @ r2 = 굵은 8×16 폰트를 올린 VRAM 자리 → 기억하고, 칸에 든 한글을 다시 그린다
+    push {{r4-r7, lr}}
+    ldr r4, lit3_bases
+    movs r5, #0
+ko_rec_same:
+    lsls r1, r5, #2
+    ldr r0, [r4, r1]
+    cmp r0, r2
+    beq ko_rec_redraw       @ 이미 기억한 자리
+    adds r5, #1
+    cmp r5, #{base_count}
+    blo ko_rec_same
+    movs r5, #0
+ko_rec_free:
+    lsls r1, r5, #2
+    ldr r0, [r4, r1]
+    cmp r0, #0
+    beq ko_rec_store
+    adds r5, #1
+    cmp r5, #{base_count}
+    blo ko_rec_free
+    ldr r3, lit3_base_next  @ 다 찼으면 돌아가며 바꾼다
+    ldr r5, [r3]
+    adds r0, r5, #1
+    movs r1, #{base_mask}
+    ands r0, r1
+    str r0, [r3]
+ko_rec_store:
+    lsls r1, r5, #2
+    str r2, [r4, r1]
+ko_rec_redraw:
+    movs r6, #0
+ko_rec_loop:
+    mov r0, r6
+    bl ko_slot_draw
+    adds r6, #1
+    cmp r6, #{slot_count}
+    blo ko_rec_loop
+    pop {{r4-r7, pc}}
+
+    .align 2
+    .word 0x4C4F4F50
+lit3_hangul_base: .word {hangul_base}
+lit3_slot_k: .word {slot_k}
+lit3_slot_t: .word {slot_t}
+lit3_slot_g: .word {slot_g}
+lit3_stamp: .word {stamp}
+lit3_bases: .word {bases}
+lit3_base_next: .word {base_next}
+lit3_empty: .word 0xFFFF
+lit3_tile_rows: .word {tile_rows}
+lit3_params: .word {params}
+lit3_check_ofs: .word {check_ofs}
+lit3_check_src: .word {check_src}
+lit3_bold_font: .word {bold_font}
+lit3_copy_a: .word {copy_a}
+lit3_copy_b: .word {copy_b}
+lit3_min_size: .word {min_size}
+    .word 0x4C4F4F51
+    .align 2
+code_end_marker: .word 0x4C4F4B4F
+    .word ko_list8          @ 진입점 주소 표 (build 가 읽어서 원래 코드를 연결한다)
+    .word ko_upload_a
+    .word ko_upload_b
 '''
 
 FLAG_ASM = '''
@@ -793,6 +1098,49 @@ ko_site{i}_single:
 '''
 
 
+def hook_sites():
+    """원래 코드를 고치는 곳 [(주소, 바이트 수)] (빌드 뒤 검사용)."""
+    sites = [(a, 4) for a, _ in DECODE_SITES] + [(a, 4) for a, _, _ in FLAG_SITES]
+    sites += [(a, 4) for a, _ in UPLOAD_SITES]
+    return sites + [(WIDTH_SITE, 4), (GLYPH_SITE, 6), (MODE1_CALL, 4), (TILE_SITE, 4), (LIST8_SITE, 4)]
+
+
+def glyph_values():
+    """{글자 번호: 일본판 코드표의 글자}"""
+    values = {}
+    for line in (kotable.PLUGINS / 'rnr1-utf8.tbl').read_text(encoding='utf-8-sig').splitlines():
+        if '=' not in line:
+            continue
+        key, value = line.split('=', 1)
+        code = int(key, 16)
+        index = code if len(key) == 2 else (0xE4 + (code & 0xFF) if key.startswith('E4') else None)
+        if index is not None:
+            values[index] = value
+    return values
+
+
+def list_slots(keep=()):
+    """글자 위치 목록의 한글을 그려 둘 글자 칸: 모든 목록 화면이 VRAM 에 올리는 범위(LIST_GLYPH_LIMIT 미만)의
+    가나·한자 칸. 한글 대사에도 쓰는 기호(ー「」、。・゜)와 남기는 한자는 뺀다."""
+    values = glyph_values()
+    return [g for g in range(1, LIST_GLYPH_LIMIT)
+            if g in values and kotable.is_japanese(values[g]) and values[g] not in kotable.KEEP_JA
+            and values[g] not in keep][:255]
+
+
+def slot_table(slots):
+    """칸 표 덩어리와 안의 위치: slot_g(u16, 칸의 글자 번호), slot_k(u16, 빈 칸 0xFFFF), slot_t(u32),
+    stamp(u32), bases(u32 × LIST_BASES), base_next(u32)."""
+    n = len(slots)
+    half = (2 * n + 3) // 4 * 4
+    blob = struct.pack(f'<{n}H', *slots).ljust(half, b'\0')
+    blob += struct.pack(f'<{n}H', *([0xFFFF] * n)).ljust(half, b'\0')
+    blob += bytes(4 * n) + bytes(4) + bytes(4 * LIST_BASES) + bytes(4)
+    offsets = {'slot_g': 0, 'slot_k': half, 'slot_t': 2 * half, 'stamp': 2 * half + 4 * n,
+               'bases': 2 * half + 4 * n + 4, 'base_next': 2 * half + 4 * n + 4 + 4 * LIST_BASES}
+    return blob, offsets
+
+
 def assemble(src, addr):
     ks = keystone.Ks(keystone.KS_ARCH_ARM, keystone.KS_MODE_THUMB)
     src = '\n'.join(line.split('@')[0] for line in src.splitlines())  # keystone 은 ASCII 만 받는다
@@ -818,14 +1166,17 @@ def check_thumb1(code, addr):
         for ins in cs.disasm(code[a:b], addr + a):
             if ins.size != 2 and ins.mnemonic != 'bl':
                 sys.exit(f'Thumb-1 이 아닌 명령: {ins.address:#x} {ins.mnemonic} {ins.op_str}')
+            # keystone 은 긴 소스 안의 절대 주소 bl 을 어긋나게 만든다: 코드 안의 bl 은 코드 안만 가리켜야 한다
+            if ins.mnemonic == 'bl' and not addr <= int(ins.op_str.lstrip('#'), 16) < addr + end:
+                sys.exit(f'코드 밖을 가리키는 bl: {ins.address:#x} {ins.op_str} (리터럴 주소와 blx 로 부를 것)')
             pos += ins.size
         if pos < b - 2:
             sys.exit(f'코드를 끝까지 해석하지 못했습니다 ({addr + pos:#x}).')
 
 
-def table_size(runs):
+def table_size(regions):
     """구간 표(구간마다 주소·글자 수, 끝 표시) 크기의 상한."""
-    return 8 * (len(runs) + 1)
+    return 8 * (len(regions) + 1)
 
 
 def build_small(chars):
@@ -833,7 +1184,7 @@ def build_small(chars):
     chars 에 든 새 글자만 넣는다. (글자 그림 목록, 있는 글자 비트맵 낱말, 낱말마다 앞의 글자 수)"""
     g7 = load_bdf(GALMURI7_BDF)
     blank = {kotable.THIN_SPACE}
-    glyphs, words = [], [0] * ((len(kotable.NEW_CHARS) + 31) // 32)
+    glyphs, present = [], []
     for k, c in enumerate(kotable.NEW_CHARS):
         if c not in chars or (c not in blank and ord(c) not in g7):
             continue
@@ -842,35 +1193,36 @@ def build_small(chars):
             if 0 <= x < SMALL_CELL and SMALL_Y0 <= y < SMALL_Y0 + SMALL_CELL:
                 rows[y - SMALL_Y0] |= 1 << x
         glyphs.append(bytes(rows))
-        words[k >> 5] |= 1 << (k & 31)
-    prefix, total = [], 0
-    for w in words:
-        prefix.append(total)
-        total += bin(w).count('1')
-    return glyphs, words, prefix
+        present.append(k)
+    return (glyphs, *index_bits(present))
 
 
-def plan(runs, font, small):
-    """빈 구간 배치. 가장 긴 구간 앞부분은 코드 예약 공간이고, 표들을 들어가는 곳에 먼저 놓은 뒤
-    큰 폰트(16바이트), 작은 폰트(8바이트)를 채운다. 안 들어가면 None."""
-    glyphs, words, prefix = small
+def plan(runs, font, small, blobs=None, extra=()):
+    """빈 구간 배치. 가장 긴 구간 앞부분은 코드 예약 공간이다. 이어진 공간이 필요한 덩어리(blobs: 이름 목록
+    아카이브)와 표를 들어가는 곳에 먼저 놓고(4바이트 정렬, 큰 것부터 가장 알맞은 곳에), 큰 폰트(16바이트),
+    작은 폰트(8바이트)는 남은 곳에 나눠 채운다. extra 는 폰트 밖의 빈 구간 [(주소, 바이트 수)].
+    (표 위치, 덩어리 위치, 폰트 구간)을 돌려준다. 안 들어가면 None."""
     code_addr, code_room = runs[0]
     if code_room < CODE_RESERVE:
         return None
-    rest = [[code_addr + CODE_RESERVE, code_room - CODE_RESERVE]] + [list(r) for r in runs[1:]]
-    tables = {'big': table_size(runs), 'small': table_size(runs), 'bits': 4 * len(words),
-              'prefix': (2 * len(prefix) + 3) // 4 * 4}
-    where = {}
-    for name, size in sorted(tables.items(), key=lambda t: -t[1]):
-        fits = [r for r in rest if r[1] >= size]
+    rest = ([[code_addr + CODE_RESERVE, code_room - CODE_RESERVE]] + [list(r) for r in runs[1:]]
+            + [list(r) for r in extra])
+    items = {('table', 'big'): table_size(rest), ('table', 'small'): table_size(rest),
+             ('table', 'bigbits'): 4 * len(font[1]), ('table', 'bigprefix'): (2 * len(font[2]) + 3) // 4 * 4,
+             ('table', 'bits'): 4 * len(small[1]), ('table', 'prefix'): (2 * len(small[2]) + 3) // 4 * 4}
+    items.update({('blob', name): len(data) for name, data in (blobs or {}).items()})
+    where, blob_where = {}, {}
+    for (kind, name), size in sorted(items.items(), key=lambda t: -t[1]):
+        fits = [r for r in rest if r[1] - (-r[0] % 4) >= size]
         if not fits:
             return None
         r = min(fits, key=lambda r: r[1])
-        where[name] = r[0]
-        r[0] += size
-        r[1] -= size
+        pad = -r[0] % 4
+        (where if kind == 'table' else blob_where)[name] = r[0] + pad
+        r[0] += pad + size
+        r[1] -= pad + size
     chunks = {'big': [], 'small': []}
-    for name, items, unit in (('big', font, PACKED), ('small', glyphs, 8)):
+    for name, items, unit in (('big', font[0], PACKED), ('small', small[0], 8)):
         placed = 0
         for r in rest:
             cap = min(r[1] // unit, len(items) - placed)
@@ -882,22 +1234,33 @@ def plan(runs, font, small):
             placed += cap
         if placed < len(items):
             return None
-    return where, chunks
+    return where, blob_where, chunks
 
 
-def build(arm9, keep=(), small_chars=()):
-    """arm9(0x02000000부터의 bytearray)에 한글 출력 코드와 폰트를 넣는다. 사용량 정보를 돌려준다.
+def build(arm9, keep=(), chars=(), blobs=None, extra=()):
+    """arm9(0x02000000부터의 bytearray)에 한글 출력 코드와 폰트를 넣는다. (사용량 정보, 덩어리 주소)를 돌려준다.
     keep: 번역하지 않고 남는 일본어에 쓰이는 한자(자주 쓰이는 순). 폰트가 들어가는 한도 안에서
-    앞에서부터 그 한자 칸을 남긴다. small_chars: 8×16 경로용 작은 한글 폰트에 넣을 글자."""
-    font = build_font()
-    small = build_small(set(small_chars))
+    앞에서부터 그 한자 칸을 남긴다. chars: 한글 폰트(큰 한글·작은 한글)에 넣을 글자.
+    blobs: {이름: 바이트} 이어진 공간에 넣을 덩어리(이름 목록 아카이브). extra: 폰트 밖의 빈 구간."""
+    chars = set(chars)
+    font = build_font(chars)
+    small = build_small(chars)
     keep = list(keep)
-    while plan(free_runs(keep), font, small) is None:
+
+    def with_slots(keep):
+        return dict(blobs or {}, __slots__=slot_table(list_slots(keep))[0])
+
+    while plan(free_runs(keep), font, small, with_slots(keep), extra) is None:
         if not keep:
-            sys.exit('한글 폰트를 다 넣지 못했습니다.')
+            sys.exit('한글 폰트와 이름 목록을 다 넣지 못했습니다.')
         keep.pop()
     runs = free_runs(keep)
-    where, chunks = plan(runs, font, small)
+    where, blob_where, chunks = plan(runs, font, small, with_slots(keep), extra)
+    slots = list_slots(keep)
+    if len(slots) < 32:
+        sys.exit(f'글자 위치 목록의 한글 칸이 너무 적습니다 ({len(slots)}개).')
+    slot_addr = blob_where.pop('__slots__')
+    slot_at = {k: slot_addr + v for k, v in slot_table(slots)[1].items()}
     code_addr = runs[0][0]
     buffer = code_addr + CODE_RESERVE - GLYPH          # 16×16 글자 그림
     tile_rows = buffer - GLYPH                         # 8×16 두 칸 그림을 줄 순서로 그리는 곳
@@ -906,13 +1269,17 @@ def build(arm9, keep=(), small_chars=()):
     def put_data(addr, blob):
         arm9[addr - ARM9_BASE:addr - ARM9_BASE + len(blob)] = blob
 
+    for name, addr in blob_where.items():
+        put_data(addr, blobs[name])
+    put_data(slot_addr, slot_table(slots)[0])
     for name in ('big', 'small'):
         for addr, count, items in chunks[name]:
             put_data(addr, b''.join(items))
         put_data(where[name], b''.join(struct.pack('<II', a, c) for a, c, _ in chunks[name]) +
                  struct.pack('<II', 0, 0xFFFFFFFF))
-    put_data(where['bits'], b''.join(struct.pack('<I', w) for w in small[1]))
-    put_data(where['prefix'], b''.join(struct.pack('<H', v) for v in small[2]))
+    for name, table in (('big', font), ('', small)):
+        put_data(where[name + 'bits'], b''.join(struct.pack('<I', w) for w in table[1]))
+        put_data(where[name + 'prefix'], b''.join(struct.pack('<H', v) for v in table[2]))
     placed = sum(c for _, c, _ in chunks['big'])
     table = where['big']
 
@@ -936,6 +1303,15 @@ def build(arm9, keep=(), small_chars=()):
         if before[:2] != bytes([0xE4, 0x28]) or before[5] != 0xD1 or \
                 before[2:4] != assemble(extra, site + 2):
             sys.exit(f'{site:#x} 가 예상한 코드(cmp r0,#0xE4; {extra}; bne)가 아닙니다: {before.hex()}')
+    if bytes(arm9[LIST8_SITE - ARM9_BASE:LIST8_SITE - ARM9_BASE + 4]) != \
+            assemble('lsls r1, r0, #6\nldr r0, [r5, #0x64]', LIST8_SITE):
+        sys.exit(f'{LIST8_SITE:#x} 가 예상한 코드(lsls r1,r0,#6; ldr r0,[r5,#0x64])가 아닙니다.')
+    for site, func in UPLOAD_SITES:
+        if bytes(arm9[site - ARM9_BASE:site - ARM9_BASE + 4]) != assemble(f'bl {func:#x}', site):
+            sys.exit(f'{site:#x} 가 예상한 코드(bl {func:#x})가 아닙니다.')
+    copy_funcs = sorted({func for _, func in UPLOAD_SITES}, reverse=True)   # (ko_upload_a, ko_upload_b)
+    if len(copy_funcs) != 2:
+        sys.exit('로더의 복사 함수가 두 종류가 아닙니다.')
     src = ASM.format(
         site_entries='\n'.join(f'    b ko_site{i}' for i in range(len(sites))),
         site_helpers=''.join(SITE_ASM.format(i=i, slot=slot, single=single, **common)
@@ -949,13 +1325,21 @@ def build(arm9, keep=(), small_chars=()):
         buffer=buffer, cell=CELL, chunks=table, mode1_func=MODE1_FUNC | 1, row_buffer=ROW_BUFFER,
         params=params, tile_rows=tile_rows, small_bits=where['bits'], small_prefix=where['prefix'],
         small_chunks=where['small'], small_top=SMALL_TOP, small_cell=SMALL_CELL,
+        big_bits=where['bigbits'], big_prefix=where['bigprefix'], new_chars=len(kotable.NEW_CHARS),
         row_stride=ROW_STRIDE, row_pixels=ROW_PIXELS, bold_font=BOLD_FONT, glyph_top=GLYPH_TOP,
-        glyph_top1=GLYPH_TOP + 1)
+        glyph_top1=GLYPH_TOP + 1, slot_count=len(slots), base_count=LIST_BASES, base_mask=LIST_BASES - 1,
+        copy_a=copy_funcs[0] | 1, copy_b=copy_funcs[1] | 1, min_size=(max(slots) + 1) * 64,
+        list_bold=int(os.environ.get('KO_LIST_BOLD', '0')),
+        check_ofs=32 + LIST_CHECK * 64,
+        check_src=BOLD_FONT + LIST_CHECK * 64, **slot_at)
     code = assemble(src, code_addr)
     check_thumb1(code, code_addr)
     if code_addr + len(code) > params:
         sys.exit(f'코드가 예약 공간을 넘습니다 ({len(code)}바이트).')
     arm9[code_addr - ARM9_BASE:code_addr - ARM9_BASE + len(code)] = code
+    marker = code.index(struct.pack('<I', 0x4C4F4B4F))   # 코드 끝 표시 뒤의 진입점 주소 표
+    entry_list8, entry_upload_a, entry_upload_b = struct.unpack_from('<3I', code, marker + 4)
+    upload_entry = {copy_funcs[0]: entry_upload_a, copy_funcs[1]: entry_upload_b}
 
     def put(site, asm_src):
         blob = assemble(asm_src, site)
@@ -973,6 +1357,11 @@ def build(arm9, keep=(), small_chars=()):
         put(MODE1_CALL, f'bl {extra_entry:#x}')
     if 'tile' not in skip:
         put(TILE_SITE, f'bl {extra_entry + 2:#x}')
-    return {'코드': len(code), '한글 글자': placed, '작은 한글': len(small[0]),
+    if 'list8' not in skip:
+        put(LIST8_SITE, f'bl {entry_list8:#x}')
+        for site, func in UPLOAD_SITES:
+            put(site, f'bl {upload_entry[func]:#x}')
+    info = {'코드': len(code), '한글 글자': placed, '작은 한글': len(small[0]),
             '구간': len(chunks['big']) + len(chunks['small']), '코드 주소': hex(code_addr),
-            '버퍼': hex(buffer), '남긴 한자': ''.join(keep)}
+            '버퍼': hex(buffer), '목록 한글 칸': len(slots), '남긴 한자': ''.join(keep)}
+    return info, blob_where
