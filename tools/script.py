@@ -21,6 +21,10 @@ import sys
 
 import ndspy.lz10
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import relocate  # noqa: E402
+import version  # noqa: E402
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WORK = ROOT / 'work'
 MESS = WORK / 'fs' / 'datbin' / 'com' / 'mess.bin'
@@ -29,7 +33,7 @@ TEXTPET = WORK / 'textpet' / 'bin' / 'TextPet.dll'
 PLUGINS = ROOT / 'tools' / 'textpet' / 'plugins'
 JA_DIR = ROOT / 'script' / 'ja'
 COMPRESSED = 0x80000000
-ARM9 = WORK / 'arm9.bin'
+ARM9 = version.WORK / 'arm9.bin'          # 이름 목록은 판본마다 ARM9 에서 읽는다
 ARM9_BASE = 0x02000000
 MESS_BLOCKS = 1247
 # ARM9 안의 이름 목록 (블록 번호: 아카이브 주소). 번호는 영어판 mess.bin 블록 번호.
@@ -45,6 +49,8 @@ NAME_ARCHIVES = {
     1255: 0x020D3C70,   # 적 2 (보스)
     1256: 0x02106E90,   # 안드로메다
 }
+# 주소는 레오 기준이다. 다른 판본은 같은 내용을 찾아 옮긴다.
+NAME_ARCHIVES = {b: relocate.data(a) for b, a in NAME_ARCHIVES.items()}
 
 
 def read_mess(data):

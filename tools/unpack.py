@@ -2,6 +2,8 @@
 """rom/ 폴더의 NDS 롬을 work/ 아래로 풀어서 분석용 파일을 만든다.
 
 다른 롬을 풀 때: python3 tools/unpack.py <롬 파일 또는 폴더> <출력 폴더>
+판본: 인자 없이 돌리면 KO_VERSION(leo 기본, dragon, pegasus)의 일본판을 rom/ 에서 게임 코드로 골라
+version.WORK(레오는 work/, 다른 판본은 work/<판본>/)에 푼다.
 
 rom/ 에는 .nds, .zip, .7z 를 그대로 넣거나, 25MB 업로드 제한 때문에 나눈 조각을 넣는다.
   - 이름.001, 이름.002 ...        (7-Zip 볼륨 나누기/파일 분할, 반디집 7Z 분할 압축)
@@ -24,9 +26,12 @@ import zlib
 
 import ndspy.rom
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import version  # noqa: E402
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ROM_DIR = ROOT / 'rom'
-WORK = ROOT / 'work'
+WORK = version.WORK
 JOINED = WORK / 'joined'
 SPLIT_RE = re.compile(r'^(.+)\.(\d{3})$')
 
@@ -157,14 +162,17 @@ def read_nds(path):
     return None
 
 
-def load_rom_bytes():
+def load_rom_bytes(game_code=None):
+    """롬을 찾아 (이름, 바이트)를 돌려준다. game_code 를 주면 그 게임 코드(헤더 0x0C)의 롬만 고른다
+    (rom/ 에 여러 판본을 넣어 두어도 된다)."""
     JOINED.mkdir(parents=True, exist_ok=True)
     candidates = [ROM_DIR] if ROM_DIR.is_file() else join_split_files() + sorted(ROM_DIR.iterdir())
     for path in candidates:
         data = read_nds(path)
-        if data:
+        if data and (game_code is None or data[0xC:0x10] == game_code.encode()):
             return path.name, data
-    sys.exit(f'{ROM_DIR} 에서 .nds 롬을 찾지 못했습니다.')
+    which = f'게임 코드 {game_code} 인 ' if game_code else ''
+    sys.exit(f'{ROM_DIR} 에서 {which}.nds 롬을 찾지 못했습니다.')
 
 
 def describe(data):
@@ -180,7 +188,7 @@ def main():
         JOINED = WORK / 'joined'
     elif len(sys.argv) != 1:
         sys.exit('사용법: python3 tools/unpack.py [<롬 파일 또는 폴더> <출력 폴더>]')
-    source, data = load_rom_bytes()
+    source, data = load_rom_bytes(None if len(sys.argv) == 3 else version.GAME_CODE)
     (WORK / 'original.nds').write_bytes(data)
 
     rom = ndspy.rom.NintendoDSRom(data)

@@ -1,6 +1,7 @@
-# 유성의 록맨 레오 한글패치 작업
+# 유성의 록맨 1 (레오·드래곤·페가서스) 한글패치 작업
 
-대상 롬: `Ryuusei no Rockman - Leo (Japan)` (NDS)
+대상 롬: 일본판 `Ryuusei no Rockman - Leo / Dragon / Pegasus (Japan)` (NDS). 레오를 기준으로 작업하고
+드래곤·페가서스에 같은 한글을 넣는다(대사 파일은 세 판본이 같고, 코드 주소만 다르다).
 
 > 이 저장소에는 롬이 들어 있지 않다. 원본 롬과 패치된 롬은 배포하지 않고, 원본과의 차이만 담긴
 > xdelta 패치 파일만 공유한다. 롬 파일(`.nds`, `.zip`, `.7z`)과 PC판 한글패치 원본(`.pak`)은
@@ -8,8 +9,13 @@
 
 ## 시험용 한글 패치
 
-`patch/rnr1_leo_ko.xdelta`를 원본 롬 `Ryuusei no Rockman - Leo (Japan).nds`(CRC32 `EA4F4898`)에 적용한다.
-윈도우에서는 Delta Patcher나 xdelta UI 같은 xdelta 패치 도구를 쓰면 된다.
+판본에 맞는 패치를 원본 롬에 적용한다. 윈도우에서는 Delta Patcher나 xdelta UI 같은 xdelta 패치 도구를 쓰면 된다.
+
+| 판본 | 원본 롬 | CRC32 | 패치 |
+|---|---|---|---|
+| 레오 | `Ryuusei no Rockman - Leo (Japan).nds` | `EA4F4898` | `patch/rnr1_leo_ko.xdelta` |
+| 드래곤 | `Ryuusei no Rockman - Dragon (Japan).nds` | `CB5CC109` | `patch/rnr1_dragon_ko.xdelta` |
+| 페가서스 | `Ryuusei no Rockman - Pegasus (Japan).nds` | `7FFD36D3` | `patch/rnr1_pegasus_ko.xdelta` |
 
 지금 들어간 것: PC판 한글패치의 대사(스토리, 맵 대사, NPC, 튜토리얼, 상점, 저장·통신 화면, 엔딩 크레딧 등)와
 카드 설명·폴더 메뉴·워록 화면·메뉴 라벨 등 목록 화면, 831개 블록. 선택지 버튼과 이름 입력 확인 창도 한글이다.
@@ -79,9 +85,16 @@ python tools/script.py dump                                   # 일본어 원문
 python tools/pcpak.py ref/re_chunk_000.pak.patch_002.pak ref/pc_ko/rr1.json  # PC판 한글 뽑기 (결과가 이미 들어 있음)
 python tools/pc2ds.py                                         # 한글 스크립트 script/ko/*.tpl 만들기
 python tools/build_rom.py                                     # 한글판 롬(build/)과 패치 파일(patch/) 만들기
+set KO_VERSION=dragon& python tools/unpack.py& python tools/build_rom.py    # 드래곤 (페가서스는 pegasus)
 python tools/emutest.py free build/rnr1_leo_ko.nds a          # 에뮬레이터로 처음부터 집 앞까지 (work/emutest/)
 python tools/emutest.py keys build/rnr1_leo_ko.nds a_free m X,w30,A,w90,S   # 그 상태에서 메뉴 열기
 ```
+
+판본은 환경 변수 `KO_VERSION`(`leo` 기본, `dragon`, `pegasus`)으로 고른다. `rom/`에 여러 롬을 넣어 두어도
+`tools/unpack.py`가 게임 코드로 그 판본의 일본판을 골라 레오는 `work/`, 다른 판본은 `work/<판본>/`에 푼다.
+엔진·이름 목록의 주소는 레오 기준이라 다른 판본은 레오의 앞뒤 바이트로 찾아 옮기므로(`tools/relocate.py`),
+드래곤·페가서스를 빌드하려면 레오도 먼저 풀어 둬야 한다. 드래곤은 레오와 같은 자리, 페가서스는 0x0202C000
+부근부터 0x02103000 부근까지 4바이트 앞당겨져 있다.
 
 `emutest.py`는 세이브 상태를 만든 롬을 `상태.dst.rom`에 적어 두었다가, 다른 롬으로 그 상태를 불러오면 두 롬의
 ARM9·오버레이 차이만 메모리에 덮어쓴다. 그래서 엔진·폰트·이름 목록을 고친 롬도 처음부터 다시 돌리지 않고

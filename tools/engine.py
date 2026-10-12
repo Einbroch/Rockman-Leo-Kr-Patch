@@ -24,6 +24,7 @@ import keystone
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import kotable  # noqa: E402
+import relocate  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 GALMURI_DIR = ROOT / 'work' / 'galmuri'
@@ -82,6 +83,27 @@ LIST_CHECK = 0x5E           # 자리가 아직 폰트인지 볼 때 대조하는
 UPLOAD_SITES = [(0x0202F37C, 0x0202E5A4), (0x0202F3A0, 0x0202E5A4), (0x0202F3C4, 0x0202E5A4),
                 (0x0202F3E8, 0x0202E5A4), (0x0202F40C, 0x0202E56C), (0x0202F430, 0x0202E56C),
                 (0x0202F454, 0x0202E56C), (0x0202F478, 0x0202E56C)]
+MENU_FONT = 0x020D879C       # 8×16 메뉴 폰트 글자 0번
+SMALL_FONT = 0x020D4B9C      # 8×8 작은 폰트 글자 0번
+
+
+# ---------------------------------------------------------------- 판본
+# 위 주소는 일본판 레오 기준이다. 다른 판본(드래곤·페가서스)은 레오의 앞뒤 바이트로 찾아 옮긴다(tools/relocate.py).
+def _font(addr, size):
+    return relocate.data(addr + 0x5E * size, size) - 0x5E * size     # 글자 0번은 빈 칸이라 'A' 로 찾는다
+
+
+FONT0 = _font(FONT0, GLYPH)
+MENU_FONT = _font(MENU_FONT, 64)
+BOLD_FONT = _font(BOLD_FONT, 64)
+SMALL_FONT = _font(SMALL_FONT, 32)
+WIDTH_TABLE = relocate.data(WIDTH_TABLE, FONT0_COUNT)
+DECODE_SITES = [(relocate.code(a), s) for a, s in DECODE_SITES]
+FLAG_SITES = [(relocate.code(a), s, x) for a, s, x in FLAG_SITES]
+WIDTH_SITE, MODE1_CALL, MODE1_FUNC, TILE_SITE, GLYPH_SITE, LIST8_SITE = map(
+    relocate.code, (WIDTH_SITE, MODE1_CALL, MODE1_FUNC, TILE_SITE, GLYPH_SITE, LIST8_SITE))
+UPLOAD_SITES = [(relocate.code(a), relocate.code(f)) for a, f in UPLOAD_SITES]
+ROW_BUFFER = relocate.literal(ROW_BUFFER)
 
 
 # ---------------------------------------------------------------- 폰트
@@ -174,8 +196,8 @@ def build_font(chars):
 # 글자 번호가 같은 네 폰트(대사 16×16, 메뉴 8×16 둘, 작은 8×8). 한자 칸만 한글 폰트 자리로 쓰고 가나는 남겨서,
 # 아직 번역하지 않은 일본어(이름, 메뉴 등)의 가나는 그대로 읽히게 한다.
 # (글자 0번 주소, 글자당 바이트, 글자 수). 8×8 폰트는 0x1E0자뿐이라 바로 뒤가 메뉴 8×16 폰트다.
-FONTS = [(FONT0, GLYPH, FONT0_COUNT), (0x020D879C, 64, FONT0_COUNT), (0x020E0F9C, 64, FONT0_COUNT),
-         (0x020D4B9C, 32, 0x1E0)]
+FONTS = [(FONT0, GLYPH, FONT0_COUNT), (MENU_FONT, 64, FONT0_COUNT), (BOLD_FONT, 64, FONT0_COUNT),
+         (SMALL_FONT, 32, 0x1E0)]
 
 
 def free_glyphs(keep=()):
