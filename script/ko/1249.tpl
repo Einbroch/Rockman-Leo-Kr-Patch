@@ -462,15 +462,15 @@ script 114 mmsf1 {
 	end
 }
 script 115 mmsf1 {
-	"베르세르크 소드 1"
+	"베르세르크소드 1"
 	end
 }
 script 116 mmsf1 {
-	"베르세르크 소드 2"
+	"베르세르크소드 2"
 	end
 }
 script 117 mmsf1 {
-	"베르세르크 소드 3"
+	"베르세르크소드 3"
 	end
 }
 script 118 mmsf1 {
@@ -586,11 +586,11 @@ script 145 mmsf1 {
 	end
 }
 script 146 mmsf1 {
-	"그래비티 스테이지"
+	"그래비티스테이지"
 	end
 }
 script 147 mmsf1 {
-	"가드 무효 스테이지"
+	"가드무효스테이지"
 	end
 }
 script 148 mmsf1 {
@@ -978,7 +978,7 @@ script 243 mmsf1 {
 	end
 }
 script 244 mmsf1 {
-	"디스트로이 미사일"
+	"디스트로이미사일"
 	end
 }
 script 245 mmsf1 {
@@ -1018,7 +1018,7 @@ script 253 mmsf1 {
 	end
 }
 script 254 mmsf1 {
-	"엘리멘탈 사이클론"
+	"엘리멘탈사이클론"
 	end
 }
 script 255 mmsf1 {

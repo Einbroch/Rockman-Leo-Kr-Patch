@@ -105,6 +105,46 @@ def repoint(rom, arm9, moves):
     return count
 
 
+# 오버레이 코드 고치기: (오버레이 번호, 레오 주소, 원래 바이트, 새 바이트, 까닭)
+OVERLAY_PATCHES = [
+    # 필드의 카드 목록(한 줄 10칸)은 목록 함수에 최대 12칸(0x30)을 넘긴다. 10칸(0x28)으로 알려 주면 엔진이
+    # 거기서는 큰 한글 대신 작은 한글을 한 칸씩 그린다(engine.py 의 ko_list8_small).
+    (2, 0x0217FEC0, bytes.fromhex('3021'), bytes.fromhex('2821'), '10칸 카드 목록의 최대 칸 수'),
+]
+
+
+def patch_overlays(rom):
+    """OVERLAY_PATCHES 를 적용한다. 다른 판본은 레오 오버레이의 앞뒤 바이트로 자리를 찾는다."""
+    leo = None
+    if version.NAME != 'leo':
+        leo = ndspy.rom.NintendoDSRom.fromFile(str(ROOT / 'work' / 'original.nds')).loadArm9Overlays()
+    overlays = rom.loadArm9Overlays()
+    for ov_id, addr, old, new, why in OVERLAY_PATCHES:
+        ov = overlays[ov_id]
+        data = bytearray(rom.files[ov.fileID])
+        off = addr - ov.ramAddress
+        if leo is not None:
+            # 레오의 앞뒤 바이트로 찾는다. 넓은 창부터, 레오와 판본 양쪽에서 딱 한 군데일 때만 쓴다
+            # (주변의 PC 상대 리터럴은 판본마다 달라 넓은 창이 안 맞을 수 있다).
+            ref = bytes(leo[ov_id].data)
+            r = addr - leo[ov_id].ramAddress
+            for before, after in ((16, 16), (8, 12), (0, 12)):
+                window = ref[r - before:r + after]
+                if ref.count(window) != 1:
+                    continue
+                hits = [i for i in range(len(data) - len(window)) if data[i:i + len(window)] == window]
+                if len(hits) == 1:
+                    off = hits[0] + before
+                    break
+            else:
+                sys.exit(f'{version.LABEL}: 오버레이 {ov_id} 의 {addr:#x}({why})를 찾지 못했습니다.')
+        if data[off:off + len(old)] != old:
+            sys.exit(f'오버레이 {ov_id} {addr:#x}: 예상한 바이트가 아닙니다 ({why}).')
+        data[off:off + len(new)] = new
+        rom.files[ov.fileID] = bytes(data)
+        print(f'오버레이 {ov_id} {ov.ramAddress + off:#x}: {why}')
+
+
 def check_changes(original, data, keep, ref_positions):
     """ARM9 에서 바뀐 바이트가 모두 쓸 수 있는 곳(폰트의 빈 칸, 원래 이름 목록 자리, 코드를 고친 곳, 이름 목록
     참조 낱말) 안에 있는지 확인한다. 배치 계산이 틀려 남의 데이터를 덮으면 여기서 멈춘다.
@@ -149,6 +189,7 @@ def main():
     refs = word_positions(original, set(moves))
     arm9_refs = bytearray(original)                      # 옛 낱말 위치는 원본에서 찾고 새 값은 data 에 쓴다
     count = repoint(rom, arm9_refs, moves)
+    patch_overlays(rom)
     for old, positions in refs.items():
         for i in positions:
             if data[i:i + 4] != original[i:i + 4]:

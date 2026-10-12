@@ -693,13 +693,76 @@ def name_cells(items):
     return len(text.rstrip(' '))
 
 
+# 카드 이름(글자 위치 목록 경로로 찍는 목록)은 한글을 12픽셀 간격(한글 사이 공백 4픽셀)으로 이어 그려 8픽셀 칸으로
+# 자른다(tools/engine.py 의 ko_list8). 한 줄은 칸 12개까지다. 필드의 카드 목록 하나는 10칸이라 거기서는
+# 작은 한글을 한 글자 한 칸씩 그리므로 글자 수도 10칸 안이어야 한다.
+LIST_NAME_BLOCKS = {1249, 1250}
+LIST_CELLS = 12
+
+
+def strip_cells(text, pitch=12, space=4):
+    """한글을 pitch 픽셀 간격(한글 사이 공백 space 픽셀)으로 이어 그려 8픽셀 칸으로 자를 때의 칸 수
+    (tools/engine.py 의 ko_list8·ko_tile_big 과 같은 규칙: 한글이 아닌 글자는 칸 하나)."""
+    hangul = set(kotable.HANGUL)
+    n, carry, joining = 0, 0, False
+    for c in BRACKET.sub('#', text):
+        if c in hangul:
+            joining = True
+            total = carry + pitch
+            n += (total + 7) // 8 - (1 if carry else 0)
+            carry = total % 8
+        elif c == ' ' and joining:
+            if carry == 0:
+                n, carry = n + 1, space
+            else:
+                carry += space
+                if carry >= 8:
+                    carry -= 8
+                    n += 1 if carry else 0
+        else:
+            joining, carry = False, 0
+            n += 1
+    return n
+
+
+def list_cells(items, pitch=12, space=4):
+    """카드 목록 한 줄에서 이름이 차지하는 8픽셀 칸 수."""
+    return strip_cells(''.join(it[1] if it[0] == 'text' else '#' * cell_width(it)
+                               for it in items if it[0] == 'text' or it[1] != 'end').rstrip(' '), pitch, space)
+
+
+# 폴더 이름(블록 1248 의 0~2번)은 새 게임 때 저장 데이터로 복사되고, 폴더 화면에서 큰 한글로 8칸에 그린다.
+# 일본판처럼 8칸을 꽉 채워 앞 이름이 남지 않게 뒤에 공백을 붙인다.
+FOLDER_NAMES = (1248, (0, 1, 2), 8)
+
+
+def pad_folder_names(outputs, report):
+    block, nums, cells = FOLDER_NAMES
+    for num in nums:
+        items = outputs.get(block, {}).get(num)
+        if not items:
+            continue
+        texts = [it for it in items if it[0] == 'text']
+        text = texts[-1][1].rstrip(' ')
+        while strip_cells(''.join(it[1] for it in texts[:-1]) + text) < cells:
+            text += ' '
+        texts[-1][1] = text
+        if strip_cells(''.join(it[1] for it in texts)) != cells:
+            report.append(f'{block}\t-\t폴더 이름 {num}: {cells}칸에 맞출 수 없음: {text!r}')
+
+
 def name_lengths(outputs, stats, report):
-    """이름 목록에서 일본판의 가장 긴 이름보다 칸을 더 쓰는 한글 이름을 적는다(메뉴 칸을 넘칠 수 있다)."""
+    """이름 목록에서 일본판의 가장 긴 이름보다 칸을 더 쓰는 한글 이름을 적는다(메뉴 칸을 넘칠 수 있다).
+    카드 이름은 카드 목록 한 줄의 칸 수(LIST_CELLS)로 잰다."""
     for block in sorted(NAME_BLOCKS & set(outputs)):
         ja = parse_tpl((JA_DIR / f'{block:04d}.tpl').read_text(encoding='utf-8-sig'))
-        limit = max(name_cells(items) for items in ja.values())
+        measure = list_cells if block in LIST_NAME_BLOCKS else name_cells
+        limit = LIST_CELLS if block in LIST_NAME_BLOCKS else max(name_cells(items) for items in ja.values())
         for num, items in sorted(outputs[block].items()):
-            cells = name_cells(items)
+            if block in LIST_NAME_BLOCKS and name_cells(items) > 10:
+                stats['10칸 카드 목록을 넘는 이름'] += 1
+                report.append(f'{block}\t-\t스크립트 {num}: 10칸 카드 목록(작은 한글 한 칸씩)을 넘음: {name_cells(items)}칸')
+            cells = measure(items)
             if cells > limit:
                 stats['일본판 최장보다 긴 이름'] += 1
                 text = ''.join(it[1] if it[0] == 'text' else '{' + it[1] + '}' for it in items if it[1] != 'end')
@@ -836,6 +899,7 @@ def main():
     skip = {b for b, name in block_map.items() if name[4:-4] in SKIP_FILES} | \
         {int(b) for b, fix in fixes.items() if fix.get('skip')}
     add_ja_only(outputs, skip, stats, report)
+    pad_folder_names(outputs, report)
     name_lengths(outputs, stats, report)
     for block, scripts in sorted(outputs.items()):
         (KO_DIR / f'{block:04d}.tpl').write_text(write_tpl(f'{block:04d}', sizes[block], scripts), encoding='utf-8')

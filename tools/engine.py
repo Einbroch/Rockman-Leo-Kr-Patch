@@ -68,7 +68,7 @@ SMALL_TOP = 6               # 8×16 칸에서 작은 한글 윗줄 (가나 4–1
 # 16×16 칸의 한글이면 글자 그림 버퍼 주소를 쓰게 한다.
 TILE_SITE = 0x0201E7DC
 GLYPH_SITE = 0x0201E5A2
-CODE_RESERVE = 0xA00        # 가장 긴 빈 구간 앞부분: 코드, 작업 공간, 글자 그림 버퍼 (구간 표는 그 뒤)
+CODE_RESERVE = 0xD00        # 가장 긴 빈 구간 앞부분: 코드, 작업 공간, 글자 그림 버퍼 (구간 표는 그 뒤)
 # 글자 위치 목록 경로(0x020202D8, 카드 이름 목록)는 글자마다 "폰트 안 위치(번호×64)"만 적고, 목록을 받은 화면이
 # 그 값을 타일 번호((위치+0x20)>>5)로 바꿔 쓴다. 폰트(굵은 8×16)는 화면을 열 때 VRAM 에 올려 둔다(자리+0x20 에,
 # 폴더 화면은 글자 0~0x17F, 라이브러리는 0~0xFF). 그래서 한글은 VRAM 에 올라간 폰트의 가나·한자 칸(카드 이름이
@@ -78,6 +78,8 @@ LIST8_SITE = 0x02020360     # "lsls r1, r0, #6; ldr r0, [r5, #0x64]": 8×16 목�
 LIST_GLYPH_LIMIT = 0x100    # 모든 목록 화면이 VRAM 에 올리는 글자 범위 (라이브러리는 0~0xFF 만 올린다)
 LIST_BASES = 4              # 굵은 8×16 폰트를 올린 VRAM 자리를 이만큼 기억한다
 LIST_CHECK = 0x5E           # 자리가 아직 폰트인지 볼 때 대조하는 글자 ('A')
+# 저장 데이터를 가리키는 포인터의 자리. 폴더 이름은 [[SAVE_PTR]] + 0xC4 부터 0x12 바이트씩 3개(0x02015A1C).
+SAVE_PTR = 0x0212B704
 # 그림(글자 폰트 포함)을 VRAM 에 올리는 로더들의 복사 호출: (호출 위치, 복사 함수). 굵은 8×16 폰트를 올리면
 # 그 자리를 기억하고 지금 칸에 든 한글을 그 자리에도 그린다.
 UPLOAD_SITES = [(0x0202F37C, 0x0202E5A4), (0x0202F3A0, 0x0202E5A4), (0x0202F3C4, 0x0202E5A4),
@@ -104,6 +106,7 @@ WIDTH_SITE, MODE1_CALL, MODE1_FUNC, TILE_SITE, GLYPH_SITE, LIST8_SITE = map(
     relocate.code, (WIDTH_SITE, MODE1_CALL, MODE1_FUNC, TILE_SITE, GLYPH_SITE, LIST8_SITE))
 UPLOAD_SITES = [(relocate.code(a), relocate.code(f)) for a, f in UPLOAD_SITES]
 ROW_BUFFER = relocate.literal(ROW_BUFFER)
+SAVE_PTR = relocate.literal(SAVE_PTR)
 
 
 # ---------------------------------------------------------------- 폰트
@@ -401,7 +404,7 @@ extra_widths:
 
 @ 8×16 폰트 모양 한글 그리기(ko_draw8)의 매개변수 (lit2_params):
 @ [0] 폭 [4] X [8] 기준 주소 [12] 굵은 글씨 [16] 한 줄 바이트 수 [20] (쓰지 않음) [24] 오른쪽 끝(px)
-@ [36] 작은 한글(갈무리7)이면 1 [40] 글자 윗줄(y)
+@ [36] 작은 한글(갈무리7)이면 1 [40] 글자 윗줄(y) [44] 1 이면 빈 점은 쓰지 않음(겹쳐 그리기)
 
 ko_mode1:                   @ r0 = 글자 상자. 8×16 폰트로 한 줄에 이어 그리는 경로(원래 0x0201E724)
     ldrh r1, [r0, #0x28]
@@ -567,6 +570,12 @@ ko_draw8_two:
     movs r2, #2
 ko_draw8_put:               @ (X + x, y) 점 = r2
     ldr r3, lit2_params
+    cmp r2, #0
+    bne ko_draw8_ink
+    ldr r0, [r3, #44]       @ 매개변수 [44] = 1 이면 빈 점은 쓰지 않는다
+    cmp r0, #0
+    bne ko_draw8_next
+ko_draw8_ink:
     ldr r0, [r3, #4]
     adds r0, r0, r5         @ px
     ldr r1, [r3, #24]
@@ -664,7 +673,7 @@ ko_tile:
     ldr r0, [sp, #0]
     cmp r0, #0
     bne ko_tile_pitch16
-    b ko_tile_strip
+    b ko_tile_bigchk        @ 폴더 이름이면 큰 한글, 아니면 ko_tile_strip
 ko_tile_normal:
     ldr r0, [r6, #0x1c]
     ldr r2, [r4]
@@ -805,55 +814,527 @@ lit2_small_chunks: .word {small_chunks}
 lit_pre_base: .word {pre_base}
     .word 0x4C4F4F51
 
-@ 글자 위치 목록(8×16, 카드 이름 목록)의 한글: VRAM 에 올라간 굵은 폰트의 가나·한자 칸에 작은 한글을 그려 두고
-@ 그 칸 번호를 목록에 적는다. 칸 표: slot_g[칸] = 글자 번호(빌드할 때 정함), slot_k[칸] = 그려 둔 한글 k
-@ (없으면 0xFFFF), slot_t[칸] = 마지막으로 쓴 때. bases[] = 굵은 폰트를 올린 VRAM 자리(글자 0번 - 0x20).
+@ 글자 위치 목록(8×16, 카드 이름 목록)의 한글: 한 이름 안의 한글을 큰 한글(11×11)로 12픽셀 간격으로 이어 그리고
+@ (한글 사이 공백은 4픽셀) 8픽셀 칸으로 잘라, VRAM 에 올라간 굵은 폰트의 가나·한자 칸에 그려 넣고 그 칸 번호를
+@ 목록에 적는다. 한글 한 글자는 칸 1.5개다. 칸 경계에 걸친 칸은 먼저 적어 두었다가 다음 글자를 그릴 때 다시 쓴다.
+@ 칸 표: slot_g[칸] = 글자 번호(빌드할 때 정함), slot_k[칸] = 그려 둔 그림의 해시(없으면 0), slot_t[칸] = 마지막으로
+@ 쓴 때. bases[] = 굵은 폰트를 올린 VRAM 자리(글자 0번 - 0x20). state: [0] 한글을 잇는 중 [4] 걸친 칸에 쓴 픽셀 수.
 ko_list8:                   @ 0x02020360 "lsls r1, r0, #6; ldr r0, [r5, #0x64]" 대신. r0 = 글자 번호, r5 = 글자 상자
-    push {{r2-r7, lr}}
-    ldr r2, lit3_hangul_base
-    cmp r0, r2
-    blo ko_list8_done
-    subs r0, r0, r2         @ k
-    bl ko_slot              @ r0 = k 를 그려 둔 글자 칸 번호
-ko_list8_done:
-    lsls r1, r0, #6
+    push {{r2-r7, lr}}       @ → r1 = 적을 값, r0 = 적을 곳. 원래 코드가 적은 뒤 목록 자리를 4 늘린다
+    mov r7, r0
+    ldr r4, lit3a_state
+    movs r2, #0xE8
+    ldr r1, [r5, r2]        @ 지금까지 적은 바이트 수 (이 글자 몫 4 포함)
+    cmp r1, #4
+    bne ko_list8_go
+    movs r1, #0             @ 이름의 첫 글자: 처음부터
+    str r1, [r4, #0]
+    str r1, [r4, #4]
+ko_list8_go:
+    ldr r2, lit3a_hangul_base
+    cmp r7, r2
+    bhs ko_list8_ko
+    ldr r1, [r4, #0]
+    cmp r1, #0
+    beq ko_list8_plain
+    cmp r7, #0
+    beq ko_list8_space
+ko_list8_plain:             @ 한글이 아닌 글자는 원래대로 칸 하나
+    movs r1, #0
+    str r1, [r4, #0]
+    str r1, [r4, #4]
+    lsls r1, r7, #6
     ldr r0, [r5, #0x64]
     pop {{r2-r7, pc}}
 
-ko_slot:                    @ r0 = k → r0 = k 를 그려 둔 글자 칸 번호 (없으면 가장 오래 안 쓴 칸에 새로 그린다)
+ko_list8_space:             @ 한글 사이 공백 4픽셀
+    bl ko_list8_pitch       @ r2 = 공백 폭
+    ldr r0, [r4, #4]
+    cmp r0, #0
+    bne ko_list8_space_more
+    str r2, [r4, #4]        @ 칸 경계에서: 빈 칸 하나를 새로 두고 거기에 걸친다
+ko_list8_blank:
+    ldr r0, lit3a_part
+    movs r1, #0
+    movs r2, #16
+ko_list8_space_clr:
+    stmia r0!, {{r1}}
+    subs r2, #1
+    bne ko_list8_space_clr
+    movs r1, #0             @ 빈 글자 0번
+    ldr r0, [r5, #0x64]
+    pop {{r2-r7, pc}}
+ko_list8_space_more:
+    adds r0, r0, r2
+    cmp r0, #8
+    bhs ko_list8_space_full
+    str r0, [r4, #4]        @ 걸친 칸 안: 새 칸 없음
+    b ko_list8_close
+ko_list8_space_full:
+    subs r0, #8
+    str r0, [r4, #4]
+    cmp r0, #0
+    bne ko_list8_blank      @ 걸친 칸을 넘었다: 빈 칸 하나 더
+ko_list8_close:             @ 새 칸 없이 앞 칸을 그대로 둔다 (원래 코드가 4 늘리면 제자리)
+    ldr r0, [r5, #0x64]
+    subs r0, #4
+    str r0, [r5, #0x64]
+    movs r2, #0xE8
+    ldr r1, [r5, r2]
+    subs r1, #4
+    str r1, [r5, r2]
+    ldr r1, [r0]
+    pop {{r2-r7, pc}}
+
+ko_list8_pitch:             @ → r2 = 한글 사이 공백 폭, r3 = 한글 간격
+    movs r2, #4
+    movs r3, #12
+    bx lr
+
+ko_list8_small:             @ r7 = 글자 번호: 작은 한글(갈무리7)을 8×16 칸 하나에 그려 칸 번호를 적는다
+    movs r1, #0
+    str r1, [r4, #0]
+    str r1, [r4, #4]
+    mov r0, r7
+    bl ko_pick8             @ r6 = 글자 그림, [36] = 작은 한글이면 1
+    ldr r3, lit3a_params
+    ldr r0, [r3, #36]
+    movs r1, #0
+    cmp r0, #0
+    beq ko_list8_small_put  @ 작은 한글이 없는 글자는 빈 칸
+    movs r0, #8
+    str r0, [r3, #0]        @ 폭 8
+    str r0, [r3, #24]       @ 오른쪽 끝 8
+    movs r0, #0
+    str r0, [r3, #4]
+    str r0, [r3, #12]
+    str r0, [r3, #20]
+    str r0, [r3, #44]
+    movs r0, #4
+    str r0, [r3, #16]       @ 한 줄 4바이트
+    ldr r0, lit3a_cellbuf
+    str r0, [r3, #8]
+    bl ko_draw8
+    ldr r0, lit3a_cellbuf
+    bl ko_cslot
+    lsls r1, r0, #6
+ko_list8_small_put:
+    ldr r0, [r5, #0x64]
+    pop {{r2-r7, pc}}
+
+ko_list8_ko:
+    movs r1, #0xE0
+    ldr r1, [r5, r1]
+    cmp r1, #0x30
+    blo ko_list8_small      @ 10칸 목록은 작은 한글로 한 칸씩 (큰 한글은 10픽셀 간격이면 붙는다)
+    subs r7, r7, r2         @ k
+    movs r1, #1
+    str r1, [r4, #0]
+    ldr r0, lit3a_strip     @ 그림 줄(24픽셀×16줄, 한 줄 12바이트) 비우기
+    movs r1, #0
+    movs r2, #48
+ko_list8_clr:
+    stmia r0!, {{r1}}
+    subs r2, #1
+    bne ko_list8_clr
+    ldr r1, [r4, #4]
+    cmp r1, #0
+    beq ko_list8_draw
+    ldr r0, lit3a_part      @ 걸친 칸을 그림 줄 첫 칸으로
+    ldr r1, lit3a_strip
+    movs r2, #16
+ko_list8_load:
+    ldmia r0!, {{r3}}
+    str r3, [r1]
+    adds r1, #12
+    subs r2, #1
+    bne ko_list8_load
+ko_list8_draw:
+    ldr r0, lit3a_hangul_base
+    adds r0, r7, r0
+    bl ko_glyph             @ r1 = 큰 한글 그림 (r2–r7 보존)
+    mov r6, r1
+    ldr r3, lit3a_params
+    movs r0, #12
+    str r0, [r3, #0]        @ 폭 12 (글자 11 + 그림자)
+    str r0, [r3, #16]       @ 한 줄 12바이트
+    ldr r0, [r4, #4]
+    str r0, [r3, #4]        @ X = 걸친 칸에 쓴 픽셀 수
+    movs r0, #24
+    str r0, [r3, #24]
+    ldr r0, lit3a_strip
+    str r0, [r3, #8]
+    movs r0, #0
+    str r0, [r3, #12]
+    str r0, [r3, #20]
+    str r0, [r3, #36]       @ 큰 한글
+    movs r0, #1
+    str r0, [r3, #44]       @ 빈 점은 쓰지 않는다 (간격이 좁으면 앞 글자와 겹친다)
+    movs r0, #{glyph_top}
+    str r0, [r3, #40]
+    bl ko_draw8
+    ldr r3, lit3a_params
+    movs r0, #0
+    str r0, [r3, #44]
+    ldr r0, [r4, #4]
+    str r0, [r4, #8]        @ 그리기 전 걸친 픽셀 수
+    bl ko_list8_pitch       @ r3 = 한글 간격
+    adds r0, r0, r3         @ 끝 위치
+    movs r1, #7
+    ands r1, r0
+    str r1, [r4, #4]        @ 새 걸친 픽셀 수
+    adds r0, #7
+    lsrs r7, r0, #3         @ 이 글자가 닿는 칸 수
+    cmp r1, #0
+    beq ko_list8_cells
+    subs r0, r7, #1
+    bl ko_list8_keep        @ 마지막 칸은 걸친 칸으로 둔다
+ko_list8_cells:
+    movs r6, #0
+ko_list8_cell_loop:
+    mov r0, r6
+    bl ko_list8_cell        @ r0 = 적을 값
+    cmp r6, #0
+    bne ko_list8_new
+    ldr r1, [r4, #8]
+    cmp r1, #0
+    beq ko_list8_new
+    ldr r1, [r5, #0x64]     @ 첫 칸이 앞 글자의 걸친 칸이면 다시 쓴다
+    subs r1, #4
+    str r0, [r1]
+    b ko_list8_cell_next
+ko_list8_new:
+    adds r1, r6, #1
+    cmp r1, r7
+    beq ko_list8_last       @ 마지막 칸은 원래 코드가 적는다
+    movs r2, #0xE8
+    ldr r1, [r5, r2]
+    adds r1, #4
+    movs r3, #0xE0
+    ldr r3, [r5, r3]
+    cmp r1, r3
+    bhi ko_list8_last       @ 자리가 모자라면 여기까지
+    str r1, [r5, r2]
+    ldr r1, [r5, #0x64]
+    str r0, [r1]
+    adds r1, #4
+    str r1, [r5, #0x64]
+ko_list8_cell_next:
+    adds r6, #1
+    cmp r6, r7
+    blo ko_list8_cell_loop
+    b ko_list8_close        @ 새 칸이 없었다
+ko_list8_last:
+    mov r1, r0
+    ldr r0, [r5, #0x64]
+    pop {{r2-r7, pc}}
+
+ko_list8_cell:              @ r0 = 그림 줄의 칸(0~2) → r0 = 그 칸 그림을 담은 글자 칸의 위치 값(번호×64)
+    push {{r4-r7, lr}}
+    lsls r0, r0, #2
+    ldr r1, lit3a_strip
+    adds r1, r1, r0
+    ldr r0, lit3a_cellbuf
+    mov r2, r0
+    movs r3, #16
+ko_list8_cell_row:
+    ldr r4, [r1]
+    stmia r2!, {{r4}}
+    adds r1, #12
+    subs r3, #1
+    bne ko_list8_cell_row
+    bl ko_cslot
+    lsls r0, r0, #6
+    pop {{r4-r7, pc}}
+
+ko_list8_keep:              @ r0 = 그림 줄의 칸 → 걸친 칸 그림으로 둔다
+    push {{r4, lr}}
+    lsls r0, r0, #2
+    ldr r1, lit3a_strip
+    adds r1, r1, r0
+    ldr r2, lit3a_part
+    movs r3, #16
+ko_list8_keep_row:
+    ldr r0, [r1]
+    stmia r2!, {{r0}}
+    adds r1, #12
+    subs r3, #1
+    bne ko_list8_keep_row
+    pop {{r4, pc}}
+
+    .align 2
+    .word 0x4C4F4F50        @ 리터럴 구역 (앞쪽 코드용; Thumb ldr 은 1KB 안만 닿는다)
+lit3a_cellbuf: .word {cellbuf}
+lit3a_hangul_base: .word {hangul_base}
+lit3a_params: .word {params}
+lit3a_part: .word {part}
+lit3a_state: .word {state}
+lit3a_strip: .word {strip}
+    .word 0x4C4F4F51
+
+@ 칸 단위 타일 그리기(8×16 칸 하나씩)에서 폴더 이름: 저장 데이터의 폴더 이름 칸에서 읽는 글이면 카드 이름처럼
+@ 큰 한글을 12픽셀 간격으로 이어 그려 8픽셀 칸으로 잘라 넣는다. 원래 코드는 글자마다 칸 하나를 목적지 버퍼에
+@ 복사하고 목적지를 64 늘린다. 글자 수(+0xE8)가 최대(+0xE0)를 넘으면 게임이 멈추므로 칸을 더 쓸 때 꼭 지킨다.
+ko_tile_bigchk:             @ r1 = 번호×64, r2 = 글자 번호, r4 = 목적지 자리, r6 = 글자 상자. r0, r3 만 쓴다
+    ldr r0, lit3_saveptr
+    ldr r0, [r0]
+    cmp r0, #0
+    beq ko_tile_bigchk_no
+    ldr r0, [r0]
+    adds r0, #0xC4          @ 폴더 이름 (0x12바이트씩 3개)
+    ldr r3, [r6, #0x10]
+    cmp r3, r0
+    blo ko_tile_bigchk_no
+    adds r0, #0x36
+    cmp r3, r0
+    bhs ko_tile_bigchk_no
+    b ko_tile_big
+ko_tile_bigchk_no:
+    b ko_tile_strip
+
+ko_tile_big:
+    push {{r1, r2, r4-r7, lr}}
+    ldr r7, lit3_tstate     @ [0] 한글을 잇는 중 [4] 걸친 칸에 쓴 픽셀 수
+    movs r0, #0xE8
+    ldr r0, [r6, r0]        @ 지금까지 바이트 수 (이 글자 몫 포함)
+    movs r3, #0xE4
+    ldr r3, [r6, r3]        @ 칸 하나 바이트 수
+    cmp r0, r3
+    bne ko_tile_big_go
+    movs r0, #0             @ 첫 글자: 처음부터
+    str r0, [r7, #0]
+    str r0, [r7, #4]
+ko_tile_big_go:
+    ldr r0, lit3_hangul_base
+    cmp r2, r0
+    bhs ko_tile_big_ko
+    ldr r0, [r7, #0]
+    cmp r0, #0
+    beq ko_tile_big_plain
+    cmp r2, #0
+    beq ko_tile_big_space
+ko_tile_big_plain:
+    movs r0, #0
+    str r0, [r7, #0]
+    str r0, [r7, #4]
+ko_tile_big_normal:         @ 원래대로 (r1 = 번호×64 를 되살린다)
+    bl ko_tile_big_guard
+    pop {{r1, r2, r4-r7}}
+    pop {{r3}}
+    ldr r0, [r6, #0x1c]
+    ldr r2, [r4]
+    bx r3
+ko_tile_big_space:          @ 한글 사이 공백은 4픽셀
+    ldr r0, [r7, #4]
+    cmp r0, #0
+    bne ko_tile_big_close
+    movs r0, #4
+    str r0, [r7, #4]
+    ldr r0, lit3_part
+    movs r1, #0
+    movs r2, #16
+ko_tile_big_space_clr:
+    stmia r0!, {{r1}}
+    subs r2, #1
+    bne ko_tile_big_space_clr
+    b ko_tile_big_normal    @ 빈 글자(0번) 칸 하나
+ko_tile_big_close:          @ 걸친 칸이 공백으로 다 찼다: 새 칸 없이 앞 칸을 다시 쓴다
+    movs r0, #0
+    str r0, [r7, #4]
+    ldr r0, [r4]
+    subs r0, #64
+    str r0, [r4]
+    movs r1, #0xE8
+    ldr r0, [r6, r1]
+    subs r0, r0, r3
+    str r0, [r6, r1]
+    ldr r0, lit3_part
+    b ko_tile_big_src
+
+ko_tile_big_ko:
+    subs r5, r2, r0         @ k
+    movs r0, #1
+    str r0, [r7, #0]
+    ldr r0, lit3_strip
+    movs r1, #0
+    movs r2, #48
+ko_tile_big_clr:
+    stmia r0!, {{r1}}
+    subs r2, #1
+    bne ko_tile_big_clr
+    ldr r1, [r7, #4]
+    cmp r1, #0
+    beq ko_tile_big_draw
+    ldr r0, lit3_part
+    ldr r1, lit3_strip
+    movs r2, #16
+ko_tile_big_load:
+    ldmia r0!, {{r3}}
+    str r3, [r1]
+    adds r1, #12
+    subs r2, #1
+    bne ko_tile_big_load
+ko_tile_big_draw:
+    ldr r0, lit3_hangul_base
+    adds r0, r5, r0
+    bl ko_glyph             @ r1 = 큰 한글 그림
+    mov r6, r1
+    ldr r3, lit3_params
+    movs r0, #12
+    str r0, [r3, #0]
+    str r0, [r3, #16]
+    ldr r0, [r7, #4]
+    str r0, [r3, #4]
+    movs r0, #24
+    str r0, [r3, #24]
+    ldr r0, lit3_strip
+    str r0, [r3, #8]
+    movs r0, #0
+    str r0, [r3, #12]
+    str r0, [r3, #20]
+    str r0, [r3, #36]
+    movs r0, #{glyph_top}
+    str r0, [r3, #40]
+    bl ko_draw8
+    ldr r6, [sp, #16]       @ 글자 상자
+    ldr r0, [r7, #4]
+    cmp r0, #0
+    bne ko_tile_big_half
+    movs r0, #4             @ X = 0: 꽉 찬 칸은 직접 쓰고, 4픽셀 걸친 칸은 원래 코드가 복사
+    str r0, [r7, #4]
+    movs r0, #1
+    bl ko_list8_keep
+    movs r1, #0xE8
+    ldr r0, [r6, r1]
+    movs r2, #0xE4
+    ldr r2, [r6, r2]
+    adds r0, r0, r2
+    movs r2, #0xE0
+    ldr r2, [r6, r2]
+    cmp r0, r2
+    bhi ko_tile_big_one     @ 자리가 없으면 첫 칸만 (넘치면 게임이 멈춘다)
+    str r0, [r6, r1]
+    movs r0, #0
+    ldr r1, [r4]
+    bl ko_tile_big_put
+    ldr r1, [r4]
+    adds r1, #64
+    str r1, [r4]
+    ldr r0, lit3_part
+    b ko_tile_big_src
+ko_tile_big_one:
+    movs r0, #0
+    ldr r1, lit3_cellbuf
+    bl ko_tile_big_put
+    ldr r0, lit3_cellbuf
+    b ko_tile_big_src
+ko_tile_big_half:           @ X = 4: 걸친 칸을 마저 채워 앞 칸에 다시 쓰고, 새 칸 하나
+    movs r0, #0
+    ldr r1, [r4]
+    subs r1, #64
+    bl ko_tile_big_put
+    movs r0, #0
+    str r0, [r7, #4]
+    movs r0, #1
+    ldr r1, lit3_cellbuf
+    bl ko_tile_big_put
+    ldr r0, lit3_cellbuf
+ko_tile_big_src:            @ r0 = 원래 코드가 복사할 칸 그림
+    str r0, [sp]            @ 꺼내면 r1
+    bl ko_tile_big_guard
+    pop {{r1, r2, r4-r7}}
+    pop {{r3}}
+    movs r0, #0
+    ldr r2, [r4]
+    bx r3
+
+ko_tile_big_guard:          @ r6 = 글자 상자. 한 칸 더 쓰면 최대를 넘는데 글이 남았으면 글을 여기서 끝낸다
+    movs r1, #0xE8          @ (원래 코드는 최대를 넘으면 멈춘다. 예전 패치로 만든 세이브의 "스바루 폴더 " 등)
+    ldr r0, [r6, r1]
+    movs r1, #0xE4
+    ldr r1, [r6, r1]
+    adds r0, r0, r1
+    movs r1, #0xE0
+    ldr r1, [r6, r1]
+    cmp r0, r1
+    bls ko_tile_big_guard_ok
+    ldr r0, [r6, #0x10]
+    ldrb r0, [r0]
+    cmp r0, #0xE6
+    beq ko_tile_big_guard_ok
+    ldr r0, lit3_endmark    @ 끝 표시(E6 00)를 읽게 한다
+    str r0, [r6, #0x10]
+ko_tile_big_guard_ok:
+    bx lr
+
+ko_tile_big_put:            @ r0 = 그림 줄 칸, r1 = 쓸 곳 → 64바이트 (16줄 × 4바이트). r0–r3 사용
+    lsls r0, r0, #2
+    ldr r2, lit3_strip
+    adds r2, r2, r0
+    movs r3, #16
+ko_tile_big_put_row:
+    ldr r0, [r2]
+    stmia r1!, {{r0}}
+    adds r2, #12
+    subs r3, #1
+    bne ko_tile_big_put_row
+    bx lr
+
+ko_cslot:                   @ r0 = 칸 그림(64바이트) → r0 = 그 그림을 그려 둔 글자 번호 (빈 그림은 0)
     push {{r4-r7, lr}}
     mov r7, r0
+    mov r4, r0
+    movs r1, #0             @ 해시
+    movs r2, #0             @ 모든 낱말 OR
+    movs r3, #16
+ko_cslot_hash:
+    ldmia r4!, {{r5}}
+    orrs r2, r5
+    movs r6, #33
+    muls r1, r6
+    eors r1, r5
+    subs r3, #1
+    bne ko_cslot_hash
+    cmp r2, #0
+    bne ko_cslot_ink
+    movs r0, #0
+    pop {{r4-r7, pc}}
+ko_cslot_ink:
+    movs r2, #1
+    orrs r1, r2             @ 0 은 빈 칸 표시
+    mov r6, r1
     ldr r4, lit3_slot_k
     movs r5, #0
-ko_slot_find:
-    lsls r1, r5, #1
-    ldrh r2, [r4, r1]
-    cmp r2, r7
-    beq ko_slot_hit
+ko_cslot_find:
+    lsls r1, r5, #2
+    ldr r2, [r4, r1]
+    cmp r2, r6
+    beq ko_cslot_hit
     adds r5, #1
     cmp r5, #{slot_count}
-    blo ko_slot_find
+    blo ko_cslot_find
     ldr r4, lit3_slot_t     @ 쓴 지 가장 오래된 칸
     movs r5, #0
     ldr r3, [r4]
-    movs r6, #1
-ko_slot_lru:
-    lsls r1, r6, #2
-    ldr r2, [r4, r1]
-    cmp r2, r3
-    bhs ko_slot_lru_next
-    mov r3, r2
-    mov r5, r6
-ko_slot_lru_next:
-    adds r6, #1
-    cmp r6, #{slot_count}
-    blo ko_slot_lru
+    movs r2, #1
+ko_cslot_lru:
+    lsls r1, r2, #2
+    ldr r0, [r4, r1]
+    cmp r0, r3
+    bhs ko_cslot_lru_next
+    mov r3, r0
+    mov r5, r2
+ko_cslot_lru_next:
+    adds r2, #1
+    cmp r2, #{slot_count}
+    blo ko_cslot_lru
     ldr r4, lit3_slot_k
-    lsls r1, r5, #1
-    strh r7, [r4, r1]
+    lsls r1, r5, #2
+    str r6, [r4, r1]
     mov r0, r5
-    bl ko_slot_draw
-ko_slot_hit:                @ r5 = 칸 순번
+    mov r1, r7
+    bl ko_slot_put
+ko_cslot_hit:               @ r5 = 칸 순번
     ldr r4, lit3_stamp
     ldr r2, [r4]
     adds r2, #1
@@ -866,49 +1347,41 @@ ko_slot_hit:                @ r5 = 칸 순번
     ldrh r0, [r4, r1]
     pop {{r4-r7, pc}}
 
-ko_slot_draw:               @ r0 = 칸 순번 → 그 칸의 한글을 기억한 VRAM 폰트 자리마다 그린다
+ko_slot_put:                @ r0 = 칸 순번, r1 = 그림(64바이트) → 기억한 VRAM 폰트 자리마다 그 칸에 쓴다
     push {{r4-r7, lr}}
-    mov r7, r0
-    ldr r4, lit3_slot_k
-    lsls r1, r7, #1
-    ldrh r0, [r4, r1]       @ k
-    ldr r1, lit3_empty
-    cmp r0, r1
-    beq ko_slot_draw_ret    @ 빈 칸
-    bl ko_render8b          @ tile_rows = 굵은 8×16 글자 모양의 작은 한글 (64바이트)
+    mov r7, r1
     ldr r4, lit3_slot_g
-    lsls r1, r7, #1
+    lsls r1, r0, #1
     ldrh r6, [r4, r1]
     lsls r6, r6, #6
     adds r6, #32            @ 폰트 자리 안의 위치 (글자 0번이 +0x20)
     movs r5, #0
-ko_slot_draw_base:
+ko_slot_put_base:
     ldr r4, lit3_bases
     lsls r1, r5, #2
     ldr r0, [r4, r1]
     cmp r0, #0
-    beq ko_slot_draw_next
+    beq ko_slot_put_next
     bl ko_base_ok           @ r0 = 폰트가 아직 그 자리에 있으면 1
     lsls r1, r5, #2
     cmp r0, #0
-    bne ko_slot_draw_copy
+    bne ko_slot_put_copy
     str r0, [r4, r1]        @ 폰트가 사라진 자리는 잊는다
-    b ko_slot_draw_next
-ko_slot_draw_copy:
+    b ko_slot_put_next
+ko_slot_put_copy:
     ldr r0, [r4, r1]
     adds r0, r0, r6
-    ldr r1, lit3_tile_rows
+    mov r1, r7
     movs r2, #16
-ko_slot_draw_word:
+ko_slot_put_word:
     ldmia r1!, {{r3}}
     stmia r0!, {{r3}}
     subs r2, #1
-    bne ko_slot_draw_word
-ko_slot_draw_next:
+    bne ko_slot_put_word
+ko_slot_put_next:
     adds r5, #1
     cmp r5, #{base_count}
-    blo ko_slot_draw_base
-ko_slot_draw_ret:
+    blo ko_slot_put_base
     pop {{r4-r7, pc}}
 
 ko_base_ok:                 @ r0 = VRAM 폰트 자리 → 굵은 8×16 폰트의 대조 글자가 그대로 있으면 1, 아니면 0. r1–r3 사용
@@ -930,38 +1403,6 @@ ko_base_ok_no:
     movs r0, #0
     pop {{r4, pc}}
 
-ko_render8b:                @ r0 = k → tile_rows 에 굵은 8×16 글자 모양의 작은 한글 (64바이트). r0–r3 사용
-    push {{r4-r7, lr}}
-    ldr r1, lit3_hangul_base
-    adds r0, r0, r1
-    bl ko_pick8             @ r6 = 글자 그림, 매개변수 [36] = 작은 한글이면 1
-    ldr r3, lit3_params
-    ldr r1, lit3_tile_rows
-    ldr r0, [r3, #36]
-    cmp r0, #0
-    beq ko_render8b_blank   @ 작은 한글이 없는 글자는 빈 칸 (8픽셀에 큰 한글은 못 그린다)
-    movs r0, #8
-    str r0, [r3, #0]        @ 폭 8
-    str r0, [r3, #24]       @ 오른쪽 끝 8
-    movs r0, #0
-    str r0, [r3, #4]        @ X = 0
-    str r0, [r3, #20]
-    movs r0, #4
-    str r0, [r3, #16]       @ 한 줄 4바이트
-    str r1, [r3, #8]
-    movs r0, #{list_bold}
-    str r0, [r3, #12]       @ 굵은 글씨로 할지 (7×7 한글을 굵게 하면 획이 뭉개진다)
-    bl ko_draw8
-    pop {{r4-r7, pc}}
-ko_render8b_blank:
-    movs r0, #0
-    movs r2, #16
-ko_render8b_clear:
-    stmia r1!, {{r0}}
-    subs r2, #1
-    bne ko_render8b_clear
-    pop {{r4-r7, pc}}
-
 ko_upload_a:                @ 로더의 "bl 복사 함수" 대신. r1 = 원본, r2 = VRAM, r3 = 크기 (복사 함수 인자 그대로)
     push {{r1-r4, lr}}       @ (keystone 은 긴 소스 안의 절대 주소 bl 을 어긋나게 만들므로 blx 로 부른다)
     ldr r4, lit3_copy_a
@@ -977,8 +1418,8 @@ ko_upload_after:
     ldr r0, lit3_bold_font
     cmp r1, r0
     bne ko_upload_ret
-    ldr r0, lit3_min_size   @ 한글 칸까지 다 올리는 복사만 기억한다 (카드 번호용으로 앞부분만 다른 자리에
-    cmp r3, r0              @ 올리는 화면이 있는데, 그 자리를 폰트 자리로 알면 남의 칸을 덮는다)
+    ldr r0, lit3_min_size   @ 한글 칸까지 다 올리는 복사만 기억한다
+    cmp r3, r0
     blo ko_upload_ret
     subs r2, #32            @ 글자 0번이 +0x20 에 올라가므로 폰트 자리 = VRAM - 0x20
     bl ko_upload_record
@@ -986,15 +1427,15 @@ ko_upload_ret:
     pop {{r0}}
     pop {{pc}}
 
-ko_upload_record:           @ r2 = 굵은 8×16 폰트를 올린 VRAM 자리 → 기억하고, 칸에 든 한글을 다시 그린다
-    push {{r4-r7, lr}}
+ko_upload_record:           @ r2 = 굵은 8×16 폰트를 올린 VRAM 자리 → 기억하고 칸 표를 비운다
+    push {{r4-r7, lr}}       @ (폰트를 새로 올리면 그려 둔 칸이 지워진다)
     ldr r4, lit3_bases
     movs r5, #0
 ko_rec_same:
     lsls r1, r5, #2
     ldr r0, [r4, r1]
     cmp r0, r2
-    beq ko_rec_redraw       @ 이미 기억한 자리
+    beq ko_rec_clear
     adds r5, #1
     cmp r5, #{base_count}
     blo ko_rec_same
@@ -1016,14 +1457,14 @@ ko_rec_free:
 ko_rec_store:
     lsls r1, r5, #2
     str r2, [r4, r1]
-ko_rec_redraw:
-    movs r6, #0
+ko_rec_clear:
+    ldr r4, lit3_slot_k
+    movs r0, #0
+    movs r5, #{slot_count}
 ko_rec_loop:
-    mov r0, r6
-    bl ko_slot_draw
-    adds r6, #1
-    cmp r6, #{slot_count}
-    blo ko_rec_loop
+    stmia r4!, {{r0}}
+    subs r5, #1
+    bne ko_rec_loop
     pop {{r4-r7, pc}}
 
     .align 2
@@ -1035,8 +1476,10 @@ lit3_slot_g: .word {slot_g}
 lit3_stamp: .word {stamp}
 lit3_bases: .word {bases}
 lit3_base_next: .word {base_next}
-lit3_empty: .word 0xFFFF
-lit3_tile_rows: .word {tile_rows}
+lit3_state: .word {state}
+lit3_part: .word {part}
+lit3_strip: .word {strip}
+lit3_cellbuf: .word {cellbuf}
 lit3_params: .word {params}
 lit3_check_ofs: .word {check_ofs}
 lit3_check_src: .word {check_src}
@@ -1044,6 +1487,9 @@ lit3_bold_font: .word {bold_font}
 lit3_copy_a: .word {copy_a}
 lit3_copy_b: .word {copy_b}
 lit3_min_size: .word {min_size}
+lit3_tstate: .word {tstate}
+lit3_saveptr: .word {save_ptr}
+lit3_endmark: .word {endmark}
     .word 0x4C4F4F51
     .align 2
 code_end_marker: .word 0x4C4F4B4F
@@ -1151,16 +1597,19 @@ def list_slots(keep=()):
 
 
 def slot_table(slots):
-    """칸 표 덩어리와 안의 위치: slot_g(u16, 칸의 글자 번호), slot_k(u16, 빈 칸 0xFFFF), slot_t(u32),
-    stamp(u32), bases(u32 × LIST_BASES), base_next(u32)."""
+    """칸 표 덩어리와 안의 위치: slot_g(u16, 칸의 글자 번호), slot_k(u32, 그림 해시, 빈 칸 0), slot_t(u32),
+    stamp(u32), bases(u32 × LIST_BASES), base_next(u32), state(8), part(걸친 칸 64), strip(그림 줄 192), cellbuf(64)."""
     n = len(slots)
     half = (2 * n + 3) // 4 * 4
-    blob = struct.pack(f'<{n}H', *slots).ljust(half, b'\0')
-    blob += struct.pack(f'<{n}H', *([0xFFFF] * n)).ljust(half, b'\0')
-    blob += bytes(4 * n) + bytes(4) + bytes(4 * LIST_BASES) + bytes(4)
-    offsets = {'slot_g': 0, 'slot_k': half, 'slot_t': 2 * half, 'stamp': 2 * half + 4 * n,
-               'bases': 2 * half + 4 * n + 4, 'base_next': 2 * half + 4 * n + 4 + 4 * LIST_BASES}
-    return blob, offsets
+    sizes = [('slot_g', half), ('slot_k', 4 * n), ('slot_t', 4 * n), ('stamp', 4), ('bases', 4 * LIST_BASES),
+             ('base_next', 4), ('state', 12), ('tstate', 8), ('endmark', 4), ('part', 64), ('strip', 192), ('cellbuf', 64)]
+    offsets, pos = {}, 0
+    for name, size in sizes:
+        offsets[name] = pos
+        pos += size
+    blob = bytearray(struct.pack(f'<{n}H', *slots).ljust(half, b'\0') + bytes(pos - half))
+    blob[offsets['endmark']:offsets['endmark'] + 2] = b'\xe6\x00'     # 글 끝 표시
+    return bytes(blob), offsets
 
 
 def assemble(src, addr):
@@ -1350,8 +1799,7 @@ def build(arm9, keep=(), chars=(), blobs=None, extra=()):
         big_bits=where['bigbits'], big_prefix=where['bigprefix'], new_chars=len(kotable.NEW_CHARS),
         row_stride=ROW_STRIDE, row_pixels=ROW_PIXELS, bold_font=BOLD_FONT, glyph_top=GLYPH_TOP,
         glyph_top1=GLYPH_TOP + 1, slot_count=len(slots), base_count=LIST_BASES, base_mask=LIST_BASES - 1,
-        copy_a=copy_funcs[0] | 1, copy_b=copy_funcs[1] | 1, min_size=(max(slots) + 1) * 64,
-        list_bold=int(os.environ.get('KO_LIST_BOLD', '0')),
+        copy_a=copy_funcs[0] | 1, copy_b=copy_funcs[1] | 1, min_size=(max(slots) + 1) * 64, save_ptr=SAVE_PTR,
         check_ofs=32 + LIST_CHECK * 64,
         check_src=BOLD_FONT + LIST_CHECK * 64, **slot_at)
     code = assemble(src, code_addr)
@@ -1359,6 +1807,7 @@ def build(arm9, keep=(), chars=(), blobs=None, extra=()):
     if code_addr + len(code) > params:
         sys.exit(f'코드가 예약 공간을 넘습니다 ({len(code)}바이트).')
     arm9[code_addr - ARM9_BASE:code_addr - ARM9_BASE + len(code)] = code
+    put_data(params, bytes(buffer + GLYPH - params))     # 작업 공간(매개변수·그림 버퍼)은 0 에서 시작
     marker = code.index(struct.pack('<I', 0x4C4F4B4F))   # 코드 끝 표시 뒤의 진입점 주소 표
     entry_list8, entry_upload_a, entry_upload_b = struct.unpack_from('<3I', code, marker + 4)
     upload_entry = {copy_funcs[0]: entry_upload_a, copy_funcs[1]: entry_upload_b}
