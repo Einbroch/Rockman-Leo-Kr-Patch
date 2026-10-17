@@ -619,9 +619,10 @@ TITLE_LABELS = {26: {1: ('처음부터', 'bold', 'center'), 2: ('이어하기', 
 # 얹는다. 판본 이름 가나(レオ 등)는 지우고 갈무리11 Bold 로 다시 쓴다(원래 색과 테두리색, 밑줄은 다시 긋는다).
 LOGO_TEXT_PNG = ROOT / 'assets' / 'title_logo_text.png'
 LOGO_TEXT_AT = (24, 64)                 # 글자 층 왼쪽 위
+LOGO_STAR_PNG = ROOT / 'assets' / 'title_logo_star.png'
 LOGO_JP_BOX = (14, 60, 240, 106)        # 일본어 큰 글자를 찾는 사각형 (아래는 LEO 등 판본 글자라 106 까지)
 LOGO_TM = (227, 58, 242, 66)            # ™ 표시
-LOGO_SPARKLE = (30, 30, 90, 84)         # 왼쪽 위 반짝임 장식: 한글 글자 윗줄보다 위의 밝은 점은 원래대로 올린다
+LOGO_SPARKLE_C = (57, 74)               # 「流」 위 반짝이는 별의 가운데
 LOGOS = [  # (타일, 맵, 팔레트, 판본 이름, 판본 이름 사각형(x0, y0, x1, y1), 밑줄 줄들, 큰 글자 어긋남(dx, dy))
     (7, 8, 9, '레오', (110, 138, 158, 154), (146, 147, 148), (0, 0)),
     (11, 12, 13, '드래곤', (114, 138, 176, 154), (146, 147), (0, 0)),
@@ -683,12 +684,17 @@ def translate_logo(tiles_e, map_e, pal_e, sub_text, sub_box, sub_lines, shift=(0
             r, g, b, a = lp[x, y]
             if a:
                 img[ly + y][lx + x] = nearest((r, g, b))
-    # 3) 반짝임 장식
-    sx0, sy0, sx1, sy1 = (LOGO_SPARKLE[0] + dx0, LOGO_SPARKLE[1] + dy0, LOGO_SPARKLE[2] + dx0, LOGO_SPARKLE[3] + dy0)
-    for y in range(sy0, sy1):
-        for x in range(sx0, sx1):
-            if orig[y][x] and sum(P[orig[y][x]]) >= 640 and y < ly + 3:     # 한글 글자 위로 뻗은 빛줄기만
-                img[y][x] = orig[y][x]
+    # 3) 반짝이는 별: 원래 「流」 위의 별은 글자 채움과 색이 섞여 떼어 낼 수 없으므로, 같은 자리·방향으로 새로 그린
+    #    assets/title_logo_star.png(tools/logo_star.py)를 한글 위에 얹는다.
+    star = Image.open(LOGO_STAR_PNG).convert('RGBA')
+    sp = star.load()
+    sx = LOGO_SPARKLE_C[0] + dx0 - star.width // 2
+    sy = LOGO_SPARKLE_C[1] + dy0 - star.height // 2
+    for y in range(star.height):
+        for x in range(star.width):
+            r, g, b, a = sp[x, y]
+            if a and 0 <= sx + x < W and 0 <= sy + y < H:
+                img[sy + y][sx + x] = nearest((r, g, b))
     # ™ 표시(큰 글자 오른쪽 위)는 원래대로
     tx0, ty0, tx1, ty1 = LOGO_TM[0] + dx0, LOGO_TM[1] + dy0, LOGO_TM[2] + dx0, LOGO_TM[3] + dy0
     for y in range(ty0, ty1):
