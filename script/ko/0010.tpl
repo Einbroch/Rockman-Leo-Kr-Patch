@@ -473,7 +473,8 @@ script 26 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"브라더 데이터를 다운로드하는\n중입니다.\n"
+	"브라더 데이터를 다운로드하는\n중입니다. "
+	waitHold
 	end
 }
 script 27 mmsf1 {
@@ -521,6 +522,7 @@ script 28 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"친구에게 연결하는 중입니다.\n"
+	waitHold
 	end
 }
 script 29 mmsf1 {
@@ -530,6 +532,7 @@ script 29 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"친구 정보를\n다운로드하는 중입니다."
+	waitHold
 	end
 }
 script 30 mmsf1 {
@@ -946,6 +949,7 @@ script 107 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"응답을 기다리는 중입니다...\n"
+	waitHold
 	end
 }
 script 108 mmsf1 {
@@ -955,6 +959,7 @@ script 108 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"브라더로 등록하는 중입니다.\n"
+	waitHold
 	end
 }
 script 109 mmsf1 {
@@ -1299,7 +1304,8 @@ script 123 mmsf1 {
 	printNameBuffer1
 	"\n"
 	printNameBuffer2
-	" 대화하고 싶어\n합니다.\n"
+	" 대화하고 싶어\n합니다. "
+	waitHold
 	end
 }
 script 124 mmsf1 {
@@ -1423,7 +1429,8 @@ script 130 mmsf1 {
 	printNameBuffer1
 	"\n"
 	printNameBuffer2
-	"에게 연결하는\n중입니다.\n"
+	"에게 연결하는\n중입니다. "
+	waitHold
 }
 script 131 mmsf1 {
 	msgOpenQuick
@@ -1674,6 +1681,7 @@ script 161 mmsf1 {
 	textSpeed
 		delay = 0
 	"메일 데이터를 업로드하는 중...\n"
+	waitHold
 	end
 }
 script 162 mmsf1 {
@@ -1880,6 +1888,7 @@ script 173 mmsf1 {
 		type = 1
 	clearMsg
 	"게임 카드를 다시\n삽입하세요."
+	waitHold
 	end
 }
 script 174 mmsf1 {

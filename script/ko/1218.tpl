@@ -6,6 +6,7 @@ script 0 mmsf1 {
 	mugshotShow
 		mugshot = KenSuther
 	"파도 타기 좋은 날이네!\n뭘 드릴까?\n"
+	waitHold
 	end
 }
 script 1 mmsf1 {
@@ -15,6 +16,7 @@ script 1 mmsf1 {
 	textSpeed
 		delay = 0
 	"뭘 드릴까?"
+	waitHold
 	end
 }
 script 2 mmsf1 {
@@ -49,6 +51,7 @@ script 3 mmsf1 {
 	mugshotShow
 		mugshot = KenSuther
 	"자주 들러서\n새로 들어온 물건을 확인해! "
+	waitHold
 	end
 }
 script 10 mmsf1 {

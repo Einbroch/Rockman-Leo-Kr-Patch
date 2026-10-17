@@ -258,6 +258,7 @@ script 15 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"지금 편지를 보내는 중입니다!\n\n"
+	waitHold
 	end
 }
 script 16 mmsf1 {
@@ -810,5 +811,6 @@ script 44 mmsf1 {
 		type = 1
 	clearMsg
 	"게임 카드를 다시 삽입하세요."
+	waitHold
 	end
 }

@@ -6,6 +6,7 @@ script 0 mmsf1 {
 	mugshotShow
 		mugshot = Worker
 	"어서 오세요!"
+	waitHold
 	end
 }
 script 1 mmsf1 {
@@ -15,6 +16,7 @@ script 1 mmsf1 {
 	textSpeed
 		delay = 0
 	"무엇을 찾으시나요?"
+	waitHold
 	end
 }
 script 2 mmsf1 {
@@ -49,6 +51,7 @@ script 3 mmsf1 {
 	mugshotShow
 		mugshot = Worker
 	"곧 다시 뵙길\n바랄게요! \n"
+	waitHold
 	end
 }
 script 10 mmsf1 {

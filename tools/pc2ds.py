@@ -211,6 +211,13 @@ def build_parts(run, entries, tag2key, stats):
         if not used[k] and not it[1] in INLINE:
             stats['한글에 없는 출력 명령(뒤에 붙임)'] += 1
             parts[-1].append(it)
+    # 덩어리 끝의 waitHold(대사창을 띄운 채 두기)는 PC판에 꼬리표가 없어도 지킨다. 빼면 대사창이 바로 닫힌다
+    # (예: 메일 화면의 "새 메일이 왔네...").
+    last = run[-1]
+    if last[0] == 'cmd' and last[1] == 'waitHold' and not used[next(k for k, it in enumerate(pool) if it is last)]:
+        used[next(k for k, it in enumerate(pool) if it is last)] = True
+        stats['덩어리 끝 waitHold 지킴'] += 1
+        parts[-1].append(last)
     for part in parts:
         if not any(it[0] == 'text' for it in part):
             part.append(['text', ''])

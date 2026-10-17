@@ -111,7 +111,15 @@ OVERLAY_PATCHES = [
     # 필드의 카드 목록(한 줄 10칸)은 목록 함수에 최대 12칸(0x30)을 넘긴다. 10칸(0x28)으로 알려 주면 엔진이
     # 거기서는 큰 한글 대신 작은 한글을 한 칸씩 그린다(engine.py 의 ko_list8_small).
     (2, 0x0217FEC0, bytes.fromhex('3021'), bytes.fromhex('2821'), '10칸 카드 목록의 최대 칸 수'),
+    # 메일 화면은 대사 블록 95(메일 본문)를 버퍼 슬롯 1(0x5000)에 담고, 블록이 그보다 크면 그 자리에서 멈춘다.
+    # 한글 블록은 0x6629 라서 슬롯을 할당하는 곳과 확인하는 곳을 모두 0x7000 으로 키운다(MAIL_BUFFER).
+    # 슬롯만 키우면 힙이 넘쳐 빈 블록 목록이 꼬이고 0x0207E9A4 에서 멈춘다.
+    (2, 0x021833DE, bytes.fromhex('052120690903'), bytes.fromhex('072120690903'), '메일 본문 버퍼 할당 0x5000 → 0x7000'),
+    (2, 0x02183440, bytes.fromhex('052109038842'), bytes.fromhex('072109038842'), '메일 본문 크기 확인 0x5000 → 0x7000'),
+    # 슬롯 7개(합계 0xB320)는 메일 화면이 잡는 힙(0xB720) 안에 있다. 슬롯 1을 0x2000 키운 만큼 힙도 키운다.
+    (2, 0x021835E4, bytes.fromhex('20b70000'), bytes.fromhex('20d70000'), '메일 화면 힙 0xB720 → 0xD720'),
 ]
+MAIL_BLOCK, MAIL_BUFFER = 95, 0x7000
 
 
 def patch_overlays(rom):
@@ -129,7 +137,7 @@ def patch_overlays(rom):
             # (주변의 PC 상대 리터럴은 판본마다 달라 넓은 창이 안 맞을 수 있다).
             ref = bytes(leo[ov_id].data)
             r = addr - leo[ov_id].ramAddress
-            for before, after in ((16, 16), (8, 12), (0, 12)):
+            for before, after in ((16, 16), (8, 12), (0, 12), (0, len(old))):
                 window = ref[r - before:r + after]
                 if ref.count(window) != 1:
                     continue
@@ -171,6 +179,9 @@ def main():
     kotable.main()
     mess = ROOT / 'work' / 'ko' / 'mess.bin'
     _, names = script.build(KO_SCRIPT, mess, 'rnr1-ko')
+    mail = script.read_mess(mess.read_bytes())[MAIL_BLOCK][0]
+    if len(mail) > MAIL_BUFFER:
+        sys.exit(f'대사 블록 {MAIL_BLOCK}(메일 본문) {len(mail):#x} 바이트가 메일 화면 버퍼 {MAIL_BUFFER:#x} 를 넘습니다.')
 
     rom = ndspy.rom.NintendoDSRom.fromFile(str(ORIGINAL))
     rom.setFileByName(MESS_PATH, mess.read_bytes())

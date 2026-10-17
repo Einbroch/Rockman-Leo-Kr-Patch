@@ -86,4 +86,5 @@ script 7 mmsf1 {
 	mugshotShow
 		mugshot = OmegaXis
 	"타이밍을 맞춰 X 버튼을\n눌러 로켓을 발사하고 오리를\n구워 버려!"
+	waitHold
 }

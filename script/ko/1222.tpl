@@ -8,6 +8,7 @@ script 0 mmsf1 {
 	textSpeed
 		delay = 0
 	"기존 얼굴 아이콘을\n편집하세요!\n"
+	waitHold
 	end
 }
 script 1 mmsf1 {
@@ -17,6 +18,7 @@ script 1 mmsf1 {
 	textSpeed
 		delay = 0
 	"새로운 얼굴 아이콘을 만드세요!\n"
+	waitHold
 	end
 }
 script 10 mmsf1 {

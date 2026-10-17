@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """그림 속 글자(datbin/com/*.bin 의 스프라이트)를 한글로 다시 그린다.
 
-datbin 아카이브: 8바이트 항목 표(u32 위치, u32 크기; 크기 최상위 비트 = LZ10 압축) + 데이터, 끝 항목은 (파일 크기, 0xFFFF).
+datbin 아카이브: 8바이트 항목 표(u32 위치, u32 풀린 크기; 최상위 비트 = LZ10 압축) + 데이터, 끝 항목은 (파일 크기, 0xFFFF).
 
 스프라이트 항목(머리 u32 0x14 로 시작):
   머리   u32 구역0, 구역1, 구역2, 구역3 위치 + u32 1
@@ -29,20 +29,17 @@ import engine  # noqa: E402
 SUBSCREEN = 'datbin/com/subscreen.bin'
 OBJ_SIZES = {0: [(8, 8), (16, 16), (32, 32), (64, 64)], 1: [(16, 8), (32, 8), (32, 16), (64, 32)],
              2: [(8, 16), (8, 32), (16, 32), (32, 64)]}
-PIECES = {(32, 16): (1, 2), (16, 16): (0, 1), (8, 16): (2, 0)}       # 라벨에 쓰는 OBJ 조각: (모양, 크기)
 
 
 # ---------------------------------------------------------------- 아카이브
 def read_archive(data):
-    """[(압축 여부, 저장된 바이트)]"""
-    items = []
+    """[(압축 여부, 저장된 바이트)]. 크기 칸은 풀린 크기라서(mess.bin 과 같다) 저장된 길이는 다음 항목 위치로 정한다."""
     first = struct.unpack_from('<I', data, 0)[0]
-    for i in range(0, first, 8):
-        off, size = struct.unpack_from('<II', data, i)
-        if size == 0xFFFF:
-            break
+    table = [struct.unpack_from('<II', data, i) for i in range(0, first, 8)]
+    items = []
+    for (off, size), (end, _) in zip(table, table[1:]):
         comp = bool(size & 0x80000000)
-        items.append((comp, data[off:off + (size & 0x7FFFFFFF)]))
+        items.append((comp, data[off:end] if comp else data[off:off + (size & 0x7FFFFFFF)]))
     return items
 
 
@@ -55,7 +52,8 @@ def write_archive(items):
     table = 8 * (len(items) + 1)
     out, body, pos = bytearray(), bytearray(), table
     for comp, raw in items:
-        out += struct.pack('<II', pos, len(raw) | (0x80000000 if comp else 0))
+        size = len(ndspy.lz10.decompress(raw)) | 0x80000000 if comp else len(raw)
+        out += struct.pack('<II', pos, size)
         body += raw
         pos += len(raw)
     out += struct.pack('<II', pos, 0xFFFF)
@@ -217,58 +215,99 @@ def bold():
     return BOLD
 
 
-# ---------------------------------------------------------------- 아래 화면 메인 메뉴 (subscreen 0·12·24 = 페가서스·드래곤·레오 색)
-MENU_SPRITES = (0, 12, 24)
-# 프레임 → 한글. 같은 타일 묶음을 쓰는 프레임(+13)도 같이 바뀐다.
-MENU_LABELS = {4: '배틀카드', 5: '아이템', 6: '라이브러리', 7: '저장', 8: '온에어', 9: '통신', 10: '메일'}
-MENU_BUTTONS = {1: '퍼스널', 2: '워록', 3: '브라더'}
-LABEL_COLOR = 15
-LABEL_BASELINE = 15          # 원래 라벨의 글자 줄은 3~14
+SMALL = None
 
 
-def label_pieces(width):
-    """폭(8의 배수)을 16픽셀 높이 OBJ 조각 [(x, w)]로 나눈다."""
+def small():
+    global SMALL
+    if SMALL is None:
+        SMALL = Font('Galmuri7.bdf')
+    return SMALL
+
+
+FONTS = {'bold': bold, 'small': small}
+
+# ---------------------------------------------------------------- 바꿀 그림 (subscreen.bin)
+# 스프라이트 번호 → {프레임: (한글, 글꼴, 정렬)}. 글꼴 bold = 갈무리11 Bold(16줄 제목·단추), small = 갈무리7(8줄 탭).
+# 정렬 left 는 원래 글자의 왼쪽 끝, center 는 원래 글자의 가운데에 맞춘다. 색은 원래 글자의 색(한 가지)을 쓴다.
+_MENU = {4: ('배틀카드', 'bold', 'center'), 5: ('아이템', 'bold', 'center'), 6: ('라이브러리', 'bold', 'center'),
+         7: ('저장', 'bold', 'center'), 8: ('온에어', 'bold', 'center'), 9: ('통신', 'bold', 'center'),
+         10: ('메일', 'bold', 'center')}
+LABELS = {
+    0: _MENU, 12: _MENU, 24: _MENU,                              # 아래 화면 메인 메뉴 (페가서스·드래곤·레오 색)
+    113: {2: ('배틀카드', 'bold', 'left')},                       # 폴더 화면 제목
+    157: {3: ('아이템', 'bold', 'left'),                           # 아이템 화면 제목과 탭
+          4: ('서브 카드', 'small', 'center'), 5: ('키 아이템', 'small', 'center')},
+    331: {0: ('스탠다드', 'bold', 'left'), 1: ('메가', 'bold', 'left'), 2: ('기가', 'bold', 'left')},   # 라이브러리
+    306: {0: ('온에어', 'bold', 'left')},
+    309: {0: ('온에어', 'bold', 'left')},
+    307: {0: ('온에어 참가', 'bold', 'left'), 1: ('호스트 목록', 'small', 'center')},
+    308: {0: ('온에어 호스트', 'bold', 'left'), 1: ('참가자 목록', 'small', 'center')},
+    316: {0: ('메일', 'bold', 'left'),                             # 메일 화면 제목과 탭
+          1: ('메일함', 'small', 'center'), 2: ('브라더 메일', 'small', 'center')},
+    320: {0: ('메일 쓰기', 'bold', 'left'), 8: ('제목', 'small', 'left'), 9: ('본문', 'small', 'left')},
+    357: {0: ('베스트 콤보', 'bold', 'left'), 1: ('콤보 목록', 'small', 'center')},
+    345: {0: ('선택 중', 'small', 'left')},
+}
+# 큰 단추(64×48) 윗줄 글자: 스프라이트 번호 → {프레임: 한글}
+_BUTTONS = {1: '퍼스널', 2: '워록', 3: '브라더'}
+BUTTONS = {0: _BUTTONS, 12: _BUTTONS, 24: _BUTTONS}
+PIECES = {16: [(32, 1, 2), (16, 0, 1), (8, 2, 0)],                 # 높이 → [(폭, 모양, 크기)]
+          8: [(32, 1, 1), (16, 1, 0), (8, 0, 0)]}
+
+
+def label_pieces(width, height):
+    """폭(8의 배수)을 OBJ 조각 [(x, 폭, 모양, 크기)]로 나눈다."""
     out, x = [], 0
-    for w in (32, 16, 8):
+    for w, shape, size in PIECES[height]:
         while width - x >= w:
-            out.append((x, w))
+            out.append((x, w, shape, size))
             x += w
     return out
 
 
-def replace_label(s, k, text):
-    """프레임 k(한 줄 라벨)를 새 폭으로 다시 짜서 text 를 그린다. 같은 묶음을 쓰는 프레임 목록을 돌려준다."""
+def replace_label(s, k, text, font, align):
+    """프레임 k(한 줄 글자)를 한글 폭에 맞춰 OBJ 조각을 다시 짜고 그린다. (묶음 번호, 타일, 조각)을 돌려준다."""
     g = s.frames[k][0]
-    _, (ox, oy) = s.layout(k)
-    old_w = max(o[1] + o[3] for o in s.objs(k)) - ox
-    pts, w = bold().render(text, LABEL_BASELINE)
+    where, (ox, oy) = s.layout(k)
+    ink = [(x, y, s.pixel(p)) for (x, y), p in where.items() if s.pixel(p)]
+    colors = {}
+    for _, _, c in ink:
+        colors[c] = colors.get(c, 0) + 1
+    if len(colors) != 1:
+        sys.exit(f'프레임 {k} 글자색이 한 가지가 아닙니다: {colors}')
+    color = next(iter(colors))
+    height = max(y for _, y in where) + 1
+    left, right = min(x for x, _, _ in ink), max(x for x, _, _ in ink)
+    pts, w = FONTS[font]().render(text, max(y for _, y, _ in ink) + 1)
+    if min(y for _, y in pts) < 0:
+        sys.exit(f'{text!r} 가 프레임 높이 {height} 를 넘습니다')
     width = (w + 7) // 8 * 8
-    if width > 64:
-        sys.exit(f'라벨 {text!r} 이 64픽셀을 넘습니다: {w}')
-    x0 = ox + (old_w - width) // 2
-    pieces = label_pieces(width)
-    ntiles = sum(pw // 8 * 2 for _, pw in pieces)
-    if ntiles > s.alloc:
-        sys.exit(f'라벨 {text!r} 이 VRAM 할당({s.alloc}타일)을 넘습니다')
-    # 그림: 16줄 × width
-    img = [[0] * width for _ in range(16)]
-    dx = (width - w) // 2
+    start = left if align == 'left' else (left + right + 1 - w) // 2   # 글자 왼쪽 끝 (프레임 기준)
+    pad = 0 if align == 'left' else (width - w) // 2
+    x0 = ox + start - pad
+    pieces = label_pieces(width, height)
+    ntiles = width // 8 * height // 8
+    if ntiles > s.alloc:          # 할당은 묶음 최대 타일 수다. 넓힌 글자에 맞춰 늘린다(화면에서 확인할 것)
+        print(f'  {text!r} ({width}×{height}): VRAM 할당 {s.alloc} → {ntiles}타일')
+        s.alloc = ntiles
+    img = [[0] * width for _ in range(height)]
     for x, y in pts:
-        img[y][x + dx] = LABEL_COLOR
+        img[y][x + pad] = color
     tiles, cells, t = bytearray(), [], 0
-    for i, (px, pw) in enumerate(pieces):
-        shape, size = PIECES[pw, 16]
-        last = 1 if i == len(pieces) - 1 else 0
-        x = x0 + px
-        cells.append([t // 2, x & 0xFF, oy & 0xFF, size, shape, 0, last, 0])
-        for ty in range(2):
+    for i, (px, pw, shape, size) in enumerate(pieces):
+        if t % 2:
+            sys.exit('조각 타일 위치가 홀수입니다')
+        cells.append([t // 2, (x0 + px) & 0xFF, oy & 0xFF, size, shape, 0, 1 if i == len(pieces) - 1 else 0, 0])
+        for ty in range(height // 8):
             for tx in range(pw // 8):
                 for yy in range(8):
                     row = img[ty * 8 + yy]
                     for xx in range(0, 8, 2):
-                        a, b = row[px + tx * 8 + xx], row[px + tx * 8 + xx + 1]
-                        tiles.append(a | b << 4)
+                        tiles.append(row[px + tx * 8 + xx] | row[px + tx * 8 + xx + 1] << 4)
                 t += 1
+    if t % 2:                     # 묶음은 짝수 타일이다(원본도 7타일 탭을 8로 채운다). 홀수면 뒤 묶음이 어긋난다
+        tiles += bytes(32)
     return g, bytes(tiles), cells
 
 
@@ -296,13 +335,13 @@ def redraw_button(s, k, text):
         s.put(where[x + x0, y], color[bg[y]])
 
 
-def translate_menu(e):
+def translate_sprite(e, labels, buttons):
     s = Sprite(e)
-    for k, text in MENU_BUTTONS.items():
+    for k, text in buttons.items():
         redraw_button(s, k, text)
     new = {}
-    for k, text in MENU_LABELS.items():
-        g, tiles, cells = replace_label(s, k, text)
+    for k, (text, font, align) in labels.items():
+        g, tiles, cells = replace_label(s, k, text, font, align)
         new[g] = (tiles, cells)
     # 묶음 타일을 다시 늘어놓는다: 바뀐 묶음은 새 타일, 나머지는 원래 타일. 같은 자리를 쓰는 묶음은 함께 옮긴다.
     order = sorted({tuple(g) for g in s.groups}, key=lambda g: g[1])
@@ -329,17 +368,99 @@ def translate_menu(e):
     for k, f in enumerate(s.frames):
         if f[0] in new:
             s.cells[k] = [list(c) for c in new[f[0]][1]]
+    if any(g[0] % 2 or g[1] % 2 for g in s.groups):
+        sys.exit('타일 묶음의 수나 시작이 홀수입니다')
     if max(g[0] for g in s.groups) > s.alloc:
         sys.exit('묶음이 VRAM 할당을 넘습니다')
+    if s.alloc > 1023:
+        sys.exit('VRAM 할당이 너무 큽니다')
     return s.save()
+
+
+# ---------------------------------------------------------------- 배경(BG)에 박힌 화면 제목
+# (타일 항목, 맵 항목) → (한글, 글꼴). 8bpp 타일, 32×32 맵. 맵의 타일 번호 t 는 타일 항목의 t-1 번이다
+# (게임이 0번 빈 타일을 앞에 두고 올린다). 제목은 위 막대 0~1행, 왼쪽 BG_TITLE_COLS 칸 안에 있다.
+BG_TITLES = {
+    (107, 109): ('저장', 'bold'),        # 저장 화면
+}
+BG_TITLE_ROWS = 2
+BG_TITLE_COLS = 8                       # 0~7열 (그 뒤는 네모 장식)
+BG_VRAM_TILES = 768                     # 타일을 올리는 곳(문자 기준 0x4000)부터 다음 BG(0x10000)까지 칸 수
+
+
+def translate_bg_title(tiles_e, map_e, text, font):
+    """제목 칸의 글자를 지우고 한글을 그린다. (새 타일 항목, 새 맵 항목)"""
+    T = bytearray(tiles_e)
+    M = list(struct.unpack(f'<{len(map_e) // 2}H', map_e))
+    W, H = BG_TITLE_COLS * 8, BG_TITLE_ROWS * 8
+
+    def cell(c, r):
+        return M[r * 32 + c]
+
+    def pix(v, x, y):                    # 칸 맵 값 v 의 (x, y) 점이 든 타일 데이터 위치
+        t = (v & 0x3FF) - 1
+        if t < 0:
+            return None
+        xx = 7 - x if v >> 10 & 1 else x
+        yy = 7 - y if v >> 11 & 1 else y
+        return t * 64 + yy * 8 + xx
+
+    img = [[0] * W for _ in range(H)]
+    for y in range(H):
+        for x in range(W):
+            p = pix(cell(x // 8, y // 8), x % 8, y % 8)
+            img[y][x] = T[p] if p is not None else 0
+    bg = [img[y][2] for y in range(H)]                 # 0열(글자가 없는 막대)의 줄마다 배경색
+    ink = [(x, y) for y in range(H) for x in range(W) if img[y][x] != bg[y]]
+    if not ink:
+        sys.exit('BG 제목 칸에서 글자를 찾지 못했습니다')
+    colors = {}
+    for x, y in ink:
+        colors[img[y][x]] = colors.get(img[y][x], 0) + 1
+    color = max(colors, key=colors.get)
+    left = min(x for x, _ in ink)
+    bottom = max(y for _, y in ink)
+    for x, y in ink:
+        img[y][x] = bg[y]
+    pts, w = FONTS[font]().render(text, bottom + 1)
+    if left + w > W or min(y for _, y in pts) < 0:
+        sys.exit(f'BG 제목 {text!r} 가 칸({W}×{H})을 넘습니다')
+    for x, y in pts:
+        img[y][x + left] = color
+    # 칸마다: 다른 곳에서도 쓰는 타일이 바뀌면 새 타일을 만들어 이 칸만 가리킨다
+    uses = {}
+    for v in M:
+        uses[v & 0x3FF] = uses.get(v & 0x3FF, 0) + 1
+    for r in range(BG_TITLE_ROWS):
+        for c in range(BG_TITLE_COLS):
+            v = cell(c, r)
+            new = bytes(img[r * 8 + y][c * 8 + x] for y in range(8) for x in range(8))
+            t = (v & 0x3FF) - 1
+            old = bytes(T[pix(v, x, y)] for y in range(8) for x in range(8)) if t >= 0 else bytes(64)
+            if new == old:
+                continue
+            if t >= 0 and uses[v & 0x3FF] == 1 and not v >> 10 & 3:
+                T[t * 64:(t + 1) * 64] = new
+            else:
+                T += new
+                n = len(T) // 64                      # 맵 번호 = 타일 번호 + 1
+                if n + 1 > BG_VRAM_TILES:
+                    sys.exit('BG 타일이 VRAM 자리를 넘습니다')
+                M[r * 32 + c] = (v & 0xF000) | n
+    return bytes(T), struct.pack(f'<{len(M)}H', *M)
 
 
 def translate(rom_files):
     """{롬 안 경로: 새 바이트}"""
     data = rom_files(SUBSCREEN)
     items = read_archive(data)
-    for i in MENU_SPRITES:
-        items[i] = (items[i][0], (ndspy.lz10.compress if items[i][0] else bytes)(translate_menu(unpack(items[i]))))
+    for i in sorted(set(LABELS) | set(BUTTONS)):
+        e = translate_sprite(unpack(items[i]), LABELS.get(i, {}), BUTTONS.get(i, {}))
+        items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
+    for (ti, mi), (text, font) in BG_TITLES.items():
+        te, me = translate_bg_title(bytes(unpack(items[ti])), bytes(unpack(items[mi])), text, font)
+        for i, e in ((ti, te), (mi, me)):
+            items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
     return {SUBSCREEN: write_archive(items)}
 
 
@@ -370,10 +491,10 @@ def check():
 def preview():
     items = read_archive(original_file(SUBSCREEN))
     rows = []
-    for i in MENU_SPRITES:
+    for i in sorted(set(LABELS) | set(BUTTONS)):
         a = Sprite(unpack(items[i]))
-        b = Sprite(translate_menu(unpack(items[i])))
-        ks = list(MENU_BUTTONS) + list(MENU_LABELS)
+        b = Sprite(translate_sprite(unpack(items[i]), LABELS.get(i, {}), BUTTONS.get(i, {})))
+        ks = list(BUTTONS.get(i, {})) + list(LABELS.get(i, {}))
         rows += [[a.image(k) for k in ks], [b.image(k) for k in ks]]
     W = max(sum(m.width + 4 for m in r) for r in rows)
     H = sum(max(m.height for m in r) + 4 for r in rows)

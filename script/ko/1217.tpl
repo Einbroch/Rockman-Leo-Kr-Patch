@@ -6,6 +6,7 @@ script 0 mmsf1 {
 	mugshotShow
 		mugshot = Jammer
 	"어서 오세요!"
+	waitHold
 	end
 }
 script 1 mmsf1 {
@@ -15,6 +16,7 @@ script 1 mmsf1 {
 	textSpeed
 		delay = 0
 	"무엇을 사실 건가요?\n"
+	waitHold
 	end
 }
 script 2 mmsf1 {
@@ -49,6 +51,7 @@ script 3 mmsf1 {
 	mugshotShow
 		mugshot = Jammer
 	"다음에 또 오세요!\n\n"
+	waitHold
 	end
 }
 script 10 mmsf1 {

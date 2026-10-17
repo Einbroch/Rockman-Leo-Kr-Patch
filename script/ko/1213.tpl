@@ -12,6 +12,7 @@ script 0 mmsf1 {
 	textSpeed
 		delay = 0
 	"클라이언트 접속을 기다리는\n중입니다."
+	waitHold
 	end
 }
 script 1 mmsf1 {
@@ -67,6 +68,7 @@ script 2 mmsf1 {
 		minLength = 2
 		padMode = leftPadZeroes
 	"의\n접속을 기다리는 중입니다."
+	waitHold
 	end
 }
 script 3 mmsf1 {
@@ -129,6 +131,7 @@ script 10 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"호스트를 찾는 중입니다...\n"
+	waitHold
 	end
 }
 script 11 mmsf1 {
@@ -138,6 +141,7 @@ script 11 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"잠시만요... 접속을\n요청하는 중입니다!\n"
+	waitHold
 	end
 }
 script 12 mmsf1 {
@@ -152,6 +156,7 @@ script 12 mmsf1 {
 		minLength = 2
 		padMode = leftPadZeroes
 	"을\n찾는 중입니다."
+	waitHold
 	end
 }
 script 13 mmsf1 {
@@ -166,6 +171,7 @@ script 13 mmsf1 {
 		minLength = 2
 		padMode = leftPadZeroes
 	"에게\n접속을 요청하는 중입니다."
+	waitHold
 	end
 }
 script 14 mmsf1 {
@@ -292,6 +298,7 @@ script 30 mmsf1 {
 		type = 1
 	clearMsg
 	"다른 차원으로 이어져 있어! \n"
+	waitHold
 	end
 }
 script 31 mmsf1 {
@@ -393,6 +400,7 @@ script 32 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"응답을 기다리는 중입니다...\n"
+	waitHold
 	end
 }
 script 33 mmsf1 {
@@ -415,6 +423,7 @@ script 34 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"브라더에게서 전파가\n오고 있습니다."
+	waitHold
 	end
 }
 script 35 mmsf1 {
@@ -540,6 +549,7 @@ script 40 mmsf1 {
 	textSpeed
 		delay = 3
 	"그 사람의 트랜서에서..."
+	waitHold
 }
 script 41 mmsf1 {
 	msgOpenQuick
@@ -585,6 +595,7 @@ script 42 mmsf1 {
 	printNameBuffer1
 	printNameBuffer2
 	"..."
+	waitHold
 }
 script 43 mmsf1 {
 	msgOpenQuick
@@ -678,6 +689,7 @@ script 70 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"호스트가 되어 주변 사람과\n교환 및 배틀을 합니다.\n"
+	waitHold
 	end
 }
 script 71 mmsf1 {
@@ -687,6 +699,7 @@ script 71 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"클라이언트가 되어 주변 사람과\n교환 및 배틀을 합니다.\n"
+	waitHold
 	end
 }
 script 72 mmsf1 {
@@ -695,7 +708,8 @@ script 72 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"특정 상대를 찾으려면 2자리\n숫자를 입력하세요."
+	"특정 상대를 찾으려면 2자리\n숫자를 입력하세요. "
+	waitHold
 	end
 }
 script 73 mmsf1 {
@@ -705,6 +719,7 @@ script 73 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"브라더를 프렌드 명단에\n등록합니다.\n"
+	waitHold
 	end
 }
 script 74 mmsf1 {
@@ -714,6 +729,7 @@ script 74 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"닌텐도 Wi-Fi 커넥션\n설정으로 들어갑니다."
+	waitHold
 	end
 }
 script 79 mmsf1 {
@@ -723,6 +739,7 @@ script 79 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"닌텐도 Wi-Fi 커넥션\n설정으로 들어갑니다."
+	waitHold
 	end
 }
 script 80 mmsf1 {
@@ -893,6 +910,7 @@ script 90 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"단판 승부!\n"
+	waitHold
 }
 script 91 mmsf1 {
 	msgOpenQuick
@@ -901,6 +919,7 @@ script 91 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"3판 2선승제!\n"
+	waitHold
 }
 script 92 mmsf1 {
 	msgOpenQuick
@@ -909,6 +928,7 @@ script 92 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"1판 배틀!\n패배하면 카드 1장을 잃습니다!\n"
+	waitHold
 }
 script 93 mmsf1 {
 	msgOpenQuick
@@ -917,12 +937,14 @@ script 93 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"3판 2선승제!\n패배하면 카드 1장을 잃습니다!\n"
+	waitHold
 }
 script 94 mmsf1 {
 	msgOpenQuick
 	mugshotShow
 		mugshot = Geo
 	"완전히 당했네...\n"
+	waitHold
 }
 script 95 mmsf1 {
 	msgOpenQuick
@@ -930,7 +952,8 @@ script 95 mmsf1 {
 		delay = 0
 	mugshotShow
 		mugshot = Geo
-	"ON으로 설정하면 경기 후\n상대에게 브라더가 되자고\n요청합니다.\n"
+	"ON으로 설정하면 경기 후\n상대에게 브라더가 되자고\n요청합니다. "
+	waitHold
 }
 script 96 mmsf1 {
 	msgOpenQuick
@@ -939,6 +962,7 @@ script 96 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"친구와 배틀 카드를\n교환할 수 있습니다. "
+	waitHold
 }
 script 97 mmsf1 {
 	msgOpenQuick
@@ -1174,6 +1198,7 @@ script 106 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"친구의 응답을 기다리는\n중입니다...\n"
+	waitHold
 }
 script 107 mmsf1 {
 	msgOpenQuick
@@ -1204,6 +1229,7 @@ script 109 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"선택한 모드를\n실행하는 중입니다..."
+	waitHold
 }
 script 110 mmsf1 {
 	msgOpenQuick
@@ -1212,6 +1238,7 @@ script 110 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"친구와 배틀합니다.\n"
+	waitHold
 }
 script 111 mmsf1 {
 	msgOpenQuick
@@ -1220,6 +1247,7 @@ script 111 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"배틀 카드를 교환합니다.\n"
+	waitHold
 }
 script 112 mmsf1 {
 	msgOpenQuick
@@ -1343,6 +1371,7 @@ script 121 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"서버에 데이터를\n업로드하는 중입니다...\n"
+	waitHold
 }
 script 122 mmsf1 {
 	msgOpenQuick
@@ -1412,6 +1441,7 @@ script 132 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"살짝 맛만 보자...\n"
+	waitHold
 }
 script 133 mmsf1 {
 	msgOpenQuick
@@ -1451,6 +1481,7 @@ script 134 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"접속 중입니다..."
+	waitHold
 }
 script 135 mmsf1 {
 	msgOpenQuick
@@ -1724,6 +1755,7 @@ script 169 mmsf1 {
 		type = 1
 	clearMsg
 	"게임 카드를 다시\n삽입하세요."
+	waitHold
 	end
 }
 script 171 mmsf1 {
@@ -1736,6 +1768,7 @@ script 171 mmsf1 {
 		type = 1
 	clearMsg
 	"게임 카드를 다시 삽입하세요."
+	waitHold
 	end
 }
 script 172 mmsf1 {

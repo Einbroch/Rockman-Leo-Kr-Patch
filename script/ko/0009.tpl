@@ -74,6 +74,7 @@ script 6 mmsf1 {
 	textSpeed
 		delay = 0
 	"친구와 연결해서\n온 에어!\n"
+	waitHold
 	end
 }
 script 7 mmsf1 {
@@ -83,6 +84,7 @@ script 7 mmsf1 {
 	textSpeed
 		delay = 0
 	"친구와의 연결을\n종료합니다.\n"
+	waitHold
 	end
 }
 script 8 mmsf1 {
@@ -92,6 +94,7 @@ script 8 mmsf1 {
 	textSpeed
 		delay = 0
 	"브라더 데이터를 갱신합니다!\n"
+	waitHold
 	end
 }
 script 9 mmsf1 {
@@ -101,6 +104,7 @@ script 9 mmsf1 {
 	textSpeed
 		delay = 0
 	"근처 친구를 호스트로 삼아\n온 에어!\n"
+	waitHold
 	end
 }
 script 10 mmsf1 {
@@ -110,6 +114,7 @@ script 10 mmsf1 {
 	textSpeed
 		delay = 0
 	"근처 친구와 연결해서\n온 에어! \n"
+	waitHold
 	end
 }
 script 11 mmsf1 {
@@ -119,6 +124,7 @@ script 11 mmsf1 {
 	textSpeed
 		delay = 0
 	"두 자리 숫자를 입력해\n특정 상대를 찾습니다.\n"
+	waitHold
 	end
 }
 script 12 mmsf1 {
@@ -128,6 +134,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	"닌텐도 Wi-Fi\n커넥션에 연결합니다."
+	waitHold
 	end
 }
 script 13 mmsf1 {
@@ -137,6 +144,7 @@ script 13 mmsf1 {
 	textSpeed
 		delay = 0
 	"닌텐도 Wi-Fi\n커넥션을 설정합니다."
+	waitHold
 	end
 }
 script 14 mmsf1 {
@@ -146,6 +154,7 @@ script 14 mmsf1 {
 	textSpeed
 		delay = 0
 	"클라이언트 참가를 기다리는\n중입니다."
+	waitHold
 	end
 }
 script 15 mmsf1 {
@@ -155,6 +164,7 @@ script 15 mmsf1 {
 	textSpeed
 		delay = 0
 	"호스트를 찾는 중입니다."
+	waitHold
 	end
 }
 script 16 mmsf1 {
@@ -164,6 +174,7 @@ script 16 mmsf1 {
 	textSpeed
 		delay = 0
 	"어느 호스트에\n연결할까요? \n"
+	waitHold
 	end
 }
 script 17 mmsf1 {
@@ -210,6 +221,7 @@ script 18 mmsf1 {
 	textSpeed
 		delay = 0
 	"호스트와 온 에어를\n요청하는 중입니다. 잠시만...\n"
+	waitHold
 	end
 }
 script 19 mmsf1 {
@@ -331,6 +343,7 @@ script 26 mmsf1 {
 		minLength = 2
 		padMode = leftPadZeroes
 	"의\n참가를 기다리는 중...\n"
+	waitHold
 	end
 }
 script 27 mmsf1 {
@@ -345,6 +358,7 @@ script 27 mmsf1 {
 		minLength = 2
 		padMode = leftPadZeroes
 	"를 찾는\n중입니다."
+	waitHold
 	end
 }
 script 28 mmsf1 {
@@ -359,6 +373,7 @@ script 28 mmsf1 {
 		minLength = 2
 		padMode = leftPadZeroes
 	"에\n요청을 보냈습니다. 잠시만 기다려\n주세요."
+	waitHold
 	end
 }
 script 29 mmsf1 {
@@ -563,5 +578,6 @@ script 39 mmsf1 {
 		type = 1
 	clearMsg
 	"게임 카드를 다시 삽입하세요.\n"
+	waitHold
 	end
 }

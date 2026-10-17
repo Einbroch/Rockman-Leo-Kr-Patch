@@ -4,6 +4,7 @@
 script 0 mmsf1 {
 	msgOpenQuick
 	"브라더 데이터를 업로드 중…\n"
+	waitHold
 }
 script 20 mmsf1 {
 	msgOpenQuick

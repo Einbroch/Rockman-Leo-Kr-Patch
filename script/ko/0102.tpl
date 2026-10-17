@@ -91,6 +91,7 @@ script 21 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"뾰족 송곳니 설명"
+	waitHold
 	end
 }
 script 22 mmsf1 {
@@ -99,6 +100,7 @@ script 22 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"베기 발톱 설명"
+	waitHold
 	end
 }
 script 23 mmsf1 {
@@ -107,6 +109,7 @@ script 23 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"고슴도치 바늘 설명"
+	waitHold
 	end
 }
 script 24 mmsf1 {
@@ -115,6 +118,7 @@ script 24 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"곰 링 설명"
+	waitHold
 	end
 }
 script 25 mmsf1 {
@@ -123,6 +127,7 @@ script 25 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"코브라 송곳니 설명"
+	waitHold
 	end
 }
 script 26 mmsf1 {
@@ -131,6 +136,7 @@ script 26 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"눈부신 눈 설명"
+	waitHold
 	end
 }
 script 27 mmsf1 {
@@ -139,6 +145,7 @@ script 27 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"도둑의 완장 설명"
+	waitHold
 	end
 }
 script 28 mmsf1 {
@@ -147,6 +154,7 @@ script 28 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"파워 링 설명"
+	waitHold
 	end
 }
 script 29 mmsf1 {
@@ -155,6 +163,7 @@ script 29 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"악마의 눈 설명"
+	waitHold
 	end
 }
 script 30 mmsf1 {
@@ -163,6 +172,7 @@ script 30 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"연사 발톱 설명"
+	waitHold
 	end
 }
 script 31 mmsf1 {
@@ -171,6 +181,7 @@ script 31 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"마비기 설명"
+	waitHold
 	end
 }
 script 32 mmsf1 {
@@ -179,6 +190,7 @@ script 32 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"버블 피스트 설명"
+	waitHold
 	end
 }
 script 33 mmsf1 {
@@ -187,6 +199,7 @@ script 33 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"해머 글러브 설명"
+	waitHold
 	end
 }
 script 34 mmsf1 {
@@ -195,6 +208,7 @@ script 34 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"제니 파인더 설명"
+	waitHold
 	end
 }
 script 35 mmsf1 {
@@ -203,6 +217,7 @@ script 35 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"카드 파인더 설명"
+	waitHold
 	end
 }
 script 36 mmsf1 {
@@ -211,6 +226,7 @@ script 36 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"달콤한 신기루 설명"
+	waitHold
 	end
 }
 script 37 mmsf1 {
@@ -219,6 +235,7 @@ script 37 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"카이저 너클 설명"
+	waitHold
 	end
 }
 script 38 mmsf1 {
@@ -227,6 +244,7 @@ script 38 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"마법의 숨결 설명"
+	waitHold
 	end
 }
 script 39 mmsf1 {
@@ -235,6 +253,7 @@ script 39 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"FM 브레이슬릿 설명"
+	waitHold
 	end
 }
 script 40 mmsf1 {
@@ -243,6 +262,7 @@ script 40 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"스타 포스 파워 설명"
+	waitHold
 	end
 }
 script 41 mmsf1 {
@@ -251,5 +271,6 @@ script 41 mmsf1 {
 		top = 13
 	msgOpenQuick
 	"록맨에그제블래스터설명"
+	waitHold
 	end
 }

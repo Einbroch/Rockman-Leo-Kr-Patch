@@ -407,6 +407,7 @@ script 38 mmsf1 {
 		type = 1
 	clearMsg
 	"게임 카드를 다시\n삽입해 주세요.\n"
+	waitHold
 	end
 	end
 }

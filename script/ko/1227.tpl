@@ -8,6 +8,7 @@ script 0 mmsf1 {
 		type = 1
 	clearMsg
 	"게임 카드를 다시\n삽입해 주세요."
+	waitHold
 	end
 }
 script 1 mmsf1 {

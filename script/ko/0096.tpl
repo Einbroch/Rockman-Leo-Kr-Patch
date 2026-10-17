@@ -8,6 +8,7 @@ script 0 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"흠, 어떤 메일을\n읽어 볼까?"
+	waitHold
 	end
 }
 script 1 mmsf1 {
@@ -17,6 +18,7 @@ script 1 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"새 메일이 왔네..."
+	waitHold
 	end
 }
 script 2 mmsf1 {
@@ -26,6 +28,7 @@ script 2 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"메일이 한 통도\n없어... "
+	waitHold
 	end
 }
 script 3 mmsf1 {
@@ -109,6 +112,7 @@ script 4 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"어디에 저장할까?"
+	waitHold
 	end
 }
 script 5 mmsf1 {
@@ -643,6 +647,7 @@ script 23 mmsf1 {
 		type = 1
 	clearMsg
 	"게임 카드를 다시 삽입하세요."
+	waitHold
 	end
 }
 script 24 mmsf1 {

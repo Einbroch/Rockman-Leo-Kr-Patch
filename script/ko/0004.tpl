@@ -7,6 +7,7 @@ script 0 mmsf1 {
 	printPlayerName1
 	"\n"
 	printPlayerName2
+	waitHold
 	end
 }
 script 1 mmsf1 {

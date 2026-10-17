@@ -98,6 +98,7 @@ script 3 mmsf1 {
 	textSpeed
 		delay = 0
 	" 내 능력치야."
+	waitHold
 	end
 }
 script 4 mmsf1 {
@@ -666,6 +667,7 @@ script 35 mmsf1 {
 		type = 1
 	clearMsg
 	"게임 카드를 다시 삽입하세요."
+	waitHold
 	end
 }
 script 40 mmsf1 {
@@ -717,6 +719,7 @@ script 43 mmsf1 {
 	textSpeed
 		delay = 0
 	" 내 능력치야."
+	waitHold
 	end
 }
 script 44 mmsf1 {

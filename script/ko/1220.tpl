@@ -7,6 +7,7 @@ script 0 mmsf1 {
 		delay = 0
 	printPlayerName1
 	"의 트랜서.\n모든 정보를 저장하고 있다."
+	waitHold
 	end
 }
 script 1 mmsf1 {
@@ -14,6 +15,7 @@ script 1 mmsf1 {
 	textSpeed
 		delay = 0
 	"다이고가 예전에 쓰던\n특수 안경이다."
+	waitHold
 	end
 }
 script 2 mmsf1 {
@@ -21,6 +23,7 @@ script 2 mmsf1 {
 	textSpeed
 		delay = 0
 	"트럭 컴퓨터의 빨간 문을\n여는 열쇠.\n"
+	waitHold
 	end
 }
 script 3 mmsf1 {
@@ -28,6 +31,7 @@ script 3 mmsf1 {
 	textSpeed
 		delay = 0
 	"트럭 컴퓨터의 파란 문을\n여는 열쇠.\n"
+	waitHold
 	end
 }
 script 4 mmsf1 {
@@ -35,6 +39,7 @@ script 4 mmsf1 {
 	textSpeed
 		delay = 0
 	"트럭 컴퓨터의 노란 문을\n여는 열쇠.\n"
+	waitHold
 	end
 }
 script 5 mmsf1 {
@@ -42,6 +47,7 @@ script 5 mmsf1 {
 	textSpeed
 		delay = 0
 	"트럭 컴퓨터 문을 여는\n열쇠 세트 중 하나. "
+	waitHold
 	end
 }
 script 6 mmsf1 {
@@ -49,6 +55,7 @@ script 6 mmsf1 {
 	textSpeed
 		delay = 0
 	"트럭 컴퓨터 문을 여는\n열쇠 세트 중 하나.\n"
+	waitHold
 	end
 }
 script 7 mmsf1 {
@@ -56,6 +63,7 @@ script 7 mmsf1 {
 	textSpeed
 		delay = 0
 	"트럭 컴퓨터 문을 여는\n열쇠 세트 중 하나.\n"
+	waitHold
 	end
 }
 script 8 mmsf1 {
@@ -63,6 +71,7 @@ script 8 mmsf1 {
 	textSpeed
 		delay = 0
 	"트럭 컴퓨터 문을 여는\n열쇠 세트 중 하나.\n"
+	waitHold
 	end
 }
 script 9 mmsf1 {
@@ -70,6 +79,7 @@ script 9 mmsf1 {
 	textSpeed
 		delay = 0
 	"마지막 한 방울까지\n아주 맛있고 상쾌하다!"
+	waitHold
 	end
 }
 script 10 mmsf1 {
@@ -77,6 +87,7 @@ script 10 mmsf1 {
 	textSpeed
 		delay = 0
 	"무선 조종 헬리콥터.\n프로펠러맨 카드로 날릴 수 있다."
+	waitHold
 	end
 }
 script 11 mmsf1 {
@@ -84,6 +95,7 @@ script 11 mmsf1 {
 	textSpeed
 		delay = 0
 	"과학 박물관 입장\n패스."
+	waitHold
 	end
 }
 script 12 mmsf1 {
@@ -91,6 +103,7 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	"AMAKEN 직원용\n패스.\n"
+	waitHold
 	end
 }
 script 13 mmsf1 {
@@ -98,6 +111,7 @@ script 13 mmsf1 {
 	textSpeed
 		delay = 0
 	"우주 시뮬레이터에서 입는\n우주복.\n"
+	waitHold
 	end
 }
 script 14 mmsf1 {
@@ -109,6 +123,7 @@ script 14 mmsf1 {
 		type = 1
 	clearMsg
 	"이 카드로 키맨을 불러\n문을 열 수 있다."
+	waitHold
 	end
 }
 script 36 mmsf1 {
@@ -116,6 +131,7 @@ script 36 mmsf1 {
 	textSpeed
 		delay = 0
 	"스타 가디언을 쓰러뜨린 증표.\n은은하게 빛난다."
+	waitHold
 	end
 }
 script 37 mmsf1 {
@@ -123,6 +139,7 @@ script 37 mmsf1 {
 	textSpeed
 		delay = 0
 	"스타 가디언을 쓰러뜨린 증표.\n은은하게 빛난다."
+	waitHold
 	end
 }
 script 38 mmsf1 {
@@ -130,6 +147,7 @@ script 38 mmsf1 {
 	textSpeed
 		delay = 0
 	"스타 가디언을 쓰러뜨린 증표.\n은은하게 빛난다."
+	waitHold
 	end
 }
 script 39 mmsf1 {
@@ -137,6 +155,7 @@ script 39 mmsf1 {
 	textSpeed
 		delay = 0
 	"스타 가디언을 쓰러뜨린 증표.\n은은하게 빛난다."
+	waitHold
 	end
 }
 script 40 mmsf1 {
@@ -144,6 +163,7 @@ script 40 mmsf1 {
 	textSpeed
 		delay = 0
 	"스타 가디언을 쓰러뜨린 증표.\n은은하게 빛난다."
+	waitHold
 	end
 }
 script 41 mmsf1 {
@@ -151,6 +171,7 @@ script 41 mmsf1 {
 	textSpeed
 		delay = 0
 	"뱀의 독을 중화하는\n해독제. "
+	waitHold
 	end
 }
 script 42 mmsf1 {
@@ -162,6 +183,7 @@ script 42 mmsf1 {
 		type = 1
 	clearMsg
 	"셔블맨을 불러\n굴착기를 운전할 수 있다.\n"
+	waitHold
 	end
 }
 script 43 mmsf1 {
@@ -169,6 +191,7 @@ script 43 mmsf1 {
 	textSpeed
 		delay = 0
 	"지하에 묻힌 물건을\n찾을 때 사용한다.\n"
+	waitHold
 	end
 }
 script 44 mmsf1 {
@@ -176,6 +199,7 @@ script 44 mmsf1 {
 	textSpeed
 		delay = 0
 	"신맛이 가득한\n탄산음료! "
+	waitHold
 	end
 }
 script 45 mmsf1 {
@@ -187,6 +211,7 @@ script 45 mmsf1 {
 		type = 1
 	clearMsg
 	"맛있는 냄새가\n몇 리나 퍼져 나간다!\n"
+	waitHold
 	end
 }
 script 46 mmsf1 {
@@ -194,6 +219,7 @@ script 46 mmsf1 {
 	textSpeed
 		delay = 0
 	"고장 난 전구 대신 쓸\n새 전구인 것 같다. "
+	waitHold
 	end
 }
 script 47 mmsf1 {
@@ -201,6 +227,7 @@ script 47 mmsf1 {
 	textSpeed
 		delay = 0
 	"잃어버린 반지...\n아름답게 반짝인다.\n"
+	waitHold
 	end
 }
 script 48 mmsf1 {
@@ -208,6 +235,7 @@ script 48 mmsf1 {
 	textSpeed
 		delay = 0
 	"나시 백화점의\n층 안내도.\n"
+	waitHold
 	end
 }
 script 49 mmsf1 {
@@ -215,6 +243,7 @@ script 49 mmsf1 {
 	textSpeed
 		delay = 0
 	"야구 카드.\n선수 사진이 붙어 있다."
+	waitHold
 	end
 }
 script 50 mmsf1 {
@@ -222,6 +251,7 @@ script 50 mmsf1 {
 	textSpeed
 		delay = 0
 	"슈팅 스타 케이크ー\nAMAKEN 특별 간식!\n"
+	waitHold
 	end
 }
 script 51 mmsf1 {
@@ -229,6 +259,7 @@ script 51 mmsf1 {
 	textSpeed
 		delay = 0
 	"아주 묵직한\n모와모와 액션 피겨.\n"
+	waitHold
 	end
 }
 script 52 mmsf1 {
@@ -236,6 +267,7 @@ script 52 mmsf1 {
 	textSpeed
 		delay = 0
 	"엄마가 손글씨로 적은 요리법.\n"
+	waitHold
 	end
 }
 script 53 mmsf1 {
@@ -243,6 +275,7 @@ script 53 mmsf1 {
 	textSpeed
 		delay = 0
 	"전시관에서 도망친\n뱀.\n"
+	waitHold
 	end
 }
 script 54 mmsf1 {
@@ -250,6 +283,7 @@ script 54 mmsf1 {
 	textSpeed
 		delay = 0
 	"전시관에서 도망친\n뱀.\n"
+	waitHold
 	end
 }
 script 55 mmsf1 {
@@ -257,6 +291,7 @@ script 55 mmsf1 {
 	textSpeed
 		delay = 0
 	"전시관에서 도망친\n뱀.\n"
+	waitHold
 	end
 }
 script 56 mmsf1 {
@@ -264,6 +299,7 @@ script 56 mmsf1 {
 	textSpeed
 		delay = 0
 	"보리얼 씨의 사진 앨범.\n\n"
+	waitHold
 	end
 }
 script 57 mmsf1 {
@@ -271,6 +307,7 @@ script 57 mmsf1 {
 	textSpeed
 		delay = 0
 	"진짜 코비 소고기로 만든\n코비 버거!\n"
+	waitHold
 	end
 }
 script 58 mmsf1 {
@@ -278,6 +315,7 @@ script 58 mmsf1 {
 	textSpeed
 		delay = 0
 	"수수께끼의 데이터.\n정말 수수께끼다...\n"
+	waitHold
 	end
 }
 script 59 mmsf1 {
@@ -285,6 +323,7 @@ script 59 mmsf1 {
 	textSpeed
 		delay = 0
 	"서더 씨의 열대 차.\n마음이 아주 편안해진다.\n"
+	waitHold
 	end
 }
 script 60 mmsf1 {
@@ -316,6 +355,7 @@ script 61 mmsf1 {
 	textSpeed
 		delay = 0
 	"쪽지에는 이렇게\n적혀 있다: \"비밀번호는\n내 생일!\""
+	waitHold
 	end
 }
 script 62 mmsf1 {
@@ -327,6 +367,7 @@ script 62 mmsf1 {
 		type = 1
 	clearMsg
 	"이걸 사용하면 피처맨이\n멋진 공을 던져 준다! "
+	waitHold
 	end
 }
 script 63 mmsf1 {
@@ -338,6 +379,7 @@ script 63 mmsf1 {
 		type = 1
 	clearMsg
 	"써모맨과 함께\n온도를 조절한다. "
+	waitHold
 	end
 }
 script 64 mmsf1 {
@@ -353,6 +395,7 @@ script 64 mmsf1 {
 		type = 1
 	clearMsg
 	"\"NROSIMAMSTU\""
+	waitHold
 	end
 }
 script 65 mmsf1 {
@@ -368,6 +411,7 @@ script 65 mmsf1 {
 		type = 1
 	clearMsg
 	"\"OSLEGRATE\""
+	waitHold
 	end
 }
 script 66 mmsf1 {
@@ -383,6 +427,7 @@ script 66 mmsf1 {
 		type = 1
 	clearMsg
 	"\"AURIEFRUTS\""
+	waitHold
 	end
 }
 script 67 mmsf1 {
@@ -398,6 +443,7 @@ script 67 mmsf1 {
 		type = 1
 	clearMsg
 	"\"LAREBARAON\""
+	waitHold
 	end
 }
 script 68 mmsf1 {
@@ -413,6 +459,7 @@ script 68 mmsf1 {
 		type = 1
 	clearMsg
 	"\"KNIGSPIAREM\""
+	waitHold
 	end
 }
 script 69 mmsf1 {
@@ -420,6 +467,7 @@ script 69 mmsf1 {
 	textSpeed
 		delay = 0
 	"로또 번호 6(비어 있음)\n"
+	waitHold
 	end
 }
 script 70 mmsf1 {
@@ -435,6 +483,7 @@ script 70 mmsf1 {
 		type = 1
 	clearMsg
 	"\"SIXGAME-O\""
+	waitHold
 	end
 }
 script 71 mmsf1 {
@@ -450,6 +499,7 @@ script 71 mmsf1 {
 		type = 1
 	clearMsg
 	"\"ILABCLERSAS\""
+	waitHold
 	end
 }
 script 72 mmsf1 {
@@ -461,6 +511,7 @@ script 72 mmsf1 {
 		type = 1
 	clearMsg
 	"\"PREOBCOPB\""
+	waitHold
 	end
 }
 script 73 mmsf1 {
@@ -476,6 +527,7 @@ script 73 mmsf1 {
 		type = 1
 	clearMsg
 	"\"ALPTUNZLA\""
+	waitHold
 	end
 }
 script 74 mmsf1 {
@@ -491,6 +543,7 @@ script 74 mmsf1 {
 		type = 1
 	clearMsg
 	"\"ROHNATPE\""
+	waitHold
 	end
 }
 script 75 mmsf1 {
@@ -506,6 +559,7 @@ script 75 mmsf1 {
 		type = 1
 	clearMsg
 	"\"ISNBDUBO\""
+	waitHold
 	end
 }
 script 76 mmsf1 {
@@ -521,6 +575,7 @@ script 76 mmsf1 {
 		type = 1
 	clearMsg
 	"\"IPHAUEOEUNQC\""
+	waitHold
 }
 script 77 mmsf1 {
 	msgOpenQuick
@@ -539,6 +594,7 @@ script 77 mmsf1 {
 		type = 1
 	clearMsg
 	"\"ALIVURISZE\""
+	waitHold
 	end
 }
 script 78 mmsf1 {
@@ -554,6 +610,7 @@ script 78 mmsf1 {
 		type = 1
 	clearMsg
 	"\"NGYNGIWCUS\""
+	waitHold
 	end
 }
 script 79 mmsf1 {
@@ -561,6 +618,7 @@ script 79 mmsf1 {
 	textSpeed
 		delay = 0
 	"외로운 존재의\n아픈 기억...\n"
+	waitHold
 	end
 }
 script 80 mmsf1 {
@@ -632,6 +690,7 @@ script 80 mmsf1 {
 		type = 1
 	clearMsg
 	"동봉한 메가 웨폰을\n그에게 전해 줘.\""
+	waitHold
 	end
 }
 script 96 mmsf1 {
@@ -641,6 +700,7 @@ script 96 mmsf1 {
 	textSpeed
 		delay = 0
 	"HP를 50 회복하는\n작은 에너지 보충제.\n"
+	waitHold
 	end
 }
 script 97 mmsf1 {
@@ -650,6 +710,7 @@ script 97 mmsf1 {
 	textSpeed
 		delay = 0
 	"HP를 200 회복하는\n큰 에너지 보충제.\n"
+	waitHold
 	end
 }
 script 98 mmsf1 {
@@ -659,6 +720,7 @@ script 98 mmsf1 {
 	textSpeed
 		delay = 0
 	"HP를 모두 회복하는\n고급 에너지 보충제. "
+	waitHold
 	end
 }
 script 99 mmsf1 {
@@ -668,6 +730,7 @@ script 99 mmsf1 {
 	textSpeed
 		delay = 0
 	"보라색 미스터리 웨이브를\n자동으로 해제하는 아이템.\n"
+	waitHold
 	end
 }
 script 100 mmsf1 {
@@ -677,6 +740,7 @@ script 100 mmsf1 {
 	textSpeed
 		delay = 0
 	"잠시 동안 몸을\n투명하게 만든다.\n"
+	waitHold
 	end
 }
 script 101 mmsf1 {
@@ -686,6 +750,7 @@ script 101 mmsf1 {
 	textSpeed
 		delay = 0
 	"이전에 만난 적을\n만날 확률이 높아진다."
+	waitHold
 	end
 }
 script 102 mmsf1 {
@@ -695,6 +760,7 @@ script 102 mmsf1 {
 	textSpeed
 		delay = 0
 	"빨간색 미스터리 웨이브를\n자동으로 해제하는 아이템.\n"
+	waitHold
 	end
 }
 script 103 mmsf1 {
@@ -704,6 +770,7 @@ script 103 mmsf1 {
 	textSpeed
 		delay = 0
 	"루나 나이츠에서 사용할 수 있는\n아이템. 머리 장식."
+	waitHold
 	end
 }
 script 104 mmsf1 {
@@ -713,6 +780,7 @@ script 104 mmsf1 {
 	textSpeed
 		delay = 0
 	"루나 나이츠에서 사용할 수 있는\n아이템. 상체 장식."
+	waitHold
 	end
 }
 script 105 mmsf1 {
@@ -722,6 +790,7 @@ script 105 mmsf1 {
 	textSpeed
 		delay = 0
 	"루나 나이츠에서 사용할 수 있는\n아이템. 하체 장식."
+	waitHold
 	end
 }
 script 106 mmsf1 {
@@ -731,6 +800,7 @@ script 106 mmsf1 {
 	textSpeed
 		delay = 0
 	"루나 나이츠에서 사용할 수\n있는 아이템. 실드를 강화하는\n귀중한 아이템."
+	waitHold
 	end
 }
 script 107 mmsf1 {
@@ -740,6 +810,7 @@ script 107 mmsf1 {
 	textSpeed
 		delay = 0
 	"루나 나이츠에서 사용할 수 있는\n아이템. 쓰러진 동료를 완전히\n부활시킨다."
+	waitHold
 	end
 }
 script 108 mmsf1 {
@@ -749,6 +820,7 @@ script 108 mmsf1 {
 	textSpeed
 		delay = 0
 	"루나 나이츠에서 사용할 수 있는\n아이템. 일시적으로\n피해를 받지 않게 된다."
+	waitHold
 	end
 }
 script 109 mmsf1 {
@@ -758,6 +830,7 @@ script 109 mmsf1 {
 	textSpeed
 		delay = 0
 	"루나 나이츠에서 사용할 수\n있는 아이템. 다크 소드를\n강화하는 정크 파츠."
+	waitHold
 	end
 }
 script 110 mmsf1 {
@@ -767,6 +840,7 @@ script 110 mmsf1 {
 	textSpeed
 		delay = 0
 	"루나 나이츠에서 사용할 수\n있는 아이템. 솔라 건을\n강화하는 정크 파츠."
+	waitHold
 	end
 }
 script 112 mmsf1 {
@@ -776,6 +850,7 @@ script 112 mmsf1 {
 	textSpeed
 		delay = 0
 	"최대 HP를 10 올려 주는\n아이템.\n"
+	waitHold
 	end
 }
 script 113 mmsf1 {
@@ -785,6 +860,7 @@ script 113 mmsf1 {
 	textSpeed
 		delay = 0
 	"최대 HP를 20 올려 주는\n아이템.\n"
+	waitHold
 	end
 }
 script 120 mmsf1 {
@@ -800,89 +876,111 @@ script 120 mmsf1 {
 		type = 1
 	clearMsg
 	"쓰레기를 치우면\n들어갈 수 있다. "
+	waitHold
 	end
 }
 script 220 mmsf1 {
 	"워록의 아머에 달린 송곳니.\n\n공격 1 / 연사 2 / 차지 1"
+	waitHold
 	end
 }
 script 221 mmsf1 {
 	"적을 두 동강 내는 발톱.\n공격 2 / 연사 1 / 차지 1 "
+	waitHold
 	end
 }
 script 222 mmsf1 {
 	"고슴도치 가시를 빠르게 연사한다.\n공격 1 / 연사 3 / 차지 1 "
+	waitHold
 	end
 }
 script 223 mmsf1 {
 	"강력하고 균형 잡힌 링.\n공격 2 / 연사 2 / 차지 2 "
+	waitHold
 	end
 }
 script 224 mmsf1 {
 	"차지 샷으로 HP 버그를\n일으킬 수 있다.\n공격 1 / 연사 2 / 차지 3"
+	waitHold
 	end
 }
 script 225 mmsf1 {
 	"차지 샷으로 적의 눈을\n멀게 할 수 있다.\n공격 3 / 연사 1 / 차지 2"
+	waitHold
 	end
 }
 script 226 mmsf1 {
 	"이 팔찌를 착용하면\n차지가 빨라진다.\n공격 2 / 연사 1 / 차지 5 "
+	waitHold
 	end
 }
 script 227 mmsf1 {
 	"공격력과 차지 속도를 높인다.\n공격 3 / 연사 2 / 차지 3 "
+	waitHold
 	end
 }
 script 228 mmsf1 {
 	"차지 샷으로 HP 버그를\n일으킬 수 있다.\n공격 1 / 연사 1 / 차지 2"
+	waitHold
 	end
 }
 script 229 mmsf1 {
 	"초고속으로 베어 버리는\n발톱.\n공격 2 / 연사 4 / 차지 1"
+	waitHold
 	end
 }
 script 230 mmsf1 {
 	"차지 샷으로 적을\n마비시킬 수 있다.\n공격 2 / 연사 2 / 차지 1"
+	waitHold
 	end
 }
 script 231 mmsf1 {
 	"차지 샷으로 적을\n거품에 가둘 수 있다.\n공격 1 / 연사 3 / 차지 2"
+	waitHold
 	end
 }
 script 232 mmsf1 {
 	"근접 공격을 강력하게 만든다.\n공격 4 / 연사 1 / 차지 2 "
+	waitHold
 	end
 }
 script 233 mmsf1 {
 	"전투에서 제니만 획득한다.\n공격 2 / 연사 3 / 차지 4 "
+	waitHold
 	end
 }
 script 234 mmsf1 {
 	"전투에서 카드만 획득한다.\n공격 1 / 연사 2 / 차지 3 "
+	waitHold
 	end
 }
 script 235 mmsf1 {
 	"차지 샷으로 적을\n혼란시킨다.\n공격 2 / 연사 3 / 차지 2 "
+	waitHold
 	end
 }
 script 236 mmsf1 {
 	"매우 강력한 최고급 무기.\n공격\n4 / 연사 3 / 차지 4"
+	waitHold
 	end
 }
 script 237 mmsf1 {
 	"차지 샷으로 얼리거나\n거품에 가둘 수 있다.\n공격 1 / 연사 2 / 차지 1"
+	waitHold
 	end
 }
 script 238 mmsf1 {
 	"FM 성인의 전설이 담긴 팔찌.\n공격 3 / 연사 4 / 차지 2\n"
+	waitHold
 	end
 }
 script 239 mmsf1 {
 	"별의 힘을 품은 최고급\n무기. 공격\n5 / 연사 2 / 차지 4"
+	waitHold
 	end
 }
 script 240 mmsf1 {
 	"전설의 영웅이 쓰던\n속사 무기.\n공격 1 / 연사 5 / 차지 1"
+	waitHold
 	end
 }

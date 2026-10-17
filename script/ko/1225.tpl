@@ -212,6 +212,7 @@ script 7 mmsf1 {
 		type = 1
 	clearMsg
 	"잠시만 기다려 주세요...\n\n"
+	waitHold
 }
 script 8 mmsf1 {
 	msgOpenQuick
@@ -260,6 +261,7 @@ script 9 mmsf1 {
 script 10 mmsf1 {
 	msgOpenQuick
 	"Nintendo Wi-Fi\nConnection 접속을\n종료합니다."
+	waitHold
 }
 script 11 mmsf1 {
 	msgOpenQuick
@@ -753,5 +755,6 @@ script 69 mmsf1 {
 		type = 1
 	clearMsg
 	"게임 카드를 다시\n삽입하세요."
+	waitHold
 	end
 }

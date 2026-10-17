@@ -48,6 +48,7 @@ script 11 mmsf1 {
 	mugshotShow
 		mugshot = OmegaXis
 	"응답을 기다리는 중이야.\n잠시만 기다려...\n"
+	waitHold
 }
 script 12 mmsf1 {
 	msgOpen
@@ -79,6 +80,7 @@ script 13 mmsf1 {
 		type = 1
 	clearMsg
 	"너를 자동으로\n삭제하는 중이야...\n"
+	waitHold
 }
 script 14 mmsf1 {
 	msgOpen
@@ -326,5 +328,6 @@ script 42 mmsf1 {
 	printBrotherBuffer2
 	"\n"
 	printBrotherBuffer3
+	waitHold
 	end
 }

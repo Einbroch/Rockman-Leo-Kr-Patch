@@ -222,5 +222,6 @@ script 11 mmsf1 {
 		type = 1
 	clearMsg
 	"게임 카드를 다시 삽입하세요."
+	waitHold
 	end
 }

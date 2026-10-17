@@ -6,6 +6,7 @@ script 0 mmsf1 {
 	mugshotShow
 		mugshot = SpeedNavi
 	"어서 오세요!"
+	waitHold
 	end
 }
 script 1 mmsf1 {
@@ -15,6 +16,7 @@ script 1 mmsf1 {
 	textSpeed
 		delay = 0
 	"뭘 드릴까요?\n"
+	waitHold
 	end
 }
 script 2 mmsf1 {
@@ -49,6 +51,7 @@ script 3 mmsf1 {
 	mugshotShow
 		mugshot = SpeedNavi
 	"언제든 다시 오세요.\n\n"
+	waitHold
 	end
 }
 script 10 mmsf1 {

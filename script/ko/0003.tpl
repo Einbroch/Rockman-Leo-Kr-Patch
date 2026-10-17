@@ -403,6 +403,7 @@ script 30 mmsf1 {
 		type = 1
 	clearMsg
 	"저 프렌드가 거래를\n취소한 것 같습니다.\n"
+	waitHold
 	end
 }
 script 31 mmsf1 {
@@ -453,6 +454,7 @@ script 33 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"거래 취소!\n"
+	waitHold
 	end
 }
 script 34 mmsf1 {
@@ -462,6 +464,7 @@ script 34 mmsf1 {
 	mugshotShow
 		mugshot = Geo
 	"거래 완료!\n"
+	waitHold
 	end
 }
 script 35 mmsf1 {
