@@ -1076,6 +1076,24 @@ lit3a_strip: .word {strip}
 @ 큰 한글을 12픽셀 간격으로 이어 그려 8픽셀 칸으로 잘라 넣는다. 원래 코드는 글자마다 칸 하나를 목적지 버퍼에
 @ 복사하고 목적지를 64 늘린다. 글자 수(+0xE8)가 최대(+0xE0)를 넘으면 게임이 멈추므로 칸을 더 쓸 때 꼭 지킨다.
 ko_tile_bigchk:             @ r1 = 번호×64, r2 = 글자 번호, r4 = 목적지 자리, r6 = 글자 상자. r0, r3 만 쓴다
+    ldr r3, lit3_tstate
+    ldr r0, lit3_bigmark
+    cmp r2, r0
+    beq ko_tile_mark
+    movs r0, #0xE8
+    ldr r0, [r6, r0]
+    push {{r1}}
+    movs r1, #0xE4
+    ldr r1, [r6, r1]
+    cmp r0, r1
+    pop {{r1}}
+    bne ko_tile_bigchk_flag
+    movs r0, #0
+    str r0, [r3, #8]        @ 첫 글자가 표시 글자가 아니면 큰 한글 표시를 끈다
+ko_tile_bigchk_flag:
+    ldr r0, [r3, #8]
+    cmp r0, r6
+    beq ko_tile_big
     ldr r0, lit3_saveptr
     ldr r0, [r0]
     cmp r0, #0
@@ -1091,6 +1109,20 @@ ko_tile_bigchk:             @ r1 = 번호×64, r2 = 글자 번호, r4 = 목적�
     b ko_tile_big
 ko_tile_bigchk_no:
     b ko_tile_strip
+ko_tile_mark:               @ 표시 글자(BIG_MARK): 이 글자 상자의 글은 큰 한글. 칸을 쓰지 않도록 바로 뒤의 한글을
+    str r6, [r3, #8]        @ 읽어 이 글자 대신 그린다 (pc2ds 가 표시 글자 뒤에 한글이 오는지 확인한다)
+    ldr r3, [r6, #0x10]
+    ldrb r0, [r3]
+    ldrb r2, [r3, #1]
+    adds r3, #2
+    str r3, [r6, #0x10]
+    subs r0, #{lead_first}
+    movs r3, #{trail_count}
+    muls r0, r3
+    adds r2, r2, r0
+    ldr r0, lit3_pre_base
+    adds r2, r2, r0
+    b ko_tile_big
 
 ko_tile_big:
     push {{r1, r2, r4-r7, lr}}
@@ -1490,6 +1522,8 @@ lit3_min_size: .word {min_size}
 lit3_tstate: .word {tstate}
 lit3_saveptr: .word {save_ptr}
 lit3_endmark: .word {endmark}
+lit3_bigmark: .word {big_mark}
+lit3_pre_base: .word {pre_base}
     .word 0x4C4F4F51
     .align 2
 code_end_marker: .word 0x4C4F4B4F
@@ -1602,7 +1636,7 @@ def slot_table(slots):
     n = len(slots)
     half = (2 * n + 3) // 4 * 4
     sizes = [('slot_g', half), ('slot_k', 4 * n), ('slot_t', 4 * n), ('stamp', 4), ('bases', 4 * LIST_BASES),
-             ('base_next', 4), ('state', 12), ('tstate', 8), ('endmark', 4), ('part', 64), ('strip', 192), ('cellbuf', 64)]
+             ('base_next', 4), ('state', 12), ('tstate', 12), ('endmark', 4), ('part', 64), ('strip', 192), ('cellbuf', 64)]
     offsets, pos = {}, 0
     for name, size in sizes:
         offsets[name] = pos
@@ -1791,6 +1825,7 @@ def build(arm9, keep=(), chars=(), blobs=None, extra=()):
         flag_helpers=''.join(FLAG_ASM.format(i=i, slot=slot, extra=extra, **common)
                              for i, (_, slot, extra) in enumerate(FLAG_SITES)),
         hangul_base=HANGUL_BASE, pre_base=HANGUL_BASE - kotable.TRAIL_FIRST, width_table=WIDTH_TABLE,
+        lead_first=kotable.LEAD_FIRST, trail_count=kotable.TRAIL_COUNT,
         extra_first=len(kotable.HANGUL),
         extra_widths=', '.join(str(kotable.EXTRA_WIDTH.get(c, 12)) for c in kotable.EXTRA),
         buffer=buffer, cell=CELL, chunks=table, mode1_func=MODE1_FUNC | 1, row_buffer=ROW_BUFFER,
@@ -1800,6 +1835,7 @@ def build(arm9, keep=(), chars=(), blobs=None, extra=()):
         row_stride=ROW_STRIDE, row_pixels=ROW_PIXELS, bold_font=BOLD_FONT, glyph_top=GLYPH_TOP,
         glyph_top1=GLYPH_TOP + 1, slot_count=len(slots), base_count=LIST_BASES, base_mask=LIST_BASES - 1,
         copy_a=copy_funcs[0] | 1, copy_b=copy_funcs[1] | 1, min_size=(max(slots) + 1) * 64, save_ptr=SAVE_PTR,
+        big_mark=HANGUL_BASE + kotable.NEW_CHARS.index(kotable.BIG_MARK),
         check_ofs=32 + LIST_CHECK * 64,
         check_src=BOLD_FONT + LIST_CHECK * 64, **slot_at)
     code = assemble(src, code_addr)

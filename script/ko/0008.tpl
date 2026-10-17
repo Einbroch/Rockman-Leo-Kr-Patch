@@ -2,15 +2,15 @@
 @size 256
 
 script 0 mmsf1 {
-	"편집"
+	"편집"
 	end
 }
 script 1 mmsf1 {
-	"장비"
+	"장비"
 	end
 }
 script 2 mmsf1 {
-	"이름 변경"
+	"이름 변경"
 	end
 }
 script 3 mmsf1 {

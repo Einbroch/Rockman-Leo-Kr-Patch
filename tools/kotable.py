@@ -21,9 +21,11 @@ TRAIL_FIRST = 0x01
 TRAIL_COUNT = 0xE4 - TRAIL_FIRST
 HANGUL = [bytes([hi, lo]).decode('euc-kr') for hi in range(0xB0, 0xC9) for lo in range(0xA1, 0xFF)]
 # 일본판 폰트에 없거나 완성형 밖이라 한글 뒤에 새로 그려 넣는 글자
-EXTRA = ['…', 'ㅁ', '#', '↗', '쌰', THIN_SPACE := '\u2009']
+EXTRA = ['…', 'ㅁ', '#', '↗', '쌰', THIN_SPACE := '\u2009', BIG_MARK := '\ue000']
 # 새 글자의 폭(픽셀). 없으면 12. THIN_SPACE 는 단어 사이 띄어쓰기용 좁은 빈칸이다.
-EXTRA_WIDTH = {THIN_SPACE: 5}
+# BIG_MARK 는 그리지 않는 표시 글자다: 칸 단위 타일 그리기에서 글 맨 앞에 있으면 그 글의 한글을 큰 한글로
+# 그린다(tools/engine.py 의 ko_tile_mark). 바로 뒤에 한글이 와야 한다.
+EXTRA_WIDTH = {THIN_SPACE: 5, BIG_MARK: 0}
 # 폰트에 없는 글자를 비슷한 기존 글자로 바꾼다
 NORMALIZE = str.maketrans({
     '　': ' ', '“': '"', '”': '"', '‘': '’', "'": '’', '『': '「', '』': '」', '《': '「', '》': '」',

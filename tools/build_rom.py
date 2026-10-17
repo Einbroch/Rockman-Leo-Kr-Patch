@@ -55,8 +55,8 @@ def remaining_kanji():
 def used_chars():
     """한글 폰트(큰 한글·작은 한글)에 넣을 글자: 한글 스크립트(대사와 이름 목록)에 쓰인 새 글자."""
     new = set(kotable.NEW_CHARS)
-    return {c for p in KO_SCRIPT.glob('*.tpl') for c in p.read_text(encoding='utf-8') if c in new} | \
-        {kotable.THIN_SPACE}
+    return {c for p in KO_SCRIPT.glob('*.tpl') for c in p.read_text(encoding='utf-8') if c in new} - \
+        {kotable.BIG_MARK} | {kotable.THIN_SPACE}
 
 
 def name_regions():

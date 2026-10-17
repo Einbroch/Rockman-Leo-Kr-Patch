@@ -706,6 +706,8 @@ def strip_cells(text, pitch=12, space=4):
     hangul = set(kotable.HANGUL)
     n, carry, joining = 0, 0, False
     for c in BRACKET.sub('#', text):
+        if c == kotable.BIG_MARK:
+            continue
         if c in hangul:
             joining = True
             total = carry + pitch
@@ -749,6 +751,25 @@ def pad_folder_names(outputs, report):
         texts[-1][1] = text
         if strip_cells(''.join(it[1] for it in texts)) != cells:
             report.append(f'{block}\t-\t폴더 이름 {num}: {cells}칸에 맞출 수 없음: {text!r}')
+
+
+# 칸 단위 타일 그리기로 찍는 메뉴 라벨 중 큰 한글로 그릴 것: {블록: (스크립트 번호들, 일본판 칸 수)}.
+# 글 맨 앞에 표시 글자(kotable.BIG_MARK)를 붙이면 엔진이 그 글을 폴더 이름처럼 큰 한글로 그린다.
+BIG_LABELS = {8: ((0, 1, 2), 8)}    # 폴더 화면의 편집·장비·이름 변경
+
+
+def mark_big_labels(outputs, report):
+    hangul = set(kotable.HANGUL)
+    for block, (nums, cells) in BIG_LABELS.items():
+        for num in nums:
+            items = outputs.get(block, {}).get(num)
+            if not items or items[0][0] != 'text' or items[0][1][:1] not in hangul:
+                report.append(f'{block}	-	큰 한글 라벨 {num}: 한글로 시작하지 않아 표시를 붙이지 못함')
+                continue
+            items[0][1] = kotable.BIG_MARK + items[0][1]
+            n = strip_cells(''.join(it[1] for it in items if it[0] == 'text').rstrip(' '))
+            if n > cells:
+                report.append(f'{block}	-	큰 한글 라벨 {num}: {n}칸 > {cells}칸')
 
 
 def name_lengths(outputs, stats, report):
@@ -900,6 +921,7 @@ def main():
         {int(b) for b, fix in fixes.items() if fix.get('skip')}
     add_ja_only(outputs, skip, stats, report)
     pad_folder_names(outputs, report)
+    mark_big_labels(outputs, report)
     name_lengths(outputs, stats, report)
     for block, scripts in sorted(outputs.items()):
         (KO_DIR / f'{block:04d}.tpl').write_text(write_tpl(f'{block:04d}', sizes[block], scripts), encoding='utf-8')
