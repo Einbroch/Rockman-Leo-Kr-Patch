@@ -280,12 +280,15 @@ def replace_label(s, k, text, font, align, group=None, min_width=0):
     colors = {}
     for _, _, c in ink:
         colors[c] = colors.get(c, 0) + 1
-    if len(colors) != 1:
-        sys.exit(f'프레임 {k} 글자색이 한 가지가 아닙니다: {colors}')
-    color = next(iter(colors))
+    if len(colors) > 2:
+        sys.exit(f'프레임 {k} 글자색이 세 가지 이상입니다: {colors}')
+    color = max(colors, key=colors.get)                     # 둘이면 적은 쪽은 오른쪽·아래 그림자
+    shadow = min(colors, key=colors.get) if len(colors) == 2 else None
     height = max(y for _, y in where) + 1
     left, right = min(x for x, _, _ in ink), max(x for x, _, _ in ink)
-    pts, w = FONTS[font]().render(text, max(y for _, y, _ in ink) + 1)
+    pts, w = FONTS[font]().render(text, max(y for x, y, c in ink if c == color) + 1)
+    if shadow is not None:
+        w += 1
     if min(y for _, y in pts) < 0:
         sys.exit(f'{text!r} 가 프레임 높이 {height} 를 넘습니다')
     width = max((w + 7) // 8 * 8, min_width)
@@ -298,8 +301,14 @@ def replace_label(s, k, text, font, align, group=None, min_width=0):
         print(f'  {text!r} ({width}×{height}): VRAM 할당 {s.alloc} → {ntiles}타일')
         s.alloc = ntiles
     img = [[0] * width for _ in range(height)]
-    for x, y in pts:
-        img[y][x + pad] = color
+    dots = {(x + pad, y) for x, y in pts}
+    if shadow is not None:
+        for x, y in dots:
+            for sx, sy in ((x + 1, y), (x, y + 1)):
+                if (sx, sy) not in dots and sy < height:
+                    img[sy][sx] = shadow
+    for x, y in dots:
+        img[y][x] = color
     tiles, cells, t = bytearray(), [], 0
     for i, (px, pw, shape, size) in enumerate(pieces):
         if t % 2:
@@ -455,16 +464,18 @@ def redraw_region(s, k, regions, group=None):
             s.put(where[d], color)
 
 
-def translate_sprite(e, i):
-    """스프라이트 항목 i 에 LABELS·BUTTONS·HINTS·REGIONS 를 적용한 바이트."""
+def translate_sprite(e, i, labels=None, buttons=None, hints=None, regions=None):
+    """스프라이트 항목 i 에 표(기본은 subscreen 의 LABELS·BUTTONS·HINTS·REGIONS)를 적용한 바이트."""
+    LABELS_, BUTTONS_, HINTS_, REGIONS_ = (LABELS if labels is None else labels, BUTTONS if buttons is None else buttons,
+                                           HINTS if hints is None else hints, REGIONS if regions is None else regions)
     s = Sprite(e)
-    for k, text in BUTTONS.get(i, {}).items():
+    for k, text in BUTTONS_.get(i, {}).items():
         redraw_button(s, k, text)
-    for k, regions in REGIONS.get(i, {}).items():
+    for k, regions in REGIONS_.get(i, {}).items():
         for g in s.frame_groups(k):                  # 애니메이션이면 묶음마다
             redraw_region(s, k, regions, g)
     new = {}
-    for k, (text, font, align) in LABELS.get(i, {}).items():
+    for k, (text, font, align) in LABELS_.get(i, {}).items():
         gs = s.frame_groups(k)
         texts = text if isinstance(text, list) else [text] * len(gs)
         if len(texts) != len(gs):
@@ -477,7 +488,7 @@ def translate_sprite(e, i):
                 sys.exit(f'스프라이트 {i} 프레임 {k}: 묶음마다 조각 배치가 다릅니다')
             cells0 = cells
             new[g] = (tiles, cells)
-    for k, lines in HINTS.get(i, {}).items():
+    for k, lines in HINTS_.get(i, {}).items():
         if len(s.frame_groups(k)) != 1:
             sys.exit(f'스프라이트 {i} 프레임 {k} 은 애니메이션이다')
         g, tiles, cells = replace_hint(s, k, lines)
@@ -597,6 +608,11 @@ def sprite_ids():
     return sorted(set(LABELS) | set(BUTTONS) | set(HINTS) | set(REGIONS))
 
 
+# ---------------------------------------------------------------- 타이틀 (capcomlogo.bin)
+CAPCOMLOGO = 'datbin/com/capcomlogo.bin'
+TITLE_LABELS = {26: {1: ('처음부터', 'bold', 'center'), 2: ('이어하기', 'bold', 'center')}}   # 타이틀 메뉴
+
+
 def translate(rom_files):
     """{롬 안 경로: 새 바이트}"""
     data = rom_files(SUBSCREEN)
@@ -608,7 +624,13 @@ def translate(rom_files):
         te, me = translate_bg_text(bytes(unpack(items[ti])), bytes(unpack(items[mi])), rects)
         for i, e in ((ti, te), (mi, me)):
             items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
-    return {SUBSCREEN: write_archive(items)}
+    out = {SUBSCREEN: write_archive(items)}
+    items = read_archive(rom_files(CAPCOMLOGO))
+    for i in TITLE_LABELS:
+        e = translate_sprite(unpack(items[i]), i, labels=TITLE_LABELS, buttons={}, hints={}, regions={})
+        items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
+    out[CAPCOMLOGO] = write_archive(items)
+    return out
 
 
 # ---------------------------------------------------------------- 확인
