@@ -4,7 +4,7 @@
 먼저 할 일: tools/unpack.py, tools/textpet/build.py, tools/pc2ds.py
 사용법: python3 tools/build_rom.py [출력 경로]      (기본: build/rnr1_<판본>_ko.nds)
 판본은 KO_VERSION(leo 기본, dragon, pegasus)으로 고른다. 패치는 patch/rnr1_<판본>_ko.xdelta.
-기본 경로로 만들 때 xdelta3 가 있으면 원본과의 차이를 patch/rnr1_leo_ko.xdelta 로도 만든다.
+기본 경로로 만들 때 xdelta3(PATH 또는 work/bin/xdelta3.exe)가 있으면 원본과의 차이를 patch/rnr1_leo_ko.xdelta 로도 만든다.
 
 이름 목록(카드·아이템·적 등, script.NAME_ARCHIVES)은 한글로 바꾸면 커져서 제자리에 들어가지 않는다.
 원래 이름 목록 자리와 폰트의 빈 한자 칸에 새로 배치하고(engine.build), ARM9·오버레이에서 원래 주소를 담은
@@ -22,6 +22,7 @@ import ndspy.rom
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import engine  # noqa: E402
+import gfx  # noqa: E402
 import kotable  # noqa: E402
 import script  # noqa: E402
 import version  # noqa: E402
@@ -173,6 +174,9 @@ def main():
 
     rom = ndspy.rom.NintendoDSRom.fromFile(str(ORIGINAL))
     rom.setFileByName(MESS_PATH, mess.read_bytes())
+    for path, data in gfx.translate(rom.getFileByName).items():     # 그림 속 글자
+        rom.setFileByName(path, data)
+        print(f'{path}: 그림 글자 한글화 ({len(data):,}바이트)')
 
     code = rom.loadArm9()
     main_section = code.sections[0]
@@ -209,10 +213,11 @@ def main():
     rom.saveToFile(str(out))
     print('한글 출력 코드:', ', '.join(f'{k} {v}' for k, v in info.items()))
     print(f'{out} 저장 ({out.stat().st_size:,} 바이트)')
-    if shutil.which('xdelta3') and out.resolve() == default.resolve():   # 시험용 경로로 만들 때는 패치를 건드리지 않는다
+    xdelta = shutil.which('xdelta3') or next((str(p) for p in [ROOT / 'work' / 'bin' / 'xdelta3.exe'] if p.exists()), None)
+    if xdelta and out.resolve() == default.resolve():   # 시험용 경로로 만들 때는 패치를 건드리지 않는다
         patch = version.PATCH
         patch.parent.mkdir(exist_ok=True)
-        subprocess.run(['xdelta3', '-e', '-f', '-9', '-s', str(ORIGINAL), str(out), str(patch)], check=True)
+        subprocess.run([xdelta, '-e', '-f', '-9', '-s', str(ORIGINAL), str(out), str(patch)], check=True)
         print(f'{patch} 저장 ({patch.stat().st_size:,} 바이트)')
 
 
