@@ -613,6 +613,129 @@ CAPCOMLOGO = 'datbin/com/capcomlogo.bin'
 TITLE_LABELS = {26: {1: ('처음부터', 'bold', 'center'), 2: ('이어하기', 'bold', 'center')}}   # 타이틀 메뉴
 
 
+# ---------------------------------------------------------------- 타이틀 로고 (capcomlogo.bin BG)
+# 로고 BG 네 벌: (타일, 맵, 팔레트) 항목과 판본 이름 칸. 8bpp, 맵 32×24, 맵 번호 t = 타일 t-1(0 은 빈 칸, 투명).
+# 큰 글자 「流星のロックマン」을 지우고(가장 가까운 문양 점으로 메움) assets/title_logo_text.png(「유성의 록맨」)를
+# 얹는다. 판본 이름 가나(レオ 등)는 지우고 갈무리11 Bold 로 다시 쓴다(원래 색과 테두리색, 밑줄은 다시 긋는다).
+LOGO_TEXT_PNG = ROOT / 'assets' / 'title_logo_text.png'
+LOGO_TEXT_AT = (24, 64)                 # 글자 층 왼쪽 위
+LOGO_JP_BOX = (14, 60, 240, 106)        # 일본어 큰 글자를 찾는 사각형 (아래는 LEO 등 판본 글자라 106 까지)
+LOGO_TM = (227, 58, 242, 66)            # ™ 표시
+LOGO_SPARKLE = (30, 30, 90, 84)         # 왼쪽 위 반짝임 장식: 한글 글자 윗줄보다 위의 밝은 점은 원래대로 올린다
+LOGOS = [  # (타일, 맵, 팔레트, 판본 이름, 판본 이름 사각형(x0, y0, x1, y1), 밑줄 줄들, 큰 글자 어긋남(dx, dy))
+    (7, 8, 9, '레오', (110, 138, 158, 154), (146, 147, 148), (0, 0)),
+    (11, 12, 13, '드래곤', (114, 138, 176, 154), (146, 147), (0, 0)),
+    (3, 4, 5, '페가서스', (115, 138, 178, 154), (145, 146), (0, 0)),
+    (15, 16, 17, None, None, (), (1, 12)),        # 판본 이름 없는 로고: 큰 글자가 레오 로고보다 오른쪽 1, 아래 12
+]
+LOGO_MAX_TILES = 359                    # 네 벌 중 가장 많은 타일 수(같은 VRAM 자리를 쓴다)
+
+
+def _is_text_fill(c):
+    r, g, b = c
+    return (r >= 176 and b <= 190 and r - b >= 40) or (r >= 232 and g >= 216 and b <= 215 and r - b >= 32)
+
+
+def translate_logo(tiles_e, map_e, pal_e, sub_text, sub_box, sub_lines, shift=(0, 0)):
+    P = [((v & 31) * 8, (v >> 5 & 31) * 8, (v >> 10 & 31) * 8) for v in struct.unpack('<256H', pal_e[:512])]
+    M = struct.unpack(f'<{len(map_e) // 2}H', map_e)
+    rows = len(M) // 32
+    W, H = 256, rows * 8
+    img = [[0] * W for _ in range(H)]
+    for i, v in enumerate(M):
+        r, c = divmod(i, 32)
+        t = (v & 0x3FF) - 1
+        if t < 0:
+            continue
+        for y in range(8):
+            for x in range(8):
+                xx = 7 - x if v >> 10 & 1 else x
+                yy = 7 - y if v >> 11 & 1 else y
+                img[r * 8 + y][c * 8 + x] = tiles_e[t * 64 + yy * 8 + xx]
+    orig = [row[:] for row in img]
+    cache = {}
+
+    def nearest(rgb):
+        if rgb not in cache:
+            cache[rgb] = min(range(1, 256), key=lambda i: sum((a - b) ** 2 for a, b in zip(P[i], rgb)))
+        return cache[rgb]
+
+    # 1) 일본어 큰 글자: 채움색 점과, 그 둘레 3점 안의 어두운 테두리 점
+    dx0, dy0 = shift
+    x0, y0, x1, y1 = (LOGO_JP_BOX[0] + dx0, LOGO_JP_BOX[1] + dy0, LOGO_JP_BOX[2] + dx0, LOGO_JP_BOX[3] + dy0)
+    jp = {(x, y) for y in range(y0, y1) for x in range(x0, x1) if img[y][x] and _is_text_fill(P[img[y][x]])}
+    for _ in range(4):                  # 글자 둘레의 어두운·중간 밝기 테두리(채도 낮은 점)
+        jp |= {(x + dx, y + dy) for x, y in jp for dx in (-1, 0, 1) for dy in (-1, 0, 1)
+               if x0 <= x + dx < x1 and y0 <= y + dy < y1 and img[y + dy][x + dx]
+               and max(P[img[y + dy][x + dx]][:2]) < 170}
+    # 같은 열의 위·아래에서 가장 가까운 남은 점으로 메운다(글자 띠가 가로로 길어서 바깥은 투명, 문양 안은 문양이 된다)
+    for x, y in sorted(jp):
+        up = next((yy for yy in range(y - 1, -1, -1) if (x, yy) not in jp), None)
+        down = next((yy for yy in range(y + 1, H) if (x, yy) not in jp), None)
+        src = min((s for s in (up, down) if s is not None), key=lambda s: abs(s - y))
+        img[y][x] = orig[src][x]
+    # 2) 한글 글자 층
+    layer = Image.open(LOGO_TEXT_PNG).convert('RGBA')
+    lx, ly = LOGO_TEXT_AT[0] + dx0, LOGO_TEXT_AT[1] + dy0
+    lp = layer.load()
+    for y in range(layer.height):
+        for x in range(layer.width):
+            r, g, b, a = lp[x, y]
+            if a:
+                img[ly + y][lx + x] = nearest((r, g, b))
+    # 3) 반짝임 장식
+    sx0, sy0, sx1, sy1 = (LOGO_SPARKLE[0] + dx0, LOGO_SPARKLE[1] + dy0, LOGO_SPARKLE[2] + dx0, LOGO_SPARKLE[3] + dy0)
+    for y in range(sy0, sy1):
+        for x in range(sx0, sx1):
+            if orig[y][x] and sum(P[orig[y][x]]) >= 640 and y < ly + 3:     # 한글 글자 위로 뻗은 빛줄기만
+                img[y][x] = orig[y][x]
+    # ™ 표시(큰 글자 오른쪽 위)는 원래대로
+    tx0, ty0, tx1, ty1 = LOGO_TM[0] + dx0, LOGO_TM[1] + dy0, LOGO_TM[2] + dx0, LOGO_TM[3] + dy0
+    for y in range(ty0, ty1):
+        for x in range(tx0, tx1):
+            img[y][x] = orig[y][x]
+    # 4) 판본 이름
+    if sub_text:
+        bx0, by0, bx1, by1 = sub_box
+        box = [(x, y) for y in range(by0, by1) for x in range(bx0, bx1)]
+        cols = {}
+        for x, y in box:
+            c = orig[y][x]
+            if c:
+                cols[c] = cols.get(c, 0) + 1
+        fill = max((c for c in cols if 200 < sum(P[c]) < 600), key=cols.get)
+        dark = max((c for c in cols if sum(P[c]) <= 200), key=cols.get)
+        line = {y: orig[y][bx0 - 1] for y in sub_lines}
+        for x, y in box:
+            img[y][x] = 0
+        for y, c in line.items():
+            for x in range(bx0, bx1):
+                img[y][x] = c
+        pts, w = bold().render(sub_text, by1 - 3)
+        sx = bx0 + (bx1 - bx0 - w) // 2
+        dots = {(x + sx, y) for x, y in pts}
+        ring = {(x + dx, y + dy) for x, y in dots for dx in (-1, 0, 1) for dy in (-1, 0, 1)} - dots
+        for x, y in ring:
+            img[y][x] = dark
+        for x, y in dots:
+            img[y][x] = fill
+    # 5) 타일로 다시 짠다 (같은 타일은 하나로, 빈 칸은 맵 0)
+    tiles, index, new_map = bytearray(), {}, []
+    for i in range(len(M)):
+        r, c = divmod(i, 32)
+        data = bytes(img[r * 8 + y][c * 8 + x] for y in range(8) for x in range(8))
+        if not any(data):
+            new_map.append(0)
+            continue
+        if data not in index:
+            index[data] = len(tiles) // 64 + 1
+            tiles += data
+        new_map.append(index[data])
+    if len(tiles) // 64 > LOGO_MAX_TILES:
+        sys.exit(f'로고 타일 {len(tiles) // 64}개가 한도 {LOGO_MAX_TILES} 를 넘습니다')
+    return bytes(tiles), struct.pack(f'<{len(new_map)}H', *new_map), img
+
+
 def translate(rom_files):
     """{롬 안 경로: 새 바이트}"""
     data = rom_files(SUBSCREEN)
@@ -629,6 +752,11 @@ def translate(rom_files):
     for i in TITLE_LABELS:
         e = translate_sprite(unpack(items[i]), i, labels=TITLE_LABELS, buttons={}, hints={}, regions={})
         items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
+    for ti, mi, pi, sub, box, lines, shift in LOGOS:
+        te, me, _ = translate_logo(bytes(unpack(items[ti])), bytes(unpack(items[mi])), bytes(unpack(items[pi])),
+                                   sub, box, lines, shift)
+        for i, e in ((ti, te), (mi, me)):
+            items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
     out[CAPCOMLOGO] = write_archive(items)
     return out
 
