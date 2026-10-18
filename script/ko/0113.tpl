@@ -29,7 +29,7 @@ script 1 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"들어가고 싶은 트랜서에서\nA 버튼을\n눌러."
+	"들어가고 싶은 트랜서를\n노려서 터치하면 돼."
 	keyWait
 		type = 1
 	clearMsg

@@ -5,7 +5,7 @@ script 0 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"준비해!\n"
+	"터치펜을 준비해!\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -13,7 +13,7 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"버튼을 눌러 버스터\n버튼의 방향을\n바꾸고 발사해!"
+	"발밑의 버스터 버튼을\n터치해서 음파 공격을\n쏘아 떨어뜨려!"
 	keyWait
 		type = 0
 	end

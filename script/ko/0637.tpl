@@ -81,7 +81,7 @@ script 1 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"올라탄 채로 버틸 수 있도록\n올바른 버튼을 누르세요!\n"
+	"떨어지지 않으려면\n밸런스 버튼을 터치해서\n균형을 잡으세요!\n"
 	keyWait
 		type = 0
 	end
@@ -107,7 +107,7 @@ script 2 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"올라탄 채로 버틸 수 있도록\n올바른 버튼을 누르세요!\n"
+	"떨어지지 않으려면\n밸런스 버튼을 터치해서\n균형을 잡으세요!\n"
 	keyWait
 		type = 0
 	end

@@ -17,7 +17,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"가까이 다가가서 조준 표시가\n보이면 A 버튼을 눌러!"
+	"기관차를 터치해!"
 	keyWait
 		type = 1
 	clearMsg
@@ -29,7 +29,7 @@ script 1 mmsf1 {
 	clearMsg
 	mugshotShow
 		mugshot = OmegaXis
-	"A 버튼을\n눌러서 웨이브 인하자는 거야!"
+	"화면을 터치하라고!"
 	keyWait
 		type = 1
 	clearMsg
@@ -139,7 +139,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"어서 A 버튼을 눌러서\n올라타, 꼬맹아!\n"
+	"어서 기관차를\n터치하라고, 꼬맹아!\n"
 	keyWait
 		type = 0
 	end

@@ -7,7 +7,7 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"별들을 연결해서"
+	"터치펜으로 별을 이어서"
 	keyWait
 		type = 1
 	clearMsg

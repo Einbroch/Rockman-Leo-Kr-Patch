@@ -42,11 +42,11 @@ script 102 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"A를 누를 준비해!\n\n"
+	"거기를 터치해!\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"누르는 순간,\n목표가 있는 곳으로\n"
+	"터치한 순간,\n네 몸은 터치한 곳으로\n"
 	keyWait
 		type = 1
 	clearMsg

@@ -123,7 +123,7 @@ script 0 mmsf1 {
 	clearMsg
 	mugshotShowNPC
 		npc = 1
-	"Y 버튼을 눌러 작동시켜.\n\n"
+	"땅을 터치해서 작동시켜.\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -182,7 +182,7 @@ script 1 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 1
-	"Y 버튼을 눌러 작동시켜\n\n"
+	"땅을 터치해서 작동시켜\n\n"
 	keyWait
 		type = 1
 	clearMsg

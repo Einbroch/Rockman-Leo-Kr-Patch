@@ -265,7 +265,7 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"A 버튼을 눌러. EM 파동\n덩어리니까 자동으로 날아 들어갈\n거야\n"
+	"기관차를 터치해. 그러면\n알아서 날아 들어갈 거야\n"
 	keyWait
 		type = 1
 	clearMsg

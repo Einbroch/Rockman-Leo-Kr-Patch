@@ -50,7 +50,7 @@ script 11 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"저 반짝이는 빨간 부분을\n조준한 다음\nA 버튼을 누르면"
+	"저 반짝이는 동그란 패널을\n터치펜으로 터치하면"
 	keyWait
 		type = 1
 	clearMsg

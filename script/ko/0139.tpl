@@ -25,11 +25,11 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"준비해, 꼬맹아!\n\n"
+	"터치펜을 준비해, 꼬맹아!\n\n"
 	keyWait
 		type = 1
 	clearMsg
-	"버튼이 나타나는 대로\n눌러!\n"
+	"화면에 나타나는\n밸런스 패널을 터치해!\n"
 	keyWait
 		type = 0
 	end
