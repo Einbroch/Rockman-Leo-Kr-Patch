@@ -883,6 +883,37 @@ def pad_big_segments(outputs, report):
             items[0][1] = kotable.BIG_MARK + ''.join(segs)
 
 
+# 라벨과 숫자(printBuffer)를 칸 수로 맞춰 이은 줄: {블록: (스크립트, …)}. 글 맨 앞에 큰 한글 표시를 붙이고, 글자 조각마다
+# 앞 빈칸은 두고 라벨 뒤를 빈칸으로 채워 일본판 같은 조각과 칸 수(걸친 칸 없이)를 맞춘다(숫자 자리가 그대로 남게).
+# 워록 화면의 공격력·연사력·차지 / 게이지·메가 카드·기가 카드.
+BIG_ROWS = {101: ((20, 21), kotable.BIG_MARK_UP)}     # 퍼스널 화면 계열(가나가 칸의 2줄부터)이라 2줄 위
+
+
+def pad_big_rows(outputs, report):
+    for block, (nums, mark) in BIG_ROWS.items():
+        ja = parse_tpl((JA_DIR / f'{block:04d}.tpl').read_text(encoding='utf-8-sig'))
+        for num in nums:
+            items = outputs.get(block, {}).get(num)
+            ko_texts = [it for it in items or [] if it[0] == 'text']
+            ja_texts = [it[1] for it in ja.get(num, []) if it[0] == 'text']
+            if not ko_texts or len(ko_texts) != len(ja_texts):
+                report.append(f'{block}\t-\t큰 한글 라벨 줄 {num}: 글자 조각 수가 일본판과 다름')
+                continue
+            for it, jt in zip(ko_texts, ja_texts):
+                s = it[1].replace(kotable.THIN_SPACE, ' ')
+                label = s.strip(' ')
+                if not label:
+                    continue
+                seg = s[:len(s) - len(s.lstrip(' '))] + label
+                while strip_cells(seg, with_carry=True) != (len(jt), 0):
+                    if strip_cells(seg) > len(jt):
+                        report.append(f'{block}\t-\t큰 한글 라벨 줄 {num}: {label!r} 가 {len(jt)}칸을 넘음')
+                        break
+                    seg += ' '
+                it[1] = seg
+            ko_texts[0][1] = mark + ko_texts[0][1]
+
+
 def name_lengths(outputs, stats, report):
     """이름 목록에서 일본판의 가장 긴 이름보다 칸을 더 쓰는 한글 이름을 적는다(메뉴 칸을 넘칠 수 있다).
     카드 이름은 카드 목록 한 줄의 칸 수(LIST_CELLS)로 잰다."""
@@ -1035,6 +1066,7 @@ def main():
     pad_options(outputs, stats)
     mark_big_labels(outputs, report)
     pad_big_segments(outputs, report)
+    pad_big_rows(outputs, report)
     name_lengths(outputs, stats, report)
     for block, scripts in sorted(outputs.items()):
         (KO_DIR / f'{block:04d}.tpl').write_text(write_tpl(f'{block:04d}', sizes[block], scripts), encoding='utf-8')
