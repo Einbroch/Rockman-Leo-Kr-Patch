@@ -80,6 +80,7 @@ LIST_BASES = 4              # 굵은 8×16 폰트를 올린 VRAM 자리를 이�
 LIST_CHECK = 0x5E           # 자리가 아직 폰트인지 볼 때 대조하는 글자 ('A')
 # 저장 데이터를 가리키는 포인터의 자리. 폴더 이름은 [[SAVE_PTR]] + 0xC4 부터 0x12 바이트씩 3개(0x02015A1C).
 SAVE_PTR = 0x0212B704
+FOLDER_BIG_MAX = 5          # 폴더 이름 글 상자(타일 8칸, 64픽셀)에 들어가는 큰 한글(12픽셀) 수. 넘으면 작은 한글
 # 그림(글자 폰트 포함)을 VRAM 에 올리는 로더들의 복사 호출: (호출 위치, 복사 함수). 굵은 8×16 폰트를 올리면
 # 그 자리를 기억하고 지금 칸에 든 한글을 그 자리에도 그린다.
 UPLOAD_SITES = [(0x0202F37C, 0x0202E5A4), (0x0202F3A0, 0x0202E5A4), (0x0202F3C4, 0x0202E5A4),
@@ -1106,6 +1107,30 @@ ko_tile_bigchk_flag:
     adds r0, #0x36
     cmp r3, r0
     bhs ko_tile_bigchk_no
+    subs r0, #0x36          @ 폴더 이름 칸에 한글이 {folder_big_max}자를 넘으면 작은 한글: 글 상자(타일 8칸)에
+ko_tile_fold_find:          @ 큰 한글은 {folder_big_max}자까지만 들어간다(한글 자판으로 8자까지 넣을 수 있다)
+    adds r0, #0x12
+    cmp r3, r0
+    bhs ko_tile_fold_find
+    subs r0, #0x12          @ r0 = 이 폴더 이름의 첫 바이트
+    push {{r1}}
+    movs r1, #0
+ko_tile_fold_count:
+    ldrb r3, [r0]
+    adds r0, #1
+    cmp r3, #0xE6
+    beq ko_tile_fold_done
+    cmp r3, #{lead_first}
+    blo ko_tile_fold_count
+    cmp r3, #{lead_last}
+    bhi ko_tile_fold_count
+    adds r0, #1
+    adds r1, #1
+    b ko_tile_fold_count
+ko_tile_fold_done:
+    cmp r1, #{folder_big_max}
+    pop {{r1}}
+    bhi ko_tile_bigchk_no
     b ko_tile_big
 ko_tile_bigchk_no:
     b ko_tile_strip
@@ -1825,7 +1850,8 @@ def build(arm9, keep=(), chars=(), blobs=None, extra=()):
         flag_helpers=''.join(FLAG_ASM.format(i=i, slot=slot, extra=extra, **common)
                              for i, (_, slot, extra) in enumerate(FLAG_SITES)),
         hangul_base=HANGUL_BASE, pre_base=HANGUL_BASE - kotable.TRAIL_FIRST, width_table=WIDTH_TABLE,
-        lead_first=kotable.LEAD_FIRST, trail_count=kotable.TRAIL_COUNT,
+        lead_first=kotable.LEAD_FIRST, trail_count=kotable.TRAIL_COUNT, folder_big_max=FOLDER_BIG_MAX,
+        lead_last=kotable.LEAD_FIRST + kotable.LEAD_COUNT - 1,
         extra_first=len(kotable.HANGUL),
         extra_widths=', '.join(str(kotable.EXTRA_WIDTH.get(c, 12)) for c in kotable.EXTRA),
         buffer=buffer, cell=CELL, chunks=table, mode1_func=MODE1_FUNC | 1, row_buffer=ROW_BUFFER,

@@ -26,6 +26,7 @@ import fieldtext  # noqa: E402
 import relocate  # noqa: E402
 import gfx  # noqa: E402
 import kotable  # noqa: E402
+import namekb  # noqa: E402
 import script  # noqa: E402
 import version  # noqa: E402
 
@@ -171,6 +172,20 @@ def patch_arm9_slots(data):
     return spans
 
 
+def repoint_default_name(original, data, new_addrs):
+    """새 게임 기본 이름(성, 이름) 칸 배열을 가리키는 리터럴을 새 배열로 옮긴다(tools/namekb.py). 고친 자리 목록."""
+    spans = []
+    for (_, old), new in zip(namekb.DEFAULT_NAME_REFS, new_addrs):
+        old = relocate.data(old, 8)
+        pos = [i for i in range(0, len(original) - 3, 4) if struct.unpack_from('<I', original, i)[0] == old]
+        if len(pos) != 1:
+            sys.exit(f'기본 이름 칸 배열 {old:#x} 를 가리키는 리터럴이 {len(pos)}곳입니다.')
+        data[pos[0]:pos[0] + 4] = struct.pack('<I', new)
+        spans.append((engine.ARM9_BASE + pos[0], 4))
+        print(f'기본 이름: {engine.ARM9_BASE + pos[0]:#x} 의 {old:#x} → {new:#x}')
+    return spans
+
+
 def check_changes(original, data, keep, ref_positions, extra=()):
     """ARM9 에서 바뀐 바이트가 모두 쓸 수 있는 곳(폰트의 빈 칸, 원래 이름 목록 자리, 코드를 고친 곳, 이름 목록
     참조 낱말) 안에 있는지 확인한다. 배치 계산이 틀려 남의 데이터를 덮으면 여기서 멈춘다.
@@ -194,6 +209,8 @@ def main():
     if not ORIGINAL.exists():
         sys.exit(f'{ORIGINAL} 가 없습니다. 먼저 tools/unpack.py 를 실행하세요(판본은 KO_VERSION).')
     kotable.main()
+    if not namekb.check_tpl():
+        sys.exit('script/ko/0001.tpl 의 이름 자판 줄이 음절 표와 다릅니다. python tools/namekb.py 를 실행하세요.')
     mess = ROOT / 'work' / 'ko' / 'mess.bin'
     _, names = script.build(KO_SCRIPT, mess, 'rnr1-ko')
     mail = script.read_mess(mess.read_bytes())[MAIL_BLOCK][0]
@@ -214,7 +231,13 @@ def main():
     # 원래 이름 목록을 가리키는 낱말은 이름 목록을 옮기기 전에 찾아 둔다 (새 자리를 쓰면 지워질 수 있다)
     original = bytes(data)
     regions = name_regions()
-    info, placed = engine.build(data, remaining_kanji(), used_chars(), names, regions)
+    convert, _ = namekb.convert_blob()                   # 이름 칸 ↔ 문자열 변환(오버레이 2 가 부른다)
+    default_name, default_offs = namekb.default_name_blob()
+    keep = [c for c in '星河' if c not in remaining_kanji()] + remaining_kanji()   # 예전 세이브의 기본 이름
+    info, placed = engine.build(data, keep, used_chars(),
+                                dict(names, namekb_convert=convert, namekb_name=default_name), regions)
+    convert_addr, name_addr = placed.pop('namekb_convert'), placed.pop('namekb_name')
+    name_spans = repoint_default_name(original, data, [name_addr + o for o in default_offs])
     for addr, size in regions:
         print(f'원래 이름 목록 자리 {addr:#x}–{addr + size:#x} ({size:,}바이트)를 빈 공간으로 씀')
     moves = {script.NAME_ARCHIVES[b]: addr for b, addr in placed.items()}
@@ -222,6 +245,11 @@ def main():
     arm9_refs = bytearray(original)                      # 옛 낱말 위치는 원본에서 찾고 새 값은 data 에 쓴다
     count = repoint(rom, arm9_refs, moves)
     patch_overlays(rom)
+    ov2 = rom.loadArm9Overlays()[2]                      # 이름 입력: 한글 음절 자판 (tools/namekb.py)
+    data2 = bytearray(rom.files[ov2.fileID])
+    for at, size, why in namekb.patch(data2, ov2.ramAddress, convert_addr):
+        print(f'오버레이 2 {ov2.ramAddress + at:#x}: {why}')
+    rom.files[ov2.fileID] = bytes(data2)
     for old, positions in refs.items():
         for i in positions:
             if data[i:i + 4] != original[i:i + 4]:
@@ -238,7 +266,7 @@ def main():
     bad = fieldtext.check(original, blocks)
     if bad:
         sys.exit('필드 대사 블록이 슬롯을 넘습니다: ' + ', '.join(f'{b}(종류 {k}) {n:#x} > {l:#x}' for b, k, n, l in bad))
-    check_changes(original, data, info['남긴 한자'], [i for ps in refs.values() for i in ps], slot_spans)
+    check_changes(original, data, info['남긴 한자'], [i for ps in refs.values() for i in ps], slot_spans + name_spans)
     main_section.data = bytes(data)
     rom.arm9 = code.save(compress=False)
 

@@ -801,6 +801,9 @@ def translate(rom_files):
         te, me = translate_bg_text(bytes(unpack(items[ti])), bytes(unpack(items[mi])), rects)
         for i, e in ((ti, te), (mi, me)):
             items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
+    import namekb                                       # 이름 자판 단추(あ ア ゛ ゜ 小 → 가 아 2 3 4)
+    e = namekb.draw_icons(bytes(unpack(items[namekb.ICON_ITEM])))
+    items[namekb.ICON_ITEM] = (items[namekb.ICON_ITEM][0], ndspy.lz10.compress(e) if items[namekb.ICON_ITEM][0] else e)
     out = {SUBSCREEN: write_archive(items)}
     items = read_archive(rom_files(CAPCOMLOGO))
     translate_sprites(items, dict(labels=TITLE_LABELS))
