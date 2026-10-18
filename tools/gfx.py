@@ -390,6 +390,11 @@ REGIONS = {
           4: [(0, 51, 0, 16, '브라더 메일', 'right', 'small')]},                  # ブラザーメール▶
     137: {0: [(3, 125, 1, 15, '즐겨찾기 선택 중', 'left', 'bold')]},              # フェイバリット せんたく中
 }
+# 브라더 화면 단추 コメント·ヒミツ (네 가지 색, 프레임 1·2 = 보통·고름). 튜토리얼 대사(블록 100)도 「메시지」「비밀」
+_MES = [(5, 43, 4, 18, '메시지', 'center', 'bold')]
+_SECR = [(5, 43, 4, 18, '비밀', 'center', 'bold')]
+for _i in (277, 278, 279, 280):
+    REGIONS[_i] = {1: _MES, 2: _MES, 3: _SECR, 4: _SECR}
 
 
 def frame_pixels(s, k):
@@ -560,11 +565,16 @@ def translate_sprite(e, i, labels=None, buttons=None, hints=None, regions=None):
 # t-1 번이다(게임이 0번 빈 타일을 앞에 두고 올린다). 사각형(픽셀) 안에서 줄마다 가장 흔한 색을 배경, 나머지를 글자로
 # 보고 지운 뒤, 원래 글자의 왼쪽 끝·아랫줄에 맞춰 한글을 그린다.
 _FAV_A = [(23, 92, 120, 99, '즐겨찾기', 'small')]           # 퍼스널 화면 (주인공)
-_FAV_B = [(83, 80, 150, 88, '즐겨찾기', 'small')]           # 퍼스널 화면 (브라더)
+_FAV_B = [(83, 80, 150, 88, '즐겨찾기', 'small'),           # 퍼스널 화면 (브라더)
+          (19, 103, 57, 117, '메시지', 'mid')]                # 그림에 박힌 コメント 단추
+_BRO = [(17, 104, 66, 111, '즐겨찾기', 'small'), (159, 96, 210, 103, '베스트 콤보', 'small'),
+        (159, 137, 219, 144, '링크 능력', 'small')]            # 브라더 화면 POWER UP DATA
 BG_TEXTS = {
     (107, 109): [(0, 0, 64, 16, '저장', 'bold')],             # 저장 화면 제목
     (63, 65): _FAV_A, (66, 68): _FAV_A, (69, 71): _FAV_A,
     (81, 83): _FAV_B, (84, 86): _FAV_B, (87, 89): _FAV_B, (90, 92): _FAV_B,
+    (264, 266): _BRO, (267, 269): _BRO, (270, 272): _BRO, (273, 275): _BRO, (285, 287): _BRO,
+    (282, 284): [(9, 82, 69, 89, '링크 능력', 'small')],
 }
 BG_VRAM_TILES = 768                     # 타일을 올리는 곳(문자 기준 0x4000)부터 다음 BG(0x10000)까지 칸 수
 
@@ -590,9 +600,12 @@ def translate_bg_text(tiles_e, map_e, rects):
     for x0, y0, x1, y1, text, font in rects:
         img = {(x, y): get(x, y) for y in range(y0, y1) for x in range(x0, x1)}
         bg = {}
+        every = list(img.values())
+        flat = max(set(every), key=every.count)
         for y in range(y0, y1):
             row = [img[x, y] for x in range(x0, x1)]
-            bg[y] = max(set(row), key=row.count)
+            # 줄마다 가장 흔한 색. 글자가 빽빽한 줄은 글자색이 이기므로, 사각형 전체의 바탕색이 그 줄에 있으면 그것
+            bg[y] = flat if flat in row else max(set(row), key=row.count)
         ink = [(x, y) for (x, y), c in img.items() if c != bg[y]]
         if not ink:
             sys.exit(f'BG 글자 {text!r} 자리에서 원래 글자를 찾지 못했습니다')

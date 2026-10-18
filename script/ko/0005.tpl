@@ -249,7 +249,7 @@ script 31 mmsf1 {
 script 40 mmsf1 {
 	mugshotShow
 		mugshot = OmegaXis
-	"좋아, 이번엔 자세히 설명해 줄게.\n"
+	"좋아 이번엔 자세히 설명해 줄게.\n"
 	keyWait
 		type = 1
 	clearMsg

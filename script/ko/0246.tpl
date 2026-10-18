@@ -94,7 +94,7 @@ script 6 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"또 놀랄 테니까. 밖에서 기다릴게.\n나중에 더 이야기하자.\n"
+	"또 놀랄 테니 밖에서 기다릴게.\n나중에 더 이야기하자.\n"
 	keyWait
 		type = 0
 	end

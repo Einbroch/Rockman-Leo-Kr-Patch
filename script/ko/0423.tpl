@@ -147,7 +147,7 @@ script 12 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"전파 세계에 가둬 뒀을지도 몰라!!"
+	"전파 세계에 가둬 뒀을지도 몰라!"
 	keyWait
 		type = 0
 	end

@@ -168,7 +168,7 @@ script 5 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = OmegaXis
-	"알았어. 하지만 나중에\n그 애한테 혼날지도 몰라! 히히히.\n"
+	"알았어. 하지만 나중에\n그 애한테 혼날지도 몰라! 히히히\n"
 	keyWait
 		type = 1
 	clearMsg

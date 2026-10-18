@@ -448,11 +448,11 @@ script 8 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"「MES.」와 「SECR」 버튼이\n보이지?\n"
+	"「메시지」와 「비밀」 버튼이\n보이지?\n"
 	keyWait
 		type = 1
 	clearMsg
-	"「MES.」는 메시지의\n약자로,\n"
+	"「메시지」 버튼은\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -464,7 +464,7 @@ script 8 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"자랑을 하거나, 뭐든 자유롭게 써!\n\n"
+	"자랑을 하거나 뭐든 자유롭게 써!\n\n"
 	keyWait
 		type = 1
 	clearMsg
@@ -481,11 +481,11 @@ script 9 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = Luna
-	"다음은 「SECR」야!"
+	"다음은 「비밀」이야!"
 	keyWait
 		type = 1
 	clearMsg
-	"「SECR」에는 비밀 메시지를\n쓰는 거야!\n"
+	"「비밀」에는 비밀 메시지를\n쓰는 거야!\n"
 	keyWait
 		type = 1
 	clearMsg

@@ -222,6 +222,11 @@ def main():
     if not ORIGINAL.exists():
         sys.exit(f'{ORIGINAL} 가 없습니다. 먼저 tools/unpack.py 를 실행하세요(판본은 KO_VERSION).')
     kotable.main()
+    import pc2ds
+    late = pc2ds.late_starts(KO_SCRIPT)                 # 줄 끝 글자가 x=184 이상이면 그 줄 첫 글자가 깨진다
+    if late:
+        sys.exit('대사 줄 끝 글자가 너무 오른쪽입니다(align_fix.json 의 replace 로 줄이세요): ' +
+                 ', '.join(f'{b}:{s} {line!r}' for b, s, line in late[:10]))
     if not namekb.check_tpl():
         sys.exit('script/ko/0001.tpl 의 이름 자판 줄이 음절 표와 다릅니다. python tools/namekb.py 를 실행하세요.')
     mess = ROOT / 'work' / 'ko' / 'mess.bin'

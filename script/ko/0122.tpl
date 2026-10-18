@@ -336,7 +336,7 @@ script 22 mmsf1 {
 	mugshotShow
 		mugshot = Zack
 	controlLock
-	"나한테는 없어. 곤타가 갖고 있어!"
+	"나한텐 없어. 곤타가 갖고 있어!"
 	wait
 		frames = 40
 	end

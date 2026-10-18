@@ -106,13 +106,25 @@ def cell_code(ch):
 
 
 # ---------------------------------------------------------------- 블록 1 스크립트 (자판에 그리는 글자 줄)
+# 블록 1 스크립트 11: 주인공 이름 입력의 처음 칸(43칸: 줄마다 이름표 5칸 + 이름 6칸, 남는 칸은 빈칸)
+NAME_LAYOUT = ('성', '호시카와', '이름', '스바루')
+
+
+def name_layout():
+    a, b, c, d = NAME_LAYOUT
+    s = a.ljust(5) + b.ljust(6) + c.ljust(5) + d.ljust(6)
+    return s.ljust(43)
+
+
 def tpl_scripts():
-    return ''.join(f'script {n} mmsf1 {{\n\t"{"".join(chars)}"\n\tend\n}}\n' for n, chars in sorted(pages().items()))
+    pages_ = ''.join(f'script {n} mmsf1 {{\n\t"{"".join(chars)}"\n\tend\n}}\n' for n, chars in sorted(pages().items()))
+    return pages_ + f'script 11 mmsf1 {{\n\t"{name_layout()}"\n\tend\n}}\n'
 
 
 def write_tpl():
+    """script/ko/0001.tpl 에 스크립트 0–7(자판 줄)과 11(이름 입력 처음 칸)을 쓴다. pc2ds.py 가 끝에 부른다."""
     text = TPL.read_text(encoding='utf-8')
-    text = re.sub(r'script [0-7] mmsf1 \{\n\t"[^"\n]*"\n\tend\n\}\n', '', text)
+    text = re.sub(r'script (?:[0-7]|11) mmsf1 \{\n\t"[^"\n]*"\n\tend\n\}\n', '', text)
     head, sep, rest = text.partition('@size 256\n\n')
     assert sep, 'script/ko/0001.tpl 머리가 예상과 다릅니다'
     TPL.write_text(head + sep + tpl_scripts() + rest, encoding='utf-8')

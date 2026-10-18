@@ -53,7 +53,7 @@ script 2 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"좌표\n19283.87347.1349에서\n관측됨\n"
+	"좌표\n19283.87347.1349\n에서 관측됨\n"
 	keyWait
 		type = 1
 	clearMsg

@@ -50,6 +50,44 @@ MENU_BLOCKS = {13, 14, 8, 12, 102, 1214}
 INLINE = {'wait', 'waitHold', 'waitSkip'}
 MAX_WIDTH = 192             # 대사 한 줄 최대 폭(픽셀). 일본판 대사의 99%가 이 안이다.
 MAX_LINES = 3
+# 대사 창에서 x=184 이상에서 시작하는 글자가 있으면 그 줄 첫 글자가 한글 0번(가)으로 깨진다(실기 확인: 폭 192 줄의
+# 끝 '!'·'.'). 폭 12 한글은 180 에서 시작해 192 에 끝나므로 괜찮고, 좁은 문장부호로 192 를 채우면 걸린다.
+LAST_START = 183
+LINE_CHECK_SKIP = {0, 1, 2, 9, 11, 13, 14}      # 자판·메뉴 칸·카드 설명(대사 창이 아닌 것)
+
+
+def late_starts(tpl_dir=None):
+    """대사 줄 중 x > LAST_START 에서 시작하는 글자가 있는 줄 [(블록, 스크립트, 줄)]. 빌드 게이트."""
+    text_width('')
+    out = []
+    for p in sorted((tpl_dir or KO_DIR).glob('*.tpl')):
+        if int(p.stem) in LINE_CHECK_SKIP:
+            continue
+        for m in re.finditer(r'^script (\d+) \S+ \{\n(.*?)^\}\n', p.read_text(encoding='utf-8'), re.M | re.S):
+            for s in re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(2)):
+                for line in s.replace('\\"', '"').split('\\n'):
+                    if line.count(' ') > 3:                 # 칸 맞춤 줄(메뉴)
+                        continue
+                    x = 0
+                    for c in _chars(line):
+                        if x > LAST_START and c not in (' ', kotable.THIN_SPACE) and x < MAX_WIDTH:
+                            out.append((int(p.stem), int(m.group(1)), line))
+                            break
+                        x += WIDTHS.get(c, 12)
+    return out
+
+
+def _chars(s):
+    i = 0
+    while i < len(s):
+        for v in MULTI:
+            if s.startswith(v, i):
+                yield v
+                i += len(v)
+                break
+        else:
+            yield s[i]
+            i += 1
 # 글자 안에서 출력하는 명령의 어림 폭(픽셀)
 INLINE_WIDTH = {'printPlayerName1': 48, 'printPlayerName2': 48, 'wait': 0, 'waitHold': 0, 'waitSkip': 0}
 PRINT_WIDTH = 96
@@ -1000,6 +1038,8 @@ def main():
     for block, scripts in sorted(outputs.items()):
         (KO_DIR / f'{block:04d}.tpl').write_text(write_tpl(f'{block:04d}', sizes[block], scripts), encoding='utf-8')
         stats['만든 블록'] += 1
+    import namekb                    # 이름 자판 줄과 이름 입력 처음 칸(블록 1 스크립트 0–7, 11)
+    namekb.write_tpl()
     (ROOT / 'script' / 'ko_report.txt').write_text('# 한글을 넣지 못한 곳\n' + '\n'.join(report) + '\n', encoding='utf-8')
     for key, value in stats.items():
         print(f'{key}: {value:,}')

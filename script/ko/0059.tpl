@@ -180,7 +180,7 @@ script 7 mmsf1 {
 	msgOpen
 	mugshotShow
 		mugshot = LittleGirl
-	"야호! 오늘은 정말 행복한 날이야!\n\n"
+	"야호! 오늘은 정말 행복한 날!\n\n"
 	keyWait
 		type = 1
 	clearMsg

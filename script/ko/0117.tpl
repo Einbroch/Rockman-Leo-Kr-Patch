@@ -185,7 +185,7 @@ script 10 mmsf1 {
 	"."
 	waitSkip
 		frames = 30
-	"흠흠.\n자, 잘 들어라, 우시지마 곤타..."
+	"흠흠.\n자, 잘 들어라 우시지마 곤타..."
 	keyWait
 		type = 1
 	clearMsg

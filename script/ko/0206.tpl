@@ -327,7 +327,7 @@ script 19 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"그 사람이 AMAKEN에서\n우리를 구해 줬어. 그가 없었다면,\n"
+	"그 사람이 AMAKEN에서\n우리를 구해 줬어. 그가 없었다면\n"
 	keyWait
 		type = 1
 	clearMsg

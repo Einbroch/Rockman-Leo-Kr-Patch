@@ -15,7 +15,7 @@ script 0 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"도움말은\nwww.nintendowifi.com."
+	"도움말은\nwww.nintendowifi.com"
 	keyWait
 		type = 1
 	clearMsg
@@ -356,7 +356,7 @@ script 21 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"도움말은\nwww.nintendowifi.com."
+	"도움말은\nwww.nintendowifi.com"
 	keyWait
 		type = 1
 	clearMsg
@@ -380,7 +380,7 @@ script 22 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"도움말은\nwww.nintendowifi.com."
+	"도움말은\nwww.nintendowifi.com"
 	keyWait
 		type = 1
 	clearMsg
@@ -436,7 +436,7 @@ script 24 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"도움말은\nwww.nintendowifi.com."
+	"도움말은\nwww.nintendowifi.com"
 	keyWait
 		type = 1
 	clearMsg
@@ -460,7 +460,7 @@ script 25 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"도움말은\nwww.nintendowifi.com."
+	"도움말은\nwww.nintendowifi.com"
 	keyWait
 		type = 1
 	clearMsg
@@ -484,7 +484,7 @@ script 26 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"도움말은\nwww.nintendowifi.com."
+	"도움말은\nwww.nintendowifi.com"
 	keyWait
 		type = 1
 	clearMsg
@@ -516,7 +516,7 @@ script 27 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"도움말은\nwww.nintendowifi.com."
+	"도움말은\nwww.nintendowifi.com"
 	keyWait
 		type = 1
 	clearMsg
@@ -548,7 +548,7 @@ script 28 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"도움말은\nwww.nintendowifi.com."
+	"도움말은\nwww.nintendowifi.com"
 	keyWait
 		type = 1
 	clearMsg
@@ -604,7 +604,7 @@ script 30 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"도움말은\nwww.nintendowifi.com."
+	"도움말은\nwww.nintendowifi.com"
 	keyWait
 		type = 1
 	clearMsg
@@ -633,7 +633,7 @@ script 31 mmsf1 {
 	keyWait
 		type = 1
 	clearMsg
-	"도움말은\nwww.nintendowifi.com."
+	"도움말은\nwww.nintendowifi.com"
 	keyWait
 		type = 1
 	clearMsg

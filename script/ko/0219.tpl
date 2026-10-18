@@ -292,7 +292,7 @@ script 19 mmsf1 {
 	msgOpen
 	mugshotShowNPC
 		npc = 4
-	"아니, 록맨은 언제나 나타날 거야.\n"
+	"아니 록맨은 언제나 나타날 거야.\n"
 	keyWait
 		type = 1
 	clearMsg
