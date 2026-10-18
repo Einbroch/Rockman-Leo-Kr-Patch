@@ -177,7 +177,7 @@ script 7 mmsf1 {
 	end
 }
 script 8 mmsf1 {
-	"시간      라이브러리   배틀 카드   크레딧     "
+	"시간          도감          배틀 카드   크레딧       "
 	end
 }
 script 9 mmsf1 {

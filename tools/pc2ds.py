@@ -740,7 +740,7 @@ LIST_NAME_BLOCKS = {1249, 1250}
 LIST_CELLS = 12
 
 
-def strip_cells(text, pitch=12, space=4):
+def strip_cells(text, pitch=12, space=4, with_carry=False):
     """한글을 pitch 픽셀 간격(한글 사이 공백 space 픽셀)으로 이어 그려 8픽셀 칸으로 자를 때의 칸 수
     (tools/engine.py 의 ko_list8·ko_tile_big 과 같은 규칙: 한글이 아닌 글자는 칸 하나)."""
     hangul = set(kotable.HANGUL)
@@ -764,7 +764,7 @@ def strip_cells(text, pitch=12, space=4):
         else:
             joining, carry = False, 0
             n += 1
-    return n
+    return (n, carry) if with_carry else n
 
 
 def list_cells(items, pitch=12, space=4):
@@ -795,21 +795,53 @@ def pad_folder_names(outputs, report):
 
 # 칸 단위 타일 그리기로 찍는 메뉴 라벨 중 큰 한글로 그릴 것: {블록: (스크립트 번호들, 일본판 칸 수)}.
 # 글 맨 앞에 표시 글자(kotable.BIG_MARK)를 붙이면 엔진이 그 글을 폴더 이름처럼 큰 한글로 그린다.
-BIG_LABELS = {8: ((0, 1, 2), 8)}    # 폴더 화면의 편집·장비·이름 변경
+# 스크립트 번호가 None 이면 블록의 모든 스크립트(한글로 시작하는 것만). 칸 수는 일본판 칸 수(넘으면 보고).
+BIG_LABELS = {8: ((0, 1, 2), 8),    # 폴더 화면의 편집·장비·이름 변경
+              94: (None, 12)}       # 메일함 목록의 제목·보낸 사람
+# 칸을 공백으로 맞춘 여러 라벨을 한 줄에 이은 글: {블록: {스크립트: (라벨마다 칸 수, 라벨 수)}}. 라벨마다 큰 한글로
+# 그 칸 수를 걸침 없이 채운다(다음 라벨이 앞 칸에 이어 그려지지 않게).
+# 저장 화면의 시간·라이브러리·배틀 카드·크레딧. 「라이브러리」(60점)는 바로 옆 S 배지(56점 뒤)에 가려 「도감」으로 줄인다.
+BIG_SEGMENTS = {2: {8: (8, 4, {'라이브러리': '도감'})}}
 
 
 def mark_big_labels(outputs, report):
     hangul = set(kotable.HANGUL)
     for block, (nums, cells) in BIG_LABELS.items():
-        for num in nums:
+        for num in (sorted(outputs.get(block, {})) if nums is None else nums):
             items = outputs.get(block, {}).get(num)
             if not items or items[0][0] != 'text' or items[0][1][:1] not in hangul:
-                report.append(f'{block}	-	큰 한글 라벨 {num}: 한글로 시작하지 않아 표시를 붙이지 못함')
+                if nums is not None:
+                    report.append(f'{block}	-	큰 한글 라벨 {num}: 한글로 시작하지 않아 표시를 붙이지 못함')
                 continue
+            # 엔진은 좁은 빈칸을 한글 글자(12점)로 그리므로 큰 한글 글에서는 보통 빈칸(4점)으로 바꾼다
+            for it in items:
+                if it[0] == 'text':
+                    it[1] = it[1].replace(kotable.THIN_SPACE, ' ')
             items[0][1] = kotable.BIG_MARK + items[0][1]
             n = strip_cells(''.join(it[1] for it in items if it[0] == 'text').rstrip(' '))
             if n > cells:
                 report.append(f'{block}	-	큰 한글 라벨 {num}: {n}칸 > {cells}칸')
+
+
+def pad_big_segments(outputs, report):
+    for block, scripts in BIG_SEGMENTS.items():
+        for num, (cells, count, rename) in scripts.items():
+            items = outputs.get(block, {}).get(num)
+            text = items[0][1].replace(kotable.THIN_SPACE, ' ') if items and items[0][0] == 'text' else ''
+            labels = [rename.get(s, s) for s in re.split(r' {2,}', text.strip()) if s]
+            if len(labels) != count:
+                report.append(f'{block}	-	큰 한글 라벨 줄 {num}: 라벨 {len(labels)}개(기대 {count})')
+                continue
+            segs = []
+            for label in labels:
+                seg = label
+                while strip_cells(seg, with_carry=True) != (cells, 0):
+                    if strip_cells(seg) > cells:
+                        report.append(f'{block}	-	큰 한글 라벨 줄 {num}: {label!r} 가 {cells}칸을 넘음')
+                        break
+                    seg += ' '
+                segs.append(seg)
+            items[0][1] = kotable.BIG_MARK + ''.join(segs)
 
 
 def name_lengths(outputs, stats, report):
@@ -963,6 +995,7 @@ def main():
     pad_folder_names(outputs, report)
     pad_options(outputs, stats)
     mark_big_labels(outputs, report)
+    pad_big_segments(outputs, report)
     name_lengths(outputs, stats, report)
     for block, scripts in sorted(outputs.items()):
         (KO_DIR / f'{block:04d}.tpl').write_text(write_tpl(f'{block:04d}', sizes[block], scripts), encoding='utf-8')
