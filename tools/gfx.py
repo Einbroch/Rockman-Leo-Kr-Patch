@@ -231,7 +231,30 @@ def small():
     return SMALL
 
 
-FONTS = {'bold': bold, 'small': small}
+class Emboldened:
+    """글꼴의 모든 점을 오른쪽으로 한 점 더 찍는다(획 2점 굵기)."""
+    def __init__(self, font):
+        self.font = font
+
+    def render(self, text, baseline, spacing=0):
+        pts, w = self.font.render(text, baseline, spacing)
+        return sorted(set(pts) | {(x + 1, y) for x, y in pts}), w + 1
+
+
+_FONT_CACHE = {}
+
+
+def _font(name, embolden=False):
+    def get():
+        if (name, embolden) not in _FONT_CACHE:
+            f = Font(name)
+            _FONT_CACHE[name, embolden] = Emboldened(f) if embolden else f
+        return _FONT_CACHE[name, embolden]
+    return get
+
+
+# bold 갈무리11 Bold(ㅌ 보정), small 갈무리7, mid 갈무리9, big 갈무리14 를 한 점 굵게
+FONTS = {'bold': bold, 'small': small, 'mid': _font('Galmuri9.bdf'), 'big': _font('Galmuri14.bdf', True)}
 
 # ---------------------------------------------------------------- 바꿀 그림 (subscreen.bin)
 # 스프라이트 번호 → {프레임: (한글, 글꼴, 정렬)}. 글꼴 bold = 갈무리11 Bold(16줄 제목·단추), small = 갈무리7(8줄 탭).
@@ -429,20 +452,23 @@ def replace_hint(s, k, lines):
 
 
 def redraw_region(s, k, regions, group=None):
-    """틀 안 글자를 지우고(줄마다 가장 흔한 색으로 칠함) 한글을 그린다. 원래 글자에 그림자색이 있으면 오른쪽·아래에 친다."""
+    """틀 안 글자를 지우고(사각형에서 가장 흔한 색 하나로 칠함) 한글을 그린다. 원래 글자에 그림자색이 있으면
+    오른쪽·아래에 친다. 줄마다 배경을 정하면 글자가 빽빽한 줄에서 글자색을 배경으로 골라 줄무늬가 생긴다."""
     where, _ = s.layout(k, group)
     for x0, x1, y0, y1, text, align, font in regions:
         bg, colors = {}, {}
+        every = [s.pixel(where[x, y]) for y in range(y0, y1) for x in range(x0, x1) if (x, y) in where]
+        flat = max(set(every), key=every.count)
         for y in range(y0, y1):
             row = [s.pixel(where[x, y]) for x in range(x0, x1) if (x, y) in where]
             if not row:                   # 조각이 없는 줄
                 continue
-            bg[y] = max(set(row), key=row.count)
+            bg[y] = flat
             for c in row:
                 if c != bg[y]:
                     colors[c] = colors.get(c, 0) + 1
         order = sorted(colors, key=colors.get, reverse=True)
-        color, shadow = order[0], (order[1] if len(order) > 1 and font == 'bold' else None)
+        color, shadow = order[0], (order[1] if len(order) > 1 and font in ('bold', 'big') else None)
         ink = [(x, y) for y in bg for x in range(x0, x1) if (x, y) in where and s.pixel(where[x, y]) != bg[y]]
         left, right = min(x for x, _ in ink), max(x for x, _ in ink)
         bottom = max(y for x, y in ink if s.pixel(where[x, y]) == color)
@@ -451,7 +477,7 @@ def redraw_region(s, k, regions, group=None):
                 if (x, y) in where:
                     s.put(where[x, y], bg[y])
         pts, w = FONTS[font]().render(text, bottom + 1)
-        start = left if align == 'left' else right + 1 - w
+        start = left if align == 'left' else right + 1 - w if align == 'right' else (left + right + 1 - w) // 2
         if start < x0 or start + w > x1 or any((x + start, y) not in where for x, y in pts):
             sys.exit(f'{text!r} 가 칸({x0}~{x1}, {y0}~{y1})을 넘습니다')
         dots = {(x + start, y) for x, y in pts}
@@ -742,28 +768,52 @@ def translate_logo(tiles_e, map_e, pal_e, sub_text, sub_box, sub_lines, shift=(0
     return bytes(tiles), struct.pack(f'<{len(new_map)}H', *new_map), img
 
 
+# ---------------------------------------------------------------- 필드·상점·미니게임 (스프라이트)
+_AIRCON = ['냉방', '난방', '송풍']
+_MINIGAME = {0: '그만두기', 1: '다시 하기', 3: '그만두기', 4: '다시 하기'}
+FIELD_TABLES = {
+    'datbin/com/fieldcardforce.bin': dict(regions={
+        30: {2: [(20, 46, 60, 76, '취소', 'center', 'mid'), (47, 72, 60, 76, '결정', 'center', 'mid')]},   # 숫자 자판
+        34: {k: [(7, 47, 9, 31, _AIRCON[k % 3], 'center', 'big')] for k in range(6)},                     # 에어컨 단추
+    }),
+    'datbin/com/shop.bin': dict(hints={4: {2: [(0, 8, 13, '설명')]}}),                                    # R:せつめい
+    'datbin/com/fieldminigame.bin': dict(regions={
+        7: {k: [(4, 60, 5, 27, text, 'center', 'bold')] for k, text in _MINIGAME.items()}}),             # やめる·やりなおし
+}
+
+
+def translate_sprites(items, tables):
+    """아카이브 항목 목록에 스프라이트 표(labels·buttons·hints·regions)를 적용한다."""
+    ids = set()
+    for table in tables.values():
+        ids |= set(table)
+    for i in sorted(ids):
+        e = translate_sprite(unpack(items[i]), i, **{k: tables.get(k, {}) for k in ('labels', 'buttons', 'hints', 'regions')})
+        items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
+
+
 def translate(rom_files):
     """{롬 안 경로: 새 바이트}"""
     data = rom_files(SUBSCREEN)
     items = read_archive(data)
-    for i in sprite_ids():
-        e = translate_sprite(unpack(items[i]), i)
-        items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
+    translate_sprites(items, dict(labels=LABELS, buttons=BUTTONS, hints=HINTS, regions=REGIONS))
     for (ti, mi), rects in BG_TEXTS.items():
         te, me = translate_bg_text(bytes(unpack(items[ti])), bytes(unpack(items[mi])), rects)
         for i, e in ((ti, te), (mi, me)):
             items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
     out = {SUBSCREEN: write_archive(items)}
     items = read_archive(rom_files(CAPCOMLOGO))
-    for i in TITLE_LABELS:
-        e = translate_sprite(unpack(items[i]), i, labels=TITLE_LABELS, buttons={}, hints={}, regions={})
-        items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
+    translate_sprites(items, dict(labels=TITLE_LABELS))
     for ti, mi, pi, sub, box, lines, shift in LOGOS:
         te, me, _ = translate_logo(bytes(unpack(items[ti])), bytes(unpack(items[mi])), bytes(unpack(items[pi])),
                                    sub, box, lines, shift)
         for i, e in ((ti, te), (mi, me)):
             items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
     out[CAPCOMLOGO] = write_archive(items)
+    for path, tables in FIELD_TABLES.items():
+        items = read_archive(rom_files(path))
+        translate_sprites(items, tables)
+        out[path] = write_archive(items)
     return out
 
 
