@@ -784,7 +784,7 @@ def strip_cells(text, pitch=12, space=4, with_carry=False):
     hangul = set(kotable.HANGUL)
     n, carry, joining = 0, 0, False
     for c in BRACKET.sub('#', text):
-        if c == kotable.BIG_MARK:
+        if c in (kotable.BIG_MARK, kotable.BIG_MARK_UP):
             continue
         if c in hangul:
             joining = True
@@ -835,7 +835,7 @@ def pad_folder_names(outputs, report):
 # 글 맨 앞에 표시 글자(kotable.BIG_MARK)를 붙이면 엔진이 그 글을 폴더 이름처럼 큰 한글로 그린다.
 # 스크립트 번호가 None 이면 블록의 모든 스크립트(한글로 시작하는 것만). 칸 수는 일본판 칸 수(넘으면 보고).
 BIG_LABELS = {8: ((0, 1, 2), 8),    # 폴더 화면의 편집·장비·이름 변경
-              4: ((4,), 5),         # 퍼스널 화면의 브라더 (일본판 「ブラザー 」 5칸)
+              4: ((4,), 5, kotable.BIG_MARK_UP),   # 퍼스널 화면의 브라더 (일본판 「ブラザー 」 5칸, 가나가 2줄 위)
               94: (None, 12)}       # 메일함 목록의 제목·보낸 사람
 # 칸을 공백으로 맞춘 여러 라벨을 한 줄에 이은 글: {블록: {스크립트: (라벨마다 칸 수, 라벨 수)}}. 라벨마다 큰 한글로
 # 그 칸 수를 걸침 없이 채운다(다음 라벨이 앞 칸에 이어 그려지지 않게).
@@ -845,7 +845,7 @@ BIG_SEGMENTS = {2: {8: (8, 4, {'라이브러리': '도감'})}}
 
 def mark_big_labels(outputs, report):
     hangul = set(kotable.HANGUL)
-    for block, (nums, cells) in BIG_LABELS.items():
+    for block, (nums, cells, *mark) in BIG_LABELS.items():
         for num in (sorted(outputs.get(block, {})) if nums is None else nums):
             items = outputs.get(block, {}).get(num)
             if not items or items[0][0] != 'text' or items[0][1][:1] not in hangul:
@@ -856,7 +856,7 @@ def mark_big_labels(outputs, report):
             for it in items:
                 if it[0] == 'text':
                     it[1] = it[1].replace(kotable.THIN_SPACE, ' ')
-            items[0][1] = kotable.BIG_MARK + items[0][1]
+            items[0][1] = (mark[0] if mark else kotable.BIG_MARK) + items[0][1]
             n = strip_cells(''.join(it[1] for it in items if it[0] == 'text').rstrip(' '))
             if n > cells:
                 report.append(f'{block}	-	큰 한글 라벨 {num}: {n}칸 > {cells}칸')

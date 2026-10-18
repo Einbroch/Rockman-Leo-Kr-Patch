@@ -23,6 +23,6 @@ script 1 mmsf1 {
 	end
 }
 script 4 mmsf1 {
-	"브라더"
+	"브라더"
 	end
 }

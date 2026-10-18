@@ -1080,7 +1080,10 @@ ko_tile_bigchk:             @ r1 = 번호×64, r2 = 글자 번호, r4 = 목적�
     ldr r3, lit3_tstate
     ldr r0, lit3_bigmark
     cmp r2, r0
-    beq ko_tile_mark
+    beq ko_tile_mark0
+    adds r0, #1             @ BIG_MARK_UP: 큰 한글을 2줄 위에
+    cmp r2, r0
+    beq ko_tile_mark2
     movs r0, #0xE8
     ldr r0, [r6, r0]
     push {{r1}}
@@ -1091,6 +1094,7 @@ ko_tile_bigchk:             @ r1 = 번호×64, r2 = 글자 번호, r4 = 목적�
     bne ko_tile_bigchk_flag
     movs r0, #0
     str r0, [r3, #8]        @ 첫 글자가 표시 글자가 아니면 큰 한글 표시를 끈다
+    str r0, [r3, #12]       @ 세로 올림도 0
 ko_tile_bigchk_flag:
     ldr r0, [r3, #8]
     cmp r0, r6
@@ -1134,6 +1138,13 @@ ko_tile_fold_done:
     b ko_tile_big
 ko_tile_bigchk_no:
     b ko_tile_strip
+ko_tile_mark0:
+    movs r0, #0
+    b ko_tile_mark_up
+ko_tile_mark2:
+    movs r0, #2
+ko_tile_mark_up:
+    str r0, [r3, #12]       @ [12] 큰 한글 세로 올림(줄)
 ko_tile_mark:               @ 표시 글자(BIG_MARK): 이 글자 상자의 글은 큰 한글. 칸을 쓰지 않도록 바로 뒤의 한글을
     str r6, [r3, #8]        @ 읽어 이 글자 대신 그린다 (pc2ds 가 표시 글자 뒤에 한글이 오는지 확인한다)
     ldr r3, [r6, #0x10]
@@ -1251,6 +1262,8 @@ ko_tile_big_draw:
     str r0, [r3, #20]
     str r0, [r3, #36]
     movs r0, #{glyph_top}
+    ldr r1, [r7, #12]       @ BIG_MARK_UP 이면 2줄 위
+    subs r0, r0, r1
     str r0, [r3, #40]
     bl ko_draw8
     ldr r6, [sp, #16]       @ 글자 상자
@@ -1661,7 +1674,7 @@ def slot_table(slots):
     n = len(slots)
     half = (2 * n + 3) // 4 * 4
     sizes = [('slot_g', half), ('slot_k', 4 * n), ('slot_t', 4 * n), ('stamp', 4), ('bases', 4 * LIST_BASES),
-             ('base_next', 4), ('state', 12), ('tstate', 12), ('endmark', 4), ('part', 64), ('strip', 192), ('cellbuf', 64)]
+             ('base_next', 4), ('state', 12), ('tstate', 16), ('endmark', 4), ('part', 64), ('strip', 192), ('cellbuf', 64)]
     offsets, pos = {}, 0
     for name, size in sizes:
         offsets[name] = pos
