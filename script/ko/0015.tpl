@@ -139,8 +139,8 @@ script 4 mmsf1 {
 		mugshot = OmegaXis
 	"좋아, 이제 OK 버튼을\n눌러."
 	keyWait
-		type = 1
-	clearMsg
+		type = 0
+	end
 	end
 }
 script 10 mmsf1 {
