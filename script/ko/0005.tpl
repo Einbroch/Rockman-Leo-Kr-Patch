@@ -208,7 +208,7 @@ script 30 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 9
+		width = 10
 	optionText
 		up = 0
 		down = 0
@@ -220,7 +220,7 @@ script 30 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"좋아요"
+	" 좋아요"
 	selectText
 		default = 0
 		BContinue = false

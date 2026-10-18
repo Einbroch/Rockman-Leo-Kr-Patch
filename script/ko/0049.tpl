@@ -75,7 +75,7 @@ script 4 mmsf1 {
 		mugshot = MegaMan
 	"으음…\n\n"
 	positionOptionFromCenter
-		width = 8
+		width = 7
 	textSpeed
 		delay = 0
 	optionText
@@ -83,7 +83,7 @@ script 4 mmsf1 {
 		down = 0
 		left = 1
 		right = 1
-	" 예   "
+	" 예  "
 	optionText
 		up = 1
 		down = 1

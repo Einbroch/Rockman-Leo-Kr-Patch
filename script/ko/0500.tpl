@@ -213,19 +213,19 @@ script 20 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"네"
+	" 네  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false
@@ -262,19 +262,19 @@ script 21 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"네"
+	" 네  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false
@@ -315,23 +315,23 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 27
+		width = 43
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"카드 포스\n"
+	" 카드 포스 \n"
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 27
+		width = 43
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"칩 포스"
+	" 칩 포스 "
 	selectText
 		default = 0
 		BContinue = false
@@ -372,23 +372,23 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 27
+		width = 43
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"메가 밴드\n"
+	" 메가 밴드  \n"
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 27
+		width = 43
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"브라더 밴드"
+	" 브라더 밴드 "
 	selectText
 		default = 0
 		BContinue = false
@@ -429,23 +429,23 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 27
+		width = 43
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"비밀\n"
+	" 비밀   \n"
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 27
+		width = 43
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"나이"
+	" 나이  "
 	selectText
 		default = 0
 		BContinue = false
@@ -887,19 +887,19 @@ script 55 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"네"
+	" 네  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false

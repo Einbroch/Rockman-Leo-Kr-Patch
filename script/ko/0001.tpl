@@ -157,13 +157,13 @@ script 19 mmsf1 {
 		mugshot = Geo
 	"이 친구 코드로 괜찮아?\n\n"
 	positionOptionFromCenter
-		width = 8
+		width = 11
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"확인"
+	" 확인  "
 	optionText
 		up = 1
 		down = 1

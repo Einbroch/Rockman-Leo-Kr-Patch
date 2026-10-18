@@ -137,13 +137,13 @@ script 18 mmsf1 {
 		down = 0
 		left = 1
 		right = 1
-	"코다마 R"
+	" 코다마 R "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"종료"
+	" 종료"
 	selectText
 		default = 0
 		BContinue = false
@@ -168,19 +168,19 @@ script 19 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"코다마 R"
+	" 코다마 R "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아마켄\n"
+	" 아마켄\n"
 	optionText
 		up = 0
 		down = 0
 		left = 2
 		right = 2
-	"종료"
+	" 종료"
 	selectText
 		default = 0
 		BContinue = false
@@ -205,25 +205,25 @@ script 20 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"코다마 R"
+	" 코다마 R "
 	optionText
 		up = 3
 		down = 3
 		left = 0
 		right = 0
-	"아마켄\n"
+	" 아마켄\n"
 	optionText
 		up = 0
 		down = 0
 		left = 3
 		right = 3
-	"D. 아일랜드"
+	" D. 아일랜드"
 	optionText
 		up = 1
 		down = 1
 		left = 2
 		right = 2
-	"종료"
+	" 종료"
 	selectText
 		default = 0
 		BContinue = false

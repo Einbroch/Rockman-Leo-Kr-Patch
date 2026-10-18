@@ -369,19 +369,19 @@ script 20 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"예"
+	" 예  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false
@@ -410,19 +410,19 @@ script 21 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"예"
+	" 예  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false
@@ -455,29 +455,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"에어컨 실외기\n"
+	" 에어컨 실외기\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"보안 시스템\n"
+	" 보안 시스템\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"그냥 개집\n"
+	" 그냥 개집"
 	selectText
 		default = 0
 		BContinue = false
@@ -510,29 +510,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"달\n"
+	" 달\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"별\n"
+	" 별\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"태양\n"
+	" 태양"
 	selectText
 		default = 0
 		BContinue = false
@@ -565,29 +565,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"문 페이스 커피\n"
+	" 문 페이스 커피\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"빅뱅 커피\n"
+	" 빅뱅 커피\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"그래비티 커피\n"
+	" 그래비티 커피"
 	selectText
 		default = 0
 		BContinue = false
@@ -620,29 +620,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"브레이브 소드 1\n"
+	" 브레이브 소드 1\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"대걸레 랜스 2\n"
+	" 대걸레 랜스 2\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"파이어 바주카 2\n"
+	" 파이어 바주카 2"
 	selectText
 		default = 0
 		BContinue = false
@@ -679,29 +679,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"3\n"
+	" 3\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"1\n"
+	" 1\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"2\n"
+	" 2"
 	selectText
 		default = 0
 		BContinue = false
@@ -734,29 +734,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"100\n"
+	" 100\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"110\n"
+	" 110\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"120\n"
+	" 120"
 	selectText
 		default = 0
 		BContinue = false
@@ -781,29 +781,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"150\n"
+	" 150\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"160\n"
+	" 160\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"170\n"
+	" 170"
 	selectText
 		default = 0
 		BContinue = false
@@ -836,29 +836,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"신\n"
+	" 신\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"왕\n"
+	" 왕\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"여왕\n"
+	" 여왕"
 	selectText
 		default = 0
 		BContinue = false
@@ -891,29 +891,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"로버\n"
+	" 로버\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"도둑\n"
+	" 도둑\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"로저\n"
+	" 로저"
 	selectText
 		default = 0
 		BContinue = false
@@ -946,29 +946,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"스튜디오\n"
+	" 스튜디오\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"체육관\n"
+	" 체육관\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"화학 실험실\n"
+	" 화학 실험실"
 	selectText
 		default = 0
 		BContinue = false
@@ -1005,29 +1005,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"우와!\n"
+	" 우와!\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"우와아!\n"
+	" 우와아!\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"오오\n"
+	" 오오"
 	selectText
 		default = 0
 		BContinue = false
@@ -1064,29 +1064,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"12\n"
+	" 12\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"13\n"
+	" 13\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"14\n"
+	" 14"
 	selectText
 		default = 0
 		BContinue = false
@@ -1119,29 +1119,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"나키스\n"
+	" 나키스\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"나시스\n"
+	" 나시스\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"나시스\n"
+	" 나시스"
 	selectText
 		default = 0
 		BContinue = false
@@ -1174,29 +1174,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"기린\n"
+	" 기린\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"개\n"
+	" 개\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"여우\n"
+	" 여우"
 	selectText
 		default = 0
 		BContinue = false
@@ -1233,29 +1233,29 @@ script 22 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"할아버지\n"
+	" 할아버지\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"할머니\n"
+	" 할머니\n"
 	positionOptionFromCenter
-		width = 198
+		width = 228
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"어린 소녀\n"
+	" 어린 소녀"
 	selectText
 		default = 0
 		BContinue = false

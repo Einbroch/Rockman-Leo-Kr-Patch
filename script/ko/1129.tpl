@@ -33,23 +33,23 @@ script 50 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 5
+		width = 8
 	" "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"겨울\n"
+	" 겨울 \n"
 	positionOptionFromCenter
-		width = 5
+		width = 8
 	" "
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"서쪽"
+	" 서쪽"
 	selectText
 		default = 0
 		BContinue = false

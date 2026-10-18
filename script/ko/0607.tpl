@@ -117,19 +117,19 @@ script 11 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"그래"
+	" 그래  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니"
+	" 아니"
 	selectText
 		default = 0
 		BContinue = false

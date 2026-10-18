@@ -28,7 +28,7 @@ script 0 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	"  그린 드래곤"
+	"  그린 드래곤\n"
 	selectText
 		default = 0
 		BContinue = true

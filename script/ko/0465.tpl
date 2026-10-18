@@ -148,19 +148,19 @@ script 21 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"예"
+	" 예  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false
@@ -194,19 +194,19 @@ script 29 mmsf1 {
 		npc = 0
 	"이제 잘까?\n\n"
 	positionOptionFromCenter
-		width = 5
+		width = 9
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"잔다"
+	" 잔다  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false
@@ -234,19 +234,19 @@ script 30 mmsf1 {
 		flag = 3370
 	"여기까지 진행한 내용을\n저장할까요?\n\n"
 	positionOptionFromCenter
-		width = 5
+		width = 9
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"저장"
+	" 저장  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false
@@ -276,19 +276,19 @@ script 31 mmsf1 {
 		delay = 0
 	"덮어써도 괜찮을까요?\n\n"
 	positionOptionFromCenter
-		width = 7
+		width = 11
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"덮어쓰기"
+	" 덮어쓰기  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false
@@ -352,19 +352,19 @@ script 35 mmsf1 {
 		delay = 0
 	"저장에 실패했습니다. 다시\n시도할까요?\n\n"
 	positionOptionFromCenter
-		width = 4
+		width = 7
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"예"
+	" 예 "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false

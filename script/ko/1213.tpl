@@ -369,13 +369,13 @@ script 31 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	"물론이지!\n"
+	"  물론이지!\n "
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"...괜찮아."
+	"  ...괜찮아."
 	selectText
 		default = 0
 		BContinue = false
@@ -1621,13 +1621,13 @@ script 150 mmsf1 {
 		mugshot = Geo
 	"호스트에 접속할까요?\n\n"
 	positionOptionFromCenter
-		width = 7
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	" 예 "
+	" 예  "
 	optionText
 		up = 1
 		down = 1

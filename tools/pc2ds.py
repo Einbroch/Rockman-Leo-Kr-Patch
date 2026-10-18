@@ -469,6 +469,39 @@ def center_width(items):
     return items
 
 
+def pad_options(outputs, stats):
+    """선택지(optionText) 글자의 앞뒤 공백을 일본판 같은 선택지와 같게 맞춘다. 일본판은 「 はい  」「 いいえ」처럼
+    앞에 커서 자리 한 칸, 가로로 늘어선 선택지 사이에 공백을 두는데, PC판 한글에는 이 공백이 없어 「응아니」처럼
+    붙고 커서와 겹쳤다. 공백을 맞춘 뒤 positionOptionFromCenter 의 폭을 다시 센다."""
+    def option_slots(items):
+        return [k + 1 for k, it in enumerate(items[:-1])
+                if it[0] == 'cmd' and it[1] == 'optionText' and items[k + 1][0] == 'text']
+
+    for block, scripts in outputs.items():
+        path = JA_DIR / f'{block:04d}.tpl'
+        if not path.exists():
+            continue
+        ja = parse_tpl(path.read_text(encoding='utf-8-sig'))
+        for num, items in scripts.items():
+            if num not in ja:
+                continue
+            ks, js = option_slots(items), option_slots(ja[num])
+            if not ks or len(ks) != len(js):
+                continue
+            changed = False
+            for k, j in zip(ks, js):
+                jt, kt = ja[num][j][1], items[k][1]
+                lead = jt[:len(jt) - len(jt.lstrip(' '))]
+                trail = jt[len(jt.rstrip(' \n')):]
+                new = lead + kt.strip(' \n') + trail
+                if new != kt:
+                    items[k][1] = new
+                    changed = True
+            if changed:
+                stats['선택지 공백을 일본판에 맞춤'] += 1
+                center_width(items)
+
+
 def cell_width(item):
     """8×16 경로에서 항목이 차지하는 칸 수 (글자 하나 = 칸 하나)."""
     if item[0] == 'text':
@@ -928,6 +961,7 @@ def main():
         {int(b) for b, fix in fixes.items() if fix.get('skip')}
     add_ja_only(outputs, skip, stats, report)
     pad_folder_names(outputs, report)
+    pad_options(outputs, stats)
     mark_big_labels(outputs, report)
     name_lengths(outputs, stats, report)
     for block, scripts in sorted(outputs.items()):

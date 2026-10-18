@@ -57,19 +57,19 @@ script 10 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 6
+		width = 10
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"도와줄게"
+	" 도와줄게  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"싫어"
+	" 싫어"
 	selectText
 		default = 0
 		BContinue = false
@@ -121,19 +121,19 @@ script 11 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 6
+		width = 10
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"도와줄게"
+	" 도와줄게  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"싫어"
+	" 싫어"
 	selectText
 		default = 0
 		BContinue = false
@@ -188,29 +188,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"달빛이!\n"
+	" 달빛이!\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"푸른 하늘이!\n"
+	" 푸른 하늘이!\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"햇살이!"
+	" 햇살이!"
 	selectText
 		default = 0
 		BContinue = false
@@ -235,29 +235,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"태양이\n"
+	" 태양이\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"화성이\n"
+	" 화성이\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"별들이 보여"
+	" 별들이 보여"
 	selectText
 		default = 0
 		BContinue = false
@@ -282,29 +282,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"추운지?\n"
+	" 추운지?\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"외로운지?\n"
+	" 외로운지?\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"즐거운지?"
+	" 즐거운지?"
 	selectText
 		default = 0
 		BContinue = false
@@ -329,29 +329,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"이어져 있다고.\n"
+	" 이어져 있다고.\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"따로 떨어져 있다고.\n"
+	" 따로 떨어져 있다고.\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"나란히 있다고."
+	" 나란히 있다고."
 	selectText
 		default = 0
 		BContinue = false
@@ -380,29 +380,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"밤하늘 덕분인지\n"
+	" 밤하늘 덕분인지\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"그림자 덕분인지\n"
+	" 그림자 덕분인지\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"유대 덕분인지"
+	" 유대 덕분인지"
 	selectText
 		default = 0
 		BContinue = false
@@ -427,29 +427,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"뜨겁지도\n"
+	" 뜨겁지도\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"행복하지도\n"
+	" 행복하지도\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"외롭지도 않아"
+	" 외롭지도 않아"
 	selectText
 		default = 0
 		BContinue = false
@@ -478,29 +478,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"밝아질 거야\n"
+	" 밝아질 거야\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"작아질 거야\n"
+	" 작아질 거야\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"슬퍼질 거야"
+	" 슬퍼질 거야"
 	selectText
 		default = 0
 		BContinue = false
@@ -531,29 +531,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"졸릴 수 있어\n"
+	" 졸릴 수 있어\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"강해질 수 있어\n"
+	" 강해질 수 있어\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"물결칠 수 있어"
+	" 물결칠 수 있어"
 	selectText
 		default = 0
 		BContinue = false
@@ -582,29 +582,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"유대를 찾는 거야\n"
+	" 유대를 찾는 거야\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"노래를 찾는 거야\n"
+	" 노래를 찾는 거야\n"
 	positionOptionFromCenter
-		width = 193
+		width = 220
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"태양을 찾는 거야"
+	" 태양을 찾는 거야"
 	selectText
 		default = 0
 		BContinue = false
@@ -750,19 +750,19 @@ script 52 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"그래"
+	" 그래  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니"
+	" 아니"
 	selectText
 		default = 0
 		BContinue = false

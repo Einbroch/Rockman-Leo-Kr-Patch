@@ -180,13 +180,13 @@ script 19 mmsf1 {
 		down = 0
 		left = 1
 		right = 1
-	"코다마 타운"
+	" 코다마 타운 "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"그만두기"
+	" 그만두기"
 	selectText
 		default = 0
 		BContinue = false
@@ -211,19 +211,19 @@ script 20 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"코다마 타운"
+	" 코다마 타운 "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아마켄\n"
+	" 아마켄\n"
 	optionText
 		up = 0
 		down = 0
 		left = 2
 		right = 2
-	"그만두기"
+	" 그만두기"
 	selectText
 		default = 0
 		BContinue = false
@@ -248,25 +248,25 @@ script 21 mmsf1 {
 		down = 2
 		left = 1
 		right = 1
-	"코다마 타운"
+	" 코다마 타운 "
 	optionText
 		up = 3
 		down = 3
 		left = 0
 		right = 0
-	"아마켄\n"
+	" 아마켄\n"
 	optionText
 		up = 0
 		down = 0
 		left = 3
 		right = 3
-	"타임 스퀘어"
+	" 타임 스퀘어 "
 	optionText
 		up = 1
 		down = 1
 		left = 2
 		right = 2
-	"그만두기"
+	" 그만두기"
 	selectText
 		default = 0
 		BContinue = false
@@ -371,19 +371,19 @@ script 31 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"예"
+	" 예  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false

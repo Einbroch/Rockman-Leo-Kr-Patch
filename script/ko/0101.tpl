@@ -13,13 +13,13 @@ script 0 mmsf1 {
 		down = 1
 		left = 0
 		right = 0
-	" 무기 장비\n"
+	" 무기 장비   \n  "
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	" 기록 확인 "
+	" 기록 확인"
 	selectText
 		default = 0
 		BContinue = false
@@ -47,7 +47,7 @@ script 1 mmsf1 {
 		down = 0
 		left = 0
 		right = 0
-	" 무기 장비  "
+	" 무기 장비"
 	selectText
 		default = 0
 		BContinue = false
@@ -75,7 +75,7 @@ script 2 mmsf1 {
 		down = 0
 		left = 0
 		right = 0
-	" 기록 확인 \n"
+	" 기록 확인\n"
 	selectText
 		default = 0
 		BContinue = false

@@ -61,19 +61,19 @@ script 10 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 3
+		width = 7
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"응"
+	" 응  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니"
+	" 아니"
 	selectText
 		default = 0
 		BContinue = false
@@ -110,19 +110,19 @@ script 11 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 3
+		width = 7
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"응"
+	" 응  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니"
+	" 아니"
 	selectText
 		default = 0
 		BContinue = false
@@ -159,33 +159,33 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 33
+		width = 44
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"맨홀\n"
+	" 맨홀  \n"
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 33
+		width = 44
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"화이트홀\n"
+	" 화이트홀\n"
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 33
+		width = 44
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"블랙홀\n"
+	" 블랙홀"
 	selectText
 		default = 0
 		BContinue = false
@@ -218,33 +218,33 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 33
+		width = 44
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"2개\n"
+	" 2개\n"
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 33
+		width = 44
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"3개\n"
+	" 3개\n"
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 33
+		width = 44
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"4개\n"
+	" 4개"
 	selectText
 		default = 0
 		BContinue = false
@@ -277,33 +277,33 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 33
+		width = 44
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"타우러스\n"
+	" 타우러스\n"
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 33
+		width = 44
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"레오\n"
+	" 레오  \n"
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 33
+		width = 44
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"루퍼스\n"
+	" 루퍼스 "
 	selectText
 		default = 0
 		BContinue = false

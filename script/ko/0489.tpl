@@ -129,7 +129,7 @@ script 13 mmsf1 {
 		delay = 0
 	"카드 트레이더 3에 카드\n3장을 넣을까?\n"
 	positionOptionFromCenter
-		width = 5
+		width = 9
 	textSpeed
 		delay = 0
 	optionText
@@ -137,13 +137,13 @@ script 13 mmsf1 {
 		down = 0
 		left = 1
 		right = 1
-	"예!"
+	" 예!  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니오"
+	" 아니오"
 	selectText
 		default = 0
 		BContinue = false
@@ -184,19 +184,19 @@ script 14 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 5
+		width = 9
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"예!"
+	" 예!  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니오"
+	" 아니오"
 	selectText
 		default = 0
 		BContinue = false
@@ -273,19 +273,19 @@ script 20 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 5
+		width = 9
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"봐"
+	" 봐  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"보지 마"
+	" 보지 마"
 	selectText
 		default = 0
 		BContinue = false

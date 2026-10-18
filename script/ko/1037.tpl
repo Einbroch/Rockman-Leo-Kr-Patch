@@ -137,19 +137,19 @@ script 53 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 6
+		width = 10
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"준다"
+	" 준다  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"안 준다"
+	" 안 준다"
 	selectText
 		default = 0
 		BContinue = false

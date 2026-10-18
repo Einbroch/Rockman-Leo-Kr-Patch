@@ -800,7 +800,7 @@ script 102 mmsf1 {
 	printNameBuffer1
 	" 삭제할까요?\n"
 	positionOptionFromCenter
-		width = 7
+		width = 8
 	textSpeed
 		delay = 0
 	optionText
@@ -808,7 +808,7 @@ script 102 mmsf1 {
 		down = 0
 		left = 1
 		right = 1
-	" 예 "
+	" 예  "
 	optionText
 		up = 1
 		down = 1

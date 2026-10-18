@@ -59,19 +59,19 @@ script 10 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"예"
+	" 예  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false
@@ -100,19 +100,19 @@ script 11 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"예"
+	" 예  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false
@@ -145,29 +145,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"샌들\n"
+	" 샌들\n"
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"슬리퍼\n"
+	" 슬리퍼\n"
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"장화\n"
+	" 장화"
 	selectText
 		default = 0
 		BContinue = false
@@ -200,29 +200,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"20\n"
+	" 20\n"
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"30\n"
+	" 30\n"
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"40\n"
+	" 40"
 	selectText
 		default = 0
 		BContinue = false
@@ -255,29 +255,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"1-A\n"
+	" 1-A\n"
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"1-B\n"
+	" 1-B\n"
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"5-A\n"
+	" 5-A"
 	selectText
 		default = 0
 		BContinue = false
@@ -313,29 +313,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"10\n"
+	" 10\n"
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"50\n"
+	" 50\n"
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"150\n"
+	" 150"
 	selectText
 		default = 0
 		BContinue = false
@@ -368,29 +368,29 @@ script 12 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 2
 		down = 1
 		left = 0
 		right = 0
-	"가르랑\n"
+	" 가르랑\n"
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 0
 		down = 2
 		left = 1
 		right = 1
-	"으르렁\n"
+	" 으르렁\n"
 	positionOptionFromCenter
-		width = 52
+		width = 62
 	optionText
 		up = 1
 		down = 0
 		left = 2
 		right = 2
-	"쉿쉿\n"
+	" 쉿쉿"
 	selectText
 		default = 0
 		BContinue = false

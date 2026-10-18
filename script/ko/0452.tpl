@@ -363,19 +363,19 @@ script 27 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 3
+		width = 7
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"응"
+	" 응  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니"
+	" 아니"
 	selectText
 		default = 0
 		BContinue = false
@@ -761,19 +761,19 @@ script 50 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"예"
+	" 예  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false
@@ -817,19 +817,19 @@ script 51 mmsf1 {
 	textSpeed
 		delay = 0
 	positionOptionFromCenter
-		width = 4
+		width = 8
 	optionText
 		up = 0
 		down = 0
 		left = 1
 		right = 1
-	"예"
+	" 예  "
 	optionText
 		up = 1
 		down = 1
 		left = 0
 		right = 0
-	"아니요"
+	" 아니요"
 	selectText
 		default = 0
 		BContinue = false

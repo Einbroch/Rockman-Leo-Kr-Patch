@@ -66,7 +66,7 @@ script 1 mmsf1 {
 		down = 0
 		left = 2
 		right = 2
-	" 종료\n"
+	" 종료"
 	selectText
 		default = 0
 		BContinue = false
