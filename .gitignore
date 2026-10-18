@@ -9,3 +9,9 @@
 work/
 build/
 __pycache__/
+
+# 개인 세이브 파일
+Save/
+*.duc
+*.sav
+*.dsv
