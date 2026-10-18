@@ -22,6 +22,8 @@ import ndspy.rom
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import engine  # noqa: E402
+import fieldtext  # noqa: E402
+import relocate  # noqa: E402
 import gfx  # noqa: E402
 import kotable  # noqa: E402
 import script  # noqa: E402
@@ -154,14 +156,29 @@ def patch_overlays(rom):
         print(f'오버레이 {ov_id} {ov.ramAddress + off:#x}: {why}')
 
 
-def check_changes(original, data, keep, ref_positions):
+def patch_arm9_slots(data):
+    """필드 대사 슬롯 크기를 키운다(tools/fieldtext.py). 고친 자리 [(주소, 바이트 수)]를 돌려준다."""
+    spans = []
+    for addr, old, new, why in fieldtext.SLOT_PATCHES:
+        a = relocate.code(addr)
+        i = a - engine.ARM9_BASE
+        old, new = bytes.fromhex(old), bytes.fromhex(new)
+        if data[i:i + len(old)] != old:
+            sys.exit(f'{a:#x}: 예상한 바이트가 아닙니다 ({why}).')
+        data[i:i + len(new)] = new
+        spans.append((a, len(new)))
+    print(f'ARM9: 필드 대사 슬롯 크기 {len(spans)}곳 (종류 0·3 0x2400, 종류 2 0x1800)')
+    return spans
+
+
+def check_changes(original, data, keep, ref_positions, extra=()):
     """ARM9 에서 바뀐 바이트가 모두 쓸 수 있는 곳(폰트의 빈 칸, 원래 이름 목록 자리, 코드를 고친 곳, 이름 목록
     참조 낱말) 안에 있는지 확인한다. 배치 계산이 틀려 남의 데이터를 덮으면 여기서 멈춘다.
     원래 이름 목록 자리는 name_regions 와 따로, 원본 아카이브마다 4바이트 경계까지로 센다."""
     allowed = bytearray(len(data))
     names = [(a, ((a + len(archive) + 3) & ~3) - a)
              for a, archive in ((script.NAME_ARCHIVES[b], x) for b, x in script.name_archives().items())]
-    spans = engine.free_runs(list(keep)) + names + engine.hook_sites()
+    spans = engine.free_runs(list(keep)) + names + engine.hook_sites() + list(extra)
     spans += [(engine.ARM9_BASE + i, 4) for i in ref_positions]
     for addr, size in spans:
         allowed[addr - engine.ARM9_BASE:addr - engine.ARM9_BASE + size] = b'\1' * size
@@ -216,7 +233,12 @@ def main():
         if a + o == 0:
             sys.exit(f'이름 목록 {b}({old:#x})를 가리키는 곳을 찾지 못했습니다.')
         print(f'이름 목록 {b}: {old:#x} → {moves[old]:#x} ({len(names[b]):,}바이트, 참조 ARM9 {a}곳·오버레이 {o}곳)')
-    check_changes(original, data, info['남긴 한자'], [i for ps in refs.values() for i in ps])
+    slot_spans = patch_arm9_slots(data)
+    blocks = [b for b, _ in script.read_mess(mess.read_bytes())]
+    bad = fieldtext.check(original, blocks)
+    if bad:
+        sys.exit('필드 대사 블록이 슬롯을 넘습니다: ' + ', '.join(f'{b}(종류 {k}) {n:#x} > {l:#x}' for b, k, n, l in bad))
+    check_changes(original, data, info['남긴 한자'], [i for ps in refs.values() for i in ps], slot_spans)
     main_section.data = bytes(data)
     rom.arm9 = code.save(compress=False)
 
