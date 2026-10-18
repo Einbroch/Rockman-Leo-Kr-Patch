@@ -27,6 +27,7 @@ import relocate  # noqa: E402
 import gfx  # noqa: E402
 import kotable  # noqa: E402
 import namekb  # noqa: E402
+import textbuf  # noqa: E402
 import script  # noqa: E402
 import version  # noqa: E402
 
@@ -125,13 +126,14 @@ OVERLAY_PATCHES = [
 MAIL_BLOCK, MAIL_BUFFER = 95, 0x7000
 
 
-def patch_overlays(rom):
+def patch_overlays(rom, patches=OVERLAY_PATCHES):
     """OVERLAY_PATCHES 를 적용한다. 다른 판본은 레오 오버레이의 앞뒤 바이트로 자리를 찾는다."""
-    leo = None
+    leo = base = None
     if version.NAME != 'leo':
         leo = ndspy.rom.NintendoDSRom.fromFile(str(ROOT / 'work' / 'original.nds')).loadArm9Overlays()
+        base = ndspy.rom.NintendoDSRom.fromFile(str(ORIGINAL)).loadArm9Overlays()   # 자리는 고치기 전 바이트에서 찾는다
     overlays = rom.loadArm9Overlays()
-    for ov_id, addr, old, new, why in OVERLAY_PATCHES:
+    for ov_id, addr, old, new, why in patches:
         ov = overlays[ov_id]
         data = bytearray(rom.files[ov.fileID])
         off = addr - ov.ramAddress
@@ -140,16 +142,27 @@ def patch_overlays(rom):
             # (주변의 PC 상대 리터럴은 판본마다 달라 넓은 창이 안 맞을 수 있다).
             ref = bytes(leo[ov_id].data)
             r = addr - leo[ov_id].ramAddress
+            orig = bytes(base[ov_id].data)
             for before, after in ((16, 16), (8, 12), (0, 12), (0, len(old))):
                 window = ref[r - before:r + after]
                 if ref.count(window) != 1:
                     continue
-                hits = [i for i in range(len(data) - len(window)) if data[i:i + len(window)] == window]
+                hits = [i for i in range(len(orig) - len(window)) if orig[i:i + len(window)] == window]
                 if len(hits) == 1:
                     off = hits[0] + before
                     break
             else:
-                sys.exit(f'{version.LABEL}: 오버레이 {ov_id} 의 {addr:#x}({why})를 찾지 못했습니다.')
+                # 같은 코드가 여러 번 있으면(화면마다 같은 초기화 코드) 레오에서 몇 번째인지로 고른다.
+                # 레오와 판본의 개수가 같을 때만 쓴다.
+                for before, after in ((16, 16), (0, max(8, len(old)))):
+                    window = ref[r - before:r + after]
+                    mine = [i for i in range(len(ref) - len(window)) if ref[i:i + len(window)] == window]
+                    hits = [i for i in range(len(orig) - len(window)) if orig[i:i + len(window)] == window]
+                    if len(mine) >= 2 and len(mine) == len(hits):
+                        off = hits[mine.index(r - before)] + before
+                        break
+                else:
+                    sys.exit(f'{version.LABEL}: 오버레이 {ov_id} 의 {addr:#x}({why})를 찾지 못했습니다.')
         if data[off:off + len(old)] != old:
             sys.exit(f'오버레이 {ov_id} {addr:#x}: 예상한 바이트가 아닙니다 ({why}).')
         data[off:off + len(new)] = new
@@ -245,6 +258,7 @@ def main():
     arm9_refs = bytearray(original)                      # 옛 낱말 위치는 원본에서 찾고 새 값은 data 에 쓴다
     count = repoint(rom, arm9_refs, moves)
     patch_overlays(rom)
+    patch_overlays(rom, textbuf.OVERLAY_PATCHES)            # 고정 크기 대사 버퍼 (tools/textbuf.py)
     ov2 = rom.loadArm9Overlays()[2]                      # 이름 입력: 한글 음절 자판 (tools/namekb.py)
     data2 = bytearray(rom.files[ov2.fileID])
     for at, size, why in namekb.patch(data2, ov2.ramAddress, convert_addr):
@@ -261,7 +275,10 @@ def main():
         if a + o == 0:
             sys.exit(f'이름 목록 {b}({old:#x})를 가리키는 곳을 찾지 못했습니다.')
         print(f'이름 목록 {b}: {old:#x} → {moves[old]:#x} ({len(names[b]):,}바이트, 참조 ARM9 {a}곳·오버레이 {o}곳)')
-    slot_spans = patch_arm9_slots(data)
+    slot_spans = patch_arm9_slots(data) + textbuf.patch_arm9(data)
+    over = textbuf.check([b for b, _ in script.read_mess(mess.read_bytes())])
+    if over:
+        sys.exit('대사 블록이 고정 버퍼를 넘습니다: ' + ', '.join(f'{b} {n:#x} > {s:#x} ({w})' for b, n, s, w in over))
     blocks = [b for b, _ in script.read_mess(mess.read_bytes())]
     bad = fieldtext.check(original, blocks)
     if bad:
