@@ -805,6 +805,104 @@ def translate_sprites(items, tables):
         items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
 
 
+# ---------------------------------------------------------------- 전투 결과 화면 (result.bin)
+# 결과 판은 4bpp 타일 9(=13=14, 같은 그림 세 벌)와 32×8 맵 17·21·22(셋 다 같음, 뒤집기 없음)다. 타일 54칸이 VRAM 에서
+# 다음 그림(항목 10) 바로 앞까지라 늘릴 수 없으므로, 글자 칸만 다시 타일로 자르고 옛 글자 타일이 비운 자리에 넣는다.
+RESULT = 'datbin/com/result.bin'
+RESULT_TILES = (9, 13, 14)
+RESULT_MAPS = (17, 21, 22)
+# 타일 자리가 모자라 일본판처럼 띄어 쓰지 않고, 일본판과 같은 왼쪽 끝(x=48, 칸 경계)에서 시작한다
+RESULT_TEXTS = [(48, 9, 111, 23, '딜리트타임', 'bold', 48),     # デリートタイム (오른쪽 비스듬한 끝 앞까지)
+                (48, 33, 124, 47, '버스팅레벨', 'bold', 48)]    # バスティングレベル. 마지막 수는 글자 왼쪽 끝
+
+
+def retile_4bpp(T, maps, rects):
+    """4bpp 타일 T 와 같은 내용의 맵들(32칸 폭, 뒤집기 없음)에서 사각형의 일본어를 지우고 한글을 그린 뒤,
+    바뀐 칸만 타일을 다시 정한다. 타일 수는 늘리지 않는다. (새 타일, [새 맵])"""
+    T = bytearray(T)
+    M = list(struct.unpack(f'<{len(maps[0]) // 2}H', maps[0]))
+    if any(m != maps[0] for m in maps) or any(v & 0xC00 for v in M):
+        sys.exit('결과 판 맵이 서로 다르거나 뒤집기를 씁니다')
+    W, H = 32 * 8, len(M) // 32 * 8
+
+    def get(x, y):
+        v = M[(y // 8) * 32 + x // 8]
+        b = T[(v & 0x3FF) * 32 + (y % 8) * 4 + (x % 8) // 2]
+        return b >> (4 * (x & 1)) & 15
+
+    img = [[get(x, y) for x in range(W)] for y in range(H)]
+    cells = set()
+    for x0, y0, x1, y1, text, font, *start in rects:
+        every = [img[y][x] for y in range(y0, y1) for x in range(x0, x1)]
+        flat = max(set(every), key=every.count)
+        ink = [(x, y) for y in range(y0, y1) for x in range(x0, x1) if img[y][x] != flat]
+        colors = {}
+        for x, y in ink:
+            colors[img[y][x]] = colors.get(img[y][x], 0) + 1
+        order = sorted(colors, key=colors.get, reverse=True)
+        color, shadow = order[0], (order[1] if len(order) > 1 else None)
+        left = start[0] if start else min(x for x, _ in ink)
+        bottom = max(y for x, y in ink if img[y][x] == color)
+        for x, y in ink:
+            img[y][x] = flat
+        pts, w = FONTS[font]().render(text, bottom + 1)
+        if left + w + 1 > x1 or min(y for _, y in pts) < y0 or max(y for _, y in pts) + 1 >= y1:
+            sys.exit(f'결과 화면 글자 {text!r} 가 칸({x0}~{x1}, {y0}~{y1})을 넘습니다')
+        dots = {(x + left, y) for x, y in pts}
+        if shadow is not None:
+            for x, y in dots:
+                for d in ((x + 1, y), (x, y + 1), (x + 1, y + 1)):
+                    if d not in dots:
+                        img[d[1]][d[0]] = shadow
+        for x, y in dots:
+            img[y][x] = color
+        cells |= {(c, r) for r in range(y0 // 8, (y1 + 7) // 8) for c in range(x0 // 8, (x1 + 7) // 8)}
+
+    def tile_of(c, r):
+        out = bytearray(32)
+        for y in range(8):
+            for x in range(8):
+                out[y * 4 + x // 2] |= img[r * 8 + y][c * 8 + x] << (4 * (x & 1))
+        return bytes(out)
+
+    n = len(T) // 32
+    new = {cr: tile_of(*cr) for cr in cells}
+    new = {cr: d for cr, d in new.items()                       # 그림이 바뀐 칸만 다시 정한다
+           if d != bytes(T[(M[cr[1] * 32 + cr[0]] & 0x3FF) * 32:(M[cr[1] * 32 + cr[0]] & 0x3FF) * 32 + 32])}
+    cells = set(new)
+    for (c, r) in cells:                          # 바뀐 칸은 맵에서 일단 뺀다
+        M[r * 32 + c] = -1
+    used = {v & 0x3FF for v in M if v >= 0}
+    free = [k for k in range(n) if k not in used]
+    have = {bytes(T[k * 32:(k + 1) * 32]): k for k in sorted(used)}
+    for cr in sorted(cells, key=lambda cr: (cr[1], cr[0])):
+        data = new[cr]
+        if data not in have:
+            if not free:
+                sys.exit(f'결과 화면 타일 자리가 모자랍니다 (바뀐 칸 {len(cells)}, 빈 자리 {n - len(used)})')
+            k = free.pop(0)
+            T[k * 32:(k + 1) * 32] = data
+            have[data] = k
+        M[cr[1] * 32 + cr[0]] = have[data]
+    for k in free:                                # 남은 빈 자리는 0 으로 (쓰는 칸이 없다)
+        T[k * 32:(k + 1) * 32] = bytes(32)
+    m = struct.pack(f'<{len(M)}H', *M)
+    return bytes(T), [m] * len(maps)
+
+
+def translate_result(rom_files):
+    items = read_archive(rom_files(RESULT))
+    tiles = bytes(unpack(items[RESULT_TILES[0]]))
+    if any(bytes(unpack(items[i])) != tiles for i in RESULT_TILES):
+        sys.exit('결과 화면 타일 세 벌이 같지 않습니다')
+    T, maps = retile_4bpp(tiles, [bytes(unpack(items[i])) for i in RESULT_MAPS], RESULT_TEXTS)
+    for i in RESULT_TILES:
+        items[i] = (items[i][0], ndspy.lz10.compress(T) if items[i][0] else T)
+    for i, m in zip(RESULT_MAPS, maps):
+        items[i] = (items[i][0], ndspy.lz10.compress(m) if items[i][0] else m)
+    return write_archive(items)
+
+
 def translate(rom_files):
     """{롬 안 경로: 새 바이트}"""
     data = rom_files(SUBSCREEN)
@@ -830,6 +928,7 @@ def translate(rom_files):
         items = read_archive(rom_files(path))
         translate_sprites(items, tables)
         out[path] = write_archive(items)
+    out[RESULT] = translate_result(rom_files)          # 전투 결과 화면 이름표
     return out
 
 
