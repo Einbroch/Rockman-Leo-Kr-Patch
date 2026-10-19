@@ -68,7 +68,7 @@ SMALL_TOP = 6               # 8×16 칸에서 작은 한글 윗줄 (가나 4–1
 # 16×16 칸의 한글이면 글자 그림 버퍼 주소를 쓰게 한다.
 TILE_SITE = 0x0201E7DC
 GLYPH_SITE = 0x0201E5A2
-CODE_RESERVE = 0xD00        # 가장 긴 빈 구간 앞부분: 코드, 작업 공간, 글자 그림 버퍼 (구간 표는 그 뒤)
+CODE_RESERVE = 0xE00        # 가장 긴 빈 구간 앞부분: 코드, 작업 공간, 글자 그림 버퍼 (구간 표는 그 뒤)
 # 글자 위치 목록 경로(0x020202D8, 카드 이름 목록)는 글자마다 "폰트 안 위치(번호×64)"만 적고, 목록을 받은 화면이
 # 그 값을 타일 번호((위치+0x20)>>5)로 바꿔 쓴다. 폰트(굵은 8×16)는 화면을 열 때 VRAM 에 올려 둔다(자리+0x20 에,
 # 폴더 화면은 글자 0~0x17F, 라이브러리는 0~0xFF). 그래서 한글은 VRAM 에 올라간 폰트의 가나·한자 칸(카드 이름이
@@ -80,6 +80,7 @@ LIST_BASES = 4              # 굵은 8×16 폰트를 올린 VRAM 자리를 이�
 LIST_CHECK = 0x5E           # 자리가 아직 폰트인지 볼 때 대조하는 글자 ('A')
 # 저장 데이터를 가리키는 포인터의 자리. 폴더 이름은 [[SAVE_PTR]] + 0xC4 부터 0x12 바이트씩 3개(0x02015A1C).
 SAVE_PTR = 0x0212B704
+CARD_NAMES = 1249           # 카드 이름 목록 아카이브. 칸 단위 타일 그리기에서 글 상자에 다 들어가면 큰 한글
 FOLDER_BIG_MAX = 5          # 폴더 이름 글 상자(타일 8칸, 64픽셀)에 들어가는 큰 한글(12픽셀) 수. 넘으면 작은 한글
 # 그림(글자 폰트 포함)을 VRAM 에 올리는 로더들의 복사 호출: (호출 위치, 복사 함수). 굵은 8×16 폰트를 올리면
 # 그 자리를 기억하고 지금 칸에 든 한글을 그 자리에도 그린다.
@@ -1137,7 +1138,10 @@ ko_tile_fold_done:
     bhi ko_tile_bigchk_no
     b ko_tile_big
 ko_tile_bigchk_no:
-    b ko_tile_strip
+    ldr r3, lit3d_card_chk  @ 카드 이름 판정 (리터럴 구역 뒤에 둔다, b 가 닿지 않아 bx)
+    bx r3
+    .align 2
+lit3d_card_chk: .word ko_tile_card_chk + 1
 ko_tile_mark0:
     movs r0, #0
     b ko_tile_mark_up
@@ -1563,6 +1567,86 @@ lit3_endmark: .word {endmark}
 lit3_bigmark: .word {big_mark}
 lit3_pre_base: .word {pre_base}
     .word 0x4C4F4F51
+
+ko_tile_card_chk:            @ 카드 이름 목록(이름 목록 아카이브 1249)에서 읽는 글이면, 글 상자(최대 +0xE0)에 다 들어갈
+    ldr r3, [r6, #0x10]     @ 때만 큰 한글 (커스텀 화면 아래의 카드 이름 등). 첫 글자에서 한 번 재고 표시를 남긴다
+    ldr r0, lit3c_card_lo
+    cmp r3, r0
+    blo ko_tile_card_no
+    ldr r0, lit3c_card_hi
+    cmp r3, r0
+    bhs ko_tile_card_no
+    ldr r0, lit3c_hangul_base
+    cmp r2, r0
+    blo ko_tile_card_no     @ 첫 글자가 한글일 때만
+    movs r0, #0xE8
+    ldr r0, [r6, r0]
+    push {{r1, r2, r4, r5}}
+    movs r1, #0xE4
+    ldr r1, [r6, r1]
+    cmp r0, r1
+    bne ko_tile_card_pop    @ 첫 글자가 아니다 (첫 글자에서 큰 한글로 정했으면 표시로 이미 갔다)
+    movs r4, #0             @ r4 = 다 쓴 칸 수, r5 = 이어 그리는 한글 줄의 픽셀 수
+    movs r5, #12
+ko_tile_card_loop:
+    ldrb r2, [r3]
+    adds r3, #1
+    cmp r2, #0xE4
+    beq ko_tile_card_wide
+    bhi ko_tile_card_done   @ E5 이상: 끝·제어
+    cmp r2, #{lead_first}
+    blo ko_tile_card_other
+    cmp r2, #{lead_last}
+    bhi ko_tile_card_other
+    adds r3, #1
+    adds r5, #12
+    b ko_tile_card_loop
+ko_tile_card_other:
+    cmp r2, #0
+    bne ko_tile_card_cell
+    cmp r5, #0
+    beq ko_tile_card_cell
+    adds r5, #4             @ 한글 사이 공백 4픽셀
+    b ko_tile_card_loop
+ko_tile_card_wide:
+    adds r3, #1
+ko_tile_card_cell:          @ 한글이 아닌 글자: 이어 그리던 줄을 칸으로 닫고 칸 하나
+    adds r5, #7
+    lsrs r5, r5, #3
+    adds r4, r4, r5
+    adds r4, #1
+    movs r5, #0
+    b ko_tile_card_loop
+ko_tile_card_done:
+    adds r5, #7
+    lsrs r5, r5, #3
+    adds r4, r4, r5
+    movs r0, #0xE4
+    ldr r0, [r6, r0]
+    muls r4, r0
+    movs r0, #0xE0
+    ldr r0, [r6, r0]
+    cmp r4, r0
+    bhi ko_tile_card_pop
+    pop {{r1, r2, r4, r5}}
+    ldr r3, lit3c_tstate
+    str r6, [r3, #8]        @ 이 글자 상자는 큰 한글
+    movs r0, #0
+    str r0, [r3, #12]
+    ldr r0, lit3c_big
+    bx r0
+ko_tile_card_pop:
+    pop {{r1, r2, r4, r5}}
+ko_tile_card_no:
+    ldr r0, lit3c_strip
+    bx r0
+    .align 2
+lit3c_card_lo: .word {card_lo}
+lit3c_card_hi: .word {card_hi}
+lit3c_hangul_base: .word {hangul_base}
+lit3c_big: .word ko_tile_big + 1
+lit3c_strip: .word ko_tile_strip + 1
+lit3c_tstate: .word {tstate}
     .align 2
 code_end_marker: .word 0x4C4F4B4F
     .word ko_list8          @ 진입점 주소 표 (build 가 읽어서 원래 코드를 연결한다)
@@ -1803,6 +1887,10 @@ def build(arm9, keep=(), chars=(), blobs=None, extra=()):
     if len(slots) < 32:
         sys.exit(f'글자 위치 목록의 한글 칸이 너무 적습니다 ({len(slots)}개).')
     slot_addr = blob_where.pop('__slots__')
+    if CARD_NAMES in blob_where:                       # 카드 이름 목록이 놓인 자리 (큰 한글 판정용)
+        card_range = (blob_where[CARD_NAMES], blob_where[CARD_NAMES] + len(blobs[CARD_NAMES]))
+    else:
+        card_range = (0, 0)
     slot_at = {k: slot_addr + v for k, v in slot_table(slots)[1].items()}
     code_addr = runs[0][0]
     buffer = code_addr + CODE_RESERVE - GLYPH          # 16×16 글자 그림
@@ -1874,6 +1962,7 @@ def build(arm9, keep=(), chars=(), blobs=None, extra=()):
         row_stride=ROW_STRIDE, row_pixels=ROW_PIXELS, bold_font=BOLD_FONT, glyph_top=GLYPH_TOP,
         glyph_top1=GLYPH_TOP + 1, slot_count=len(slots), base_count=LIST_BASES, base_mask=LIST_BASES - 1,
         copy_a=copy_funcs[0] | 1, copy_b=copy_funcs[1] | 1, min_size=(max(slots) + 1) * 64, save_ptr=SAVE_PTR,
+        card_lo=card_range[0], card_hi=card_range[1],
         big_mark=HANGUL_BASE + kotable.NEW_CHARS.index(kotable.BIG_MARK),
         check_ofs=32 + LIST_CHECK * 64,
         check_src=BOLD_FONT + LIST_CHECK * 64, **slot_at)
