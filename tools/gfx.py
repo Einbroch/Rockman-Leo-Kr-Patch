@@ -201,8 +201,9 @@ class Font:
 
 BOLD = None
 # 갈무리11 Bold 는 ㅌ 의 가운데·아랫줄이 붙어 다른 글자(동, 들)로 읽힌다. 이런 글자는 보통 굵기 갈무리11 을
-# 가로로 한 점 굵게 해서(폭 11 안) 쓴다.
-BOLD_FROM_REGULAR = set('타태터테토통투튜트티탁택턱텍톡툭특틱탄턴톤툰튼틴탈털톨툴틀틸탐탬텀템톰툼틈팀탑텁톱팁탕텅통퉁틍팅')
+# 가로로 한 점 굵게 해서(폭 12 안) 쓴다.
+# 받침 없는 타·태·터·테·티는 굵은 글꼴 그대로가 낫다(보통 굵기를 굵히면 ㅏ 가로획이 묻혀 티처럼 보인다)
+BOLD_FROM_REGULAR = set('토통투튜트탁택턱텍톡툭특틱탄턴톤툰튼틴탈털톨툴틀틸탐탬텀템톰툼틈팀탑텁톱팁탕텅통퉁틍팅')
 
 
 def bold():
@@ -214,9 +215,9 @@ def bold():
             g = dict(regular.glyphs[ord(ch)])
             w, h, xo, yo = g['bbx']
             dots = {(xo + c, r) for r, (v, nb) in enumerate(g['rows']) for c in range(w) if v >> (nb - 1 - c) & 1}
-            dots |= {(x + 1, y) for x, y in dots if x + 1 < 11}
-            g['bbx'] = (11, h, 0, yo)
-            g['rows'] = [(sum(1 << (10 - x) for x, yy in dots if yy == r), 11) for r in range(h)]
+            dots |= {(x + 1, y) for x, y in dots}       # 폭 12 까지 (11 에서 자르면 타·터의 짧은 가로획이 사라져 티처럼 보인다)
+            g['bbx'] = (12, h, 0, yo)
+            g['rows'] = [(sum(1 << (11 - x) for x, yy in dots if yy == r), 12) for r in range(h)]
             BOLD.glyphs[ord(ch)] = g
     return BOLD
 
