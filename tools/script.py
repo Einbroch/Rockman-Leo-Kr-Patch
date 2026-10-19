@@ -151,17 +151,29 @@ def dump():
           f'{JA_DIR.relative_to(ROOT)} 에 저장했습니다.')
 
 
-def split_archive(data):
-    """블록(텍스트 아카이브)을 스크립트 바이트 목록으로 나눈다."""
+def split_archive(data, shared=False):
+    """블록(텍스트 아카이브)을 스크립트 바이트 목록으로 나눈다. 원본의 같은 위치 칸은 빈 스크립트다.
+    shared=True 는 join_archive(share=True) 로 만든 블록용: 같은 자리를 가리키는 칸이 모두 그 스크립트를 받는다."""
     count = struct.unpack_from('<H', data, 0)[0] // 2
-    offs = list(struct.unpack_from(f'<{count}H', data, 0)) + [len(data)]
-    return [data[offs[i]:offs[i + 1]] for i in range(count)]
+    offs = struct.unpack_from(f'<{count}H', data, 0)
+    if not shared:
+        ends = list(offs[1:]) + [len(data)]
+        return [data[a:b] for a, b in zip(offs, ends)]
+    starts = sorted(set(offs)) + [len(data)]
+    end = {a: starts[k + 1] for k, a in enumerate(starts[:-1])}
+    return [data[a:end[a]] for a in offs]
 
 
-def join_archive(scripts):
-    table, body = bytearray(), bytearray()
+def join_archive(scripts, share=False):
+    """share=True 면 똑같은 스크립트는 한 벌만 넣고 위치 표가 같은 자리를 가리키게 한다(원본엔 없는 배치, 고정 버퍼에
+    안 들어가는 블록에만 쓴다). 게임은 위치 표의 시작점부터 end 명령까지만 읽는다."""
+    table, body, seen = bytearray(), bytearray(), {}
     for s in scripts:
-        table += struct.pack('<H', len(scripts) * 2 + len(body))
+        if share and s and s in seen:
+            table += struct.pack('<H', seen[s])
+            continue
+        seen[s] = len(scripts) * 2 + len(body)
+        table += struct.pack('<H', seen[s])
         body += s
     return bytes(table + body)
 
@@ -176,9 +188,11 @@ def replace_scripts(archive, tpl, compiled):
     return join_archive(scripts)
 
 
-def build(tpl_dir, out, game='rnr1'):
+def build(tpl_dir, out, game='rnr1', limits=None):
     """tpl_dir 의 .tpl 을 컴파일해서, 원본 블록에서 같은 번호의 스크립트만 바꿔 끼운 mess.bin 을 만든다.
-    (mess.bin 블록 목록, {블록 번호: 이름 아카이브})를 돌려준다. 이름 아카이브는 ARM9 에 넣는다(build_rom.py)."""
+    (mess.bin 블록 목록, {블록 번호: 이름 아카이브})를 돌려준다. 이름 아카이브는 ARM9 에 넣는다(build_rom.py).
+    limits {블록: 고정 버퍼 크기} 를 주면, 그 크기를 넘는 블록만 똑같은 스크립트를 한 벌로 합쳐 줄인다."""
+    limits = limits or {}
     tpl_dir = pathlib.Path(tpl_dir)
     blocks = unpack_msgs()
     built = WORK / 'build-msg'
@@ -190,6 +204,10 @@ def build(tpl_dir, out, game='rnr1'):
         tpl = tpl_dir / f'{i:04d}.tpl'
         if tpl.exists():
             block = replace_scripts(block, tpl, (built / f'{i:04d}.msg').read_bytes())
+            if i in limits and len(block) > limits[i]:
+                shared = join_archive(split_archive(block), share=True)
+                print(f'블록 {i}: {len(block):#x} 바이트가 고정 버퍼 {limits[i]:#x} 를 넘어 같은 스크립트를 합침 -> {len(shared):#x}')
+                block = shared
         new_blocks.append((block, compressed))
     names = {}
     for i, archive in name_archives().items():

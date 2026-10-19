@@ -230,7 +230,7 @@ def main():
     if not namekb.check_tpl():
         sys.exit('script/ko/0001.tpl 의 이름 자판 줄이 음절 표와 다릅니다. python tools/namekb.py 를 실행하세요.')
     mess = ROOT / 'work' / 'ko' / 'mess.bin'
-    _, names = script.build(KO_SCRIPT, mess, 'rnr1-ko')
+    _, names = script.build(KO_SCRIPT, mess, 'rnr1-ko', limits=textbuf.limits())
     mail = script.read_mess(mess.read_bytes())[MAIL_BLOCK][0]
     if len(mail) > MAIL_BUFFER:
         sys.exit(f'대사 블록 {MAIL_BLOCK}(메일 본문) {len(mail):#x} 바이트가 메일 화면 버퍼 {MAIL_BUFFER:#x} 를 넘습니다.')
