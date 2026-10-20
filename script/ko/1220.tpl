@@ -250,7 +250,7 @@ script 50 mmsf1 {
 	msgOpenQuick
 	textSpeed
 		delay = 0
-	"슈팅 스타 케이크ー\nAMAKEN 특별 간식!\n"
+	"슈팅 스타 케이크\nAMAKEN 특별 간식!\n"
 	waitHold
 	end
 }

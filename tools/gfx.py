@@ -255,7 +255,8 @@ def _font(name, embolden=False):
 
 
 # bold 갈무리11 Bold(ㅌ 보정), small 갈무리7, mid 갈무리9, big 갈무리14 를 한 점 굵게
-FONTS = {'bold': bold, 'small': small, 'mid': _font('Galmuri9.bdf'), 'big': _font('Galmuri14.bdf', True)}
+FONTS = {'bold': bold, 'small': small, 'mid': _font('Galmuri9.bdf'), 'big': _font('Galmuri14.bdf', True),
+         'reg': _font('Galmuri11.bdf')}
 
 # ---------------------------------------------------------------- 바꿀 그림 (subscreen.bin)
 # 스프라이트 번호 → {프레임: (한글, 글꼴, 정렬)}. 글꼴 bold = 갈무리11 Bold(16줄 제목·단추), small = 갈무리7(8줄 탭).
@@ -277,6 +278,7 @@ LABELS = {
           1: ('메일함', 'small', 'center'), 2: ('브라더 메일', 'small', 'center')},
     320: {0: ('메일 쓰기', 'bold', 'left'), 8: ('제목', 'small', 'left'), 9: ('본문', 'small', 'left')},
     357: {0: ('베스트 콤보', 'bold', 'left'), 1: ('콤보 목록', 'small', 'center')},
+    53: {1: ('퍼스널 카드', 'bold', 'left')}, 93: {5: ('홈페이지', 'bold', 'left')},   # 퍼스널 카드·홈페이지 제목
     345: {0: (['선택 중', '선택 중.', '선택 중..', '선택 중...'], 'small', 'left')},   # 점이 늘어나는 애니메이션
 }
 # 큰 단추(64×48) 윗줄 글자: 스프라이트 번호 → {프레임: 한글}
@@ -383,7 +385,6 @@ HINTS = {
     316: {5: [(0, 8, 16, '메일 쓰기')]},                                          # X:メールをかく
     357: {6: [(0, 8, 12, '콤보 편집')]},                                          # A:コンボのへんしゅう
     310: {0: [(0, 8, 22, '새로 고침')]},                                          # LR:リロード
-    234: {14: [(0, 8, 14, '색 바꾸기'), (12, 20, 14, '전환'), (24, 32, 22, '팔레트 변경')]},  # 아이콘 그리기
 }
 # 틀을 그대로 두고 그 안에서만 다시 그리는 글자: 스프라이트 → {프레임: [(x0, x1, y0, y1, 한글, 정렬, 글꼴)]}
 REGIONS = {
@@ -391,6 +392,23 @@ REGIONS = {
           4: [(0, 51, 0, 16, '브라더 메일', 'right', 'small')]},                  # ブラザーメール▶
     137: {0: [(3, 125, 1, 15, '즐겨찾기 선택 중', 'left', 'bold')]},              # フェイバリット せんたく中
 }
+# 조각표가 프레임이 아니라 묶음마다 있는 스프라이트(구역3 개수 = 묶음 수): 스프라이트 → {묶음: REGIONS 와 같은 목록}.
+# 얼굴 아이콘 화면(178): サンプルをえらぶ 단추 글자·へんしゅう 꼬리표 (바탕 투명, 글자색 1 + 아래 그림자 2)
+GROUP_REGIONS = {178: {5: [(0, 64, 0, 16, '샘플 선택', 'center', 'bold0')],
+                       6: [(0, 40, 0, 16, '편집', 'center', 'bold0')]},
+                 # 아이콘 그리기 화면(234) 도구별 단추 안내 묶음 14~17: 줄마다 아이콘·쌍점 뒤(x 14, LR 줄은 x 22)만 다시 쓴다.
+                 # 조각표가 묶음마다라 프레임 기준(HINTS)으로 바꾸면 다른 묶음의 조각을 덮어 안내가 깨진다.
+                 234: {g: [(23 if lr else 14, 48, y, y + 8, text, 'left', 'small0') for y, text, lr in rows]
+                       for g, rows in {
+                           14: [(0, '선택', 0), (12, '전환', 0), (24, '팔레트', 1)],
+                           15: [(0, '그리기', 0), (12, '스포이트', 0), (24, '전환', 0), (36, '팔레트', 1)],
+                           16: [(0, '색 변경', 0), (12, '전환', 0), (24, '팔레트', 1)],
+                           17: [(0, '스포이트', 0), (12, '전환', 0), (24, '팔레트', 1)]}.items()},
+                 378: {1: [(0, 24, 36, 48, '삭제', 'left', 'mid0')]},     # ON·OFF·けす 의 けす
+                 # 샘플 고르기 화면(182): Ⓐ:けってい · サンプルデータ(뒤에 번호 01~20) · カラー(뒤에 번호 1~4)
+                 182: {8: [(14, 48, 0, 8, '결정', 'left', 'small0')],
+                       10: [(0, 60, 0, 16, '샘플', 'right', 'bold0')],      # 오른쪽 끝(59)에 번호가 붙는다
+                       11: [(0, 24, 0, 16, '색상', 'center', 'bold0')]}}
 # 브라더 화면 단추 コメント·ヒミツ (네 가지 색, 프레임 1·2 = 보통·고름). 튜토리얼 대사(블록 100)도 「메시지」「비밀」
 _MES = [(5, 43, 4, 18, '메시지', 'center', 'bold')]
 _SECR = [(5, 43, 4, 18, '비밀', 'center', 'bold')]
@@ -465,6 +483,14 @@ def redraw_region(s, k, regions, group=None):
         bg, colors = {}, {}
         every = [s.pixel(where[x, y]) for y in range(y0, y1) for x in range(x0, x1) if (x, y) in where]
         flat = max(set(every), key=every.count)
+        clear = font.endswith('0')         # 글꼴 이름 끝 0: 바탕을 투명(0)으로 지우고 그림자를 친다 (틀 없는 작은 글자)
+        if clear:
+            font, flat = font[:-1], 0
+        if font.endswith('^'):             # 끝 ^: 바탕색은 사각형 가장자리에서 (글자가 빽빽한 작은 칸)
+            font = font[:-1]
+            edge = [s.pixel(where[x, y]) for y in range(y0, y1) for x in range(x0, x1)
+                    if (x, y) in where and (x in (x0, x1 - 1) or y in (y0, y1 - 1))]
+            flat = max(set(edge), key=edge.count)
         for y in range(y0, y1):
             row = [s.pixel(where[x, y]) for x in range(x0, x1) if (x, y) in where]
             if not row:                   # 조각이 없는 줄
@@ -474,7 +500,7 @@ def redraw_region(s, k, regions, group=None):
                 if c != bg[y]:
                     colors[c] = colors.get(c, 0) + 1
         order = sorted(colors, key=colors.get, reverse=True)
-        color, shadow = order[0], (order[1] if len(order) > 1 and font in ('bold', 'big') else None)
+        color, shadow = order[0], (order[1] if len(order) > 1 and (font in ('bold', 'big') or clear) else None)
         ink = [(x, y) for y in bg for x in range(x0, x1) if (x, y) in where and s.pixel(where[x, y]) != bg[y]]
         left, right = min(x for x, _ in ink), max(x for x, _ in ink)
         bottom = max(y for x, y in ink if s.pixel(where[x, y]) == color)
@@ -483,7 +509,11 @@ def redraw_region(s, k, regions, group=None):
                 if (x, y) in where:
                     s.put(where[x, y], bg[y])
         pts, w = FONTS[font]().render(text, bottom + 1)
+        if w > x1 - x0:                    # 글자 뒤 빈 줄까지 세면 넘칠 때는 실제 잉크 폭으로 맞춘다
+            w = max(x for x, _ in pts) + 1
         start = left if align == 'left' else right + 1 - w if align == 'right' else (left + right + 1 - w) // 2
+        if align == 'center':
+            start = min(max(start, x0), x1 - w)
         if start < x0 or start + w > x1 or any((x + start, y) not in where for x, y in pts):
             sys.exit(f'{text!r} 가 칸({x0}~{x1}, {y0}~{y1})을 넘습니다')
         dots = {(x + start, y) for x, y in pts}
@@ -496,7 +526,32 @@ def redraw_region(s, k, regions, group=None):
             s.put(where[d], color)
 
 
-def translate_sprite(e, i, labels=None, buttons=None, hints=None, regions=None):
+def outline_title(s, k, text, font, fill, shade, edge, thick=2):
+    """테두리 두꺼운 제목 프레임 k 를 새로 그린다: 채움 fill, 획 아랫줄 shade, 바깥 테두리 edge(thick 점).
+    원래 프레임 폭 안 가운데에 놓는다. (묶음 번호, 타일, 조각)"""
+    img, origin = frame_pixels(s, k)
+    W, H = len(img[0]), len(img)
+    ink = [y for y in range(H) for x in range(W) if img[y][x] == fill]
+    pts, w = FONTS[font]().render(text, max(ink) + 1 - thick)
+    w = max(x for x, _ in pts) + 1
+    x0 = (W - w) // 2
+    if x0 < thick:
+        sys.exit(f'제목 {text!r} 가 프레임 폭 {W} 을 넘습니다')
+    dots = {(x + x0, y) for x, y in pts}
+    if min(y for _, y in dots) < thick:
+        sys.exit(f'제목 {text!r} 가 프레임 높이를 넘습니다')
+    out = [[0] * W for _ in range(H)]
+    for x, y in dots:
+        for dx in range(-thick, thick + 1):
+            for dy in range(-thick, thick + 1):
+                if 0 <= x + dx < W and 0 <= y + dy < H:
+                    out[y + dy][x + dx] = edge
+    for x, y in dots:
+        out[y][x] = shade if (x, y + 1) not in dots else fill
+    return relayout_frame(s, k, out, origin)
+
+
+def translate_sprite(e, i, labels=None, buttons=None, hints=None, regions=None, titles=None, group_regions=None):
     """스프라이트 항목 i 에 표(기본은 subscreen 의 LABELS·BUTTONS·HINTS·REGIONS)를 적용한 바이트."""
     LABELS_, BUTTONS_, HINTS_, REGIONS_ = (LABELS if labels is None else labels, BUTTONS if buttons is None else buttons,
                                            HINTS if hints is None else hints, REGIONS if regions is None else regions)
@@ -506,6 +561,10 @@ def translate_sprite(e, i, labels=None, buttons=None, hints=None, regions=None):
     for k, regions in REGIONS_.get(i, {}).items():
         for g in s.frame_groups(k):                  # 애니메이션이면 묶음마다
             redraw_region(s, k, regions, g)
+    for g, regions in (GROUP_REGIONS if group_regions is None else group_regions).get(i, {}).items():
+        if len(s.cells) != len(s.groups):
+            sys.exit(f'스프라이트 {i} 는 조각표가 묶음마다 있지 않습니다')
+        redraw_region(s, g, regions, g)              # 조각표 g 와 묶음 g
     new = {}
     for k, (text, font, align) in LABELS_.get(i, {}).items():
         gs = s.frame_groups(k)
@@ -520,6 +579,9 @@ def translate_sprite(e, i, labels=None, buttons=None, hints=None, regions=None):
                 sys.exit(f'스프라이트 {i} 프레임 {k}: 묶음마다 조각 배치가 다릅니다')
             cells0 = cells
             new[g] = (tiles, cells)
+    for k, args in (titles or {}).get(i, {}).items():
+        g, tiles, cells = outline_title(s, k, *args)
+        new[g] = (tiles, cells)
     for k, lines in HINTS_.get(i, {}).items():
         if len(s.frame_groups(k)) != 1:
             sys.exit(f'스프라이트 {i} 프레임 {k} 은 애니메이션이다')
@@ -577,6 +639,21 @@ BG_TEXTS = {
     (264, 266): _BRO, (267, 269): _BRO, (270, 272): _BRO, (273, 275): _BRO, (285, 287): _BRO,
     (282, 284): [(9, 82, 69, 89, '링크 능력', 'small')],
 }
+# 아이콘 그리기 화면 위 설명판(235 타일·236 맵·237 팔레트): 도구 열 개의 설명. 원래 줄 수(한 줄·두 줄)를 지킨다.
+_ICON_HELP = [  # (x0, x1, [(y0, y1, 한글), ...])
+    (44, 118, [(10, 24, '1도트씩'), (26, 38, '점을 찍기')]), (160, 242, [(10, 24, '캔버스의'), (26, 38, '색을 집기')]),
+    (44, 118, [(47, 60, '선 긋기')]), (160, 242, [(47, 60, '같은 색을'), (61, 74, '칠하기')]),
+    (44, 118, [(83, 96, '네모 그리기')]), (160, 242, [(83, 96, '원 그리기')]),
+    (44, 118, [(118, 132, '되돌리기')]), (160, 242, [(118, 132, '되돌린 것을'), (133, 146, '다시 하기')]),
+    (44, 118, [(154, 168, '화면 전체를'), (169, 182, '칠하기')]),
+    (160, 242, [(154, 168, '저장하지 않고'), (169, 182, '편집 끝내기')]),
+]
+BG_TEXTS[235, 236] = [(x0, y0, x1, y1, text, 'bold') for x0, x1, lines in _ICON_HELP for y0, y1, text in lines]
+BG_TEXTS[235, 236] += [(10, 162, 39, 175, '채우기', 'mid', {'bg': 0x14}),
+                       (127, 162, 155, 175, '종료', 'mid', {'bg': 0x16})]   # ぬりつぶし·やめる 단추
+# 아이콘 그리기 화면 아래(222 타일·223 맵): 도구판의 ぬりつぶし·やめる·ほぞん 단추. 글자가 빽빽해 바탕색을 정해 준다
+BG_TEXTS[222, 223] = [(184, 101, 214, 115, '채우기', 'mid', {'bg': 0x14}), (218, 101, 248, 115, '종료', 'mid', {'bg': 0x16}),
+                      (191, 128, 241, 144, '저장', 'bold', {'bg': 0x18})]
 BG_VRAM_TILES = 768                     # 타일을 올리는 곳(문자 기준 0x4000)부터 다음 BG(0x10000)까지 칸 수
 
 
@@ -598,27 +675,51 @@ def translate_bg_text(tiles_e, map_e, rects):
     uses = {}
     for v in M:
         uses[v & 0x3FF] = uses.get(v & 0x3FF, 0) + 1
-    for x0, y0, x1, y1, text, font in rects:
+    for x0, y0, x1, y1, text, font, *opt in rects:
         img = {(x, y): get(x, y) for y in range(y0, y1) for x in range(x0, x1)}
-        bg = {}
-        every = list(img.values())
-        flat = max(set(every), key=every.count)
-        for y in range(y0, y1):
-            row = [img[x, y] for x in range(x0, x1)]
-            # 줄마다 가장 흔한 색. 글자가 빽빽한 줄은 글자색이 이기므로, 사각형 전체의 바탕색이 그 줄에 있으면 그것
-            bg[y] = flat if flat in row else max(set(row), key=row.count)
-        ink = [(x, y) for (x, y), c in img.items() if c != bg[y]]
-        if not ink:
-            sys.exit(f'BG 글자 {text!r} 자리에서 원래 글자를 찾지 못했습니다')
-        colors = {}
-        for p in ink:
-            colors[img[p]] = colors.get(img[p], 0) + 1
-        color = max(colors, key=colors.get)
-        left = min(x for x, _ in ink)
-        bottom = max(y for x, y in ink if img[x, y] == color)
-        for x, y in ink:
-            img[x, y] = bg[y]
+        if opt and 'bg' in opt[0]:       # {'bg': 색}: 글자가 빽빽해 바탕색을 셀 수 없을 때 바탕색을 정해 준다
+            flat = opt[0]['bg']
+            bg = {y: flat for y in range(y0, y1)}
+            ink = [(x, y) for (x, y), c in img.items() if c != flat]
+            colors = {}
+            for p in ink:
+                colors[img[p]] = colors.get(img[p], 0) + 1
+            color = max(colors, key=colors.get)
+            left = min(x for x, _ in ink)
+            bottom = max(y for x, y in ink if img[x, y] == color)
+            for x, y in ink:
+                img[x, y] = flat
+        elif opt:                        # {'ink': 색}: 그라데이션 바탕. 그 색 점만 글자로 보고 바로 윗줄(y0-1) 색으로 메운다
+            color = opt[0]['ink']
+            ink = [p for p, c in img.items() if c == color]
+            if not ink:
+                sys.exit(f'BG 글자 {text!r} 자리에서 원래 글자를 찾지 못했습니다')
+            left = opt[0].get('left', min(x for x, _ in ink))
+            bottom = max(y for _, y in ink)
+            for x, y in img:
+                if img[x, y] == color:
+                    img[x, y] = get(x, y0 - 1)
+        else:
+            bg = {}
+            every = list(img.values())
+            flat = max(set(every), key=every.count)
+            for y in range(y0, y1):
+                row = [img[x, y] for x in range(x0, x1)]
+                # 줄마다 가장 흔한 색. 글자가 빽빽한 줄은 글자색이 이기므로, 사각형 전체의 바탕색이 그 줄에 있으면 그것
+                bg[y] = flat if flat in row else max(set(row), key=row.count)
+            ink = [(x, y) for (x, y), c in img.items() if c != bg[y]]
+            if not ink:
+                sys.exit(f'BG 글자 {text!r} 자리에서 원래 글자를 찾지 못했습니다')
+            colors = {}
+            for p in ink:
+                colors[img[p]] = colors.get(img[p], 0) + 1
+            color = max(colors, key=colors.get)
+            left = min(x for x, _ in ink)
+            bottom = max(y for x, y in ink if img[x, y] == color)
+            for x, y in ink:
+                img[x, y] = bg[y]
         pts, w = FONTS[font]().render(text, bottom + 1)
+        w = max(x for x, _ in pts) + 1                   # 글자 뒤 빈 줄은 세지 않는다
         if left + w > x1 or min(y for _, y in pts) < y0:
             sys.exit(f'BG 글자 {text!r} 가 칸({x0}~{x1}, {y0}~{y1})을 넘습니다')
         for x, y in pts:
@@ -644,13 +745,110 @@ def translate_bg_text(tiles_e, map_e, rects):
     return bytes(T), struct.pack(f'<{len(M)}H', *M)
 
 
+def translate_bg4_text(tiles_e, map_e, width, rects):
+    """4bpp BG(맵 width 칸 폭, 맵 번호 t = 타일 t-1, 0 은 빈 칸, 뒤집기 없음)의 사각형마다 글자를 지우고 한글을 그린 뒤
+    그림 전체를 다시 타일로 자른다(같은 타일은 하나로). 원래 글자에 둘째 색이 있으면 그림자로 오른쪽·아래에 친다.
+    (새 타일 항목, 새 맵 항목)"""
+    M = list(struct.unpack(f'<{len(map_e) // 2}H', map_e))
+    if any(v >> 10 & 3 for v in M) or len({v >> 12 for v in M}) > 1:
+        sys.exit('4bpp BG 맵이 뒤집기나 여러 팔레트를 씁니다')
+    H = len(M) // width
+
+    def get(x, y):
+        t = (M[(y // 8) * width + x // 8] & 0x3FF) - 1
+        if t < 0:
+            return None
+        b = tiles_e[t * 32 + (y % 8) * 4 + (x % 8) // 2]
+        return b >> (4 * (x & 1)) & 15
+
+    img = {(x, y): get(x, y) for y in range(H * 8) for x in range(width * 8)}
+    for x0, y0, x1, y1, text, font, *base in rects:
+        box = [(x, y) for y in range(y0, y1) for x in range(x0, x1)]
+        every = [img[p] for p in box]
+        flat = max(set(every), key=every.count)
+        ink = [p for p in box if img[p] != flat]
+        if not ink:
+            sys.exit(f'BG 글자 {text!r} 자리에서 원래 글자를 찾지 못했습니다')
+        colors = {}
+        for p in ink:
+            colors[img[p]] = colors.get(img[p], 0) + 1
+        order = sorted(colors, key=colors.get, reverse=True)
+        color, shadow = order[0], (order[1] if len(order) > 1 else None)
+        left = min(x for x, _ in ink)
+        bottom = base[0] - 1 if base else max(y for x, y in ink if img[x, y] == color)   # 줄마다 같은 바닥선을 주면 그것
+        for p in ink:
+            img[p] = flat
+        pts, w = FONTS[font]().render(text, bottom + 1)
+        w = max(x for x, _ in pts) + 1
+        if left + w + 1 > x1 or min(y for _, y in pts) < y0:
+            sys.exit(f'BG 글자 {text!r} 가 칸({x0}~{x1}, {y0}~{y1})을 넘습니다')
+        dots = {(x + left, y) for x, y in pts}
+        if shadow is not None:
+            for x, y in dots:
+                for d in ((x + 1, y), (x, y + 1)):
+                    if d not in dots and y0 <= d[1] < y1:
+                        img[d] = shadow
+        for d in dots:
+            img[d] = color
+    tiles, index, newM = bytearray(), {}, []
+    for r in range(H):
+        for c in range(width):
+            if (M[r * width + c] & 0x3FF) == 0:
+                newM.append(M[r * width + c])
+                continue
+            data = bytearray(32)
+            for y in range(8):
+                for x in range(8):
+                    data[y * 4 + x // 2] |= (img[c * 8 + x, r * 8 + y] or 0) << (4 * (x & 1))
+            data = bytes(data)
+            if data not in index:
+                index[data] = len(tiles) // 32
+                tiles += data
+            newM.append((M[r * width + c] & 0xF000) | (index[data] + 1))
+    return bytes(tiles), struct.pack(f'<{len(newM)}H', *newM)
+
+
+# 브라더 화면 편집 메뉴(subscreen 261 타일·262 팔레트·263 맵 12×21, 4bpp, 위 화면 BG2 문자 기준 0x14000 에서 BG3 0x18000
+# 까지 512타일): へんしゅう 제목과 항목 일곱 줄. (타일, 맵, 맵 폭) → [(x0, y0, x1, y1, 한글, 글꼴)]
+BG4_TEXTS = {(261, 263, 12): [
+    (15, 11, 58, 24, '편집', 'bold'),
+    *[(12, 34 + 16 * k, 86, 50 + 16 * k, text, 'reg', 47 + 16 * k)       # 마지막 수: 바닥선(줄 간격 16)
+      for k, text in enumerate(['이름', '얼굴 사진', '메시지', '비밀', '즐겨찾기', '베스트 콤보'])],
+]}
+BG4_MAX_TILES = 511
+
+
 def sprite_ids():
-    return sorted(set(LABELS) | set(BUTTONS) | set(HINTS) | set(REGIONS))
+    return sorted(set(LABELS) | set(BUTTONS) | set(HINTS) | set(REGIONS) | set(GROUP_REGIONS))
 
 
 # ---------------------------------------------------------------- 타이틀 (capcomlogo.bin)
 CAPCOMLOGO = 'datbin/com/capcomlogo.bin'
 TITLE_LABELS = {26: {1: ('처음부터', 'bold', 'center'), 2: ('이어하기', 'bold', 'center')}}   # 타이틀 메뉴
+# 통신 메뉴(72): 제목·메뉴 항목·전적. 항목은 메뉴 틀 안 약 100픽셀까지 (「클라이언트로 통신」은 틀을 넘었다)
+TITLE_LABELS[72] = {
+    2: ('무선', 'bold', 'left'), 4: ('통신', 'bold', 'left'), 5: ('전적', 'bold', 'left'),
+    7: ('호스트 통신', 'bold', 'left'), 8: ('클라이언트 통신', 'bold', 'left'),
+    9: ('번호 입력', 'bold', 'left'), 13: ('프렌드 코드', 'bold', 'left'), 16: ('Wi-Fi 접속 설정', 'bold', 'left'),
+}
+# 통신 연결 화면(84)·대전 화면(91): 제목과 모드 이름. おや·こ 꼬리표는 칸이 16픽셀이라 「방장」「참가」(작은 한글)
+TITLE_LABELS[84] = {0: ('통신', 'bold', 'left'), 9: ('대전', 'bold', 'left')}
+TITLE_LABELS[91] = {0: ('대전', 'bold', 'left'), 9: ('연습', 'bold', 'left'), 13: ('실전', 'bold', 'left'),
+                    14: ('브라더', 'bold', 'left')}
+TITLE_LABELS[76] = {0: ('통신', 'bold', 'left')}                       # 통신 대기 화면 위 막대 제목
+TITLE_LABELS[80] = {0: ('통신', 'bold', 'left'),                         # 상대 목록 화면 (こき·おやき リスト)
+                    1: ('클라이언트 목록', 'small', 'left'), 2: ('호스트 목록', 'small', 'left')}
+_TAGS = {1: [(2, 17, 2, 13, '방장', 'center', 'small^')], 3: [(16, 33, 2, 14, '참가', 'center', 'small^')]}
+TITLE_REGIONS = {72: {
+    0: [(6, 51, 6, 20, '개조', 'center', 'bold')], 1: [(6, 51, 6, 20, '개조', 'center', 'bold')],   # かいぞう ON/OFF 단추
+    6: [(0, 8, 0, 13, '승', 'center', 'small0'), (0, 8, 13, 27, '패', 'center', 'small0')],          # 전적 상자의 勝·敗
+}}
+TITLE_REGIONS[84] = _TAGS
+# 크로스 브라더 밴드 제목(101): 채움 14, 획 아랫줄 11, 두 점 테두리 9
+# 통신 화면 BG(capcomlogo, (타일, 맵) → 사각형): 상대 목록 화면의 LR:リロード → LR:새로고침 (ⓑ:EXIT 앞까지)
+TITLE_BG_TEXTS = {(78, 77): [(174, 113, 205, 121, '새로고침', 'small', {'ink': 0xFF, 'left': 174})]}
+TITLE_ARTS = {101: {0: ('크로스 브라더 밴드', 'bold', 14, 11, 9)}}
+TITLE_REGIONS[91] = _TAGS
 
 
 # ---------------------------------------------------------------- 타이틀 로고 (capcomlogo.bin BG)
@@ -802,7 +1000,8 @@ def translate_sprites(items, tables):
     for table in tables.values():
         ids |= set(table)
     for i in sorted(ids):
-        e = translate_sprite(unpack(items[i]), i, **{k: tables.get(k, {}) for k in ('labels', 'buttons', 'hints', 'regions')})
+        e = translate_sprite(unpack(items[i]), i, **{k: tables.get(k, {}) for k in ('labels', 'buttons', 'hints', 'regions',
+                                                                                  'titles', 'group_regions')})
         items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
 
 
@@ -908,9 +1107,15 @@ def translate(rom_files):
     """{롬 안 경로: 새 바이트}"""
     data = rom_files(SUBSCREEN)
     items = read_archive(data)
-    translate_sprites(items, dict(labels=LABELS, buttons=BUTTONS, hints=HINTS, regions=REGIONS))
+    translate_sprites(items, dict(labels=LABELS, buttons=BUTTONS, hints=HINTS, regions=REGIONS, group_regions=GROUP_REGIONS))
     for (ti, mi), rects in BG_TEXTS.items():
         te, me = translate_bg_text(bytes(unpack(items[ti])), bytes(unpack(items[mi])), rects)
+        for i, e in ((ti, te), (mi, me)):
+            items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
+    for (ti, mi, width), rects in BG4_TEXTS.items():
+        te, me = translate_bg4_text(bytes(unpack(items[ti])), bytes(unpack(items[mi])), width, rects)
+        if len(te) // 32 + 1 > BG4_MAX_TILES:
+            sys.exit(f'BG {ti} 타일이 VRAM 자리를 넘습니다')
         for i, e in ((ti, te), (mi, me)):
             items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
     import namekb                                       # 이름 자판 단추(あ ア ゛ ゜ 小 → 가 아 2 3 4)
@@ -918,10 +1123,14 @@ def translate(rom_files):
     items[namekb.ICON_ITEM] = (items[namekb.ICON_ITEM][0], ndspy.lz10.compress(e) if items[namekb.ICON_ITEM][0] else e)
     out = {SUBSCREEN: write_archive(items)}
     items = read_archive(rom_files(CAPCOMLOGO))
-    translate_sprites(items, dict(labels=TITLE_LABELS))
+    translate_sprites(items, dict(labels=TITLE_LABELS, regions=TITLE_REGIONS, titles=TITLE_ARTS))
     for ti, mi, pi, sub, box, lines, shift in LOGOS:
         te, me, _ = translate_logo(bytes(unpack(items[ti])), bytes(unpack(items[mi])), bytes(unpack(items[pi])),
                                    sub, box, lines, shift)
+        for i, e in ((ti, te), (mi, me)):
+            items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
+    for (ti, mi), rects in TITLE_BG_TEXTS.items():
+        te, me = translate_bg_text(bytes(unpack(items[ti])), bytes(unpack(items[mi])), rects)
         for i, e in ((ti, te), (mi, me)):
             items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
     out[CAPCOMLOGO] = write_archive(items)
