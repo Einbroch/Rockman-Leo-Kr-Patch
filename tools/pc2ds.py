@@ -1073,6 +1073,8 @@ def main():
         stats['만든 블록'] += 1
     import namekb                    # 이름 자판 줄과 이름 입력 처음 칸(블록 1 스크립트 0–7, 11)
     namekb.write_tpl()
+    import cipher                    # 암호 메일 답(블록 98): 한국어 암호
+    cipher.write_tpl()
     (ROOT / 'script' / 'ko_report.txt').write_text('# 한글을 넣지 못한 곳\n' + '\n'.join(report) + '\n', encoding='utf-8')
     for key, value in stats.items():
         print(f'{key}: {value:,}')

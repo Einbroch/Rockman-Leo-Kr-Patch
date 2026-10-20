@@ -68,8 +68,11 @@ def syllables():
     order = {c: i for i, c in enumerate(kotable.HANGUL)}
     freq = collections.Counter(c for p in sorted((ROOT / 'script' / 'ko').glob('*.tpl')) if p != TPL
                                for c in p.read_text(encoding='utf-8') if c in hangul)
+    import cipher                    # 암호 메일 답(블록 98)에 쓰인 음절도 꼭 넣는다
     picked = []
-    for c in NAME_SYLLABLES:
+    for c in list(NAME_SYLLABLES) + cipher.syllables():
+        if c.isspace():
+            continue
         assert c in hangul, c
         if c not in picked:
             picked.append(c)

@@ -281,6 +281,11 @@ def main():
             sys.exit(f'이름 목록 {b}({old:#x})를 가리키는 곳을 찾지 못했습니다.')
         print(f'이름 목록 {b}: {old:#x} → {moves[old]:#x} ({len(names[b]):,}바이트, 참조 ARM9 {a}곳·오버레이 {o}곳)')
     slot_spans = patch_arm9_slots(data) + textbuf.patch_arm9(data)
+    import mailcodes                                     # 메일 1바이트 자판 코드 표: 한글 바이트가 깨지지 않게
+    n_mail, mail_missing = mailcodes.patch(data, original)
+    mt, mi = mailcodes.find_tables(bytes(data), original)
+    slot_spans += [(engine.ARM9_BASE + mi, mailcodes.INV_LEN), (engine.ARM9_BASE + mt, mailcodes.TABLE_LEN * 2)]
+    print(f'메일 자판 코드: 빠졌던 게임 코드 {n_mail}개에 칸을 다시 줌')
     over = textbuf.check([b for b, _ in script.read_mess(mess.read_bytes())])
     if over:
         sys.exit('대사 블록이 고정 버퍼를 넘습니다: ' + ', '.join(f'{b} {n:#x} > {s:#x} ({w})' for b, n, s, w in over))

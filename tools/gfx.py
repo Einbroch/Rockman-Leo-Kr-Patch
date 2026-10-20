@@ -408,7 +408,18 @@ GROUP_REGIONS = {178: {5: [(0, 64, 0, 16, '샘플 선택', 'center', 'bold0')],
                  # 샘플 고르기 화면(182): Ⓐ:けってい · サンプルデータ(뒤에 번호 01~20) · カラー(뒤에 번호 1~4)
                  182: {8: [(14, 48, 0, 8, '결정', 'left', 'small0')],
                        10: [(0, 60, 0, 16, '샘플', 'right', 'bold0')],      # 오른쪽 끝(59)에 번호가 붙는다
-                       11: [(0, 24, 0, 16, '색상', 'center', 'bold0')]}}
+                       11: [(0, 24, 0, 16, '색상', 'center', 'bold0')]},
+                 # 메일 쓰기 화면(320): メールをかく·あてさき·アイコン·プレゼント·けんめい·ほんぶん·ほぞん·かきなおし·そうしん(보통·고름)
+                 320: {0: [(0, 56, 0, 16, '메일 쓰기', 'center', 'bold0')],
+                       1: [(0, 32, 0, 16, '받는이', 'center', 'mid0')],
+                       2: [(0, 32, 0, 16, '아이콘', 'center', 'mid0')],
+                       7: [(0, 32, 0, 16, '선물', 'center', 'bold0')],
+                       8: [(0, 32, 0, 8, '제목', 'center', 'small0')],
+                       9: [(0, 32, 0, 8, '본문', 'center', 'small0')],
+                       10: [(0, 40, 0, 16, '저장', 'center', 'bold0')],
+                       11: [(0, 40, 0, 16, '다시쓰기', 'center', 'mid0')],
+                       12: [(0, 40, 0, 16, '보내기', 'center', 'bold0')],
+                       13: [(0, 40, 0, 16, '보내기', 'center', 'bold0')]}}
 # 브라더 화면 단추 コメント·ヒミツ (네 가지 색, 프레임 1·2 = 보통·고름). 튜토리얼 대사(블록 100)도 「메시지」「비밀」
 _MES = [(5, 43, 4, 18, '메시지', 'center', 'bold')]
 _SECR = [(5, 43, 4, 18, '비밀', 'center', 'bold')]
@@ -654,6 +665,8 @@ BG_TEXTS[235, 236] += [(10, 162, 39, 175, '채우기', 'mid', {'bg': 0x14}),
 # 아이콘 그리기 화면 아래(222 타일·223 맵): 도구판의 ぬりつぶし·やめる·ほぞん 단추. 글자가 빽빽해 바탕색을 정해 준다
 BG_TEXTS[222, 223] = [(184, 101, 214, 115, '채우기', 'mid', {'bg': 0x14}), (218, 101, 248, 115, '종료', 'mid', {'bg': 0x16}),
                       (191, 128, 241, 144, '저장', 'bold', {'bg': 0x18})]
+# 메일 고르기 화면 위(300 타일·302 맵): Ⓐ:しめきり(그라데이션 바탕, 글자색 0xFF). Ⓐ: 는 두고 뒤만 바꾼다
+BG_TEXTS[300, 302] = [(169, 100, 200, 108, '마감', 'small', {'ink': 0xFF, 'left': 170})]
 BG_VRAM_TILES = 768                     # 타일을 올리는 곳(문자 기준 0x4000)부터 다음 BG(0x10000)까지 칸 수
 
 
@@ -685,7 +698,7 @@ def translate_bg_text(tiles_e, map_e, rects):
             for p in ink:
                 colors[img[p]] = colors.get(img[p], 0) + 1
             color = max(colors, key=colors.get)
-            left = min(x for x, _ in ink)
+            left = opt[0].get('left', min(x for x, _ in ink))
             bottom = max(y for x, y in ink if img[x, y] == color)
             for x, y in ink:
                 img[x, y] = flat
@@ -1003,6 +1016,12 @@ FIELD_TABLES = {
 }
 
 
+# 스프라이트가 아닌 BG 글자: 파일 → {(타일, 맵): BG_TEXTS 와 같은 목록}
+FIELD_BG_TEXTS = {
+    'datbin/com/shop.bin': {(2, 1): [(204, 0, 228, 8, '보유', 'small', {'bg': 0x25, 'left': 209})]},                   # しょじすう
+}
+
+
 def translate_sprites(items, tables):
     """아카이브 항목 목록에 스프라이트 표(labels·buttons·hints·regions)를 적용한다."""
     ids = set()
@@ -1143,10 +1162,16 @@ def translate(rom_files):
         te, me = translate_bg_text(bytes(unpack(items[ti])), bytes(unpack(items[mi])), rects)
         for i, e in ((ti, te), (mi, me)):
             items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
+    import artgfx                                       # 엔딩·감사 화면의 그림 위 테두리 글자
+    artgfx.translate(items)
     out[CAPCOMLOGO] = write_archive(items)
     for path, tables in FIELD_TABLES.items():
         items = read_archive(rom_files(path))
         translate_sprites(items, tables)
+        for (ti, mi), rects in FIELD_BG_TEXTS.get(path, {}).items():
+            te, me = translate_bg_text(bytes(unpack(items[ti])), bytes(unpack(items[mi])), rects)
+            for i, e in ((ti, te), (mi, me)):
+                items[i] = (items[i][0], ndspy.lz10.compress(e) if items[i][0] else e)
         out[path] = write_archive(items)
     out[RESULT] = translate_result(rom_files)          # 전투 결과 화면 이름표
     import fieldgfx                                     # 필드 배경 간판
