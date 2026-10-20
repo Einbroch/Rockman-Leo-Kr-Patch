@@ -1139,6 +1139,8 @@ def translate(rom_files):
         translate_sprites(items, tables)
         out[path] = write_archive(items)
     out[RESULT] = translate_result(rom_files)          # 전투 결과 화면 이름표
+    import fieldgfx                                     # 필드 배경 간판
+    out[fieldgfx.FIELD] = fieldgfx.translate(rom_files(fieldgfx.FIELD))
     return out
 
 
