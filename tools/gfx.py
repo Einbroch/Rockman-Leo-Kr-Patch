@@ -831,24 +831,33 @@ TITLE_LABELS[72] = {
     7: ('호스트 통신', 'bold', 'left'), 8: ('클라이언트 통신', 'bold', 'left'),
     9: ('번호 입력', 'bold', 'left'), 13: ('프렌드 코드', 'bold', 'left'), 16: ('Wi-Fi 접속 설정', 'bold', 'left'),
 }
-# 통신 연결 화면(84)·대전 화면(91): 제목과 모드 이름. おや·こ 꼬리표는 칸이 16픽셀이라 「방장」「참가」(작은 한글)
-TITLE_LABELS[84] = {0: ('통신', 'bold', 'left'), 9: ('대전', 'bold', 'left')}
-TITLE_LABELS[91] = {0: ('대전', 'bold', 'left'), 9: ('연습', 'bold', 'left'), 13: ('실전', 'bold', 'left'),
-                    14: ('브라더', 'bold', 'left')}
 TITLE_LABELS[76] = {0: ('통신', 'bold', 'left')}                       # 통신 대기 화면 위 막대 제목
 TITLE_LABELS[80] = {0: ('통신', 'bold', 'left'),                         # 상대 목록 화면 (こき·おやき リスト)
                     1: ('클라이언트 목록', 'small', 'left'), 2: ('호스트 목록', 'small', 'left')}
-_TAGS = {1: [(2, 17, 2, 13, '방장', 'center', 'small^')], 3: [(16, 33, 2, 14, '참가', 'center', 'small^')]}
+# 통신 연결 화면(84)·대전 설정 화면(91)은 조각표가 묶음마다라(묶음 19·25, 프레임 11·18) 묶음 기준으로 제자리에 쓴다.
+# 묶음: 0 제목, 1~3·13 おや 꼬리표(색 넷), 7~9·14 こ 꼬리표, 84 의 17·18 たいせん·トレード, 91 의 17~24 설정 줄
+# (왼쪽 글자 + 오른쪽 글자, 오른쪽 ON·OFF 는 그대로). 꼬리표는 칸이 16픽셀이라 「방장」「참가」(작은 한글).
+_OYA = [(2, 17, 2, 13, '방장', 'center', 'small^')]
+_KO = [(16, 33, 2, 14, '참가', 'center', 'small^')]
+_TAGS = {g: _OYA for g in (1, 2, 3, 13)} | {g: _KO for g in (7, 8, 9, 14)}
+_RULE = {17: ('연습', '1판 승부', 67), 18: ('연습', '3판 승부', 65), 19: ('실전', '1판 승부', 67),
+         20: ('실전', '3판 승부', 65)}
+TITLE_GROUP_REGIONS = {
+    84: _TAGS | {0: [(0, 32, 0, 16, '통신', 'left', 'bold0')], 17: [(0, 32, 0, 16, '대전', 'left', 'bold0')],
+                 18: [(0, 32, 0, 16, '교환', 'left', 'bold0')]},
+    91: _TAGS | {0: [(0, 32, 0, 16, '대전', 'left', 'bold0')]}
+        | {g: [(0, 56, 0, 16, a, 'left', 'bold0'), (56, 112, 0, 16, b, 'right', 'bold0')] for g, (a, b, x) in _RULE.items()}
+        | {g: [(0, 74, 0, 16, text, 'left', 'bold0')] for g, text in
+           ((21, '관전 모드'), (22, '브라더 신청'), (23, '관전 모드'), (24, '브라더 신청'))},
+}
 TITLE_REGIONS = {72: {
     0: [(6, 51, 6, 20, '개조', 'center', 'bold')], 1: [(6, 51, 6, 20, '개조', 'center', 'bold')],   # かいぞう ON/OFF 단추
     6: [(0, 8, 0, 13, '승', 'center', 'small0'), (0, 8, 13, 27, '패', 'center', 'small0')],          # 전적 상자의 勝·敗
 }}
-TITLE_REGIONS[84] = _TAGS
 # 크로스 브라더 밴드 제목(101): 채움 14, 획 아랫줄 11, 두 점 테두리 9
 # 통신 화면 BG(capcomlogo, (타일, 맵) → 사각형): 상대 목록 화면의 LR:リロード → LR:새로고침 (ⓑ:EXIT 앞까지)
 TITLE_BG_TEXTS = {(78, 77): [(174, 113, 205, 121, '새로고침', 'small', {'ink': 0xFF, 'left': 174})]}
 TITLE_ARTS = {101: {0: ('크로스 브라더 밴드', 'bold', 14, 11, 9)}}
-TITLE_REGIONS[91] = _TAGS
 
 
 # ---------------------------------------------------------------- 타이틀 로고 (capcomlogo.bin BG)
@@ -1123,7 +1132,8 @@ def translate(rom_files):
     items[namekb.ICON_ITEM] = (items[namekb.ICON_ITEM][0], ndspy.lz10.compress(e) if items[namekb.ICON_ITEM][0] else e)
     out = {SUBSCREEN: write_archive(items)}
     items = read_archive(rom_files(CAPCOMLOGO))
-    translate_sprites(items, dict(labels=TITLE_LABELS, regions=TITLE_REGIONS, titles=TITLE_ARTS))
+    translate_sprites(items, dict(labels=TITLE_LABELS, regions=TITLE_REGIONS, titles=TITLE_ARTS,
+                                 group_regions=TITLE_GROUP_REGIONS))
     for ti, mi, pi, sub, box, lines, shift in LOGOS:
         te, me, _ = translate_logo(bytes(unpack(items[ti])), bytes(unpack(items[mi])), bytes(unpack(items[pi])),
                                    sub, box, lines, shift)
