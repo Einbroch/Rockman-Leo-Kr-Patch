@@ -254,4 +254,61 @@ def translate(data):
     l0.commit()
     l1.commit()
     close_map(96, ti, mi)
+    # 맵 104 자전거 가게: 받침대 위 입체 글자 サイクル·처마의 ショップ. 편 좌표에서 받침대·지붕·처마가 가로줄로 고르므로
+    # 글자 점을 같은 줄의 가까운 바탕 점으로 메우고(옛 글자 그림자도), 「자전거」「가게」를 같은 입체 모양으로 그린다.
+    ti, mi, pal = open_map(104)
+    l0, l1 = Layer(ti, mi, 0), Layer(ti, mi, 1)
+    view = Composite(l0, l1)
+    erase_by_row(view, 550, 95, (540, 645, 15, 46), {0x7B, 0x7C, 0x7D, 0x7E, 0x7F, 0x8E})
+    erase_by_row(view, 550, 95, (580, 645, 44, 67), {0x41, 0x42, 0x44, 0x8A})
+    erase_by_row(view, 550, 95, (542, 645, 40, 45), {0x89})
+    assets = pathlib.Path(__file__).resolve().parent.parent / 'assets'
+    block_letters(view, 550, 95, (554, 17), Image.open(assets / 'field_sign_104a.png'),
+                  0x7D, 0x7C, 0x7E, 0x7F, [(1, -1), (2, -2)])
+    block_letters(view, 550, 95, (598, 46), Image.open(assets / 'field_sign_104b.png'),
+                  0x42, 0x41, 0x44, 0x8A, [(1, 0)])
+    l0.commit()
+    l1.commit()
+    close_map(104, ti, mi)
     return gfx.write_archive(items)
+
+
+def erase_by_row(view, xref, ybase, box, letters):
+    """기울기를 편 좌표 box=(x0, x1, v0, v1) 안에서 색이 letters 에 든 점을, 같은 줄에서 가장 가까운 letters 밖 점의
+    색으로 메운다(받침대·지붕·처마가 편 좌표에서 가로줄로 고르게 칠해져 있어서 된다). 메운 점 수를 돌려준다."""
+    x0, x1, v0, v1 = box
+    at = lambda x, v: (x, ybase + v + (x - xref) // 2)
+    n = 0
+    for v in range(v0, v1):
+        row = {x: view.get(*at(x, v)) for x in range(x0 - 24, x1 + 24)}
+        for x in range(x0, x1):
+            if row[x] not in letters:
+                continue
+            for d in range(1, 24):
+                c = next((row[x + s] for s in (-d, d) if x + s in row and row[x + s] not in letters), None)
+                if c is not None:
+                    view.put(*at(x, v), c)
+                    n += 1
+                    break
+    return n
+
+
+def block_letters(view, xref, ybase, origin, mask, front, edge, side, outline, depth):
+    """회색조 글자 층 mask(128 이상 = 글자)를 기울기를 편 좌표 origin=(x, v) 에 입체 글자로 그린다.
+    앞면 front, 앞면 왼쪽 가장자리 edge, 옆면 side(오른쪽 위로 depth 칸씩 밀린 앞면), 옆면 바깥 테두리 outline."""
+    ox, ov = origin
+    at = lambda x, v: (x, ybase + v + (x - xref) // 2)
+    w, h = mask.size
+    F = {(ox + x, ov + v) for v in range(h) for x in range(w) if mask.getpixel((x, v)) >= 128}
+    S = set()
+    for dx, dv in depth:
+        S |= {(x + dx, v + dv) for x, v in F}
+    S -= F
+    O = {(x + 1, v) for x, v in S} | {(x, v - 1) for x, v in S}
+    O -= F | S
+    for p in O:
+        view.put(*at(*p), outline)
+    for p in S:
+        view.put(*at(*p), side)
+    for x, v in F:
+        view.put(*at(x, v), edge if (x - 1, v) not in F else front)

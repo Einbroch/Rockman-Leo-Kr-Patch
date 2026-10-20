@@ -1,6 +1,7 @@
 """필드 간판 한글 글자 층(회색조 PNG)을 한 번 만든다: python tools/field_sign_text.py [글꼴 경로]
 글꼴: Noto Sans KR(SIL Open Font License 1.1) 가변 글꼴. 빌드(tools/fieldgfx.py)는 이 PNG 만 쓴다.
 - assets/field_sign_96.png: 수족관 지붕 간판 「아열대관」(亜熱帯の館), 높이 약 22픽셀, 흰색 = 글자.
+- assets/field_sign_104a.png·104b.png: 자전거 가게 지붕 「자전거」(サイクル, 입체 글자 앞면)·「가게」(ショップ).
 """
 import pathlib
 import sys
@@ -8,7 +9,8 @@ import sys
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SIGNS = {'field_sign_96.png': ('아열대관', 27, 800)}     # 파일 → (글자, 크기, 굵기)
+SIGNS = {'field_sign_96.png': ('아열대관', 27, 800),      # 파일 → (글자, 크기, 굵기)
+         'field_sign_104a.png': ('자전거', 28, 900), 'field_sign_104b.png': ('가게', 17, 800)}
 
 
 def main():
