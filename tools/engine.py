@@ -68,7 +68,10 @@ SMALL_TOP = 6               # 8×16 칸에서 작은 한글 윗줄 (가나 4–1
 # 16×16 칸의 한글이면 글자 그림 버퍼 주소를 쓰게 한다.
 TILE_SITE = 0x0201E7DC
 GLYPH_SITE = 0x0201E5A2
-CODE_RESERVE = 0xE00        # 가장 긴 빈 구간 앞부분: 코드, 작업 공간, 글자 그림 버퍼 (구간 표는 그 뒤)
+# 메일 쓰기 화면(오버레이 2)의 제목·본문: 글 상자 그리기 함수와, 본문 칸이 한 줄에 놓이는 수
+MAIL_DRAW_FUNC = 0x02009038
+MAIL_ROW = 14
+CODE_RESERVE = 0xF00        # 가장 긴 빈 구간 앞부분: 코드, 작업 공간, 글자 그림 버퍼 (구간 표는 그 뒤)
 # 글자 위치 목록 경로(0x020202D8, 카드 이름 목록)는 글자마다 "폰트 안 위치(번호×64)"만 적고, 목록을 받은 화면이
 # 그 값을 타일 번호((위치+0x20)>>5)로 바꿔 쓴다. 폰트(굵은 8×16)는 화면을 열 때 VRAM 에 올려 둔다(자리+0x20 에,
 # 폴더 화면은 글자 0~0x17F, 라이브러리는 0~0xFF). 그래서 한글은 VRAM 에 올라간 폰트의 가나·한자 칸(카드 이름이
@@ -1225,6 +1228,7 @@ ko_tile_big_close:          @ 걸친 칸이 공백으로 다 찼다: 새 칸 없
 
 ko_tile_big_ko:
     subs r5, r2, r0         @ k
+    bl ko_tile_wrap
     movs r0, #1
     str r0, [r7, #0]
     ldr r0, lit3_strip
@@ -1321,6 +1325,54 @@ ko_tile_big_src:            @ r0 = 원래 코드가 복사할 칸 그림
     movs r0, #0
     ldr r2, [r4]
     bx r3
+
+ko_tile_wrap:               @ 메일 글(한 줄 {mail_row}칸): 큰 한글(12점)이 줄 끝을 넘으면 다음 줄 첫 칸부터. r0–r3 사용
+    ldr r0, [r7, #16]
+    cmp r0, #0
+    beq ko_tile_wrap_ret
+    ldr r1, [r6, #0x0C]
+    cmp r0, r1
+    bne ko_tile_wrap_ret
+    movs r0, #0xE8
+    ldr r0, [r6, r0]
+    lsrs r0, r0, #6         @ 쓴 칸 수(이 글자 몫 포함, 칸 하나 64바이트)
+    subs r0, #1             @ 앞 글자들이 쓴 칸 수 = 다음 칸 번호
+    ldr r1, [r7, #4]
+    cmp r1, #0
+    beq ko_tile_wrap_mod
+    subs r0, #1             @ 걸친 칸(4점 씀)의 번호
+ko_tile_wrap_mod:
+    cmp r0, #{mail_row}
+    blo ko_tile_wrap_col
+    subs r0, #{mail_row}
+    b ko_tile_wrap_mod
+ko_tile_wrap_col:
+    cmp r0, #{mail_last}
+    bne ko_tile_wrap_ret
+    cmp r1, #0
+    beq ko_tile_wrap_pad
+    movs r0, #0             @ 걸친 칸이 줄 끝 칸: 그대로 두고 다음 줄 첫 칸부터 그린다
+    str r0, [r7, #4]
+    bx lr
+ko_tile_wrap_pad:           @ 줄 끝 칸이 비었다: 빈 칸을 하나 직접 쓰고 다음 줄로
+    movs r1, #0xE8
+    ldr r0, [r6, r1]
+    adds r0, #64
+    movs r2, #0xE0
+    ldr r2, [r6, r2]
+    cmp r0, r2
+    bhi ko_tile_wrap_ret    @ 자리가 없으면 그대로 (넘치면 게임이 멈춘다)
+    str r0, [r6, r1]
+    ldr r1, [r4]
+    movs r0, #0
+    movs r2, #16
+ko_tile_wrap_clr:
+    stmia r1!, {{r0}}
+    subs r2, #1
+    bne ko_tile_wrap_clr
+    str r1, [r4]
+ko_tile_wrap_ret:
+    bx lr
 
 ko_tile_big_guard:          @ r6 = 글자 상자. 한 칸 더 쓰면 최대를 넘는데 글이 남았으면 글을 여기서 끝낸다
     movs r1, #0xE8          @ (원래 코드는 최대를 넘으면 멈춘다. 예전 패치로 만든 세이브의 "스바루 폴더 " 등)
@@ -1637,7 +1689,21 @@ ko_tile_card_done:
     bx r0
 ko_tile_card_pop:
     pop {{r1, r2, r4, r5}}
-ko_tile_card_no:
+ko_tile_card_no:            @ 메일 쓰기 화면의 제목·본문(ko_mail_draw 가 그리는 동안 적어 둔 글)이면 큰 한글
+    ldr r3, lit3c_tstate
+    ldr r0, [r3, #16]
+    cmp r0, #0
+    beq ko_tile_card_strip
+    ldr r3, [r6, #0x0C]
+    cmp r0, r3
+    bne ko_tile_card_strip
+    ldr r3, lit3c_tstate
+    str r6, [r3, #8]
+    movs r0, #0
+    str r0, [r3, #12]
+    ldr r0, lit3c_big
+    bx r0
+ko_tile_card_strip:
     ldr r0, lit3c_strip
     bx r0
     .align 2
@@ -1648,10 +1714,34 @@ lit3c_big: .word ko_tile_big + 1
 lit3c_strip: .word ko_tile_strip + 1
 lit3c_tstate: .word {tstate}
     .align 2
+
+ko_mail_draw:               @ 오버레이 2 메일 쓰기 화면이 제목·본문 글 상자를 그리는 호출(0x02009038) 대신 온다.
+    mov r12, r4             @ 그리는 동안 글 시작 주소를 [16]에 적어 두고(칸 경로가 보고 큰 한글로), 끝나면 지운다.
+    ldr r4, lit_mail_tstate @ 다섯째 인수가 스택에 있어 스택은 건드리지 않는다
+    str r0, [r4, #16]
+    mov r0, r12
+    str r0, [r4, #24]
+    mov r0, lr
+    str r0, [r4, #20]
+    ldr r0, [r4, #16]
+    ldr r4, lit_mail_func
+    mov r12, r4
+    ldr r4, lit_mail_tstate
+    ldr r4, [r4, #24]
+    blx r12
+    ldr r1, lit_mail_tstate
+    movs r2, #0
+    str r2, [r1, #16]
+    ldr r1, [r1, #20]
+    bx r1
+    .align 2
+lit_mail_tstate: .word {tstate}
+lit_mail_func: .word {mail_func}
 code_end_marker: .word 0x4C4F4B4F
     .word ko_list8          @ 진입점 주소 표 (build 가 읽어서 원래 코드를 연결한다)
     .word ko_upload_a
     .word ko_upload_b
+    .word ko_mail_draw
 '''
 
 FLAG_ASM = '''
@@ -1758,7 +1848,7 @@ def slot_table(slots):
     n = len(slots)
     half = (2 * n + 3) // 4 * 4
     sizes = [('slot_g', half), ('slot_k', 4 * n), ('slot_t', 4 * n), ('stamp', 4), ('bases', 4 * LIST_BASES),
-             ('base_next', 4), ('state', 12), ('tstate', 16), ('endmark', 4), ('part', 64), ('strip', 192), ('cellbuf', 64)]
+             ('base_next', 4), ('state', 12), ('tstate', 32), ('endmark', 4), ('part', 64), ('strip', 192), ('cellbuf', 64)]
     offsets, pos = {}, 0
     for name, size in sizes:
         offsets[name] = pos
@@ -1965,7 +2055,8 @@ def build(arm9, keep=(), chars=(), blobs=None, extra=()):
         card_lo=card_range[0], card_hi=card_range[1],
         big_mark=HANGUL_BASE + kotable.NEW_CHARS.index(kotable.BIG_MARK),
         check_ofs=32 + LIST_CHECK * 64,
-        check_src=BOLD_FONT + LIST_CHECK * 64, **slot_at)
+        check_src=BOLD_FONT + LIST_CHECK * 64, mail_func=MAIL_DRAW_FUNC | 1, mail_row=MAIL_ROW, mail_last=MAIL_ROW - 1,
+        **slot_at)
     code = assemble(src, code_addr)
     check_thumb1(code, code_addr)
     if code_addr + len(code) > params:
@@ -1973,7 +2064,7 @@ def build(arm9, keep=(), chars=(), blobs=None, extra=()):
     arm9[code_addr - ARM9_BASE:code_addr - ARM9_BASE + len(code)] = code
     put_data(params, bytes(buffer + GLYPH - params))     # 작업 공간(매개변수·그림 버퍼)은 0 에서 시작
     marker = code.index(struct.pack('<I', 0x4C4F4B4F))   # 코드 끝 표시 뒤의 진입점 주소 표
-    entry_list8, entry_upload_a, entry_upload_b = struct.unpack_from('<3I', code, marker + 4)
+    entry_list8, entry_upload_a, entry_upload_b, entry_mail = struct.unpack_from('<4I', code, marker + 4)
     upload_entry = {copy_funcs[0]: entry_upload_a, copy_funcs[1]: entry_upload_b}
 
     def put(site, asm_src):
@@ -1998,5 +2089,5 @@ def build(arm9, keep=(), chars=(), blobs=None, extra=()):
             put(site, f'bl {upload_entry[func]:#x}')
     info = {'코드': len(code), '한글 글자': placed, '작은 한글': len(small[0]),
             '구간': len(chunks['big']) + len(chunks['small']), '코드 주소': hex(code_addr),
-            '버퍼': hex(buffer), '목록 한글 칸': len(slots), '남긴 한자': ''.join(keep)}
+            '버퍼': hex(buffer), '목록 한글 칸': len(slots), '남긴 한자': ''.join(keep), '메일 글 진입점': hex(entry_mail)}
     return info, blob_where

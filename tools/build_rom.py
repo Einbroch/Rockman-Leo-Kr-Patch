@@ -126,6 +126,24 @@ OVERLAY_PATCHES = [
 MAIL_BLOCK, MAIL_BUFFER = 95, 0x7000
 
 
+# 메일 쓰기 화면이 제목·본문 글 상자를 그리는 호출(레오·드래곤 0x02187E18, 페가서스 0x02187E1C)의 앞뒤 바이트
+MAIL_DRAW_BEFORE = bytes.fromhex('00200090381c0221321c231c')   # movs r0,#0; str r0,[sp]; adds r0,r7,#0; movs r1,#2; …
+MAIL_DRAW_AFTER = bytes.fromhex('019a0121331c0094')             # (ldr r0,[pc,#…] 다음) ldr r2,[sp,#4]; movs r1,#1; …
+
+
+def patch_mail_draw(data, base, entry):
+    """오버레이 2 의 그 bl 0x02009038 을 bl entry 로 바꾼다. 바꾼 위치(오버레이 안)를 돌려준다."""
+    hits = [i + len(MAIL_DRAW_BEFORE) for i in range(len(data) - 30)
+            if data[i:i + 12] == MAIL_DRAW_BEFORE and data[i + 18:i + 26] == MAIL_DRAW_AFTER]
+    if len(hits) != 1:
+        sys.exit(f'메일 쓰기 글 그리기 호출을 한 군데로 찾지 못했습니다({len(hits)}곳)')
+    at = hits[0]
+    if bytes(data[at:at + 4]) != engine.assemble(f'bl {engine.MAIL_DRAW_FUNC:#x}', base + at):
+        sys.exit(f'{base + at:#x} 가 bl {engine.MAIL_DRAW_FUNC:#x} 가 아닙니다')
+    data[at:at + 4] = engine.assemble(f'bl {entry:#x}', base + at)
+    return at
+
+
 def patch_overlays(rom, patches=OVERLAY_PATCHES):
     """OVERLAY_PATCHES 를 적용한다. 다른 판본은 레오 오버레이의 앞뒤 바이트로 자리를 찾는다."""
     leo = base = None
@@ -268,6 +286,8 @@ def main():
     data2 = bytearray(rom.files[ov2.fileID])
     for at, size, why in namekb.patch(data2, ov2.ramAddress, convert_addr):
         print(f'오버레이 2 {ov2.ramAddress + at:#x}: {why}')
+    at = patch_mail_draw(data2, ov2.ramAddress, int(info['메일 글 진입점'], 16))
+    print(f'오버레이 2 {ov2.ramAddress + at:#x}: 메일 쓰기 제목·본문 그리기 → 큰 한글 (engine.py ko_mail_draw)')
     rom.files[ov2.fileID] = bytes(data2)
     for old, positions in refs.items():
         for i in positions:
